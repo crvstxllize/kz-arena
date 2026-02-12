@@ -1,0 +1,11 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Страница не найдена | KZ Arena{% endblock %}
+
+{% block content %}
+<section class="section narrow error-page">
+  <h1>404</h1>
+  <p>Запрошенная страница не найдена.</p>
+  <a href="{% url 'core:home' %}" class="button">На главную</a>
+</section>
+{% endblock %}

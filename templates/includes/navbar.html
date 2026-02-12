@@ -1,0 +1,26 @@
+﻿<header class="site-header">
+  <div class="container header-inner">
+    <a href="{% url 'core:home' %}" class="brand">KZ Arena</a>
+
+    <button
+      id="nav-toggle"
+      class="nav-toggle"
+      type="button"
+      aria-controls="nav-menu"
+      aria-expanded="false"
+    >
+      Меню
+    </button>
+
+    <nav aria-label="Основная навигация">
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="{% url 'core:home' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'home' %}is-active{% endif %}">Главная</a></li>
+        <li><a href="{% url 'articles:news_list' %}" class="{% if request.resolver_match.namespace == 'articles' %}is-active{% endif %}">Новости</a></li>
+        <li><a href="{% url 'teams:team_list' %}" class="{% if request.resolver_match.namespace == 'teams' %}is-active{% endif %}">Команды</a></li>
+        <li><a href="{% url 'tournaments:tournament_list' %}" class="{% if request.resolver_match.namespace == 'tournaments' %}is-active{% endif %}">Турниры</a></li>
+        <li><a href="{% url 'matches:match_list' %}" class="{% if request.resolver_match.namespace == 'matches' %}is-active{% endif %}">Матчи</a></li>
+        <li><a href="{% url 'core:about' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %}is-active{% endif %}">О проекте</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

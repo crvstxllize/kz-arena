@@ -1,0 +1,63 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="news-hub">
+  <div class="news-hub__top">
+    <article class="section section-featured">
+      <h2 class="section-title">Главное</h2>
+      {% include "includes/news_card.html" with item=featured_news card_variant="featured" %}
+    </article>
+
+    <aside class="section section-top-day" aria-labelledby="top-day-title">
+      <div class="section-head">
+        <h2 id="top-day-title" class="section-title">Топ дня</h2>
+      </div>
+      <ol class="top-list">
+        {% for item in top_day %}
+          {% include "includes/news_top_item.html" with item=item %}
+        {% endfor %}
+      </ol>
+    </aside>
+  </div>
+
+  <section class="section section-filters" aria-label="Фильтры новостей">
+    <h2 class="section-title">Фильтры</h2>
+    <div class="news-filters">
+      <div class="filter-group" role="group" aria-label="Тип новостей">
+        <button type="button" class="filter-chip is-active" data-kind-filter="all" aria-pressed="true">Все</button>
+        <button type="button" class="filter-chip" data-kind-filter="sport" aria-pressed="false">Спорт</button>
+        <button type="button" class="filter-chip" data-kind-filter="esport" aria-pressed="false">Киберспорт</button>
+      </div>
+
+      <div class="filter-group filter-group--selects">
+        <label class="filter-label" for="discipline-filter">Дисциплина</label>
+        <select id="discipline-filter" class="filter-select" aria-label="Фильтр по дисциплине">
+          <option>Футбол</option>
+          <option>Баскетбол</option>
+          <option>CS2</option>
+          <option>Dota 2</option>
+          <option>PUBG</option>
+        </select>
+
+        <label class="filter-label" for="sort-filter">Сортировка</label>
+        <select id="sort-filter" class="filter-select" aria-label="Сортировка новостей">
+          <option>Новые</option>
+          <option>Популярные</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-all-news">
+    <div class="section-head">
+      <h2 class="section-title">Все новости</h2>
+    </div>
+
+    <div id="news-grid" class="news-grid news-grid--portal" aria-live="polite">
+      {% for item in all_news %}
+        {% include "includes/news_card.html" with item=item card_variant="standard" %}
+      {% endfor %}
+    </div>
+  </section>
+</section>
+{% endblock %}

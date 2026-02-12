@@ -1,0 +1,23 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="hero hero-home">
+  <p class="hero-kicker">KZ Arena</p>
+  <h1>Новости спорта и киберспорта Казахстана</h1>
+  <p class="hero-text">Оперативные материалы о футболе, баскетболе, CS2, Dota 2 и PUBG: главное за день в одном месте.</p>
+  <a href="{% url 'articles:news_list' %}" class="button">Смотреть ленту новостей</a>
+</section>
+
+<section class="section section-home-news">
+  <div class="section-head">
+    <h2>Последние новости</h2>
+    <a href="{% url 'articles:news_list' %}" class="link">Ко всем новостям</a>
+  </div>
+
+  <div class="news-grid news-grid--home">
+    {% for item in latest_news %}
+      {% include "includes/news_card.html" with item=item card_variant="compact" %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

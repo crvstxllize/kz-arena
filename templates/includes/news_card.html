@@ -1,0 +1,25 @@
+﻿{% load static %}
+<article class="news-card{% if card_variant %} news-card--{{ card_variant }}{% endif %}{% if item.urgent %} news-card--urgent{% endif %}" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
+  <a href="{{ item.url|default:'#' }}" class="news-card__media-link" aria-label="Открыть новость: {{ item.title }}">
+    {% if item.image_url %}
+      <img src="{{ item.image_url }}" alt="{{ item.title }}" class="news-card__image" loading="lazy">
+    {% else %}
+      <img src="{% static 'img/placeholder.svg' %}" alt="Изображение-заглушка для новости" class="news-card__image" loading="lazy">
+    {% endif %}
+  </a>
+
+  <div class="news-card__body">
+    <div class="news-card__meta">
+      <span class="news-pill">{{ item.category|default:item.discipline }}</span>
+      {% if item.urgent %}<span class="news-pill news-pill--urgent">Срочно</span>{% endif %}
+      <time datetime="{{ item.published_at }}">{{ item.published_at }}</time>
+    </div>
+
+    <h3 class="news-card__title">
+      <a href="{{ item.url|default:'#' }}">{{ item.title }}</a>
+    </h3>
+
+    <p class="news-card__excerpt">{{ item.excerpt }}</p>
+    <a href="{{ item.url|default:'#' }}" class="news-card__read-more" aria-label="Читать новость: {{ item.title }}">Читать</a>
+  </div>
+</article>

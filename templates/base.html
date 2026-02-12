@@ -1,0 +1,25 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% if page_title %}{{ page_title }} | {% endif %}KZ Arena{% endblock %}</title>
+  <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Портал новостей KZ Arena{% endif %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к контенту</a>
+  {% include "includes/navbar.html" %}
+
+  <main id="main-content" class="container">
+    {% include "includes/breadcrumbs.html" %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Прокрутить вверх">Наверх</button>
+  {% include "includes/footer.html" %}
+  {% include "includes/toasts.html" %}
+  <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>

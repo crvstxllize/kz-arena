@@ -1,0 +1,11 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Ошибка сервера | KZ Arena{% endblock %}
+
+{% block content %}
+<section class="section narrow error-page">
+  <h1>500</h1>
+  <p>На сервере произошла ошибка. Попробуйте обновить страницу позже.</p>
+  <a href="{% url 'core:home' %}" class="button">Вернуться на главную</a>
+</section>
+{% endblock %}
