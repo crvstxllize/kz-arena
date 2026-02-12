@@ -1,0 +1,30 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="section auth-section narrow">
+  <h1>Регистрация</h1>
+  <p>Создайте аккаунт, чтобы сохранять настройки и управлять профилем.</p>
+
+  <form method="post" class="auth-form" novalidate>
+    {% csrf_token %}
+    {% if next %}
+      <input type="hidden" name="next" value="{{ next }}">
+    {% endif %}
+
+    {% for field in form %}
+      <div class="form-row">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}
+        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+      </div>
+    {% endfor %}
+
+    {% for error in form.non_field_errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+    <button type="submit" class="button">Зарегистрироваться</button>
+  </form>
+
+  <p class="auth-note">Уже есть аккаунт? <a href="{% url 'accounts:login' %}">Войти</a></p>
+</section>
+{% endblock %}

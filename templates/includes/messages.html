@@ -1,0 +1,9 @@
+﻿{% if messages %}
+  <section class="messages" aria-label="Системные сообщения">
+    {% for message in messages %}
+      <div class="message message--{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}" role="status">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
