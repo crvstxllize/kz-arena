@@ -2,7 +2,7 @@
 
 
 def generate_unique_slug(instance, source_value, slug_field="slug", max_length=255):
-    base_slug = slugify(source_value)[:max_length] or "item"
+    base_slug = slugify(source_value, allow_unicode=True)[:max_length] or "item"
     model_class = instance.__class__
     unique_slug = base_slug
     counter = 2

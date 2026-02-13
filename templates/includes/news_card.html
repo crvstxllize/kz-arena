@@ -1,8 +1,8 @@
 ﻿{% load static %}
-<article class="news-card{% if card_variant %} news-card--{{ card_variant }}{% endif %}{% if item.urgent %} news-card--urgent{% endif %}" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
-  <a href="{{ item.url|default:'#' }}" class="news-card__media-link" aria-label="Открыть новость: {{ item.title }}">
-    {% if item.image_url %}
-      <img src="{{ item.image_url }}" alt="{{ item.title }}" class="news-card__image" loading="lazy">
+<article class="news-card{% if card_variant %} news-card--{{ card_variant }}{% endif %}" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
+  <a href="{{ item.get_absolute_url }}" class="news-card__media-link" aria-label="Открыть новость: {{ item.title }}">
+    {% if item.cover %}
+      <img src="{{ item.cover.url }}" alt="{{ item.title }}" class="news-card__image" loading="lazy">
     {% else %}
       <img src="{% static 'img/placeholder.svg' %}" alt="Изображение-заглушка для новости" class="news-card__image" loading="lazy">
     {% endif %}
@@ -10,16 +10,26 @@
 
   <div class="news-card__body">
     <div class="news-card__meta">
-      <span class="news-pill">{{ item.category|default:item.discipline }}</span>
-      {% if item.urgent %}<span class="news-pill news-pill--urgent">Срочно</span>{% endif %}
-      <time datetime="{{ item.published_at }}">{{ item.published_at }}</time>
+      <span class="news-pill">{{ item.get_kind_display }}</span>
+      {% if item.discipline %}<span class="news-pill">{{ item.get_discipline_display }}</span>{% endif %}
+      {% if item.is_featured %}<span class="news-pill news-pill--urgent">Главное</span>{% endif %}
+      {% if item.published_at %}
+        <time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"d.m.Y H:i" }}</time>
+      {% endif %}
     </div>
 
     <h3 class="news-card__title">
-      <a href="{{ item.url|default:'#' }}">{{ item.title }}</a>
+      <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
     </h3>
 
-    <p class="news-card__excerpt">{{ item.excerpt }}</p>
-    <a href="{{ item.url|default:'#' }}" class="news-card__read-more" aria-label="Читать новость: {{ item.title }}">Читать</a>
+    <p class="news-card__excerpt">
+      {% if item.excerpt %}
+        {{ item.excerpt }}
+      {% else %}
+        {{ item.content|truncatechars:140 }}
+      {% endif %}
+    </p>
+
+    <a href="{{ item.get_absolute_url }}" class="news-card__read-more" aria-label="Читать новость: {{ item.title }}">Читать</a>
   </div>
 </article>

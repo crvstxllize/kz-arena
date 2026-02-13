@@ -1,0 +1,70 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="section-head">
+    <h1>Статьи</h1>
+    <a href="{% url 'dashboard:article_create' %}" class="button">Создать статью</a>
+  </div>
+
+  {% if page_obj.object_list %}
+    <div class="dashboard-table-wrap">
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Заголовок</th>
+            <th>Автор</th>
+            <th>Статус</th>
+            <th>Обновлено</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for article in page_obj.object_list %}
+          <tr>
+            <td>
+              <a href="{{ article.get_absolute_url }}" target="_blank" rel="noopener">{{ article.title }}</a>
+            </td>
+            <td>{{ article.author.username }}</td>
+            <td>
+              {% if article.status == 'published' %}
+                <span class="news-pill">Опубликовано</span>
+              {% else %}
+                <span class="news-pill">Черновик</span>
+              {% endif %}
+            </td>
+            <td>{{ article.updated_at|date:"d.m.Y H:i" }}</td>
+            <td class="dashboard-actions">
+              <a href="{% url 'dashboard:article_edit' article.pk %}" class="button button--small">Редактировать</a>
+
+              <form method="post" action="{% url 'dashboard:article_toggle_status' article.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="button button--small button--secondary">
+                  {% if article.status == 'published' %}Снять с публикации{% else %}Опубликовать{% endif %}
+                </button>
+              </form>
+
+              <a href="{% url 'dashboard:article_delete' article.pk %}" class="button button--small button--danger">Удалить</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="Пагинация статей dashboard">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Назад</a>
+      {% endif %}
+      <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Вперед</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  {% else %}
+    <p class="muted">Данные отсутствуют.</p>
+  {% endif %}
+</section>
+{% endblock %}

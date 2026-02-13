@@ -338,6 +338,9 @@ class Command(BaseCommand):
             if not article.published_at:
                 article.published_at = now - timedelta(hours=idx * 3)
                 changed = True
+            if article.slug == "item" or article.slug.startswith("item-"):
+                article.slug = ""
+                changed = True
             if changed:
                 article.save()
 

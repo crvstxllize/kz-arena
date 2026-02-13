@@ -1,0 +1,48 @@
+﻿<article class="match-card match-card--{{ match.status }}">
+  <div class="match-meta">
+    <time datetime="{{ match.datetime|date:'c' }}" class="match-meta__date">{{ match.datetime|date:"d.m.Y" }}</time>
+    <span class="match-meta__time">{{ match.datetime|date:"H:i" }}</span>
+    <a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}" class="match-meta__tournament">{{ match.tournament.name }}</a>
+  </div>
+
+  <div class="match-teams">
+    <a class="match-teams__link" href="{% url 'matches:match_detail' match.id %}">
+      <span class="match-team">
+        {% if match.team_a.logo %}
+          <img src="{{ match.team_a.logo.url }}" alt="Логотип {{ match.team_a.name }}" class="match-team__logo">
+        {% else %}
+          <span class="match-team__logo match-team__logo--placeholder" aria-hidden="true">{{ match.team_a.name|first|upper }}</span>
+        {% endif %}
+        <span class="match-team__name">{{ match.team_a.name }}</span>
+      </span>
+
+      <span class="match-teams__vs">vs</span>
+
+      <span class="match-team">
+        {% if match.team_b.logo %}
+          <img src="{{ match.team_b.logo.url }}" alt="Логотип {{ match.team_b.name }}" class="match-team__logo">
+        {% else %}
+          <span class="match-team__logo match-team__logo--placeholder" aria-hidden="true">{{ match.team_b.name|first|upper }}</span>
+        {% endif %}
+        <span class="match-team__name">{{ match.team_b.name }}</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="match-side">
+    <span class="badge badge--{{ match.status }}">
+      {% if match.status == 'live' %}<span class="badge__dot" aria-hidden="true"></span>{% endif %}
+      {{ match.get_status_display }}
+    </span>
+
+    <p class="score{% if match.status == 'live' %} score--live{% endif %}">
+      {% if match.result %}
+        {{ match.result.score_a }} : {{ match.result.score_b }}
+      {% else %}
+        &mdash;
+      {% endif %}
+      {% if match.status == 'live' %}<span class="score__live-label">LIVE</span>{% endif %}
+    </p>
+  </div>
+</article>
+

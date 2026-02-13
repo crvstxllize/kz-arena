@@ -1,0 +1,13 @@
+﻿<article class="comment-item" data-comment-id="{{ comment.id }}">
+  <header class="comment-item__header">
+    <strong>{{ comment.user.username }}</strong>
+    <time datetime="{{ comment.created_at|date:'c' }}">{{ comment.created_at|date:"d.m.Y H:i" }}</time>
+  </header>
+  <p class="comment-item__text">{{ comment.text }}</p>
+
+  {% if user.is_authenticated %}
+    {% if user.is_staff or user.id == comment.user_id %}
+      <button type="button" class="button button--small button--danger js-comment-delete" data-comment-id="{{ comment.id }}">Удалить</button>
+    {% endif %}
+  {% endif %}
+</article>

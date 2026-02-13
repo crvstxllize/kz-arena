@@ -1,6 +1,9 @@
 ﻿<li class="top-list__item" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
-  <a href="{{ item.url|default:'#' }}" class="top-list__link" aria-label="Открыть материал: {{ item.title }}">
-    <span class="top-list__meta">{{ item.discipline }} · {{ item.published_at }}</span>
+  <a href="{{ item.get_absolute_url }}" class="top-list__link" aria-label="Открыть материал: {{ item.title }}">
+    <span class="top-list__meta">
+      {% if item.discipline %}{{ item.get_discipline_display }} · {% endif %}
+      {% if item.published_at %}{{ item.published_at|date:"d.m H:i" }}{% endif %}
+    </span>
     <span class="top-list__title">{{ item.title }}</span>
   </a>
 </li>

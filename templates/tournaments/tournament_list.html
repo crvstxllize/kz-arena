@@ -1,9 +1,63 @@
 ﻿{% extends "base.html" %}
 
 {% block content %}
-<section class="section narrow">
+<section class="section section-filters" aria-label="Фильтры турниров">
   <h1>Турниры</h1>
   <p>Календарь и статус текущих и предстоящих турниров.</p>
-  <p class="muted">Раздел в разработке.</p>
+
+  <form method="get" class="news-filters">
+    <div class="filter-group" role="radiogroup" aria-label="Тип турниров">
+      <label class="filter-chip {% if not current_filters.kind %}is-active{% endif %}"><input type="radio" name="kind" value="" {% if not current_filters.kind %}checked{% endif %}>Все</label>
+      <label class="filter-chip {% if current_filters.kind == 'sport' %}is-active{% endif %}"><input type="radio" name="kind" value="sport" {% if current_filters.kind == 'sport' %}checked{% endif %}>Спорт</label>
+      <label class="filter-chip {% if current_filters.kind == 'esport' %}is-active{% endif %}"><input type="radio" name="kind" value="esport" {% if current_filters.kind == 'esport' %}checked{% endif %}>Киберспорт</label>
+    </div>
+
+    <div class="filter-group filter-group--selects">
+      <label class="filter-label" for="discipline">Дисциплина</label>
+      <select class="filter-select" id="discipline" name="discipline">
+        <option value="">Все</option>
+        {% for value, label in discipline_choices %}
+          <option value="{{ value }}" {% if current_filters.discipline == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="button button--small">Применить</button>
+      <a href="{% url 'tournaments:tournament_list' %}" class="button button--secondary button--small">Сбросить</a>
+    </div>
+  </form>
+</section>
+
+<section class="section">
+  {% if page_obj.object_list %}
+    <div class="entity-grid">
+      {% for tournament in page_obj.object_list %}
+        <article class="entity-card entity-card--plain">
+          <div class="entity-card__body">
+            <div class="news-card__meta">
+              <span class="news-pill">{{ tournament.get_kind_display }}</span>
+              {% if tournament.discipline %}<span class="news-pill">{{ tournament.get_discipline_display }}</span>{% endif %}
+              <span>Матчей: {{ tournament.matches.count }}</span>
+            </div>
+            <h3 class="news-card__title"><a href="{% url 'tournaments:tournament_detail' tournament.slug %}">{{ tournament.name }}</a></h3>
+            <p class="news-card__excerpt">{{ tournament.start_date|date:"d.m.Y" }} - {{ tournament.end_date|date:"d.m.Y" }}{% if tournament.location %} · {{ tournament.location }}{% endif %}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="Пагинация турниров">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Назад</a>
+      {% endif %}
+      <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Вперед</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  {% else %}
+    <p class="muted">Данные отсутствуют.</p>
+  {% endif %}
 </section>
 {% endblock %}

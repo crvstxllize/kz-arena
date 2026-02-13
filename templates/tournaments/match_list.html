@@ -1,9 +1,106 @@
 ﻿{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<section class="section narrow">
-  <h1>Матчи</h1>
-  <p>Расписание матчей, результаты и оперативные обновления.</p>
-  <p class="muted">Раздел в разработке.</p>
+<section class="section matches-page">
+  <header class="matches-page__hero">
+    <p class="hero-kicker">KZ Arena</p>
+    <h1>Матч-центр</h1>
+    <p class="matches-page__lead">Оперативная лента матчей: текущие, ближайшие и завершенные встречи в одном месте.</p>
+  </header>
+
+  <details class="matches-filters" data-matches-filters data-has-active="{% if has_active_filters %}1{% else %}0{% endif %}" open>
+    <summary class="matches-filters__summary">Фильтры</summary>
+
+    <form method="get" class="matches-filters__form" aria-label="Фильтры матчей">
+      <div class="filter-group matches-filters__chips" role="radiogroup" aria-label="Тип матчей">
+        <label class="filter-chip {% if not current_filters.kind %}is-active{% endif %}">
+          <input type="radio" name="kind" value="" {% if not current_filters.kind %}checked{% endif %}>Все
+        </label>
+        <label class="filter-chip {% if current_filters.kind == 'sport' %}is-active{% endif %}">
+          <input type="radio" name="kind" value="sport" {% if current_filters.kind == 'sport' %}checked{% endif %}>Спорт
+        </label>
+        <label class="filter-chip {% if current_filters.kind == 'esport' %}is-active{% endif %}">
+          <input type="radio" name="kind" value="esport" {% if current_filters.kind == 'esport' %}checked{% endif %}>Киберспорт
+        </label>
+      </div>
+
+      <div class="matches-filters__controls">
+        <label class="filter-label" for="discipline">Дисциплина</label>
+        <select class="filter-select" id="discipline" name="discipline">
+          <option value="">Все</option>
+          {% for value, label in discipline_choices %}
+            <option value="{{ value }}" {% if current_filters.discipline == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+
+        <label class="filter-label" for="status">Статус</label>
+        <select class="filter-select" id="status" name="status">
+          <option value="">Все</option>
+          {% for value, label in status_choices %}
+            <option value="{{ value }}" {% if current_filters.status == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+
+        <div class="matches-filters__actions">
+          <button type="submit" class="button button--small">Применить</button>
+          <a href="{% url 'matches:match_list' %}" class="button button--secondary button--small">Сбросить</a>
+        </div>
+      </div>
+    </form>
+  </details>
+</section>
+
+<section class="matches-groups">
+  {% if page_obj.object_list %}
+    {% if live_matches %}
+    <article class="section matches-group">
+      <h2 class="matches-group__title">Сейчас</h2>
+      <div class="matches-list">
+        {% for match in live_matches %}
+          {% include "tournaments/partials/match_card.html" with match=match %}
+        {% endfor %}
+      </div>
+    </article>
+    {% endif %}
+
+    {% if scheduled_matches %}
+    <article class="section matches-group">
+      <h2 class="matches-group__title">Ближайшие</h2>
+      <div class="matches-list">
+        {% for match in scheduled_matches %}
+          {% include "tournaments/partials/match_card.html" with match=match %}
+        {% endfor %}
+      </div>
+    </article>
+    {% endif %}
+
+    {% if finished_matches %}
+    <article class="section matches-group">
+      <h2 class="matches-group__title">Завершенные</h2>
+      <div class="matches-list">
+        {% for match in finished_matches %}
+          {% include "tournaments/partials/match_card.html" with match=match %}
+        {% endfor %}
+      </div>
+    </article>
+    {% endif %}
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="Пагинация матчей">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Назад</a>
+      {% endif %}
+      <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Вперед</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  {% else %}
+    <section class="section">
+      <p class="muted">Данные отсутствуют.</p>
+    </section>
+  {% endif %}
 </section>
 {% endblock %}

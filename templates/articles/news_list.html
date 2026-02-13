@@ -5,47 +5,98 @@
   <div class="news-hub__top">
     <article class="section section-featured">
       <h2 class="section-title">Главное</h2>
-      {% include "includes/news_card.html" with item=featured_news card_variant="featured" %}
+      {% if featured %}
+        {% include "includes/news_card.html" with item=featured card_variant="featured" %}
+      {% else %}
+        <p class="muted">Новостей пока нет.</p>
+      {% endif %}
     </article>
 
     <aside class="section section-top-day" aria-labelledby="top-day-title">
       <div class="section-head">
         <h2 id="top-day-title" class="section-title">Топ дня</h2>
       </div>
+      {% if top_items %}
       <ol class="top-list">
-        {% for item in top_day %}
+        {% for item in top_items %}
           {% include "includes/news_top_item.html" with item=item %}
         {% endfor %}
       </ol>
+      {% else %}
+      <p class="muted">Новостей пока нет.</p>
+      {% endif %}
     </aside>
   </div>
 
   <section class="section section-filters" aria-label="Фильтры новостей">
     <h2 class="section-title">Фильтры</h2>
-    <div class="news-filters">
-      <div class="filter-group" role="group" aria-label="Тип новостей">
-        <button type="button" class="filter-chip is-active" data-kind-filter="all" aria-pressed="true">Все</button>
-        <button type="button" class="filter-chip" data-kind-filter="sport" aria-pressed="false">Спорт</button>
-        <button type="button" class="filter-chip" data-kind-filter="esport" aria-pressed="false">Киберспорт</button>
+
+    <form method="get" class="news-filters" id="news-filters-form" data-news-filters>
+      <div class="filter-group search-autocomplete" data-autocomplete-root>
+        <input
+          id="news-search-input"
+          class="filter-input"
+          type="search"
+          name="q"
+          placeholder="Поиск по новостям"
+          value="{{ current_filters.q }}"
+          aria-label="Поиск по новостям"
+          autocomplete="off"
+          data-autocomplete-input
+          data-search-url="{% url 'articles:news_search' %}"
+        >
+        <div class="search-autocomplete__panel" data-autocomplete-list hidden></div>
+      </div>
+
+      <div class="filter-group" role="radiogroup" aria-label="Тип новостей">
+        <label class="filter-chip {% if not current_filters.kind %}is-active{% endif %}">
+          <input type="radio" name="kind" value="" {% if not current_filters.kind %}checked{% endif %}>Все
+        </label>
+        <label class="filter-chip {% if current_filters.kind == 'sport' %}is-active{% endif %}">
+          <input type="radio" name="kind" value="sport" {% if current_filters.kind == 'sport' %}checked{% endif %}>Спорт
+        </label>
+        <label class="filter-chip {% if current_filters.kind == 'esport' %}is-active{% endif %}">
+          <input type="radio" name="kind" value="esport" {% if current_filters.kind == 'esport' %}checked{% endif %}>Киберспорт
+        </label>
       </div>
 
       <div class="filter-group filter-group--selects">
         <label class="filter-label" for="discipline-filter">Дисциплина</label>
-        <select id="discipline-filter" class="filter-select" aria-label="Фильтр по дисциплине">
-          <option>Футбол</option>
-          <option>Баскетбол</option>
-          <option>CS2</option>
-          <option>Dota 2</option>
-          <option>PUBG</option>
+        <select id="discipline-filter" class="filter-select" name="discipline">
+          <option value="">Все</option>
+          <option value="football" {% if current_filters.discipline == 'football' %}selected{% endif %}>Футбол</option>
+          <option value="basketball" {% if current_filters.discipline == 'basketball' %}selected{% endif %}>Баскетбол</option>
+          <option value="cs2" {% if current_filters.discipline == 'cs2' %}selected{% endif %}>CS2</option>
+          <option value="dota2" {% if current_filters.discipline == 'dota2' %}selected{% endif %}>Dota 2</option>
+          <option value="pubg" {% if current_filters.discipline == 'pubg' %}selected{% endif %}>PUBG</option>
+        </select>
+
+        <label class="filter-label" for="category-filter">Категория</label>
+        <select id="category-filter" class="filter-select" name="category">
+          <option value="">Все</option>
+          {% for category in categories %}
+            <option value="{{ category.slug }}" {% if current_filters.category == category.slug %}selected{% endif %}>{{ category.name }}</option>
+          {% endfor %}
+        </select>
+
+        <label class="filter-label" for="tag-filter">Тег</label>
+        <select id="tag-filter" class="filter-select" name="tag">
+          <option value="">Все</option>
+          {% for tag in tags %}
+            <option value="{{ tag.slug }}" {% if current_filters.tag == tag.slug %}selected{% endif %}>{{ tag.name }}</option>
+          {% endfor %}
         </select>
 
         <label class="filter-label" for="sort-filter">Сортировка</label>
-        <select id="sort-filter" class="filter-select" aria-label="Сортировка новостей">
-          <option>Новые</option>
-          <option>Популярные</option>
+        <select id="sort-filter" class="filter-select" name="ordering">
+          <option value="new" {% if current_filters.ordering == 'new' %}selected{% endif %}>Новые</option>
+          <option value="popular" {% if current_filters.ordering == 'popular' %}selected{% endif %}>Популярные</option>
         </select>
+
+        <button type="submit" class="button button--small">Применить</button>
+        <a href="{% url 'articles:news_list' %}" class="button button--secondary button--small">Сбросить фильтры</a>
       </div>
-    </div>
+    </form>
   </section>
 
   <section class="section section-all-news">
@@ -53,11 +104,30 @@
       <h2 class="section-title">Все новости</h2>
     </div>
 
-    <div id="news-grid" class="news-grid news-grid--portal" aria-live="polite">
-      {% for item in all_news %}
-        {% include "includes/news_card.html" with item=item card_variant="standard" %}
-      {% endfor %}
-    </div>
+    {% if page_obj.object_list %}
+      <div id="news-grid" class="news-grid news-grid--portal" aria-live="polite">
+        {% for item in page_obj.object_list %}
+          {% include "includes/news_card.html" with item=item card_variant="standard" %}
+        {% endfor %}
+      </div>
+
+      {% if page_obj.paginator.num_pages > 1 %}
+      <nav class="pagination" aria-label="Пагинация новостей" data-pagination>
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Назад</a>
+        {% endif %}
+
+        <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link pagination-link--next" data-next-page>Вперед</a>
+          <button type="button" class="button button--small" id="news-load-more" data-load-more data-next-url="?page={{ page_obj.next_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}">Показать ещё</button>
+        {% endif %}
+      </nav>
+      {% endif %}
+    {% else %}
+      <p class="muted">Новостей пока нет.</p>
+    {% endif %}
   </section>
 </section>
 {% endblock %}

@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="section dashboard-summary">
+  <h1>Dashboard редактора</h1>
+  <p>Управление публикациями KZ Arena.</p>
+
+  <div class="dashboard-metrics">
+    <article class="metric-card">
+      <h2>Всего статей</h2>
+      <p>{{ total_articles }}</p>
+    </article>
+    <article class="metric-card">
+      <h2>Опубликовано</h2>
+      <p>{{ published_articles }}</p>
+    </article>
+    <article class="metric-card">
+      <h2>Черновики</h2>
+      <p>{{ draft_articles }}</p>
+    </article>
+  </div>
+
+  <p><a href="{% url 'dashboard:article_list' %}" class="button">Перейти к статьям</a></p>
+</section>
+{% endblock %}

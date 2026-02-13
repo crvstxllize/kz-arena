@@ -1,0 +1,156 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<article
+  class="section news-detail"
+  data-article-id="{{ article.id }}"
+  data-authenticated="{% if user.is_authenticated %}1{% else %}0{% endif %}"
+  data-login-url="{% url 'accounts:login' %}?next={{ request.path }}"
+  data-react-url="{% url 'interactions:react' %}"
+  data-favorite-url="{% url 'interactions:favorite' %}"
+  data-subscribe-url="{% url 'interactions:subscribe' %}"
+  data-status-url="{% url 'interactions:status' %}"
+  data-comments-add-url="{% url 'comments:add' %}"
+  data-comments-delete-url="{% url 'comments:delete' %}"
+>
+  <header class="news-detail__header">
+    <p class="news-detail__meta">
+      <span class="news-pill">{{ article.get_kind_display }}</span>
+      {% if article.discipline %}<span class="news-pill">{{ article.get_discipline_display }}</span>{% endif %}
+      <span>{{ article.published_at|date:"d.m.Y H:i" }}</span>
+      <span>Автор: {{ article.author.username }}</span>
+      <span>Просмотры: {{ article.views_count }}</span>
+    </p>
+    <h1>{{ article.title }}</h1>
+    {% if article.excerpt %}<p class="hero-text">{{ article.excerpt }}</p>{% endif %}
+  </header>
+
+  <div class="news-detail__cover">
+    {% if article.cover %}
+      <img src="{{ article.cover.url }}" alt="{{ article.title }}" class="news-card__image">
+    {% else %}
+      <img src="{% static 'img/placeholder.svg' %}" alt="Изображение-заглушка для новости" class="news-card__image">
+    {% endif %}
+  </div>
+
+  <section class="news-actions" aria-label="Действия с новостью">
+    <div class="news-actions__group">
+      <button
+        type="button"
+        class="button button--small js-react-btn {% if user_reaction == 'like' %}is-active{% endif %}"
+        data-type="like"
+        aria-pressed="{% if user_reaction == 'like' %}true{% else %}false{% endif %}"
+      >
+        👍 Лайк <span class="news-actions__count" data-like-count>{{ reaction_counts.likes }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="button button--small button--secondary js-react-btn {% if user_reaction == 'dislike' %}is-active{% endif %}"
+        data-type="dislike"
+        aria-pressed="{% if user_reaction == 'dislike' %}true{% else %}false{% endif %}"
+      >
+        👎 Дизлайк <span class="news-actions__count" data-dislike-count>{{ reaction_counts.dislikes }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="button button--small button--secondary js-favorite-btn {% if user_favorited %}is-active{% endif %}"
+        aria-pressed="{% if user_favorited %}true{% else %}false{% endif %}"
+      >
+        ⭐ Избранное <span class="news-actions__count" data-favorite-count>{{ favorites_count }}</span>
+      </button>
+
+      {% if primary_category %}
+      <button
+        type="button"
+        class="button button--small button--secondary js-subscribe-btn {% if user_category_subscribed %}is-active{% endif %}"
+        data-category-id="{{ primary_category.id }}"
+        aria-pressed="{% if user_category_subscribed %}true{% else %}false{% endif %}"
+      >
+        {% if user_category_subscribed %}Отписаться{% else %}Подписаться{% endif %} на категорию «{{ primary_category.name }}»
+      </button>
+      {% endif %}
+    </div>
+
+    <div class="news-actions__group">
+      <button type="button" class="button button--small button--secondary js-copy-link-btn">Скопировать ссылку</button>
+      <button type="button" class="button button--small button--secondary js-open-share-modal" aria-haspopup="dialog">Поделиться</button>
+    </div>
+  </section>
+
+  <div class="news-detail__taxonomy">
+    {% if article.categories.exists %}
+      <div class="news-detail__chips">
+        {% for category in article.categories.all %}
+          <a href="{% url 'articles:news_list' %}?category={{ category.slug }}" class="news-pill">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if article.tags.exists %}
+      <div class="news-detail__chips">
+        {% for tag in article.tags.all %}
+          <a href="{% url 'articles:news_list' %}?tag={{ tag.slug }}" class="news-pill">#{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="news-detail__content">
+    {{ article.content|linebreaks }}
+  </div>
+</article>
+
+<section class="section comments-block" aria-labelledby="comments-title">
+  <div class="section-head">
+    <h2 id="comments-title" class="section-title">Комментарии (<span data-comments-count>{{ comments_count }}</span>)</h2>
+  </div>
+
+  {% if user.is_authenticated %}
+    <form class="comments-form" data-comments-form>
+      {% csrf_token %}
+      <label class="filter-label" for="comment-text">Ваш комментарий</label>
+      <textarea id="comment-text" name="text" class="comments-form__input" rows="4" maxlength="2000" required></textarea>
+      <button type="submit" class="button button--small">Отправить</button>
+    </form>
+  {% else %}
+    <p class="muted">Войдите, чтобы оставить комментарий: <a href="{% url 'accounts:login' %}?next={{ request.path }}">войти</a>.</p>
+  {% endif %}
+
+  <div class="comments-list" data-comments-list>
+    {% include "comments/comment_list_items.html" with comments=comments %}
+  </div>
+</section>
+
+<section class="section section-all-news">
+  <div class="section-head">
+    <h2 class="section-title">Похожие новости</h2>
+  </div>
+
+  {% if related_items %}
+    <div class="news-grid news-grid--portal">
+      {% for item in related_items %}
+        {% include "includes/news_card.html" with item=item card_variant="compact" %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">Похожих новостей пока нет.</p>
+  {% endif %}
+</section>
+
+<div class="share-modal" data-share-modal hidden>
+  <div class="share-modal__overlay js-close-share-modal" aria-hidden="true"></div>
+  <div class="share-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+    <h3 id="share-modal-title">Поделиться новостью</h3>
+    <p class="muted">Скопируйте ссылку или отправьте в соцсети.</p>
+    <div class="share-modal__actions">
+      <button type="button" class="button button--small js-copy-link-btn">Скопировать ссылку</button>
+      <a class="button button--small button--secondary" href="https://t.me/share/url?url={{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener">Telegram</a>
+      <a class="button button--small button--secondary" href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}" target="_blank" rel="noopener">X</a>
+    </div>
+    <button type="button" class="button button--small button--secondary js-close-share-modal">Закрыть</button>
+  </div>
+</div>
+{% endblock %}
+

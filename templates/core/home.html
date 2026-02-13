@@ -8,16 +8,46 @@
   <a href="{% url 'articles:news_list' %}" class="button">Смотреть ленту новостей</a>
 </section>
 
+{% if main_featured or top_items %}
+<section class="news-hub">
+  <div class="news-hub__top">
+    {% if main_featured %}
+    <article class="section section-featured">
+      <h2 class="section-title">Главное</h2>
+      {% include "includes/news_card.html" with item=main_featured card_variant="featured" %}
+    </article>
+    {% endif %}
+
+    {% if top_items %}
+    <aside class="section section-top-day" aria-labelledby="home-top-title">
+      <div class="section-head">
+        <h2 id="home-top-title" class="section-title">Топ дня</h2>
+      </div>
+      <ol class="top-list">
+        {% for item in top_items %}
+          {% include "includes/news_top_item.html" with item=item %}
+        {% endfor %}
+      </ol>
+    </aside>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
 <section class="section section-home-news">
   <div class="section-head">
     <h2>Последние новости</h2>
     <a href="{% url 'articles:news_list' %}" class="link">Ко всем новостям</a>
   </div>
 
+  {% if latest_news %}
   <div class="news-grid news-grid--home">
     {% for item in latest_news %}
       {% include "includes/news_card.html" with item=item card_variant="compact" %}
     {% endfor %}
   </div>
+  {% else %}
+    <p class="muted">Новостей пока нет.</p>
+  {% endif %}
 </section>
 {% endblock %}

@@ -1,4 +1,5 @@
-﻿<header class="site-header">
+﻿{% load user_groups %}
+<header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="{% url 'core:home' %}" class="brand">KZ Arena</a>
 
@@ -20,6 +21,16 @@
         <li><a href="{% url 'tournaments:tournament_list' %}" class="{% if request.resolver_match.namespace == 'tournaments' %}is-active{% endif %}">Турниры</a></li>
         <li><a href="{% url 'matches:match_list' %}" class="{% if request.resolver_match.namespace == 'matches' %}is-active{% endif %}">Матчи</a></li>
         <li><a href="{% url 'core:about' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %}is-active{% endif %}">О проекте</a></li>
+
+        {% if user.is_authenticated %}
+          {% if user.is_staff or user|has_group:'Editors' %}
+          <li><a href="{% url 'dashboard:index' %}" class="{% if request.resolver_match.namespace == 'dashboard' %}is-active{% endif %}">Dashboard</a></li>
+          {% endif %}
+        {% endif %}
+
+        <li>
+          <button type="button" id="theme-toggle" class="nav-theme-button" aria-pressed="false">Тема</button>
+        </li>
 
         {% if user.is_authenticated %}
           <li><a href="{% url 'accounts:profile' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'profile' %}is-active{% endif %}">Профиль</a></li>

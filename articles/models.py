@@ -1,5 +1,6 @@
 ﻿from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 from core.utils import generate_unique_slug
@@ -70,6 +71,9 @@ class Article(models.Model):
             self.published_at = timezone.now()
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("articles:news_detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title

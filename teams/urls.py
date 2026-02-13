@@ -6,4 +6,5 @@ app_name = "teams"
 
 urlpatterns = [
     path("", views.team_list, name="team_list"),
+    path("<str:slug>/", views.team_detail, name="team_detail"),
 ]

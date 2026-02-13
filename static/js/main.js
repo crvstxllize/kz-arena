@@ -1,62 +1,13 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
-  const navToggle = document.getElementById("nav-toggle");
-  const navMenu = document.getElementById("nav-menu");
-
-  if (navToggle && navMenu) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = navMenu.classList.toggle("is-open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    navMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-      });
-    });
+﻿function getCookie(name) {
+  const cookies = document.cookie ? document.cookie.split(";") : [];
+  for (const cookie of cookies) {
+    const [key, ...rest] = cookie.trim().split("=");
+    if (key === name) {
+      return decodeURIComponent(rest.join("="));
+    }
   }
-
-  const backToTopBtn = document.getElementById("back-to-top");
-  if (backToTopBtn) {
-    const updateBackToTop = () => {
-      if (window.scrollY > 280) {
-        backToTopBtn.classList.add("is-visible");
-      } else {
-        backToTopBtn.classList.remove("is-visible");
-      }
-    };
-
-    window.addEventListener("scroll", updateBackToTop, { passive: true });
-    updateBackToTop();
-
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-
-  const kindFilterButtons = document.querySelectorAll("[data-kind-filter]");
-  const filterTargets = document.querySelectorAll("#news-grid [data-kind], .top-list [data-kind]");
-
-  if (kindFilterButtons.length > 0 && filterTargets.length > 0) {
-    kindFilterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selectedKind = button.dataset.kindFilter;
-
-        kindFilterButtons.forEach((item) => {
-          const isActive = item === button;
-          item.classList.toggle("is-active", isActive);
-          item.setAttribute("aria-pressed", String(isActive));
-        });
-
-        filterTargets.forEach((target) => {
-          const targetKind = target.dataset.kind;
-          const shouldShow = selectedKind === "all" || selectedKind === targetKind;
-          target.classList.toggle("is-hidden-by-filter", !shouldShow);
-        });
-      });
-    });
-  }
-});
+  return null;
+}
 
 function showToast(text, type = "info") {
   const container = document.getElementById("toast-container");
@@ -75,4 +26,536 @@ function showToast(text, type = "info") {
   }, 2800);
 }
 
+async function fetchJSON(url, options = {}) {
+  const csrfToken = getCookie("csrftoken");
+  const headers = {
+    "X-Requested-With": "XMLHttpRequest",
+    ...(options.headers || {}),
+  };
+
+  if (options.method && options.method.toUpperCase() !== "GET") {
+    headers["X-CSRFToken"] = csrfToken || "";
+    if (!headers["Content-Type"]) {
+      headers["Content-Type"] = "application/json";
+    }
+  }
+
+  const response = await fetch(url, { ...options, headers });
+  let payload = null;
+
+  try {
+    payload = await response.json();
+  } catch (_error) {
+    payload = null;
+  }
+
+  if (response.status === 401) {
+    const loginUrl = document.querySelector("[data-login-url]")?.dataset.loginUrl;
+    showToast("Войдите, чтобы выполнить действие", "error");
+    if (loginUrl) {
+      window.setTimeout(() => {
+        window.location.href = loginUrl;
+      }, 700);
+    }
+    throw new Error("auth_required");
+  }
+
+  if (!response.ok || !payload || payload.ok === false) {
+    const message = payload?.error || "Ошибка запроса";
+    showToast(message, "error");
+    throw new Error(message);
+  }
+
+  return payload;
+}
+
+function initMobileMenu() {
+  const navToggle = document.getElementById("nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  if (!navToggle || !navMenu) {
+    return;
+  }
+
+  navToggle.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+function initBackToTop() {
+  const backToTopBtn = document.getElementById("back-to-top");
+  if (!backToTopBtn) {
+    return;
+  }
+
+  const updateBackToTop = () => {
+    if (window.scrollY > 280) {
+      backToTopBtn.classList.add("is-visible");
+    } else {
+      backToTopBtn.classList.remove("is-visible");
+    }
+  };
+
+  window.addEventListener("scroll", updateBackToTop, { passive: true });
+  updateBackToTop();
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+function initStickyHeader() {
+  const header = document.getElementById("site-header");
+  if (!header) {
+    return;
+  }
+
+  const onScroll = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 20);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+
+function initThemeToggle() {
+  const toggle = document.getElementById("theme-toggle");
+  if (!toggle) {
+    return;
+  }
+
+  const root = document.documentElement;
+  const stored = window.localStorage.getItem("kz_theme");
+  if (stored === "dark") {
+    root.dataset.theme = "dark";
+    toggle.setAttribute("aria-pressed", "true");
+  }
+
+  toggle.addEventListener("click", () => {
+    const isDark = root.dataset.theme === "dark";
+    if (isDark) {
+      delete root.dataset.theme;
+      window.localStorage.setItem("kz_theme", "light");
+      toggle.setAttribute("aria-pressed", "false");
+      showToast("Светлая тема включена", "info");
+    } else {
+      root.dataset.theme = "dark";
+      window.localStorage.setItem("kz_theme", "dark");
+      toggle.setAttribute("aria-pressed", "true");
+      showToast("Темная тема включена", "info");
+    }
+  });
+}
+
+function initSmoothAnchors() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      const targetId = anchor.getAttribute("href");
+      if (!targetId || targetId === "#") {
+        return;
+      }
+      const target = document.querySelector(targetId);
+      if (!target) {
+        return;
+      }
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function initAutocomplete() {
+  const root = document.querySelector("[data-autocomplete-root]");
+  const input = document.querySelector("[data-autocomplete-input]");
+  const list = document.querySelector("[data-autocomplete-list]");
+  if (!root || !input || !list) {
+    return;
+  }
+
+  let timer = null;
+
+  const close = () => {
+    list.innerHTML = "";
+    list.hidden = true;
+  };
+
+  const render = (items) => {
+    if (!items.length) {
+      close();
+      return;
+    }
+
+    list.innerHTML = items
+      .map(
+        (item) =>
+          `<a class="search-autocomplete__item" href="${item.url}"><span>${item.title}</span></a>`,
+      )
+      .join("");
+    list.hidden = false;
+  };
+
+  input.addEventListener("input", () => {
+    const query = input.value.trim();
+    if (timer) {
+      window.clearTimeout(timer);
+    }
+
+    if (query.length < 2) {
+      close();
+      return;
+    }
+
+    timer = window.setTimeout(async () => {
+      try {
+        const searchUrl = new URL(input.dataset.searchUrl, window.location.origin);
+        searchUrl.searchParams.set("q", query);
+        const payload = await fetchJSON(searchUrl.toString(), { method: "GET" });
+        render(payload.data?.results || []);
+      } catch (_error) {
+        close();
+      }
+    }, 300);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!root.contains(event.target)) {
+      close();
+    }
+  });
+}
+
+function initLoadMore() {
+  const button = document.querySelector("[data-load-more]");
+  const grid = document.getElementById("news-grid");
+  const pagination = document.querySelector("[data-pagination]");
+  if (!button || !grid || !pagination) {
+    return;
+  }
+
+  button.addEventListener("click", async () => {
+    const nextUrl = button.dataset.nextUrl;
+    if (!nextUrl) {
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Загрузка...";
+
+    try {
+      const response = await fetch(nextUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } });
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+
+      const incomingCards = doc.querySelectorAll("#news-grid .news-card");
+      incomingCards.forEach((card) => {
+        grid.appendChild(card);
+      });
+
+      const nextLink = doc.querySelector("[data-next-page]");
+      if (nextLink) {
+        button.dataset.nextUrl = nextLink.getAttribute("href") || "";
+        button.disabled = false;
+        button.textContent = "Показать ещё";
+      } else {
+        button.remove();
+      }
+
+      const currentLabel = pagination.querySelector(".pagination-current");
+      const newLabel = doc.querySelector(".pagination-current");
+      if (currentLabel && newLabel) {
+        currentLabel.textContent = newLabel.textContent;
+      }
+    } catch (_error) {
+      showToast("Не удалось подгрузить новости", "error");
+      button.disabled = false;
+      button.textContent = "Показать ещё";
+    }
+  });
+}
+
+function initNewsDetailInteractions() {
+  const detail = document.querySelector(".news-detail[data-article-id]");
+  if (!detail) {
+    return;
+  }
+
+  const articleId = Number(detail.dataset.articleId);
+  const isAuthenticated = detail.dataset.authenticated === "1";
+  const reactUrl = detail.dataset.reactUrl;
+  const favoriteUrl = detail.dataset.favoriteUrl;
+  const subscribeUrl = detail.dataset.subscribeUrl;
+  const statusUrl = detail.dataset.statusUrl;
+
+  const likeCountEl = detail.querySelector("[data-like-count]");
+  const dislikeCountEl = detail.querySelector("[data-dislike-count]");
+  const favoriteCountEl = detail.querySelector("[data-favorite-count]");
+
+  const reactButtons = detail.querySelectorAll(".js-react-btn");
+  const favoriteBtn = detail.querySelector(".js-favorite-btn");
+  const subscribeBtn = detail.querySelector(".js-subscribe-btn");
+
+  const setReactionState = (type) => {
+    reactButtons.forEach((btn) => {
+      const active = btn.dataset.type === type;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  };
+
+  reactButtons.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        const payload = await fetchJSON(reactUrl, {
+          method: "POST",
+          body: JSON.stringify({
+            article_id: articleId,
+            type: btn.dataset.type,
+          }),
+        });
+
+        setReactionState(payload.data.reaction);
+        likeCountEl.textContent = payload.data.counts.likes;
+        dislikeCountEl.textContent = payload.data.counts.dislikes;
+        showToast("Реакция сохранена", "success");
+      } catch (_error) {
+        // handled in fetchJSON
+      }
+    });
+  });
+
+  if (favoriteBtn) {
+    favoriteBtn.addEventListener("click", async () => {
+      try {
+        const payload = await fetchJSON(favoriteUrl, {
+          method: "POST",
+          body: JSON.stringify({ article_id: articleId }),
+        });
+
+        const active = Boolean(payload.data.favorited);
+        favoriteBtn.classList.toggle("is-active", active);
+        favoriteBtn.setAttribute("aria-pressed", active ? "true" : "false");
+        favoriteCountEl.textContent = payload.data.favorites_count;
+        showToast(active ? "Добавлено в избранное" : "Удалено из избранного", "success");
+      } catch (_error) {
+        // handled in fetchJSON
+      }
+    });
+  }
+
+  if (subscribeBtn) {
+    subscribeBtn.addEventListener("click", async () => {
+      const categoryId = Number(subscribeBtn.dataset.categoryId || "0");
+      if (!categoryId) {
+        return;
+      }
+
+      try {
+        const payload = await fetchJSON(subscribeUrl, {
+          method: "POST",
+          body: JSON.stringify({ category_id: categoryId }),
+        });
+
+        const active = Boolean(payload.data.subscribed);
+        subscribeBtn.classList.toggle("is-active", active);
+        subscribeBtn.setAttribute("aria-pressed", active ? "true" : "false");
+        subscribeBtn.textContent = active ? "Отписаться от категории" : "Подписаться на категорию";
+        showToast(active ? "Подписка включена" : "Подписка отключена", "success");
+      } catch (_error) {
+        // handled in fetchJSON
+      }
+    });
+  }
+
+  if (isAuthenticated) {
+    fetchJSON(`${statusUrl}?article_id=${articleId}`, { method: "GET" })
+      .then((payload) => {
+        const data = payload.data || {};
+        if (data.liked) {
+          setReactionState("like");
+        } else if (data.disliked) {
+          setReactionState("dislike");
+        }
+        if (typeof data.counts?.likes === "number") {
+          likeCountEl.textContent = data.counts.likes;
+        }
+        if (typeof data.counts?.dislikes === "number") {
+          dislikeCountEl.textContent = data.counts.dislikes;
+        }
+        if (favoriteBtn) {
+          favoriteBtn.classList.toggle("is-active", Boolean(data.favorited));
+          favoriteBtn.setAttribute("aria-pressed", Boolean(data.favorited) ? "true" : "false");
+        }
+      })
+      .catch(() => {
+        // no-op
+      });
+  }
+}
+
+function initCopyLinkButtons() {
+  document.querySelectorAll(".js-copy-link-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        showToast("Ссылка скопирована", "success");
+      } catch (_error) {
+        showToast("Не удалось скопировать ссылку", "error");
+      }
+    });
+  });
+}
+
+function initShareModal() {
+  const modal = document.querySelector("[data-share-modal]");
+  const openBtn = document.querySelector(".js-open-share-modal");
+  if (!modal || !openBtn) {
+    return;
+  }
+
+  const close = () => {
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+  };
+
+  openBtn.addEventListener("click", () => {
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+  });
+
+  modal.querySelectorAll(".js-close-share-modal").forEach((btn) => {
+    btn.addEventListener("click", close);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) {
+      close();
+    }
+  });
+}
+
+function initMatchesFilters() {
+  const details = document.querySelector("[data-matches-filters]");
+  if (!details) {
+    return;
+  }
+
+  const hasActive = details.dataset.hasActive === "1";
+  if (window.matchMedia("(max-width: 739px)").matches && !hasActive) {
+    details.open = false;
+  }
+}
+
+function initCommentsAjax() {
+  const detail = document.querySelector(".news-detail[data-article-id]");
+  const form = document.querySelector("[data-comments-form]");
+  const list = document.querySelector("[data-comments-list]");
+  const count = document.querySelector("[data-comments-count]");
+
+  if (!detail || !list) {
+    return;
+  }
+
+  const articleId = Number(detail.dataset.articleId);
+  const isAuthenticated = detail.dataset.authenticated === "1";
+  const addUrl = detail.dataset.commentsAddUrl;
+  const deleteUrl = detail.dataset.commentsDeleteUrl;
+
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const textarea = form.querySelector("textarea[name='text']");
+      const text = textarea?.value?.trim() || "";
+      if (!text) {
+        showToast("Введите текст комментария", "error");
+        return;
+      }
+
+      try {
+        const payload = await fetchJSON(addUrl, {
+          method: "POST",
+          body: JSON.stringify({ article_id: articleId, text }),
+        });
+
+        const empty = list.querySelector("[data-empty-comments]");
+        if (empty) {
+          empty.remove();
+        }
+
+        list.insertAdjacentHTML("afterbegin", payload.data.html);
+        textarea.value = "";
+
+        if (count) {
+          count.textContent = String(Number(count.textContent || "0") + 1);
+        }
+
+        showToast("Комментарий добавлен", "success");
+      } catch (_error) {
+        // handled in fetchJSON
+      }
+    });
+  }
+
+  list.addEventListener("click", async (event) => {
+    const button = event.target.closest(".js-comment-delete");
+    if (!button) {
+      return;
+    }
+
+    const commentId = Number(button.dataset.commentId || "0");
+    if (!commentId) {
+      return;
+    }
+
+    try {
+      await fetchJSON(deleteUrl, {
+        method: "POST",
+        body: JSON.stringify({ comment_id: commentId }),
+      });
+
+      const node = list.querySelector(`[data-comment-id="${commentId}"]`);
+      if (node) {
+        node.remove();
+      }
+
+      if (count) {
+        const next = Math.max(0, Number(count.textContent || "0") - 1);
+        count.textContent = String(next);
+        if (next === 0 && !list.querySelector("[data-empty-comments]")) {
+          list.innerHTML = '<p class="muted" data-empty-comments>Комментариев пока нет.</p>';
+        }
+      }
+
+      showToast("Комментарий удален", "success");
+    } catch (_error) {
+      // handled in fetchJSON
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileMenu();
+  initBackToTop();
+  initStickyHeader();
+  initThemeToggle();
+  initSmoothAnchors();
+  initAutocomplete();
+  initLoadMore();
+  initNewsDetailInteractions();
+  initCopyLinkButtons();
+  initShareModal();
+  initMatchesFilters();
+  initCommentsAjax();
+});
+
 window.showToast = showToast;
+
+
+
