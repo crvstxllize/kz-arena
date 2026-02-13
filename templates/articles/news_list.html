@@ -61,40 +61,50 @@
       </div>
 
       <div class="filter-group filter-group--selects">
-        <label class="filter-label" for="discipline-filter">Дисциплина</label>
-        <select id="discipline-filter" class="filter-select" name="discipline">
-          <option value="">Все</option>
-          <option value="football" {% if current_filters.discipline == 'football' %}selected{% endif %}>Футбол</option>
-          <option value="basketball" {% if current_filters.discipline == 'basketball' %}selected{% endif %}>Баскетбол</option>
-          <option value="cs2" {% if current_filters.discipline == 'cs2' %}selected{% endif %}>CS2</option>
-          <option value="dota2" {% if current_filters.discipline == 'dota2' %}selected{% endif %}>Dota 2</option>
-          <option value="pubg" {% if current_filters.discipline == 'pubg' %}selected{% endif %}>PUBG</option>
-        </select>
+        <div class="filter-field">
+          <label class="filter-label" for="discipline-filter">Дисциплина</label>
+          <select id="discipline-filter" class="filter-select" name="discipline">
+            <option value="">Все</option>
+            <option value="football" {% if current_filters.discipline == 'football' %}selected{% endif %}>Футбол</option>
+            <option value="basketball" {% if current_filters.discipline == 'basketball' %}selected{% endif %}>Баскетбол</option>
+            <option value="cs2" {% if current_filters.discipline == 'cs2' %}selected{% endif %}>CS2</option>
+            <option value="dota2" {% if current_filters.discipline == 'dota2' %}selected{% endif %}>Dota 2</option>
+            <option value="pubg" {% if current_filters.discipline == 'pubg' %}selected{% endif %}>PUBG</option>
+          </select>
+        </div>
 
-        <label class="filter-label" for="category-filter">Категория</label>
-        <select id="category-filter" class="filter-select" name="category">
-          <option value="">Все</option>
-          {% for category in categories %}
-            <option value="{{ category.slug }}" {% if current_filters.category == category.slug %}selected{% endif %}>{{ category.name }}</option>
-          {% endfor %}
-        </select>
+        <div class="filter-field">
+          <label class="filter-label" for="category-filter">Категория</label>
+          <select id="category-filter" class="filter-select" name="category">
+            <option value="">Все</option>
+            {% for category in categories %}
+              <option value="{{ category.slug }}" {% if current_filters.category == category.slug %}selected{% endif %}>{{ category.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
 
-        <label class="filter-label" for="tag-filter">Тег</label>
-        <select id="tag-filter" class="filter-select" name="tag">
-          <option value="">Все</option>
-          {% for tag in tags %}
-            <option value="{{ tag.slug }}" {% if current_filters.tag == tag.slug %}selected{% endif %}>{{ tag.name }}</option>
-          {% endfor %}
-        </select>
+        <div class="filter-field">
+          <label class="filter-label" for="tag-filter">Тег</label>
+          <select id="tag-filter" class="filter-select" name="tag">
+            <option value="">Все</option>
+            {% for tag in tags %}
+              <option value="{{ tag.slug }}" {% if current_filters.tag == tag.slug %}selected{% endif %}>{{ tag.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
 
-        <label class="filter-label" for="sort-filter">Сортировка</label>
-        <select id="sort-filter" class="filter-select" name="ordering">
-          <option value="new" {% if current_filters.ordering == 'new' %}selected{% endif %}>Новые</option>
-          <option value="popular" {% if current_filters.ordering == 'popular' %}selected{% endif %}>Популярные</option>
-        </select>
+        <div class="filter-field">
+          <label class="filter-label" for="sort-filter">Сортировка</label>
+          <select id="sort-filter" class="filter-select" name="ordering">
+            <option value="new" {% if current_filters.ordering == 'new' %}selected{% endif %}>Новые</option>
+            <option value="popular" {% if current_filters.ordering == 'popular' %}selected{% endif %}>Популярные</option>
+          </select>
+        </div>
 
-        <button type="submit" class="button button--small">Применить</button>
-        <a href="{% url 'articles:news_list' %}" class="button button--secondary button--small">Сбросить фильтры</a>
+        <div class="filter-actions">
+          <button type="submit" class="button button--small">Применить</button>
+          <a href="{% url 'articles:news_list' %}" class="button button--secondary button--small">Сбросить фильтры</a>
+        </div>
       </div>
     </form>
   </section>

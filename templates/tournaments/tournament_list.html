@@ -14,16 +14,20 @@
     </div>
 
     <div class="filter-group filter-group--selects">
-      <label class="filter-label" for="discipline">Дисциплина</label>
-      <select class="filter-select" id="discipline" name="discipline">
-        <option value="">Все</option>
-        {% for value, label in discipline_choices %}
-          <option value="{{ value }}" {% if current_filters.discipline == value %}selected{% endif %}>{{ label }}</option>
-        {% endfor %}
-      </select>
+      <div class="filter-field">
+        <label class="filter-label" for="discipline">Дисциплина</label>
+        <select class="filter-select" id="discipline" name="discipline">
+          <option value="">Все</option>
+          {% for value, label in discipline_choices %}
+            <option value="{{ value }}" {% if current_filters.discipline == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-      <button type="submit" class="button button--small">Применить</button>
-      <a href="{% url 'tournaments:tournament_list' %}" class="button button--secondary button--small">Сбросить</a>
+      <div class="filter-actions">
+        <button type="submit" class="button button--small">Применить</button>
+        <a href="{% url 'tournaments:tournament_list' %}" class="button button--secondary button--small">Сбросить</a>
+      </div>
     </div>
   </form>
 </section>
