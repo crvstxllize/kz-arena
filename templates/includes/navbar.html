@@ -28,6 +28,20 @@
           {% endif %}
         {% endif %}
 
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'accounts:profile' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'profile' %}is-active{% endif %}">Профиль</a></li>
+          <li>
+            <form method="post" action="{% url 'accounts:logout' %}" class="nav-logout-form">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{% url 'core:home' %}">
+              <button type="submit" class="nav-logout-button">Выйти</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'accounts:login' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'login' %}is-active{% endif %}">Войти</a></li>
+          <li><a href="{% url 'accounts:register' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'register' %}is-active{% endif %}">Регистрация</a></li>
+        {% endif %}
+
         <li class="theme-toggle-item">
           <button
             type="button"
@@ -53,20 +67,6 @@
             </span>
           </button>
         </li>
-
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'accounts:profile' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'profile' %}is-active{% endif %}">Профиль</a></li>
-          <li>
-            <form method="post" action="{% url 'accounts:logout' %}" class="nav-logout-form">
-              {% csrf_token %}
-              <input type="hidden" name="next" value="{% url 'core:home' %}">
-              <button type="submit" class="nav-logout-button">Выйти</button>
-            </form>
-          </li>
-        {% else %}
-          <li><a href="{% url 'accounts:login' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'login' %}is-active{% endif %}">Войти</a></li>
-          <li><a href="{% url 'accounts:register' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'register' %}is-active{% endif %}">Регистрация</a></li>
-        {% endif %}
       </ul>
     </nav>
   </div>

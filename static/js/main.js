@@ -76,16 +76,37 @@ function initMobileMenu() {
     return;
   }
 
+  const closeMenu = () => {
+    navMenu.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+  };
+
   navToggle.addEventListener("click", () => {
     const isOpen = navMenu.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  navMenu.querySelectorAll("a").forEach((link) => {
+  navMenu.querySelectorAll("a, button").forEach((link) => {
     link.addEventListener("click", () => {
-      navMenu.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeMenu();
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navMenu.classList.contains("is-open")) {
+      return;
+    }
+    if (navMenu.contains(event.target) || navToggle.contains(event.target)) {
+      return;
+    }
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navMenu.classList.contains("is-open")) {
+      closeMenu();
+      navToggle.focus();
+    }
   });
 }
 

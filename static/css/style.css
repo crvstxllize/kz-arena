@@ -1943,3 +1943,442 @@ html[data-theme="dark"] .theme-toggle .theme-toggle__icon--moon {
   gap: 0.55rem;
 }
 
+/* === Responsive system overrides (mobile-first) === */
+:root {
+  --bp-mobile-max: 30rem;   /* 480px */
+  --bp-tablet-min: 48.0625rem; /* 769px */
+  --bp-tablet-max: 64rem;   /* 1024px */
+  --bp-desktop-min: 64.0625rem; /* 1025px */
+  --bp-desktop-wide: 80.0625rem; /* 1281px */
+}
+
+html,
+body {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: min(1240px, calc(100% - 1.5rem));
+}
+
+main.container {
+  padding-inline: 0;
+}
+
+.section {
+  padding: clamp(0.9rem, 2.8vw, 1.2rem);
+}
+
+.section-head {
+  flex-wrap: wrap;
+}
+
+.hero {
+  padding: clamp(1rem, 3vw, 1.6rem);
+}
+
+.hero h1 {
+  font-size: clamp(1.35rem, 7vw, 2.6rem);
+}
+
+.hero-text {
+  font-size: clamp(0.95rem, 3.1vw, 1.05rem);
+}
+
+.button,
+.nav-toggle,
+.nav-logout-button,
+.pagination-link,
+.theme-toggle {
+  min-height: 44px;
+}
+
+/* Navbar / Header */
+.header-inner {
+  min-height: 64px;
+}
+
+.brand {
+  font-size: clamp(1.05rem, 4.8vw, 1.3rem);
+}
+
+.nav-toggle {
+  font-size: 0.9rem;
+  padding-inline: 0.72rem;
+}
+
+.nav-menu.is-open {
+  top: 64px;
+  right: 0.75rem;
+  width: min(92vw, 380px);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+.nav-menu a,
+.nav-logout-button {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.nav-logout-button {
+  width: 100%;
+}
+
+.theme-toggle-item {
+  width: 100%;
+}
+
+.theme-toggle {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Home split block */
+.news-hub__top {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+/* News grids */
+#home-latest-grid.news-grid--stable,
+#news-grid.news-grid--stable {
+  grid-template-columns: 1fr !important;
+  gap: 0.85rem !important;
+}
+
+#home-latest-grid.news-grid--stable .news-card__image,
+#news-grid.news-grid--stable .news-card__image {
+  height: clamp(190px, 54vw, 240px);
+}
+
+#home-latest-grid.news-grid--stable .news-card__title,
+#news-grid.news-grid--stable .news-card__title {
+  -webkit-line-clamp: 2;
+}
+
+#home-latest-grid.news-grid--stable .news-card__excerpt,
+#news-grid.news-grid--stable .news-card__excerpt {
+  -webkit-line-clamp: 3;
+}
+
+.pagination {
+  justify-content: flex-start;
+}
+
+.pagination-link,
+.pagination-current {
+  font-size: 0.92rem;
+}
+
+/* Related strip */
+.news-strip {
+  gap: 0.4rem;
+  padding: 0.1rem 0 0.55rem;
+}
+
+.news-strip .news-card {
+  flex-basis: min(88vw, 320px);
+}
+
+.news-strip-controls {
+  margin-left: auto;
+}
+
+/* Filters */
+.news-filters,
+.matches-filters__form {
+  gap: 0.75rem;
+}
+
+.filter-group,
+.filter-group--selects,
+.matches-filters__controls {
+  width: 100%;
+}
+
+.filter-group--selects,
+.matches-filters__controls {
+  grid-template-columns: 1fr !important;
+}
+
+.filter-select,
+.filter-input {
+  width: 100%;
+  min-height: 44px;
+}
+
+.filter-group--selects .button,
+.matches-filters__actions .button {
+  width: 100%;
+  text-align: center;
+}
+
+.matches-filters__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+/* Teams / Tournaments / Match tables */
+.match-table {
+  min-width: 620px;
+}
+
+.match-table th,
+.match-table td {
+  white-space: nowrap;
+}
+
+.news-card__title a,
+.news-card__excerpt,
+.match-meta__tournament,
+.match-team__name {
+  overflow-wrap: anywhere;
+}
+
+/* Match cards -> stacked mobile */
+.match-card {
+  grid-template-columns: 1fr !important;
+  align-items: stretch !important;
+}
+
+.match-meta {
+  gap: 0.35rem 0.45rem;
+}
+
+.match-meta__tournament {
+  width: 100%;
+}
+
+.match-teams__link {
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+
+.match-team:last-child {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.match-teams__vs {
+  justify-self: start;
+}
+
+.match-side {
+  justify-content: space-between;
+}
+
+/* Auth responsive */
+.auth-shell {
+  min-height: auto;
+  padding: 0.5rem 0 1.25rem;
+}
+
+.auth-card {
+  width: 100%;
+  padding: clamp(1rem, 3.4vw, 1.8rem);
+}
+
+.auth-form--premium .button,
+.auth-form--premium .button--secondary {
+  min-height: 44px;
+}
+
+.form-actions {
+  justify-content: stretch;
+}
+
+.form-actions .button {
+  flex: 1 1 220px;
+  text-align: center;
+}
+
+/* Mobile performance tweaks */
+@media (max-width: 48rem) {
+  .site-header {
+    backdrop-filter: blur(6px);
+  }
+
+  .auth-card {
+    backdrop-filter: blur(4px);
+  }
+
+  .news-card,
+  .entity-card,
+  .match-card {
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+}
+
+/* 481-768 */
+@media (min-width: 30.0625rem) {
+  .container {
+    width: min(1240px, calc(100% - 2rem));
+  }
+
+  .news-strip .news-card {
+    flex-basis: min(72vw, 336px);
+  }
+}
+
+/* 769-1024 tablet */
+@media (min-width: 48.0625rem) {
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .news-hub__top {
+    grid-template-columns: 1.3fr 1fr;
+  }
+
+  #home-latest-grid.news-grid--stable,
+  #news-grid.news-grid--stable {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .matches-filters__controls {
+    grid-template-columns: auto minmax(160px, 1fr) auto minmax(160px, 1fr);
+  }
+
+  .matches-filters__actions {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .auth-card {
+    max-width: 620px;
+  }
+}
+
+/* 1025-1280 desktop */
+@media (min-width: 64.0625rem) {
+  #home-latest-grid.news-grid--stable,
+  #news-grid.news-grid--stable {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.1rem !important;
+  }
+
+  .matches-filters__controls {
+    grid-template-columns: auto minmax(160px, 1fr) auto minmax(160px, 1fr) auto;
+  }
+
+  .matches-filters__actions {
+    grid-column: auto;
+    display: flex;
+    width: auto;
+  }
+}
+
+/* 1281+ */
+@media (min-width: 80.0625rem) {
+  .container {
+    width: min(1280px, calc(100% - 3rem));
+  }
+}
+
+/* Header alignment fix: keep nav level, closer to brand, theme toggle on right edge */
+@media (min-width: 61.25rem) {
+  .header-inner {
+    min-height: 72px;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .header-inner > nav {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  #nav-menu.nav-menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    margin: 0 0 0 auto;
+    padding: 0;
+    gap: 0.35rem;
+  }
+
+  #nav-menu.nav-menu > li {
+    display: flex;
+    align-items: center;
+  }
+
+  #nav-menu.nav-menu a,
+  #nav-menu.nav-menu .nav-logout-button {
+    min-height: 40px;
+    margin: 0;
+  }
+
+  #nav-menu.nav-menu .nav-logout-button {
+    width: auto;
+  }
+
+  #nav-menu.nav-menu .theme-toggle-item {
+    margin-left: 0.55rem;
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  #nav-menu.nav-menu .theme-toggle {
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Slimmer theme switch on desktop, keep proportions even */
+@media (min-width: 61.25rem) {
+  .theme-toggle {
+    min-height: 36px;
+    padding: 0.18rem 0.38rem;
+    gap: 0.35rem;
+  }
+
+  .theme-toggle__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .theme-toggle__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .theme-toggle__track {
+    width: 34px;
+    height: 18px;
+  }
+
+  .theme-toggle__thumb {
+    top: 1px;
+    left: 1px;
+    width: 14px;
+    height: 14px;
+  }
+
+  html[data-theme="dark"] .theme-toggle__thumb {
+    transform: translateX(16px);
+  }
+}
+
