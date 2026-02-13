@@ -379,10 +379,10 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 }
 
 .message {
-  border-radius: 10px;
-  padding: 0.65rem 0.8rem;
+  border-radius: 12px;
+  padding: 0.72rem 0.86rem;
   border: 1px solid var(--line);
-  background: #f8fafc;
+  background: color-mix(in srgb, var(--surface) 82%, var(--accent) 18%);
   font-weight: 600;
 }
 
@@ -1764,5 +1764,182 @@ html[data-theme="dark"] .theme-toggle .theme-toggle__icon--moon {
 .match-source a:hover {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+
+/* Auth premium UI */
+:root {
+  --surface-2: color-mix(in srgb, var(--surface) 85%, var(--accent) 15%);
+  --success: #16a34a;
+}
+
+.auth-shell {
+  min-height: calc(100vh - 220px);
+  display: grid;
+  align-items: start;
+  justify-items: center;
+  padding: 1rem 0 2rem;
+}
+
+.auth-shell--profile {
+  min-height: auto;
+}
+
+.auth-card {
+  width: min(640px, 100%);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, var(--accent) 20%);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent 12%);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+
+.auth-card__head h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+}
+
+.auth-card__head p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.auth-form--premium {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.form-row.has-error label {
+  color: var(--danger);
+}
+
+.auth-input,
+.auth-form--premium input,
+.auth-form--premium select,
+.auth-form--premium textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface-2) 80%, var(--surface) 20%);
+  color: var(--text);
+  padding: 0.66rem 0.78rem;
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.auth-input::placeholder,
+.auth-form--premium input::placeholder,
+.auth-form--premium textarea::placeholder {
+  color: color-mix(in srgb, var(--muted) 85%, transparent);
+}
+
+.auth-input:hover,
+.auth-form--premium input:hover,
+.auth-form--premium select:hover,
+.auth-form--premium textarea:hover {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+}
+
+.auth-input:focus-visible,
+.auth-form--premium input:focus-visible,
+.auth-form--premium select:focus-visible,
+.auth-form--premium textarea:focus-visible {
+  outline: none;
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.auth-input[aria-invalid="true"],
+.form-row.has-error .auth-input,
+.form-row.has-error input,
+.form-row.has-error select,
+.form-row.has-error textarea {
+  border-color: color-mix(in srgb, var(--danger) 70%, var(--border));
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field .auth-input,
+.password-field input {
+  padding-right: 5.8rem;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.52rem;
+  transform: translateY(-50%);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 80%, var(--accent) 20%);
+  color: var(--text);
+  font-size: 0.82rem;
+  line-height: 1;
+  padding: 0.38rem 0.56rem;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  border-color: color-mix(in srgb, var(--accent) 52%, var(--border));
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.alert-block {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 80%, var(--accent) 20%);
+  padding: 0.66rem 0.75rem;
+}
+
+.alert-block--error {
+  border-color: color-mix(in srgb, var(--danger) 58%, var(--border));
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+}
+
+.field-error {
+  margin: 0.35rem 0 0;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+.profile-card {
+  width: min(760px, 100%);
+}
+
+.profile-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  background: color-mix(in srgb, var(--surface-2) 70%, var(--surface) 30%);
+}
+
+.profile-grid dt {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.profile-grid dd {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.auth-info {
+  color: var(--muted);
+  display: grid;
+  gap: 0.55rem;
 }
 

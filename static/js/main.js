@@ -584,6 +584,37 @@ function initCommentsAjax() {
   });
 }
 
+function initPasswordToggles() {
+  document.querySelectorAll("[data-password-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const inputId = button.dataset.targetId;
+      if (!inputId) {
+        return;
+      }
+      const input = document.getElementById(inputId);
+      if (!input) {
+        return;
+      }
+      const showing = input.getAttribute("type") === "text";
+      input.setAttribute("type", showing ? "password" : "text");
+      button.textContent = showing ? "Показать" : "Скрыть";
+      button.setAttribute("aria-label", showing ? "Показать пароль" : "Скрыть пароль");
+    });
+  });
+}
+
+function initAuthFieldA11y() {
+  document.querySelectorAll(".form-row").forEach((row) => {
+    const input = row.querySelector("input, textarea, select");
+    const error = row.querySelector(".field-error[id]");
+    if (!input || !error) {
+      return;
+    }
+    input.setAttribute("aria-invalid", "true");
+    input.setAttribute("aria-describedby", error.id);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initBackToTop();
@@ -598,6 +629,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initMatchesFilters();
   initCommentsAjax();
   initNewsStripScroll();
+  initPasswordToggles();
+  initAuthFieldA11y();
 });
 
 window.showToast = showToast;

@@ -5,6 +5,13 @@ from django.contrib.auth.models import User
 from .models import Profile
 
 
+def _apply_base_input_attrs(field, *, autocomplete=None):
+    classes = field.widget.attrs.get("class", "")
+    field.widget.attrs["class"] = f"{classes} auth-input".strip()
+    if autocomplete:
+        field.widget.attrs["autocomplete"] = autocomplete
+
+
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email", required=True)
 
@@ -17,6 +24,10 @@ class RegisterForm(UserCreationForm):
         self.fields["username"].label = "Логин"
         self.fields["password1"].label = "Пароль"
         self.fields["password2"].label = "Подтверждение пароля"
+        _apply_base_input_attrs(self.fields["username"], autocomplete="username")
+        _apply_base_input_attrs(self.fields["email"], autocomplete="email")
+        _apply_base_input_attrs(self.fields["password1"], autocomplete="new-password")
+        _apply_base_input_attrs(self.fields["password2"], autocomplete="new-password")
 
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()
@@ -36,11 +47,22 @@ class LoginForm(AuthenticationForm):
     username = forms.CharField(label="Логин")
     password = forms.CharField(label="Пароль", strip=False, widget=forms.PasswordInput)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        _apply_base_input_attrs(self.fields["username"], autocomplete="username")
+        _apply_base_input_attrs(self.fields["password"], autocomplete="current-password")
+
 
 class LocalizedPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label="Текущий пароль", strip=False, widget=forms.PasswordInput)
     new_password1 = forms.CharField(label="Новый пароль", strip=False, widget=forms.PasswordInput)
     new_password2 = forms.CharField(label="Подтверждение нового пароля", strip=False, widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        _apply_base_input_attrs(self.fields["old_password"], autocomplete="current-password")
+        _apply_base_input_attrs(self.fields["new_password1"], autocomplete="new-password")
+        _apply_base_input_attrs(self.fields["new_password2"], autocomplete="new-password")
 
 
 class ProfileEditForm(forms.ModelForm):
@@ -61,6 +83,10 @@ class ProfileEditForm(forms.ModelForm):
         self.fields["email"].initial = self.user.email
         self.fields["first_name"].initial = self.user.first_name
         self.fields["last_name"].initial = self.user.last_name
+        _apply_base_input_attrs(self.fields["display_name"], autocomplete="nickname")
+        _apply_base_input_attrs(self.fields["email"], autocomplete="email")
+        _apply_base_input_attrs(self.fields["first_name"], autocomplete="given-name")
+        _apply_base_input_attrs(self.fields["last_name"], autocomplete="family-name")
 
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()

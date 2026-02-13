@@ -1,27 +1,29 @@
-﻿{% extends "base.html" %}
+﻿{% extends "accounts/auth_layout.html" %}
 
-{% block content %}
-<section class="section auth-section narrow">
-  <h1>Редактирование профиля</h1>
+{% block auth_title %}Редактирование профиля{% endblock %}
+{% block auth_subtitle %}<p>Обновите персональные данные и отображаемое имя.</p>{% endblock %}
+{% block auth_content %}
+<form method="post" class="auth-form auth-form--premium" novalidate>
+  {% csrf_token %}
 
-  <form method="post" class="auth-form" novalidate>
-    {% csrf_token %}
-
-    {% for field in form %}
-      <div class="form-row">
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
-        {% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}
-        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
-      </div>
-    {% endfor %}
-
+  {% if form.non_field_errors %}
+  <div class="alert-block alert-block--error" role="alert">
     {% for error in form.non_field_errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+  </div>
+  {% endif %}
 
-    <div class="form-actions">
-      <button type="submit" class="button">Сохранить</button>
-      <a href="{% url 'accounts:profile' %}" class="button button--secondary">Отмена</a>
+  {% for field in form %}
+    <div class="form-row {% if field.errors %}has-error{% endif %}">
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}
+      {% for error in field.errors %}<p id="{{ field.id_for_label }}-error" class="field-error">{{ error }}</p>{% endfor %}
     </div>
-  </form>
-</section>
+  {% endfor %}
+
+  <div class="form-actions">
+    <button type="submit" class="button">Сохранить</button>
+    <a href="{% url 'accounts:profile' %}" class="button button--secondary">Отмена</a>
+  </div>
+</form>
 {% endblock %}

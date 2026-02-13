@@ -1,41 +1,43 @@
 ﻿{% extends "base.html" %}
 
 {% block content %}
-<section class="section narrow profile-section">
-  <div class="section-head">
-    <h1>Профиль</h1>
-    <a href="{% url 'accounts:profile_edit' %}" class="button">Редактировать</a>
-  </div>
+<section class="auth-shell auth-shell--profile">
+  <article class="auth-card profile-card">
+    <div class="section-head profile-card__head">
+      <h1>Профиль</h1>
+      <a href="{% url 'accounts:profile_edit' %}" class="button">Редактировать</a>
+    </div>
 
-  <dl class="profile-grid">
-    <div>
-      <dt>Логин</dt>
-      <dd>{{ user.username }}</dd>
-    </div>
-    <div>
-      <dt>Email</dt>
-      <dd>{{ user.email|default:"Не указан" }}</dd>
-    </div>
-    <div>
-      <dt>Отображаемое имя</dt>
-      <dd>{{ profile.display_name|default:"Не указано" }}</dd>
-    </div>
-    <div>
-      <dt>Имя</dt>
-      <dd>{{ user.first_name|default:"Не указано" }}</dd>
-    </div>
-    <div>
-      <dt>Фамилия</dt>
-      <dd>{{ user.last_name|default:"Не указано" }}</dd>
-    </div>
-    <div>
-      <dt>Роль</dt>
-      <dd>{{ role_name }}</dd>
-    </div>
-  </dl>
+    <dl class="profile-grid">
+      <div class="profile-item">
+        <dt>Логин</dt>
+        <dd>{{ user.username }}</dd>
+      </div>
+      <div class="profile-item">
+        <dt>Email</dt>
+        <dd>{{ user.email|default:"Не указан" }}</dd>
+      </div>
+      <div class="profile-item">
+        <dt>Отображаемое имя</dt>
+        <dd>{{ profile.display_name|default:"Не указано" }}</dd>
+      </div>
+      <div class="profile-item">
+        <dt>Имя</dt>
+        <dd>{{ user.first_name|default:"Не указано" }}</dd>
+      </div>
+      <div class="profile-item">
+        <dt>Фамилия</dt>
+        <dd>{{ user.last_name|default:"Не указано" }}</dd>
+      </div>
+      <div class="profile-item">
+        <dt>Роль</dt>
+        <dd>{{ role_name }}</dd>
+      </div>
+    </dl>
 
-  <div class="auth-links">
-    <a href="{% url 'accounts:password_change' %}">Сменить пароль</a>
-  </div>
+    <div class="auth-links">
+      <a href="{% url 'accounts:password_change' %}">Сменить пароль</a>
+    </div>
+  </article>
 </section>
 {% endblock %}

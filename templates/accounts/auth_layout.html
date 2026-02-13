@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="auth-shell">
+  <div class="auth-card">
+    <header class="auth-card__head">
+      <h1>{% block auth_title %}{{ page_title }}{% endblock %}</h1>
+      {% block auth_subtitle %}{% endblock %}
+    </header>
+    {% block auth_content %}{% endblock %}
+  </div>
+</section>
+{% endblock %}

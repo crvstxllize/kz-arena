@@ -1,30 +1,38 @@
-﻿{% extends "base.html" %}
+﻿{% extends "accounts/auth_layout.html" %}
 
-{% block content %}
-<section class="section auth-section narrow">
-  <h1>Вход</h1>
-  <p>Войдите в аккаунт KZ Arena.</p>
+{% block auth_title %}Вход{% endblock %}
+{% block auth_subtitle %}<p>Войдите в аккаунт KZ Arena.</p>{% endblock %}
+{% block auth_content %}
+<form method="post" class="auth-form auth-form--premium" novalidate>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}">
 
-  <form method="post" class="auth-form" novalidate>
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{ next }}">
-
-    {% for field in form %}
-      <div class="form-row">
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
-        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
-      </div>
-    {% endfor %}
-
+  {% if form.non_field_errors %}
+  <div class="alert-block alert-block--error" role="alert">
     {% for error in form.non_field_errors %}<p class="field-error">{{ error }}</p>{% endfor %}
-
-    <button type="submit" class="button">Войти</button>
-  </form>
-
-  <div class="auth-links">
-    <a href="{% url 'accounts:register' %}">Регистрация</a>
-    <a href="{% url 'accounts:password_reset' %}">Забыли пароль?</a>
   </div>
-</section>
+  {% endif %}
+
+  {% for field in form %}
+    <div class="form-row {% if field.errors %}has-error{% endif %}">
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {% if field.field.widget.input_type == "password" %}
+      <div class="password-field">
+        {{ field }}
+        <button type="button" class="password-toggle" data-password-toggle data-target-id="{{ field.id_for_label }}" aria-label="Показать пароль">Показать</button>
+      </div>
+      {% else %}
+        {{ field }}
+      {% endif %}
+      {% for error in field.errors %}<p id="{{ field.id_for_label }}-error" class="field-error">{{ error }}</p>{% endfor %}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="button">Войти</button>
+</form>
+
+<div class="auth-links">
+  <a href="{% url 'accounts:register' %}">Регистрация</a>
+  <a href="{% url 'accounts:password_reset' %}">Забыли пароль?</a>
+</div>
 {% endblock %}
