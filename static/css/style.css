@@ -2382,3 +2382,77 @@ main.container {
   }
 }
 
+/* Final anti-masonry lock for news cards (home + all news) */
+#home-latest-grid.news-grid--stable,
+#news-grid.news-grid--stable {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+  justify-items: stretch !important;
+  grid-auto-flow: row !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  justify-content: stretch !important;
+}
+
+@media (max-width: 1024px) {
+  #home-latest-grid.news-grid--stable,
+  #news-grid.news-grid--stable {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #home-latest-grid.news-grid--stable,
+  #news-grid.news-grid--stable {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+#home-latest-grid.news-grid--stable > .news-card,
+#news-grid.news-grid--stable > .news-card {
+  width: 100% !important;
+  max-width: none !important;
+  justify-self: stretch !important;
+  align-self: stretch !important;
+  margin: 0 !important;
+  transform: none !important;
+  translate: none !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Deterministic placement: no accidental centered first card */
+@media (min-width: 1025px) {
+  #home-latest-grid.news-grid--stable > .news-card:nth-child(3n + 1),
+  #news-grid.news-grid--stable > .news-card:nth-child(3n + 1) {
+    grid-column: 1 !important;
+  }
+
+  #home-latest-grid.news-grid--stable > .news-card:nth-child(3n + 2),
+  #news-grid.news-grid--stable > .news-card:nth-child(3n + 2) {
+    grid-column: 2 !important;
+  }
+
+  #home-latest-grid.news-grid--stable > .news-card:nth-child(3n),
+  #news-grid.news-grid--stable > .news-card:nth-child(3n) {
+    grid-column: 3 !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  #home-latest-grid.news-grid--stable > .news-card:nth-child(odd),
+  #news-grid.news-grid--stable > .news-card:nth-child(odd) {
+    grid-column: 1 !important;
+  }
+
+  #home-latest-grid.news-grid--stable > .news-card:nth-child(even),
+  #news-grid.news-grid--stable > .news-card:nth-child(even) {
+    grid-column: 2 !important;
+  }
+}
+
