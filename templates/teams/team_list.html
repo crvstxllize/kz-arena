@@ -5,6 +5,7 @@
 <section class="section section-filters" aria-label="Фильтры команд">
   <h1>Команды</h1>
   <p>Составы команд, текущая форма и ключевые показатели.</p>
+  {% include "includes/data_freshness.html" %}
 
   <form method="get" class="news-filters">
     <div class="filter-group" role="radiogroup" aria-label="Тип команд">
@@ -50,6 +51,9 @@
 
           <h3 class="news-card__title"><a href="{% url 'teams:team_detail' team.slug %}">{{ team.name }}</a></h3>
           <p class="news-card__excerpt">{% if team.description %}{{ team.description }}{% else %}Описание пока отсутствует.{% endif %}</p>
+          {% if team.source_url %}
+            <p class="entity-source"><a href="{{ team.source_url }}" target="_blank" rel="noopener">Источник</a></p>
+          {% endif %}
         </div>
       </article>
     {% endfor %}

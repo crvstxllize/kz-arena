@@ -1,0 +1,15 @@
+{% if data_meta %}
+  {% if data_meta.is_fallback %}
+    <div class="message message--warning" role="status">
+      Данные временно из демо-режима.
+    </div>
+  {% endif %}
+  <p class="muted data-freshness">
+    Последнее обновление:
+    {% if data_meta.fetched_at %}
+      {{ data_meta.fetched_at|date:"d.m.Y H:i" }}
+    {% else %}
+      неизвестно
+    {% endif %}
+  </p>
+{% endif %}

@@ -31,7 +31,11 @@ class Team(models.Model):
     description = models.TextField(blank=True)
     logo = models.ImageField(upload_to="logos/", blank=True, null=True)
     country = models.CharField(max_length=80, default="Kazakhstan")
+    city = models.CharField(max_length=120, blank=True)
+    source_url = models.URLField(blank=True)
+    source_updated_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("name",)

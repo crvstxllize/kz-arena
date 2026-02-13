@@ -7,6 +7,7 @@
     <p class="hero-kicker">KZ Arena</p>
     <h1>Матч-центр</h1>
     <p class="matches-page__lead">Оперативная лента матчей: текущие, ближайшие и завершенные встречи в одном месте.</p>
+    {% include "includes/data_freshness.html" %}
   </header>
 
   <details class="matches-filters" data-matches-filters data-has-active="{% if has_active_filters %}1{% else %}0{% endif %}" open>

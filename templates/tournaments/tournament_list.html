@@ -4,6 +4,7 @@
 <section class="section section-filters" aria-label="Фильтры турниров">
   <h1>Турниры</h1>
   <p>Календарь и статус текущих и предстоящих турниров.</p>
+  {% include "includes/data_freshness.html" %}
 
   <form method="get" class="news-filters">
     <div class="filter-group" role="radiogroup" aria-label="Тип турниров">
@@ -40,6 +41,9 @@
             </div>
             <h3 class="news-card__title"><a href="{% url 'tournaments:tournament_detail' tournament.slug %}">{{ tournament.name }}</a></h3>
             <p class="news-card__excerpt">{{ tournament.start_date|date:"d.m.Y" }} - {{ tournament.end_date|date:"d.m.Y" }}{% if tournament.location %} · {{ tournament.location }}{% endif %}</p>
+            {% if tournament.source_url %}
+              <p class="entity-source"><a href="{{ tournament.source_url }}" target="_blank" rel="noopener">Источник</a></p>
+            {% endif %}
           </div>
         </article>
       {% endfor %}

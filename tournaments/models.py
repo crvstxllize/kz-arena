@@ -32,6 +32,9 @@ class Tournament(models.Model):
     location = models.CharField(max_length=180, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
+    source_url = models.URLField(blank=True)
+    source_updated_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("-start_date",)
@@ -80,6 +83,10 @@ class Match(models.Model):
     )
     stage = models.CharField(max_length=120, blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_SCHEDULED)
+    stream_url = models.URLField(blank=True)
+    source_url = models.URLField(blank=True)
+    source_updated_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("-datetime",)

@@ -3,13 +3,15 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
 
 from articles.models import Article
+from lib.data_sync import refresh_sports_data
 from tournaments.models import Match
 
 from .models import Team
 
 
 def team_list(request):
-    queryset = Team.objects.prefetch_related("players").order_by("name")
+    data_meta = refresh_sports_data()
+    queryset = Team.objects.prefetch_related("players").exclude(source_url="").order_by("name")
 
     kind = request.GET.get("kind", "").strip()
     discipline = request.GET.get("discipline", "").strip()
@@ -44,11 +46,13 @@ def team_list(request):
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Команды", "url": None},
             ],
+            "data_meta": data_meta,
         },
     )
 
 
 def team_detail(request, slug):
+    data_meta = refresh_sports_data()
     team = get_object_or_404(Team.objects.prefetch_related("players"), slug=slug)
 
     recent_matches = (
@@ -83,5 +87,6 @@ def team_detail(request, slug):
                 {"label": "Команды", "url": "teams:team_list"},
                 {"label": team.name, "url": None},
             ],
+            "data_meta": data_meta,
         },
     )

@@ -1742,3 +1742,27 @@ html[data-theme="dark"] .theme-toggle .theme-toggle__icon--moon {
   margin-top: 0 !important;
 }
 
+.data-freshness {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+}
+
+.entity-source,
+.match-source {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+}
+
+.entity-source a,
+.match-source a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border);
+}
+
+.entity-source a:hover,
+.match-source a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+

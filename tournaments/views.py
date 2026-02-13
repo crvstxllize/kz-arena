@@ -4,13 +4,15 @@ from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 
 from articles.models import Article
+from lib.data_sync import refresh_sports_data
 from teams.models import Team
 
 from .models import Match, Tournament
 
 
 def tournament_list(request):
-    queryset = Tournament.objects.prefetch_related("matches").order_by("-start_date")
+    data_meta = refresh_sports_data()
+    queryset = Tournament.objects.prefetch_related("matches").exclude(source_url="").order_by("-start_date")
 
     kind = request.GET.get("kind", "").strip()
     discipline = request.GET.get("discipline", "").strip()
@@ -45,11 +47,13 @@ def tournament_list(request):
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Турниры", "url": None},
             ],
+            "data_meta": data_meta,
         },
     )
 
 
 def tournament_detail(request, slug):
+    data_meta = refresh_sports_data()
     tournament = get_object_or_404(Tournament, slug=slug)
 
     matches = (
@@ -83,14 +87,16 @@ def tournament_detail(request, slug):
                 {"label": "Турниры", "url": "tournaments:tournament_list"},
                 {"label": tournament.name, "url": None},
             ],
+            "data_meta": data_meta,
         },
     )
 
 
 def match_list(request):
+    data_meta = refresh_sports_data()
     now = timezone.now()
     queryset = (
-        Match.objects.filter(datetime__gte=now)
+        Match.objects.filter(datetime__gte=now).exclude(source_url="")
         .select_related("team_a", "team_b", "tournament", "result")
         .order_by("datetime")
     )
@@ -144,11 +150,13 @@ def match_list(request):
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Матчи", "url": None},
             ],
+            "data_meta": data_meta,
         },
     )
 
 
 def match_detail(request, pk):
+    data_meta = refresh_sports_data()
     match = get_object_or_404(
         Match.objects.select_related("team_a", "team_b", "tournament", "result"),
         pk=pk,
@@ -179,5 +187,6 @@ def match_detail(request, pk):
                 {"label": "Матчи", "url": "matches:match_list"},
                 {"label": f"{match.team_a.name} vs {match.team_b.name}", "url": None},
             ],
+            "data_meta": data_meta,
         },
     )

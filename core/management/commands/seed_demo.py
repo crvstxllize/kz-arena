@@ -1,12 +1,17 @@
-﻿from datetime import date, datetime, timedelta
+﻿import os
+from datetime import date, datetime
+from urllib.parse import urlparse
+from urllib.request import Request, urlopen
 
 from django.contrib.auth.models import Group, User
+from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils import timezone
 
 from articles.models import Article
 from comments.models import Comment
+from core.data.news import NEWS_ITEMS, TOURNAMENT_ITEMS
 from interactions.models import Favorite, Reaction, Subscription
 from taxonomy.models import Category, Tag
 from teams.models import Player, Team
@@ -29,7 +34,7 @@ class Command(BaseCommand):
             matches = self._seed_matches(tournaments, teams)
             self._seed_match_results(matches, teams)
             articles = self._seed_articles(users, categories, tags)
-            comments = self._seed_comments(articles, users)
+            self._seed_comments(articles, users)
             self._seed_interactions(articles, users, teams, categories)
 
         self.stdout.write(self.style.SUCCESS("seed_demo завершен успешно."))
@@ -106,21 +111,33 @@ class Command(BaseCommand):
         return result
 
     def _seed_tags(self):
-        names = [
+        tag_names = {
             "Казахстан",
-            "Плей-офф",
+            "Футбол",
+            "КПЛ",
+            "Сборная",
+            "Баскетбол",
+            "Кубок",
+            "Таблица",
+            "Аналитика",
             "CS2",
             "Dota2",
             "PUBG",
-            "Футбол",
-            "Баскетбол",
+            "Киберспорт",
+            "Плей-офф",
+            "Турниры",
+            "PCS",
+            "LAN",
             "Трансферы",
-            "Рейтинг",
-            "Финал",
-        ]
+            "Матчи",
+            "Анонс",
+            "Составы",
+        }
+        for item in NEWS_ITEMS:
+            tag_names.update(item.get("tags", []))
 
         result = {}
-        for name in names:
+        for name in sorted(tag_names):
             tag, _ = Tag.objects.get_or_create(name=name)
             result[name] = tag
         return result
@@ -128,13 +145,14 @@ class Command(BaseCommand):
     def _seed_teams(self):
         data = [
             {"name": "Astana Falcons", "kind": "sport", "discipline": "football", "description": "Футбольный клуб из Астаны."},
-            {"name": "Almaty Hoopers", "kind": "sport", "discipline": "basketball", "description": "Баскетбольная команда Алматы."},
-            {"name": "Shymkent United", "kind": "sport", "discipline": "football", "description": "Молодой состав южного региона."},
+            {"name": "Shymkent United", "kind": "sport", "discipline": "football", "description": "Команда Премьер-лиги Казахстана."},
+            {"name": "Almaty Hoopers", "kind": "sport", "discipline": "basketball", "description": "Баскетбольный клуб Алматы."},
+            {"name": "Karaganda Eagles", "kind": "sport", "discipline": "basketball", "description": "Баскетбольная команда Караганды."},
             {"name": "Qazaq Wolves", "kind": "esport", "discipline": "cs2", "description": "Профессиональный состав по CS2."},
-            {"name": "Steppe Titans", "kind": "esport", "discipline": "dota2", "description": "Dota 2 коллектив из Астаны."},
+            {"name": "Aktobe Rush", "kind": "esport", "discipline": "cs2", "description": "Казахстанский CS2-коллектив."},
+            {"name": "Steppe Titans", "kind": "esport", "discipline": "dota2", "description": "Dota 2 команда из Казахстана."},
             {"name": "Nomad Fire", "kind": "esport", "discipline": "pubg", "description": "PUBG-ростер с международным опытом."},
-            {"name": "Karaganda Eagles", "kind": "sport", "discipline": "basketball", "description": "Баскетбольный клуб Караганды."},
-            {"name": "Aktobe Rush", "kind": "esport", "discipline": "cs2", "description": "Молодежный состав по CS2."},
+            {"name": "Altay Phoenix", "kind": "esport", "discipline": "pubg", "description": "PUBG-команда восточного региона."},
         ]
 
         result = {}
@@ -153,7 +171,7 @@ class Command(BaseCommand):
                     setattr(team, field, item[field])
                     changed = True
             if changed:
-                team.save()
+                team.save(update_fields=["kind", "discipline", "description"])
             result[item["name"]] = team
 
         return result
@@ -162,14 +180,15 @@ class Command(BaseCommand):
         data = [
             ("Нурлан Айтбаев", "Astana Falcons", "Нападающий"),
             ("Алихан Оспанов", "Astana Falcons", "Полузащитник"),
+            ("Арсен Төлеубек", "Shymkent United", "Центральный защитник"),
             ("Ерасыл Сагындык", "Almaty Hoopers", "Разыгрывающий"),
             ("Дамир Мусин", "Karaganda Eagles", "Центровой"),
             ("Arman kazeR", "Qazaq Wolves", "Rifler"),
             ("Madi storm", "Qazaq Wolves", "AWPer"),
+            ("Roman pixel", "Aktobe Rush", "Entry"),
             ("Bek sultan", "Steppe Titans", "Carry"),
             ("Dias nomad", "Nomad Fire", "IGL"),
-            ("Aruzhan aim", "Aktobe Rush", "Support"),
-            ("Roman pixel", "Aktobe Rush", "Entry"),
+            ("Aidar arc", "Altay Phoenix", "Fragger"),
         ]
 
         for name, team_name, position in data:
@@ -189,68 +208,56 @@ class Command(BaseCommand):
                 player.position = position
                 changed = True
             if changed:
-                player.save()
+                player.save(update_fields=["team", "position"])
 
     def _seed_tournaments(self):
-        data = [
-            {
-                "name": "KZ Premier Football Spring 2026",
-                "kind": "sport",
-                "discipline": "football",
-                "location": "Астана",
-                "start_date": date(2026, 3, 1),
-                "end_date": date(2026, 4, 12),
-            },
-            {
-                "name": "KZ Esports League CS2 2026",
-                "kind": "esport",
-                "discipline": "cs2",
-                "location": "Алматы",
-                "start_date": date(2026, 3, 10),
-                "end_date": date(2026, 4, 2),
-            },
-            {
-                "name": "Central Asia Dota Cup 2026",
-                "kind": "esport",
-                "discipline": "dota2",
-                "location": "Шымкент",
-                "start_date": date(2026, 4, 5),
-                "end_date": date(2026, 4, 18),
-            },
+        allowed_names = {item["name"] for item in TOURNAMENT_ITEMS}
+        legacy_names = [
+            "KZ Premier Football Spring 2026",
+            "KZ Esports League CS2 2026",
+            "Central Asia Dota Cup 2026",
         ]
+        Tournament.objects.filter(name__in=legacy_names).exclude(name__in=allowed_names).delete()
 
         result = {}
-        for item in data:
-            tournament, _ = Tournament.objects.get_or_create(name=item["name"], defaults=item)
+        for item in TOURNAMENT_ITEMS:
+            payload = {
+                "name": item["name"],
+                "kind": item["kind"],
+                "discipline": item["discipline"],
+                "location": item["location"],
+                "start_date": date.fromisoformat(item["start_date"]),
+                "end_date": date.fromisoformat(item["end_date"]),
+            }
+            tournament, _ = Tournament.objects.get_or_create(name=item["name"], defaults=payload)
             changed = False
             for field in ("kind", "discipline", "location", "start_date", "end_date"):
-                if getattr(tournament, field) != item[field]:
-                    setattr(tournament, field, item[field])
+                if getattr(tournament, field) != payload[field]:
+                    setattr(tournament, field, payload[field])
                     changed = True
             if changed:
-                tournament.save()
+                tournament.save(update_fields=["kind", "discipline", "location", "start_date", "end_date"])
             result[item["name"]] = tournament
         return result
 
     def _seed_matches(self, tournaments, teams):
         data = [
-            ("m1", "KZ Premier Football Spring 2026", "Astana Falcons", "Shymkent United", datetime(2026, 3, 1, 16, 0), "Групповой этап", "finished"),
-            ("m2", "KZ Premier Football Spring 2026", "Shymkent United", "Astana Falcons", datetime(2026, 3, 8, 18, 30), "Групповой этап", "scheduled"),
-            ("m3", "KZ Esports League CS2 2026", "Qazaq Wolves", "Aktobe Rush", datetime(2026, 3, 10, 19, 0), "Открытие", "finished"),
-            ("m4", "KZ Esports League CS2 2026", "Aktobe Rush", "Qazaq Wolves", datetime(2026, 3, 12, 19, 0), "Плей-офф", "live"),
-            ("m5", "Central Asia Dota Cup 2026", "Steppe Titans", "Nomad Fire", datetime(2026, 4, 5, 17, 0), "Группы", "scheduled"),
-            ("m6", "Central Asia Dota Cup 2026", "Nomad Fire", "Steppe Titans", datetime(2026, 4, 7, 17, 0), "Группы", "scheduled"),
-            ("m7", "KZ Premier Football Spring 2026", "Astana Falcons", "Shymkent United", datetime(2026, 3, 15, 20, 0), "Плей-офф", "finished"),
-            ("m8", "KZ Esports League CS2 2026", "Qazaq Wolves", "Aktobe Rush", datetime(2026, 3, 18, 18, 0), "Финал", "finished"),
-            ("m9", "KZ Premier Football Spring 2026", "Almaty Hoopers", "Karaganda Eagles", datetime(2026, 3, 20, 16, 0), "Товарищеский", "scheduled"),
-            ("m10", "KZ Premier Football Spring 2026", "Karaganda Eagles", "Almaty Hoopers", datetime(2026, 3, 28, 16, 0), "Товарищеский", "scheduled"),
+            ("m1", "KZ Premier Football Spring", "Astana Falcons", "Shymkent United", datetime(2026, 3, 9, 19, 0), "Тур 2", "finished"),
+            ("m2", "KZ Premier Football Spring", "Shymkent United", "Astana Falcons", datetime(2026, 3, 16, 18, 0), "Тур 3", "scheduled"),
+            ("m3", "KZ Esports League CS2", "Qazaq Wolves", "Aktobe Rush", datetime(2026, 3, 24, 19, 0), "Полуфинал", "finished"),
+            ("m4", "KZ Esports League CS2", "Aktobe Rush", "Qazaq Wolves", datetime(2026, 3, 30, 20, 0), "Финал", "live"),
+            ("m5", "Central Asia Dota Cup", "Steppe Titans", "Nomad Fire", datetime(2026, 3, 20, 17, 0), "Группы", "scheduled"),
+            ("m6", "Central Asia Dota Cup", "Nomad Fire", "Steppe Titans", datetime(2026, 3, 28, 18, 0), "Плей-офф", "scheduled"),
+            ("m7", "PUBG Continental Series", "Nomad Fire", "Altay Phoenix", datetime(2026, 3, 26, 16, 0), "Квалификация", "finished"),
+            ("m8", "PUBG Continental Series", "Altay Phoenix", "Nomad Fire", datetime(2026, 4, 2, 16, 0), "Main Stage", "scheduled"),
         ]
 
         result = {}
         for code, tournament_name, team_a_name, team_b_name, dt, stage, status in data:
+            aware_dt = timezone.make_aware(dt) if timezone.is_naive(dt) else dt
             match, _ = Match.objects.get_or_create(
                 tournament=tournaments[tournament_name],
-                datetime=timezone.make_aware(dt),
+                datetime=aware_dt,
                 team_a=teams[team_a_name],
                 team_b=teams[team_b_name],
                 defaults={"stage": stage, "status": status},
@@ -270,9 +277,8 @@ class Command(BaseCommand):
     def _seed_match_results(self, matches, teams):
         data = [
             ("m1", 2, 1, "Astana Falcons"),
-            ("m3", 16, 13, "Qazaq Wolves"),
-            ("m7", 1, 0, "Astana Falcons"),
-            ("m8", 2, 0, "Qazaq Wolves"),
+            ("m3", 2, 0, "Qazaq Wolves"),
+            ("m7", 13, 8, "Nomad Fire"),
         ]
 
         for code, score_a, score_b, winner_name in data:
@@ -285,95 +291,122 @@ class Command(BaseCommand):
                 },
             )
 
+    def _archive_placeholder_articles(self):
+        Article.objects.filter(
+            excerpt__icontains="Короткий обзор ключевого события",
+            content__icontains="Демо-материал",
+        ).update(status=Article.STATUS_DRAFT, is_featured=False)
+
     def _seed_articles(self, users, categories, tags):
-        now = timezone.now()
-        data = [
-            ("Астана усилила атаку перед стартом весеннего тура", "sport", "football", ["Спорт", "Матчи"], ["Футбол", "Трансферы"]),
-            ("CS2: Qazaq Wolves готовятся к региональному финалу", "esport", "cs2", ["Киберспорт"], ["CS2", "Финал"]),
-            ("Баскетбол: Almaty Hoopers выиграли домашнюю серию", "sport", "basketball", ["Спорт"], ["Баскетбол", "Рейтинг"]),
-            ("Dota 2: Steppe Titans представили новый драфт-план", "esport", "dota2", ["Киберспорт"], ["Dota2", "Казахстан"]),
-            ("PUBG: Nomad Fire поднялись в общем зачете лиги", "esport", "pubg", ["Киберспорт"], ["PUBG", "Рейтинг"]),
-            ("Футбол: молодежная академия запускает открытые просмотры", "sport", "football", ["Спорт"], ["Футбол", "Казахстан"]),
-            ("CS2: Aktobe Rush изменили тренерский штаб", "esport", "cs2", ["Киберспорт", "Интервью"], ["CS2", "Трансферы"]),
-            ("Баскетбол: Karaganda Eagles укрепили защитную линию", "sport", "basketball", ["Спорт"], ["Баскетбол", "Казахстан"]),
-            ("Dota 2: расписание Central Asia Cup опубликовано", "esport", "dota2", ["Киберспорт", "Матчи"], ["Dota2", "Финал"]),
-            ("Футбольная аналитика: чего ждать от плей-офф", "sport", "football", ["Спорт", "Интервью"], ["Футбол", "Плей-офф"]),
-            ("PUBG: команды из Казахстана вышли на LAN-стадию", "esport", "pubg", ["Киберспорт", "Матчи"], ["PUBG", "Плей-офф"]),
-            ("Календарь спортивной недели: топ-события в одном списке", "sport", "basketball", ["Спорт", "Матчи"], ["Баскетбол", "Казахстан"]),
-        ]
+        self._archive_placeholder_articles()
 
         result = []
-        for idx, (title, kind, discipline, category_names, tag_names) in enumerate(data):
+        for idx, item in enumerate(NEWS_ITEMS):
             author = users[idx % len(users)]
+            kind = Article.KIND_SPORT if item["category"] == "Спорт" else Article.KIND_ESPORT
+            published_at = datetime.fromisoformat(item["publishedAt"])
+            if timezone.is_naive(published_at):
+                published_at = timezone.make_aware(published_at)
+
             article, _ = Article.objects.get_or_create(
-                title=title,
+                slug=item["slug"],
                 defaults={
-                    "excerpt": "Короткий обзор ключевого события и его влияния на сезон.",
-                    "content": "Демо-материал для тестирования ORM и будущего вывода ленты новостей.",
+                    "title": item["title"],
+                    "excerpt": item["excerpt"],
+                    "content": item["content"],
                     "kind": kind,
-                    "discipline": discipline,
+                    "discipline": item["subcategory"],
                     "status": Article.STATUS_PUBLISHED,
                     "author": author,
-                    "is_featured": idx < 2,
-                    "published_at": now - timedelta(hours=idx * 3),
+                    "is_featured": bool(item.get("featured", False)),
+                    "published_at": published_at,
+                    "views_count": int(item.get("views", 0)),
                 },
             )
 
-            changed = False
-            if article.kind != kind:
-                article.kind = kind
-                changed = True
-            if article.discipline != discipline:
-                article.discipline = discipline
-                changed = True
-            if article.status != Article.STATUS_PUBLISHED:
-                article.status = Article.STATUS_PUBLISHED
-                changed = True
-            if article.author_id != author.id:
-                article.author = author
-                changed = True
-            if article.is_featured != (idx < 2):
-                article.is_featured = idx < 2
-                changed = True
-            if not article.published_at:
-                article.published_at = now - timedelta(hours=idx * 3)
-                changed = True
-            if article.slug == "item" or article.slug.startswith("item-"):
-                article.slug = ""
-                changed = True
-            if changed:
-                article.save()
+            changed_fields = []
+            for field, value in (
+                ("title", item["title"]),
+                ("excerpt", item["excerpt"]),
+                ("content", item["content"]),
+                ("kind", kind),
+                ("discipline", item["subcategory"]),
+                ("status", Article.STATUS_PUBLISHED),
+                ("author", author),
+                ("is_featured", bool(item.get("featured", False))),
+                ("published_at", published_at),
+                ("views_count", int(item.get("views", 0))),
+            ):
+                current = getattr(article, field)
+                compare_value = value.id if field == "author" else value
+                current_value = current.id if field == "author" else current
+                if current_value != compare_value:
+                    setattr(article, field, value)
+                    changed_fields.append(field)
 
-            article.categories.set([categories[name] for name in category_names])
-            article.tags.set([tags[name] for name in tag_names])
+            if changed_fields:
+                article.save(update_fields=changed_fields)
+
+            article.categories.set([categories[item["category"]]])
+            article.tags.set([tags[name] for name in item.get("tags", []) if name in tags])
+            self._attach_cover(article, item.get("image"))
             result.append(article)
 
+        result.sort(key=lambda x: x.published_at or timezone.now(), reverse=True)
         return result
 
+    def _attach_cover(self, article, image_url):
+        if not image_url:
+            return
+
+        has_cover = bool(article.cover and article.cover.name)
+        expected_prefix = f"covers/news-{article.slug}"
+        if has_cover and article.cover.name.startswith(expected_prefix):
+            return
+
+        try:
+            request = Request(image_url, headers={"User-Agent": "KZArenaSeeder/1.0"})
+            with urlopen(request, timeout=15) as response:
+                raw = response.read()
+
+            parsed = urlparse(image_url)
+            ext = os.path.splitext(parsed.path)[1].lower()
+            if ext not in {".jpg", ".jpeg", ".png", ".webp"}:
+                ext = ".jpg"
+
+            file_name = f"news-{article.slug}{ext}"
+            article.cover.save(file_name, ContentFile(raw), save=False)
+            article.save(update_fields=["cover"])
+        except Exception as exc:
+            self.stdout.write(self.style.WARNING(f"Не удалось загрузить обложку для '{article.slug}': {exc}"))
+
     def _seed_comments(self, articles, users):
-        comments = []
+        templates = [
+            "Хороший разбор, особенно по тактике второй половины матча.",
+            "Интересно, как это повлияет на таблицу к концу месяца.",
+            "Отличный материал, жду превью к следующему туру.",
+            "Полезная статистика, спасибо за подробности.",
+        ]
         for idx in range(10):
             article = articles[idx % len(articles)]
             user = users[idx % len(users)]
-            text = f"Демо-комментарий #{idx + 1}: отличная новость, ждем продолжения сезона."
-            comment, _ = Comment.objects.get_or_create(
+            text = templates[idx % len(templates)]
+            Comment.objects.get_or_create(
                 article=article,
                 user=user,
                 text=text,
                 defaults={"is_approved": True},
             )
-            comments.append(comment)
-        return comments
 
     def _seed_interactions(self, articles, users, teams, categories):
-        for idx in range(8):
+        for idx in range(10):
             Reaction.objects.get_or_create(
                 article=articles[idx % len(articles)],
                 user=users[idx % len(users)],
-                defaults={"type": Reaction.TYPE_LIKE if idx % 3 else Reaction.TYPE_DISLIKE},
+                defaults={"type": Reaction.TYPE_LIKE if idx % 4 else Reaction.TYPE_DISLIKE},
             )
 
-        for idx in range(6):
+        for idx in range(8):
             Favorite.objects.get_or_create(
                 article=articles[(idx + 2) % len(articles)],
                 user=users[idx % len(users)],

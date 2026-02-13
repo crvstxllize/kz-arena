@@ -44,5 +44,8 @@
       {% if match.status == 'live' %}<span class="score__live-label">LIVE</span>{% endif %}
     </p>
   </div>
+  {% if match.source_url %}
+    <p class="match-source"><a href="{{ match.source_url }}" target="_blank" rel="noopener">Источник</a></p>
+  {% endif %}
 </article>
 
