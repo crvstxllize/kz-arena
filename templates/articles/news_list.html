@@ -105,7 +105,7 @@
     </div>
 
     {% if page_obj.object_list %}
-      <div id="news-grid" class="news-grid news-grid--portal" aria-live="polite">
+      <div id="news-grid" class="news-grid news-grid--portal news-grid--stable" aria-live="polite">
         {% for item in page_obj.object_list %}
           {% include "includes/news_card.html" with item=item card_variant="standard" %}
         {% endfor %}

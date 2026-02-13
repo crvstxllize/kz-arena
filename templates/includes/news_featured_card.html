@@ -1,0 +1,28 @@
+﻿{% load static %}
+<article class="news-featured news-featured-card" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
+  <a href="{{ item.get_absolute_url }}" class="news-featured__media" aria-label="Открыть новость: {{ item.title }}">
+    {% include "includes/news_cover.html" with item=item image_class="news-featured__image" placeholder_class="news-cover-placeholder news-cover-placeholder--featured" %}
+  </a>
+
+  <div class="news-featured__body">
+    <div class="news-featured__meta">
+      <span class="news-pill">{{ item.get_kind_display }}</span>
+      {% if item.discipline %}<span class="news-pill">{{ item.get_discipline_display }}</span>{% endif %}
+      {% if item.published_at %}
+        <time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"d.m.Y H:i" }}</time>
+      {% endif %}
+    </div>
+
+    <h3 class="news-featured__title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+
+    <p class="news-featured__excerpt">
+      {% if item.excerpt %}
+        {{ item.excerpt }}
+      {% else %}
+        {{ item.content|truncatechars:180 }}
+      {% endif %}
+    </p>
+
+    <a href="{{ item.get_absolute_url }}" class="news-featured__read" aria-label="Читать новость: {{ item.title }}">Читать</a>
+  </div>
+</article>

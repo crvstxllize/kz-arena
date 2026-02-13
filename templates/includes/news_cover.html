@@ -1,0 +1,11 @@
+{% if item.cover %}
+  <img src="{{ item.cover.url }}" alt="{{ item.title }}" class="{{ image_class }}" loading="lazy">
+{% else %}
+  <div class="{{ placeholder_class }}" role="img" aria-label="KZ Arena News Placeholder">
+    <span class="news-cover-placeholder__art" aria-hidden="true"></span>
+    <span class="news-cover-placeholder__text">
+      <span class="ph-title">KZ Arena</span>
+      <span class="ph-sub">News Placeholder</span>
+    </span>
+  </div>
+{% endif %}

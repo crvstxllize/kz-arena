@@ -41,7 +41,7 @@
   </div>
 
   {% if latest_news %}
-  <div class="news-grid news-grid--home">
+  <div id="home-latest-grid" class="news-grid news-grid--home news-grid--stable">
     {% for item in latest_news %}
       {% include "includes/news_card.html" with item=item card_variant="compact" %}
     {% endfor %}

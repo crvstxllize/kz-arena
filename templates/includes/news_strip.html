@@ -1,0 +1,17 @@
+﻿<section class="section news-strip">
+  <div class="section-head">
+    <h2 class="section-title">{{ title }}</h2>
+  </div>
+
+  {% if items %}
+    <div class="news-strip__track" role="list">
+      {% for item in items %}
+        <div class="news-strip__item" role="listitem">
+          {% include "includes/news_mini_card.html" with item=item %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">{{ empty_text|default:"Данные отсутствуют." }}</p>
+  {% endif %}
+</section>

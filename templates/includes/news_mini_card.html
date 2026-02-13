@@ -1,0 +1,14 @@
+﻿{% load static %}
+<article class="news-mini-card news-mini-item" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
+  <a href="{{ item.get_absolute_url }}" class="news-mini-card__media" aria-label="Открыть новость: {{ item.title }}">
+    {% include "includes/news_cover.html" with item=item image_class="news-mini-card__image" placeholder_class="news-cover-placeholder news-cover-placeholder--mini" %}
+  </a>
+
+  <div class="news-mini-card__body">
+    <p class="news-mini-card__meta">
+      {{ item.get_kind_display }}{% if item.discipline %} · {{ item.get_discipline_display }}{% endif %}{% if item.published_at %} · {% endif %}
+      {% if item.published_at %}<time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"d.m H:i" }}</time>{% endif %}
+    </p>
+    <h3 class="news-mini-card__title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+  </div>
+</article>

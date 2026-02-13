@@ -1,11 +1,29 @@
 ﻿{% load static %}
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% if page_title %}{{ page_title }} | {% endif %}KZ Arena{% endblock %}</title>
   <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Портал новостей KZ Arena{% endif %}">
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var stored = null;
+      try {
+        stored = window.localStorage.getItem("theme");
+      } catch (_error) {
+        stored = null;
+      }
+      var theme = "dark";
+      if (stored === "light" || stored === "dark") {
+        theme = stored;
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+        theme = "light";
+      }
+      root.setAttribute("data-theme", theme);
+    })();
+  </script>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>

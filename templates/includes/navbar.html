@@ -28,8 +28,30 @@
           {% endif %}
         {% endif %}
 
-        <li>
-          <button type="button" id="theme-toggle" class="nav-theme-button" aria-pressed="false">Тема</button>
+        <li class="theme-toggle-item">
+          <button
+            type="button"
+            id="theme-toggle"
+            class="theme-toggle"
+            role="switch"
+            aria-checked="true"
+            aria-label="Переключить на светлую тему"
+            title="Сменить тему"
+          >
+            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 4a1 1 0 0 1 1 1v1.2a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1Zm0 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8-5a1 1 0 1 1 0 2h-1.2a1 1 0 1 1 0-2H20ZM6.2 12a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2h1.2Zm10.04 4.42a1 1 0 0 1 1.42 0l.85.85a1 1 0 0 1-1.41 1.41l-.86-.85a1 1 0 0 1 0-1.41ZM7.76 7.76a1 1 0 0 1 1.41 0l.85.86a1 1 0 0 1-1.41 1.41l-.85-.86a1 1 0 0 1 0-1.41Zm10.75-.3a1 1 0 0 1 0 1.41l-.85.86a1 1 0 1 1-1.42-1.41l.86-.86a1 1 0 0 1 1.41 0ZM9.17 16.83a1 1 0 0 1 0 1.41l-.85.85a1 1 0 1 1-1.42-1.41l.86-.85a1 1 0 0 1 1.41 0Z"/>
+              </svg>
+            </span>
+            <span class="theme-toggle__track" aria-hidden="true">
+              <span class="theme-toggle__thumb"></span>
+            </span>
+            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M14.5 2.5a1 1 0 0 1 .45 1.9 8 8 0 1 0 4.6 10.15 1 1 0 0 1 1.9.63A10 10 0 1 1 13.87 2.7a1 1 0 0 1 .63-.2Z"/>
+              </svg>
+            </span>
+          </button>
         </li>
 
         {% if user.is_authenticated %}

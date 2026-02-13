@@ -126,10 +126,14 @@
 <section class="section section-all-news">
   <div class="section-head">
     <h2 class="section-title">Похожие новости</h2>
+    <div class="news-strip-controls" aria-hidden="true">
+      <button type="button" class="news-strip-control" data-strip-prev aria-label="Прокрутить похожие новости влево">‹</button>
+      <button type="button" class="news-strip-control" data-strip-next aria-label="Прокрутить похожие новости вправо">›</button>
+    </div>
   </div>
 
   {% if related_items %}
-    <div class="news-grid news-grid--portal">
+    <div class="news-strip" data-news-strip>
       {% for item in related_items %}
         {% include "includes/news_card.html" with item=item card_variant="compact" %}
       {% endfor %}

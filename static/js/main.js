@@ -132,25 +132,69 @@ function initThemeToggle() {
   }
 
   const root = document.documentElement;
-  const stored = window.localStorage.getItem("kz_theme");
-  if (stored === "dark") {
-    root.dataset.theme = "dark";
-    toggle.setAttribute("aria-pressed", "true");
-  }
+  const storageKey = "theme";
+  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+
+  const resolveTheme = () => {
+    const stored = window.localStorage.getItem(storageKey);
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
+    if (media && media.matches) {
+      return "light";
+    }
+    return "dark";
+  };
+
+  const applyTheme = (theme, persist) => {
+    root.dataset.theme = theme;
+    toggle.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
+    toggle.setAttribute("aria-label", theme === "dark" ? "Переключить на светлую тему" : "Переключить на тёмную тему");
+    if (persist) {
+      window.localStorage.setItem(storageKey, theme);
+    }
+  };
+
+  applyTheme(resolveTheme(), false);
 
   toggle.addEventListener("click", () => {
     const isDark = root.dataset.theme === "dark";
     if (isDark) {
-      delete root.dataset.theme;
-      window.localStorage.setItem("kz_theme", "light");
-      toggle.setAttribute("aria-pressed", "false");
+      applyTheme("light", true);
       showToast("Светлая тема включена", "info");
     } else {
-      root.dataset.theme = "dark";
-      window.localStorage.setItem("kz_theme", "dark");
-      toggle.setAttribute("aria-pressed", "true");
+      applyTheme("dark", true);
       showToast("Темная тема включена", "info");
     }
+  });
+
+  if (media && typeof media.addEventListener === "function") {
+    media.addEventListener("change", () => {
+      const stored = window.localStorage.getItem(storageKey);
+      if (stored === "light" || stored === "dark") {
+        return;
+      }
+      applyTheme(media.matches ? "light" : "dark", false);
+    });
+  }
+}
+
+function initNewsStripScroll() {
+  const strip = document.querySelector("[data-news-strip]");
+  const prev = document.querySelector("[data-strip-prev]");
+  const next = document.querySelector("[data-strip-next]");
+  if (!strip || !prev || !next) {
+    return;
+  }
+
+  const shift = () => Math.max(260, Math.min(420, Math.round(strip.clientWidth * 0.8)));
+
+  prev.addEventListener("click", () => {
+    strip.scrollBy({ left: -shift(), behavior: "smooth" });
+  });
+
+  next.addEventListener("click", () => {
+    strip.scrollBy({ left: shift(), behavior: "smooth" });
   });
 }
 
@@ -553,6 +597,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initShareModal();
   initMatchesFilters();
   initCommentsAjax();
+  initNewsStripScroll();
 });
 
 window.showToast = showToast;
