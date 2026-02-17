@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import List
 from urllib.parse import quote
 
 from .cache import get_cached, set_cached
@@ -41,8 +42,8 @@ class EsportsProvider:
             return cached
 
         fetched_at = datetime.now(timezone.utc)
-        teams: list[TeamEntity] = []
-        tournaments: list[TournamentEntity] = []
+        teams: List[TeamEntity] = []
+        tournaments: List[TournamentEntity] = []
 
         try:
             for discipline, query, url in self.tracked_pages:

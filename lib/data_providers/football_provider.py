@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import List
 
 from .cache import get_cached, set_cached
 from .http_utils import fetch_json
@@ -24,7 +25,7 @@ class FootballProvider:
             )
             teams_raw = teams_payload.get("teams") or []
 
-            teams: list[TeamEntity] = []
+            teams: List[TeamEntity] = []
             for team in teams_raw:
                 name = (team.get("strTeam") or "").strip()
                 if not name:

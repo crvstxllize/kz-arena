@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
-from typing import Any
+from typing import Any, Dict, Tuple
 
-_CACHE: dict[str, tuple[datetime, Any]] = {}
+_CACHE: Dict[str, Tuple[datetime, Any]] = {}
 
 
 def get_cached(key: str, ttl_minutes: int):

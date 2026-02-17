@@ -1,5 +1,6 @@
 from dataclasses import asdict
 from datetime import datetime, timezone
+from typing import Dict, List, Optional
 
 from django.core.cache import cache
 from django.db import transaction
@@ -27,7 +28,7 @@ def _kind_by_discipline(discipline: str):
     return "esport"
 
 
-def _to_aware(dt: datetime | None):
+def _to_aware(dt: Optional[datetime]):
     if dt is None:
         return None
     if dj_timezone.is_naive(dt):
@@ -47,10 +48,10 @@ def _merge_results():
     providers = [FootballProvider(), BasketballProvider(), EsportsProvider()]
     provider_results = [provider.fetch() for provider in providers]
 
-    teams: list[TeamEntity] = []
-    tournaments: list[TournamentEntity] = []
-    matches: list[MatchEntity] = []
-    sources: list[str] = []
+    teams: List[TeamEntity] = []
+    tournaments: List[TournamentEntity] = []
+    matches: List[MatchEntity] = []
+    sources: List[str] = []
     fallback = False
 
     for result in provider_results:
@@ -86,7 +87,7 @@ def refresh_sports_data(force: bool = False):
 
     teams, tournaments, matches, sources, is_fallback, fetched_at = _merge_results()
 
-    teams_by_name: dict[str, Team] = {}
+    teams_by_name: Dict[str, Team] = {}
     for item in teams:
         team, _ = Team.objects.get_or_create(
             name=item.name,
@@ -105,7 +106,7 @@ def refresh_sports_data(force: bool = False):
         team.save()
         teams_by_name[item.name] = team
 
-    tournaments_by_ext: dict[str, Tournament] = {}
+    tournaments_by_ext: Dict[str, Tournament] = {}
     for item in tournaments:
         start = item.start_date.date() if item.start_date else dj_timezone.now().date()
         end = item.end_date.date() if item.end_date else start
