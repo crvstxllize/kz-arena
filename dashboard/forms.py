@@ -3,8 +3,36 @@ from django.forms import CheckboxSelectMultiple
 
 from articles.models import Article, MediaAsset
 
+ALLOWED_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+MAX_UPLOAD_SIZE_BYTES = 5 * 1024 * 1024
+
+
+def _validate_image_upload(upload, field_label):
+    if not upload:
+        return upload
+
+    file_name = str(getattr(upload, "name", "") or "")
+    lower_name = file_name.lower()
+    if not any(lower_name.endswith(ext) for ext in ALLOWED_IMAGE_EXTENSIONS):
+        allowed = ", ".join(sorted(ext.lstrip(".") for ext in ALLOWED_IMAGE_EXTENSIONS))
+        raise forms.ValidationError(
+            f"{field_label}: допустимы только файлы {allowed.upper()}."
+        )
+
+    file_size = getattr(upload, "size", 0) or 0
+    if file_size > MAX_UPLOAD_SIZE_BYTES:
+        max_mb = MAX_UPLOAD_SIZE_BYTES // (1024 * 1024)
+        raise forms.ValidationError(
+            f"{field_label}: размер файла не должен превышать {max_mb} MB."
+        )
+
+    return upload
+
 
 class DashboardArticleForm(forms.ModelForm):
+    def clean_cover(self):
+        return _validate_image_upload(self.cleaned_data.get("cover"), "Обложка")
+
     class Meta:
         model = Article
         fields = [
@@ -27,6 +55,9 @@ class DashboardArticleForm(forms.ModelForm):
 
 
 class MediaAssetForm(forms.ModelForm):
+    def clean_file(self):
+        return _validate_image_upload(self.cleaned_data.get("file"), "Изображение")
+
     class Meta:
         model = MediaAsset
         fields = ["file", "caption"]

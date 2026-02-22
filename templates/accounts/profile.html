@@ -39,5 +39,54 @@
       <a href="{% url 'accounts:password_change' %}">Сменить пароль</a>
     </div>
   </article>
+
+  <article class="auth-card profile-card">
+    <div class="section-head profile-card__head">
+      <h2>Мои действия</h2>
+    </div>
+
+    <dl class="profile-grid">
+      <div class="profile-item">
+        <dt>Избранное</dt>
+        <dd>{{ favorites_count }}</dd>
+      </div>
+      <div class="profile-item">
+        <dt>Комментарии</dt>
+        <dd>{{ comments_count }}</dd>
+      </div>
+    </dl>
+
+    <div class="section">
+      <h3>Последние избранные новости</h3>
+      {% if recent_favorites %}
+        <ul class="simple-list">
+          {% for favorite in recent_favorites %}
+            <li>
+              <a href="{{ favorite.article.get_absolute_url }}">{{ favorite.article.title }}</a>
+              <span class="muted">({{ favorite.created_at|date:"d.m.Y H:i" }})</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">Пока нет добавлений в избранное.</p>
+      {% endif %}
+    </div>
+
+    <div class="section">
+      <h3>Последние комментарии</h3>
+      {% if recent_comments %}
+        <ul class="simple-list">
+          {% for comment in recent_comments %}
+            <li>
+              <a href="{{ comment.article.get_absolute_url }}">{{ comment.article.title }}</a>:
+              {{ comment.text|truncatechars:80 }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">Пока нет комментариев.</p>
+      {% endif %}
+    </div>
+  </article>
 </section>
 {% endblock %}

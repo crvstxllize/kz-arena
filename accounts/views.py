@@ -7,6 +7,9 @@ from django.urls import reverse_lazy
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_http_methods, require_POST
 
+from comments.models import Comment
+from interactions.models import Favorite
+
 from .forms import (
     LocalizedPasswordChangeForm,
     LoginForm,
@@ -111,12 +114,26 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     profile, _ = Profile.objects.get_or_create(user=request.user)
+    recent_favorites = (
+        Favorite.objects.filter(user=request.user)
+        .select_related("article")
+        .order_by("-created_at")[:5]
+    )
+    recent_comments = (
+        Comment.objects.filter(user=request.user)
+        .select_related("article")
+        .order_by("-created_at")[:5]
+    )
     return render(
         request,
         "accounts/profile.html",
         {
             "profile": profile,
             "role_name": _resolve_role(request.user),
+            "recent_favorites": recent_favorites,
+            "recent_comments": recent_comments,
+            "favorites_count": Favorite.objects.filter(user=request.user).count(),
+            "comments_count": Comment.objects.filter(user=request.user).count(),
             "page_title": "Профиль",
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
