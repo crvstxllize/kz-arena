@@ -96,7 +96,7 @@ class Match(models.Model):
         ]
         constraints = [
             models.CheckConstraint(
-                condition=~models.Q(team_a=models.F("team_b")),
+                check=~models.Q(team_a=models.F("team_b")),
                 name="match_team_a_not_equal_team_b",
             )
         ]

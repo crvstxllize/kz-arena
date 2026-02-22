@@ -1,5 +1,5 @@
 ﻿{% extends "base.html" %}
-{% load static %}
+{% load team_media %}
 
 {% block content %}
 <section class="section section-filters" aria-label="Фильтры команд">
@@ -39,11 +39,7 @@
     {% for team in page_obj.object_list %}
       <article class="entity-card">
         <a href="{% url 'teams:team_detail' team.slug %}" class="entity-card__media-link" aria-label="Открыть страницу команды {{ team.name }}">
-          {% if team.logo %}
-            <img src="{{ team.logo.url }}" alt="{{ team.name }}" class="entity-card__image" loading="lazy">
-          {% else %}
-            <img src="{% static 'img/placeholder.svg' %}" alt="Логотип-заглушка" class="entity-card__image" loading="lazy">
-          {% endif %}
+          <img src="{{ team|team_logo_url }}" alt="{{ team.name }}" class="entity-card__image" loading="lazy">
         </a>
 
         <div class="entity-card__body">

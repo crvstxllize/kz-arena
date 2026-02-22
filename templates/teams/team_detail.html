@@ -1,15 +1,11 @@
 ﻿{% extends "base.html" %}
-{% load static %}
+{% load team_media %}
 
 {% block content %}
 <section class="section team-detail">
   <div class="team-detail__header">
     <div class="team-detail__logo-wrap">
-      {% if team.logo %}
-        <img src="{{ team.logo.url }}" alt="{{ team.name }}" class="team-detail__logo">
-      {% else %}
-        <img src="{% static 'img/placeholder.svg' %}" alt="Логотип-заглушка" class="team-detail__logo">
-      {% endif %}
+      <img src="{{ team|team_logo_url }}" alt="{{ team.name }}" class="team-detail__logo">
     </div>
 
     <div>

@@ -1,11 +1,14 @@
-﻿{% load static %}
+﻿{% load news_media %}
 <article class="news-card{% if card_variant %} news-card--{{ card_variant }}{% endif %}" data-kind="{{ item.kind|default:'sport' }}" data-discipline="{{ item.discipline|default:'' }}">
   <a href="{{ item.get_absolute_url }}" class="news-card__media-link" aria-label="Открыть новость: {{ item.title }}">
-    {% if item.cover %}
-      <img src="{{ item.cover.url }}" alt="{{ item.title }}" class="news-card__image" loading="lazy">
-    {% else %}
-      <img src="{% static 'img/placeholder.svg' %}" alt="Изображение-заглушка для новости" class="news-card__image" loading="lazy">
-    {% endif %}
+    <img
+      src="{{ item|news_image }}"
+      data-fallback-src="{{ item|news_placeholder }}"
+      onerror="this.onerror=null;this.src=this.dataset.fallbackSrc;"
+      alt="{{ item.title }}"
+      class="news-card__image"
+      loading="lazy"
+    >
   </a>
 
   <div class="news-card__body">
