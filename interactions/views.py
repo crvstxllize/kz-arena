@@ -1,7 +1,7 @@
 ﻿import json
 from functools import wraps
 
-from django.db.models import Count, Q
+from django.db.models import Avg, Count, Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET, require_POST
@@ -10,7 +10,7 @@ from articles.models import Article
 from taxonomy.models import Category
 from teams.models import Team
 
-from .models import Favorite, Reaction, Subscription
+from .models import ArticleRating, Favorite, Reaction, Subscription
 
 
 def _json_error(message, status=400):
@@ -46,6 +46,18 @@ def _reaction_counts(article_id):
     return {
         "likes": counts["likes"] or 0,
         "dislikes": counts["dislikes"] or 0,
+    }
+
+
+def _rating_stats(article_id):
+    stats = ArticleRating.objects.filter(article_id=article_id).aggregate(
+        average=Avg("value"),
+        count=Count("id"),
+    )
+    average = stats["average"]
+    return {
+        "average": round(float(average), 2) if average is not None else None,
+        "count": stats["count"] or 0,
     }
 
 
@@ -144,6 +156,41 @@ def subscribe_toggle_view(request):
     )
 
 
+@require_POST
+@_auth_required_json
+def rate_view(request):
+    payload = _parse_json_body(request)
+    if payload is None:
+        return _json_error("Некорректный JSON")
+
+    article_id = payload.get("article_id")
+    try:
+        rating_value = int(payload.get("value"))
+    except (TypeError, ValueError):
+        return _json_error("Оценка должна быть числом от 1 до 5")
+
+    if rating_value < 1 or rating_value > 5:
+        return _json_error("Оценка должна быть в диапазоне 1..5")
+
+    article = get_object_or_404(Article, pk=article_id, status=Article.STATUS_PUBLISHED)
+    rating, created = ArticleRating.objects.get_or_create(
+        article=article,
+        user=request.user,
+        defaults={"value": rating_value},
+    )
+    if not created and rating.value != rating_value:
+        rating.value = rating_value
+        rating.save(update_fields=["value", "updated_at"])
+
+    return _json_ok(
+        {
+            "article_id": article.pk,
+            "user_rating": rating.value,
+            "rating": _rating_stats(article.pk),
+        }
+    )
+
+
 @require_GET
 @_auth_required_json
 def interactions_status_view(request):
@@ -152,8 +199,14 @@ def interactions_status_view(request):
 
     reaction = Reaction.objects.filter(article=article, user=request.user).first()
     favorited = Favorite.objects.filter(article=article, user=request.user).exists()
+    user_rating = (
+        ArticleRating.objects.filter(article=article, user=request.user)
+        .values_list("value", flat=True)
+        .first()
+    )
 
     counts = _reaction_counts(article.pk)
+    rating = _rating_stats(article.pk)
 
     return _json_ok(
         {
@@ -162,5 +215,7 @@ def interactions_status_view(request):
             "disliked": reaction.type == Reaction.TYPE_DISLIKE if reaction else False,
             "favorited": favorited,
             "counts": counts,
+            "user_rating": user_rating,
+            "rating": rating,
         }
     )

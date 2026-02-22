@@ -1,10 +1,10 @@
 ﻿from django.core.paginator import Paginator
-from django.db.models import Count, F, Q
+from django.db.models import Avg, Count, F, Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from comments.models import Comment
-from interactions.models import Favorite, Reaction, Subscription
+from interactions.models import ArticleRating, Favorite, Reaction, Subscription
 from taxonomy.models import Category, Tag
 
 from .models import Article
@@ -131,6 +131,7 @@ def news_detail(request, slug):
 
     user_reaction = None
     user_favorited = False
+    user_rating = None
     primary_category = article.categories.first()
     user_category_subscribed = False
 
@@ -140,6 +141,11 @@ def news_detail(request, slug):
             user_reaction = user_reaction_obj.type
 
         user_favorited = Favorite.objects.filter(article=article, user=request.user).exists()
+        user_rating = (
+            ArticleRating.objects.filter(article=article, user=request.user)
+            .values_list("value", flat=True)
+            .first()
+        )
 
         if primary_category:
             user_category_subscribed = Subscription.objects.filter(
@@ -148,6 +154,10 @@ def news_detail(request, slug):
             ).exists()
 
     comments = Comment.objects.filter(article=article, is_approved=True).select_related("user")
+    rating_stats = ArticleRating.objects.filter(article=article).aggregate(
+        average=Avg("value"),
+        count=Count("id"),
+    )
 
     return render(
         request,
@@ -162,8 +172,16 @@ def news_detail(request, slug):
             "favorites_count": Favorite.objects.filter(article=article).count(),
             "user_reaction": user_reaction,
             "user_favorited": user_favorited,
+            "user_rating": user_rating,
             "primary_category": primary_category,
             "user_category_subscribed": user_category_subscribed,
+            "rating_summary": {
+                "average": round(float(rating_stats["average"]), 2)
+                if rating_stats["average"] is not None
+                else None,
+                "count": rating_stats["count"] or 0,
+            },
+            "rating_choices": [1, 2, 3, 4, 5],
             "comments": comments,
             "comments_count": comments.count(),
             "page_title": article.title,

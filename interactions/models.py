@@ -1,5 +1,6 @@
-﻿from django.conf import settings
+from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -83,7 +84,7 @@ class Subscription(models.Model):
         ordering = ("-created_at",)
         constraints = [
             models.CheckConstraint(
-                condition=models.Q(team__isnull=False) | models.Q(category__isnull=False),
+                check=models.Q(team__isnull=False) | models.Q(category__isnull=False),
                 name="subscription_team_or_category_required",
             ),
             models.UniqueConstraint(
@@ -114,3 +115,30 @@ class Subscription(models.Model):
         if self.category:
             parts.append(f"category={self.category}")
         return " | ".join(parts)
+
+
+class ArticleRating(models.Model):
+    article = models.ForeignKey(
+        "articles.Article",
+        on_delete=models.CASCADE,
+        related_name="ratings",
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="article_ratings",
+    )
+    value = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-updated_at",)
+        constraints = [
+            models.UniqueConstraint(fields=["article", "user"], name="unique_article_rating_per_user")
+        ]
+
+    def __str__(self):
+        return f"Рейтинг {self.value}/5 от {self.user} для {self.article}"

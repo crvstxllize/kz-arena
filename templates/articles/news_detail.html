@@ -1,5 +1,5 @@
 ﻿{% extends "base.html" %}
-{% load static %}
+{% load news_media %}
 
 {% block content %}
 <article
@@ -10,6 +10,7 @@
   data-react-url="{% url 'interactions:react' %}"
   data-favorite-url="{% url 'interactions:favorite' %}"
   data-subscribe-url="{% url 'interactions:subscribe' %}"
+  data-rate-url="{% url 'interactions:rate' %}"
   data-status-url="{% url 'interactions:status' %}"
   data-comments-add-url="{% url 'comments:add' %}"
   data-comments-delete-url="{% url 'comments:delete' %}"
@@ -27,11 +28,13 @@
   </header>
 
   <div class="news-detail__cover">
-    {% if article.cover %}
-      <img src="{{ article.cover.url }}" alt="{{ article.title }}" class="news-card__image">
-    {% else %}
-      <img src="{% static 'img/placeholder.svg' %}" alt="Изображение-заглушка для новости" class="news-card__image">
-    {% endif %}
+    <img
+      src="{{ article|news_image }}"
+      data-fallback-src="{{ article|news_placeholder }}"
+      onerror="this.onerror=null;this.src=this.dataset.fallbackSrc;"
+      alt="{{ article.title }}"
+      class="news-card__image"
+    >
   </div>
 
   <section class="news-actions" aria-label="Действия с новостью">
@@ -72,6 +75,26 @@
         {% if user_category_subscribed %}Отписаться{% else %}Подписаться{% endif %} на категорию «{{ primary_category.name }}»
       </button>
       {% endif %}
+    </div>
+
+    <div class="news-actions__group">
+      <div class="rating-widget" aria-label="Рейтинг новости">
+        <span class="muted">
+          Рейтинг:
+          <strong data-rating-average>{% if rating_summary.average %}{{ rating_summary.average }}{% else %}—{% endif %}</strong>
+          (<span data-rating-count>{{ rating_summary.count }}</span>)
+        </span>
+        <div class="rating-widget__buttons" role="group" aria-label="Поставить оценку от 1 до 5">
+          {% for value in rating_choices %}
+            <button
+              type="button"
+              class="button button--small button--secondary js-rate-btn{% if user_rating and user_rating == value %} is-active{% endif %}"
+              data-rating-value="{{ value }}"
+              aria-pressed="{% if user_rating and user_rating == value %}true{% else %}false{% endif %}"
+            >{{ value }}</button>
+          {% endfor %}
+        </div>
+      </div>
     </div>
 
     <div class="news-actions__group">
@@ -157,4 +180,3 @@
   </div>
 </div>
 {% endblock %}
-

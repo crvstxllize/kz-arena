@@ -260,6 +260,21 @@ main { padding-block: 1.2rem 2.4rem; }
 .news-card--featured .news-card__image { height: 300px; }
 .news-card--compact .news-card__image { height: 170px; }
 .news-card--urgent { border-color: #fdba74; }
+.news-featured__media,
+.news-mini-card__media {
+  display: block;
+  overflow: hidden;
+}
+
+.news-featured__image,
+.news-mini-card__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.news-featured__image { height: 300px; }
+.news-mini-card__image { height: 170px; }
 
 .top-list { list-style: none; margin: 0; padding: 0; }
 
@@ -545,8 +560,9 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 }
 
 .news-detail__cover .news-card__image {
-  height: auto;
-  max-height: 460px;
+  width: 100%;
+  height: clamp(240px, 42vw, 460px);
+  object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--line);
 }
@@ -814,15 +830,15 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 }
 
 :root[data-theme="dark"] {
-  --bg: #020617;
-  --surface: #0f172a;
-  --surface-muted: #111827;
-  --ink: #e2e8f0;
-  --ink-soft: #94a3b8;
-  --line: #334155;
-  --brand: #14b8a6;
-  --brand-dark: #0f766e;
-  --focus: #fbbf24;
+  --bg: #0f1115;
+  --surface: #171a21;
+  --surface-muted: #1d222b;
+  --ink: #e7e9ee;
+  --ink-soft: #a2a9b3;
+  --line: #2f3742;
+  --brand: #c79a5a;
+  --brand-dark: #a77b40;
+  --focus: #f5c453;
 }
 
 .site-header.is-scrolled {
@@ -858,6 +874,17 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.rating-widget {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.rating-widget__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
 .news-actions .button.is-active {
@@ -1293,20 +1320,20 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 /* Theme tokens */
 :root,
 html[data-theme="dark"] {
-  --bg: #0a1324;
-  --surface: #111d33;
-  --surface-muted: #15233d;
-  --text: #e8f0ff;
-  --muted: #9ab0d2;
-  --border: #273750;
-  --accent: #3bb2ff;
-  --accent-2: #7dd3ff;
-  --shadow: 0 16px 36px rgba(2, 8, 22, 0.42);
+  --bg: #0f1115;
+  --surface: #171a21;
+  --surface-muted: #1d222b;
+  --text: #e7e9ee;
+  --muted: #a2a9b3;
+  --border: #2f3742;
+  --accent: #c79a5a;
+  --accent-2: #e0bc86;
+  --shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
   --ink: var(--text);
   --ink-soft: var(--muted);
   --line: var(--border);
   --brand: var(--accent);
-  --brand-dark: #1d93dd;
+  --brand-dark: #a77b40;
 }
 
 html[data-theme="light"] {
@@ -2679,3 +2706,208 @@ main.container {
   }
 }
 
+/* Final dark-mode lock: anthracite / graphite (override all previous blue-tinted rules) */
+html[data-theme="dark"] {
+  --bg: #121417 !important;
+  --surface: #1a1d22 !important;
+  --surface-muted: #22262d !important;
+  --text: #eceff3 !important;
+  --muted: #a8afb8 !important;
+  --border: #313741 !important;
+  --accent: #8f959d !important;
+  --accent-2: #b5bbc3 !important;
+  --brand: #8f959d !important;
+  --brand-dark: #777e87 !important;
+  --ink: var(--text) !important;
+  --ink-soft: var(--muted) !important;
+  --line: var(--border) !important;
+  color-scheme: dark !important;
+}
+
+html[data-theme="dark"] body {
+  background: #121417 !important;
+  color: var(--text) !important;
+}
+
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .news-card,
+html[data-theme="dark"] .top-list__item,
+html[data-theme="dark"] .entity-card,
+html[data-theme="dark"] .match-card,
+html[data-theme="dark"] .news-actions,
+html[data-theme="dark"] .matches-filters,
+html[data-theme="dark"] .share-modal__dialog,
+html[data-theme="dark"] .asset-card,
+html[data-theme="dark"] .auth-card,
+html[data-theme="dark"] .profile-item {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .news-card__meta,
+html[data-theme="dark"] .top-list__meta,
+html[data-theme="dark"] .hero-kicker,
+html[data-theme="dark"] .muted,
+html[data-theme="dark"] .news-card__excerpt,
+html[data-theme="dark"] .news-detail__meta {
+  color: var(--muted) !important;
+}
+
+html[data-theme="dark"] .button,
+html[data-theme="dark"] .theme-toggle__thumb {
+  background: var(--brand) !important;
+  color: #111317 !important;
+}
+
+html[data-theme="dark"] .button:hover {
+  background: var(--brand-dark) !important;
+}
+
+html[data-theme="dark"] .button--secondary,
+html[data-theme="dark"] .nav-toggle,
+html[data-theme="dark"] .nav-logout-button,
+html[data-theme="dark"] .pagination-link,
+html[data-theme="dark"] .filter-input,
+html[data-theme="dark"] .filter-select,
+html[data-theme="dark"] .auth-form input,
+html[data-theme="dark"] .auth-form select,
+html[data-theme="dark"] .auth-form textarea {
+  background: var(--surface-muted) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+html[data-theme="dark"] .nav-menu a:hover,
+html[data-theme="dark"] .nav-menu a.is-active,
+html[data-theme="dark"] .nav-logout-button:hover,
+html[data-theme="dark"] .pagination-link:hover,
+html[data-theme="dark"] .news-card__read-more:hover {
+  background: #2a3038 !important;
+  color: var(--text) !important;
+  border-color: #3a424d !important;
+}
+
+html[data-theme="dark"] .news-pill,
+html[data-theme="dark"] .badge,
+html[data-theme="dark"] .badge--scheduled,
+html[data-theme="dark"] .badge--finished,
+html[data-theme="dark"] .badge--live {
+  background: #2a3038 !important;
+  color: #d9dee5 !important;
+  border-color: #3a424d !important;
+}
+
+/* Dark theme refinement: neutral graphite palette with warm amber accents */
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(199, 154, 90, 0.11), transparent 36%),
+    radial-gradient(circle at 88% -18%, rgba(115, 96, 70, 0.1), transparent 33%),
+    var(--bg);
+}
+
+html[data-theme="dark"] .site-header {
+  background: color-mix(in srgb, var(--surface) 94%, #000 6%);
+  border-bottom-color: color-mix(in srgb, var(--line) 86%, #000 14%);
+}
+
+html[data-theme="dark"] .nav-menu a:hover,
+html[data-theme="dark"] .nav-logout-button:hover {
+  background: color-mix(in srgb, var(--surface) 74%, var(--accent) 26%);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .nav-menu a.is-active {
+  background: color-mix(in srgb, var(--surface) 62%, var(--accent) 38%);
+  border-color: color-mix(in srgb, var(--accent) 72%, var(--line) 28%);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .hero {
+  background: linear-gradient(
+    136deg,
+    color-mix(in srgb, var(--surface) 90%, #000 10%),
+    color-mix(in srgb, var(--surface-muted) 82%, var(--accent) 18%)
+  );
+}
+
+html[data-theme="dark"] .hero-kicker {
+  color: color-mix(in srgb, var(--accent-2) 80%, #e7e9ee 20%);
+}
+
+html[data-theme="dark"] .news-pill,
+html[data-theme="dark"] .badge--scheduled {
+  background: color-mix(in srgb, var(--surface) 72%, var(--accent) 28%);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--line) 38%);
+  color: #f3e4ce;
+}
+
+html[data-theme="dark"] .news-pill--urgent {
+  background: color-mix(in srgb, #c58b2a 22%, var(--surface) 78%);
+  border-color: color-mix(in srgb, #c58b2a 56%, var(--line) 44%);
+  color: #f4debb;
+}
+
+html[data-theme="dark"] .top-list__item,
+html[data-theme="dark"] .filter-chip,
+html[data-theme="dark"] .auth-form input,
+html[data-theme="dark"] .auth-form select,
+html[data-theme="dark"] .auth-form textarea,
+html[data-theme="dark"] .filter-input,
+html[data-theme="dark"] .filter-select {
+  background: color-mix(in srgb, var(--surface) 88%, #000 12%);
+}
+
+html[data-theme="dark"] .button--secondary {
+  background: color-mix(in srgb, var(--surface) 86%, #000 14%);
+  color: color-mix(in srgb, var(--accent-2) 78%, var(--ink) 22%);
+  border-color: color-mix(in srgb, var(--accent) 56%, var(--line) 44%);
+}
+
+html[data-theme="dark"] .news-card__read-more {
+  color: color-mix(in srgb, var(--accent-2) 78%, var(--ink) 22%);
+}
+
+html[data-theme="dark"] .news-card__read-more:hover {
+  background: color-mix(in srgb, var(--surface) 72%, var(--accent) 28%);
+}
+
+html[data-theme="dark"] .button {
+  color: #1a1610;
+}
+
+html[data-theme="dark"] .message--info {
+  background: color-mix(in srgb, var(--surface) 74%, var(--accent) 26%);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--line) 38%);
+  color: #f3e4ce;
+}
+
+html[data-theme="dark"] .match-team__logo--placeholder {
+  background: color-mix(in srgb, var(--surface) 68%, var(--accent) 32%);
+  color: #f8e7cc;
+}
+
+html[data-theme="dark"] .badge {
+  background: color-mix(in srgb, var(--surface) 88%, #000 12%);
+}
+
+html[data-theme="dark"] .badge--live {
+  background: color-mix(in srgb, var(--surface) 64%, #3f8f6c 36%);
+  border-color: color-mix(in srgb, #3f8f6c 58%, var(--line) 42%);
+  color: #dbf4e8;
+}
+
+html[data-theme="dark"] .badge--finished {
+  background: color-mix(in srgb, var(--surface) 80%, #4a4f58 20%);
+  border-color: color-mix(in srgb, #4a4f58 50%, var(--line) 50%);
+  color: #c4cad3;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  color: #d7c5a7;
+}
+
+html[data-theme="dark"] .theme-toggle .theme-toggle__icon--moon {
+  color: #d7c5a7;
+}

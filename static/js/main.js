@@ -357,19 +357,31 @@ function initNewsDetailInteractions() {
   const reactUrl = detail.dataset.reactUrl;
   const favoriteUrl = detail.dataset.favoriteUrl;
   const subscribeUrl = detail.dataset.subscribeUrl;
+  const rateUrl = detail.dataset.rateUrl;
   const statusUrl = detail.dataset.statusUrl;
 
   const likeCountEl = detail.querySelector("[data-like-count]");
   const dislikeCountEl = detail.querySelector("[data-dislike-count]");
   const favoriteCountEl = detail.querySelector("[data-favorite-count]");
+  const ratingAverageEl = detail.querySelector("[data-rating-average]");
+  const ratingCountEl = detail.querySelector("[data-rating-count]");
 
   const reactButtons = detail.querySelectorAll(".js-react-btn");
   const favoriteBtn = detail.querySelector(".js-favorite-btn");
   const subscribeBtn = detail.querySelector(".js-subscribe-btn");
+  const rateButtons = detail.querySelectorAll(".js-rate-btn");
 
   const setReactionState = (type) => {
     reactButtons.forEach((btn) => {
       const active = btn.dataset.type === type;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  };
+
+  const setRatingState = (value) => {
+    rateButtons.forEach((btn) => {
+      const active = String(btn.dataset.ratingValue) === String(value || "");
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
@@ -439,6 +451,35 @@ function initNewsDetailInteractions() {
     });
   }
 
+  rateButtons.forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!rateUrl) {
+        return;
+      }
+      try {
+        const payload = await fetchJSON(rateUrl, {
+          method: "POST",
+          body: JSON.stringify({
+            article_id: articleId,
+            value: Number(btn.dataset.ratingValue),
+          }),
+        });
+        const rating = payload.data?.rating || {};
+        setRatingState(payload.data?.user_rating);
+        if (ratingAverageEl) {
+          ratingAverageEl.textContent =
+            typeof rating.average === "number" ? String(rating.average) : "—";
+        }
+        if (ratingCountEl && typeof rating.count === "number") {
+          ratingCountEl.textContent = String(rating.count);
+        }
+        showToast("Оценка сохранена", "success");
+      } catch (_error) {
+        // handled in fetchJSON
+      }
+    });
+  });
+
   if (isAuthenticated) {
     fetchJSON(`${statusUrl}?article_id=${articleId}`, { method: "GET" })
       .then((payload) => {
@@ -457,6 +498,16 @@ function initNewsDetailInteractions() {
         if (favoriteBtn) {
           favoriteBtn.classList.toggle("is-active", Boolean(data.favorited));
           favoriteBtn.setAttribute("aria-pressed", Boolean(data.favorited) ? "true" : "false");
+        }
+        if (typeof data.user_rating === "number") {
+          setRatingState(data.user_rating);
+        }
+        if (ratingAverageEl && data.rating) {
+          ratingAverageEl.textContent =
+            typeof data.rating.average === "number" ? String(data.rating.average) : "—";
+        }
+        if (ratingCountEl && data.rating && typeof data.rating.count === "number") {
+          ratingCountEl.textContent = String(data.rating.count);
         }
       })
       .catch(() => {
@@ -655,6 +706,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.showToast = showToast;
-
 
 
