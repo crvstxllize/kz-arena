@@ -27,6 +27,16 @@ def _env_csv(name, default=""):
     return [item.strip() for item in raw.split(",") if item.strip()]
 
 
+def _env_int(name, default):
+    raw = os.getenv(name)
+    if raw is None or not raw.strip():
+        return default
+    try:
+        return int(raw.strip())
+    except ValueError as exc:
+        raise ImproperlyConfigured(f"{name} must be an integer") from exc
+
+
 ENV_NAME = os.getenv("ENV_NAME", "dev").strip().lower() or "dev"
 DEBUG = _env_bool("DEBUG", ENV_NAME != "prod")
 
@@ -88,12 +98,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "kz_arena.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+DB_ENGINE = os.getenv("DB_ENGINE", "sqlite").strip().lower() or "sqlite"
+
+if DB_ENGINE in {"postgres", "postgresql"}:
+    db_name = os.getenv("DB_NAME", "").strip()
+    db_user = os.getenv("DB_USER", "").strip()
+    db_password = os.getenv("DB_PASSWORD", "")
+    db_host = os.getenv("DB_HOST", "127.0.0.1").strip() or "127.0.0.1"
+    db_port = _env_int("DB_PORT", 5432)
+
+    if not db_name:
+        raise ImproperlyConfigured("DB_NAME must be set when DB_ENGINE=postgres")
+    if not db_user:
+        raise ImproperlyConfigured("DB_USER must be set when DB_ENGINE=postgres")
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": db_name,
+            "USER": db_user,
+            "PASSWORD": db_password,
+            "HOST": db_host,
+            "PORT": db_port,
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -119,7 +154,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

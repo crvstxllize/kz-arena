@@ -2,6 +2,7 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
+from django.core.cache import cache
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.http import url_has_allowed_host_and_scheme
@@ -17,6 +18,9 @@ from .forms import (
     RegisterForm,
 )
 from .models import Profile
+
+LOGIN_RATE_LIMIT_MAX_ATTEMPTS = 5
+LOGIN_RATE_LIMIT_WINDOW_SECONDS = 15 * 60
 
 
 def _safe_redirect_url(request, raw_url):
@@ -35,6 +39,34 @@ def _resolve_role(user):
     if user.groups.filter(name="Editors").exists():
         return "Редактор"
     return "Пользователь"
+
+
+def _client_ip(request):
+    forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR", "")
+    if forwarded_for:
+        return forwarded_for.split(",")[0].strip()
+    return (request.META.get("REMOTE_ADDR") or "unknown").strip()
+
+
+def _login_rate_limit_key(request, username):
+    normalized = (username or "").strip().lower() or "<empty>"
+    return f"login_attempts:{_client_ip(request)}:{normalized}"
+
+
+def _is_login_rate_limited(request, username):
+    attempts = cache.get(_login_rate_limit_key(request, username), 0)
+    return attempts >= LOGIN_RATE_LIMIT_MAX_ATTEMPTS
+
+
+def _bump_login_failures(request, username):
+    key = _login_rate_limit_key(request, username)
+    attempts = cache.get(key, 0) + 1
+    cache.set(key, attempts, LOGIN_RATE_LIMIT_WINDOW_SECONDS)
+    return attempts
+
+
+def _clear_login_failures(request, username):
+    cache.delete(_login_rate_limit_key(request, username))
 
 
 @require_http_methods(["GET", "POST"])
@@ -77,13 +109,36 @@ def login_view(request):
 
     next_value = request.GET.get("next", "")
     if request.method == "POST":
-        form = LoginForm(request, data=request.POST)
         next_value = request.POST.get("next", "")
+        username_value = request.POST.get("username", "")
+        if _is_login_rate_limited(request, username_value):
+            messages.error(
+                request,
+                "Слишком много неудачных попыток входа. Повторите попытку через 15 минут.",
+            )
+            form = LoginForm(request, data=request.POST)
+            return render(
+                request,
+                "accounts/login.html",
+                {
+                    "form": form,
+                    "next": next_value,
+                    "page_title": "Вход",
+                    "breadcrumbs": [
+                        {"label": "Главная", "url": "core:home"},
+                        {"label": "Вход", "url": None},
+                    ],
+                },
+            )
+
+        form = LoginForm(request, data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
+            _clear_login_failures(request, username_value)
             messages.success(request, "Вы вошли в аккаунт.")
             redirect_to = _safe_redirect_url(request, next_value)
             return redirect(redirect_to or "accounts:profile")
+        _bump_login_failures(request, username_value)
         messages.error(request, "Неверный логин или пароль.")
     else:
         form = LoginForm(request)
