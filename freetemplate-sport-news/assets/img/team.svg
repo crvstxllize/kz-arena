@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Team placeholder image">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#182035"/>
+      <stop offset="100%" stop-color="#324870"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g4)"/>
+  <circle cx="240" cy="180" r="92" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)" stroke-width="10"/>
+  <path d="M185 205c15-34 31-50 55-50s40 16 55 50" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="240" cy="156" r="22" fill="rgba(255,255,255,.3)"/>
+  <path d="M150 340c18-52 60-78 90-78s72 26 90 78" fill="rgba(255,255,255,.12)"/>
+  <text x="380" y="186" fill="#fff" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Team Card</text>
+  <text x="380" y="230" fill="rgba(255,255,255,.75)" font-family="Segoe UI, Arial" font-size="20">Placeholder for club / roster preview</text>
+</svg>

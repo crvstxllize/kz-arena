@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sport News article page demo with toolbar, copy link and related news.">
+  <title>Sport News | Article</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+</head>
+<body data-page="article">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="container site-header__inner"><a class="brand" href="index.html"><span class="brand__mark">SN</span><span>Sport News</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span class="nav-toggle__lines"></span></button><div class="nav" id="site-nav"><ul class="nav__list"><li class="nav__item"><a class="nav__link" href="index.html">Home</a></li><li class="nav__item"><a class="nav__link" href="catalog.html">News</a></li><li class="nav__item"><a class="nav__link is-active" href="article.html">Article</a></li><li class="nav__item"><a class="nav__link" href="about.html">About</a></li></ul><div class="header-tools"><button class="icon-btn" type="button" data-open-modal="search-modal">S</button><button class="theme-switch" type="button" data-theme-toggle role="switch" aria-checked="false"><span>Theme</span><span class="theme-switch__track"><span class="theme-switch__thumb"></span></span></button></div></div></div></header>
+
+  <main id="main-content" class="page-shell">
+    <div class="container">
+      <ol class="breadcrumbs" aria-label="Breadcrumb"><li><a href="index.html">Home</a></li><li><a href="catalog.html">News</a></li><li>Article</li></ol>
+
+      <div class="article-layout">
+        <article>
+          <section class="article-hero">
+            <div class="article-hero__media"><img src="assets/img/hero-main.svg" alt="Article header placeholder"></div>
+            <div class="article-hero__body">
+              <div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Football</span><span class="tag">Analysis</span></div>
+              <h1 class="article-hero__title">How a mid-game tactical switch changed the tempo of the regional football final</h1>
+              <div class="article-meta"><time datetime="2024-02-22">Feb 22, 2024</time><span>By Sport News Desk</span><span>8 min read</span></div>
+
+              <div class="article-toolbar">
+                <button class="btn btn--soft btn--sm" type="button" data-copy-link data-url="article.html">Copy link</button>
+                <button class="btn btn--soft btn--sm" type="button" data-toggle-article>Read more</button>
+                <button class="btn btn--ghost btn--sm" type="button" data-toast-demo="Bookmark action demo">Bookmark</button>
+              </div>
+
+              <div class="article-content" data-article-content data-collapsed="true">
+                <p>The opening 20 minutes were defined by aggressive pressing and fast vertical passes. After halftime, the coaching staff introduced a more patient build-up and shifted the fullbacks higher, stretching the defensive line.</p>
+                <p>The result was not only more possession, but also clearer final-third entries. In a student project, this type of article page can be connected to a Django model with `title`, `excerpt`, `content`, `published_at`, and tag relations.</p>
+                <div class="article-content__extra">
+                  <p>From a UI perspective, this page demonstrates semantic structure, breadcrumbs, a hero block, a toolbar and related-news cards. The copy-link button uses the Clipboard API with a fallback, and the collapse button simply toggles a `data-collapsed` attribute.</p>
+                  <p>Additional enhancements you can add later: comments UI, rating stars, author card, table of contents and sticky share buttons.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" style="margin-top:1.2rem;">
+            <div class="section-header"><h2 class="section-title">Related news</h2><a class="link" href="catalog.html">Open catalog</a></div>
+            <div class="cards-grid">
+              <article class="news-card" data-search-item data-title="Coaching staff confirms tactical flexibility" data-category="analysis" data-url="article.html"><a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Related story placeholder"></a><div class="news-card__body"><div class="news-card__tags"><span class="tag">Analysis</span></div><h3 class="news-card__title"><a href="article.html">Coaching staff confirms tactical flexibility</a></h3><p class="news-card__excerpt">Related cards can reuse the exact same component as catalog cards.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn>B</button></div></div></div></article>
+              <article class="news-card" data-search-item data-title="Final preview: who wins the midfield battle" data-category="football" data-url="article.html"><a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Related story placeholder"></a><div class="news-card__body"><div class="news-card__tags"><span class="tag">Football</span></div><h3 class="news-card__title"><a href="article.html">Final preview: who wins the midfield battle</a></h3><p class="news-card__excerpt">Keep markup consistent; vary only content and data attributes.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn>B</button></div></div></div></article>
+              <article class="news-card" data-search-item data-title="Recovery and rotation plans before weekend fixtures" data-category="training" data-url="article.html"><a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Related story placeholder"></a><div class="news-card__body"><div class="news-card__tags"><span class="tag">Training</span></div><h3 class="news-card__title"><a href="article.html">Recovery and rotation plans before weekend fixtures</a></h3><p class="news-card__excerpt">Another example card for related content sections.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn>B</button></div></div></div></article>
+            </div>
+          </section>
+        </article>
+
+        <aside>
+          <section class="panel panel--padded section">
+            <h2 class="section-title">Quick stats</h2>
+            <div class="stat-grid" style="margin-top:1rem; grid-template-columns:1fr;">
+              <div class="stat-card"><div class="stat-card__label">Views</div><div class="stat-card__value">14,280</div></div>
+              <div class="stat-card"><div class="stat-card__label">Comments</div><div class="stat-card__value">43</div></div>
+              <div class="stat-card"><div class="stat-card__label">Shares</div><div class="stat-card__value">312</div></div>
+            </div>
+          </section>
+          <section class="panel panel--padded section" aria-labelledby="top-day-article">
+            <div class="section-header" style="margin-bottom:.75rem;"><h2 class="section-title" id="top-day-article">Top of the day</h2></div>
+            <ol class="top-list">
+              <li class="top-list__item"><a href="article.html"><span class="top-list__meta">CS2 · 14:10</span><span class="top-list__title">Regional qualifier reaches final weekend</span></a></li>
+              <li class="top-list__item"><a href="article.html"><span class="top-list__meta">Tennis · 12:45</span><span class="top-list__title">Indoor tournament seeds announced</span></a></li>
+              <li class="top-list__item"><a href="article.html"><span class="top-list__meta">Basketball · 11:20</span><span class="top-list__title">Cup semifinal overtime recap</span></a></li>
+            </ol>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container site-footer__inner"><section><h2 class="site-footer__title">Sport News</h2><p class="site-footer__text">Article template with toolbar interactions and related cards.</p></section><section><h2 class="site-footer__title">Explore</h2><ul class="site-footer__list"><li><a href="catalog.html">Catalog</a></li><li><a href="teams.html">Teams</a></li><li><a href="matches.html">Matches</a></li></ul></section><section><h2 class="site-footer__title">Utility pages</h2><ul class="site-footer__list"><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="404.html">404</a></li></ul></section></div><div class="container copyright">2024 Sport News Template</div></footer>
+  <div class="overlay" id="page-overlay"></div>
+  <section class="modal" id="search-modal" aria-labelledby="search-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="search-modal-title">Quick search</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><div class="form__row"><label for="site-search-input">Search headlines</label><input class="input" id="site-search-input" type="search" placeholder="Type keywords"></div><div class="search-results" id="site-search-results" style="margin-top:1rem;"></div></section>
+  <section class="modal" id="subscribe-modal" aria-labelledby="subscribe-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="subscribe-modal-title">Subscribe demo</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><button class="btn btn--primary" type="button" data-toast-demo="Subscribed (demo only)">Subscribe</button></section>
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">^</button>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sport News - dark modern sports and esports template homepage.">
+  <title>Sport News | Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Shared header (copy this block to other pages when adapting) -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Sport News home">
+        <span class="brand__mark" aria-hidden="true">SN</span>
+        <span>Sport News</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__lines" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav" id="site-nav">
+        <ul class="nav__list" aria-label="Main navigation">
+          <li class="nav__item"><a class="nav__link is-active" href="index.html">Home</a></li>
+          <li class="nav__item"><a class="nav__link" href="catalog.html">News</a></li>
+          <li class="nav__item">
+            <a class="nav__link" href="#" data-dropdown-toggle aria-expanded="false">Sections <span class="chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" role="menu" aria-label="Sections submenu">
+              <a href="teams.html">Teams</a>
+              <a href="tournaments.html">Tournaments</a>
+              <a href="matches.html">Matches</a>
+              <a href="article.html">Article example</a>
+            </div>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="about.html">About</a></li>
+          <li class="nav__item"><a class="nav__link" href="login.html">Login</a></li>
+          <li class="nav__item"><a class="nav__link" href="register.html">Register</a></li>
+        </ul>
+        <div class="header-tools">
+          <button class="icon-btn" type="button" data-open-modal="search-modal" aria-label="Open search">S</button>
+          <button class="theme-switch" type="button" data-theme-toggle role="switch" aria-checked="false" aria-label="Toggle theme">
+            <span>Theme</span>
+            <span class="theme-switch__track" aria-hidden="true"><span class="theme-switch__thumb"></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="ticker" data-ticker aria-label="Trending headlines">
+      <div class="ticker__label">Trending</div>
+      <div class="ticker__viewport">
+        <div class="ticker__track">
+          <a class="ticker__item" href="article.html">European derby: title race returns after dramatic 2-2 draw.</a>
+          <a class="ticker__item" href="article.html">CS2 roster update: young AWPer joins top regional lineup.</a>
+          <a class="ticker__item" href="article.html">Spring finals schedule announced for national basketball cup.</a>
+          <a class="ticker__item" href="article.html">PUBG Mobile invitational adds two wildcard spots.</a>
+        </div>
+      </div>
+      <div class="ticker__controls" aria-label="Ticker controls">
+        <button class="icon-btn" type="button" data-ticker-prev aria-label="Previous headline">-</button>
+        <button class="icon-btn" type="button" data-ticker-next aria-label="Next headline">+</button>
+      </div>
+    </section>
+  </div>
+
+  <main id="main-content" class="page-shell">
+    <div class="container">
+      <section class="hero-grid" aria-label="Main highlights">
+        <article class="hero-card" data-search-item data-title="Championship week opens with football and esports finals" data-category="featured" data-url="article.html">
+          <img class="hero-card__image" src="assets/img/hero-main.svg" alt="Sport News hero placeholder">
+          <div class="hero-card__content">
+            <div class="hero-card__meta">
+              <span class="badge badge--pulse">Featured</span>
+              <time datetime="2024-02-22">Feb 22, 2024</time>
+            </div>
+            <h1 class="hero-card__title"><a href="article.html">Championship week opens with football and esports finals across the region</a></h1>
+            <p class="hero-card__subtitle">A single homepage block for the most important story of the day. Students can connect this later to Django context.</p>
+          </div>
+        </article>
+
+        <div class="hero-grid__side">
+          <article class="hero-card hero-card--compact" data-search-item data-title="Top of the day: tactical comeback in CS2" data-category="esport" data-url="article.html">
+            <img class="hero-card__image" src="assets/img/card-esport.svg" alt="Esport story placeholder">
+            <div class="hero-card__content">
+              <div class="hero-card__meta"><span class="badge">Esport</span><time datetime="2024-02-22">10:25</time></div>
+              <h2 class="hero-card__title"><a href="article.html">Top of the day: tactical comeback in CS2 semifinal</a></h2>
+            </div>
+          </article>
+          <article class="hero-card hero-card--compact" data-search-item data-title="Weekend sports preview: football, basketball, volleyball" data-category="sport" data-url="article.html">
+            <img class="hero-card__image" src="assets/img/card-sport.svg" alt="Sport story placeholder">
+            <div class="hero-card__content">
+              <div class="hero-card__meta"><span class="badge">Sport</span><time datetime="2024-02-22">08:40</time></div>
+              <h2 class="hero-card__title"><a href="article.html">Weekend preview: football, basketball and volleyball</a></h2>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="layout-split section" aria-label="Main page content">
+        <div>
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Featured stream</h2>
+              <p class="section-subtitle">Cards, tabs and actions reuse the same design system.</p>
+            </div>
+            <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+              <button class="btn btn--soft btn--sm" type="button" data-toggle-skeleton>Show skeleton demo</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-toast-demo="Home CTA button clicked">Toast demo</button>
+            </div>
+          </div>
+
+          <div class="skeleton-demo" data-skeleton-demo>
+            <div class="skeleton-card"><div class="skeleton skeleton-card__media"></div><div class="skeleton skeleton-card__line"></div><div class="skeleton skeleton-card__line skeleton-card__line--w70"></div></div>
+            <div class="skeleton-card"><div class="skeleton skeleton-card__media"></div><div class="skeleton skeleton-card__line"></div><div class="skeleton skeleton-card__line skeleton-card__line--w40"></div></div>
+            <div class="skeleton-card"><div class="skeleton skeleton-card__media"></div><div class="skeleton skeleton-card__line"></div><div class="skeleton skeleton-card__line skeleton-card__line--w70"></div></div>
+          </div>
+
+          <div class="tabs" data-tabs>
+            <div class="tabs__list" role="tablist" aria-label="Homepage tabs">
+              <button class="tabs__btn" role="tab" aria-selected="true" aria-controls="tab-latest">Latest</button>
+              <button class="tabs__btn" role="tab" aria-selected="false" aria-controls="tab-esport">Esport</button>
+              <button class="tabs__btn" role="tab" aria-selected="false" aria-controls="tab-analysis">Analysis</button>
+            </div>
+
+            <div class="tabs__panel" role="tabpanel" id="tab-latest">
+              <div class="cards-grid">
+                <article class="news-card" data-search-item data-title="Football league: unexpected leader after week 5" data-category="sport" data-url="article.html">
+                  <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Football placeholder"></a>
+                  <div class="news-card__body">
+                    <div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Football</span></div>
+                    <h3 class="news-card__title"><a href="article.html">Football league: unexpected leader after week 5</a></h3>
+                    <p class="news-card__excerpt">A compact news card with hover image zoom, button transitions and bookmark action.</p>
+                    <div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn aria-pressed="false" aria-label="Bookmark">B</button><button class="icon-btn" type="button" data-like-btn aria-pressed="false" aria-label="Like">L <span data-like-count>12</span></button></div></div>
+                  </div>
+                </article>
+                <article class="news-card" data-search-item data-title="National cup bracket updated after overtime thriller" data-category="sport" data-url="article.html">
+                  <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Cup placeholder"></a>
+                  <div class="news-card__body"><div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Cup</span></div><h3 class="news-card__title"><a href="article.html">National cup bracket updated after overtime thriller</a></h3><p class="news-card__excerpt">Use these cards in homepage sections, catalogs or related-news blocks.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn aria-pressed="false" aria-label="Bookmark">B</button></div></div></div>
+                </article>
+                <article class="news-card" data-search-item data-title="Indoor finals draw published for youth teams" data-category="sport" data-url="article.html">
+                  <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Youth tournament placeholder"></a>
+                  <div class="news-card__body"><div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Youth</span></div><h3 class="news-card__title"><a href="article.html">Indoor finals draw published for youth teams</a></h3><p class="news-card__excerpt">The component keeps spacing and typography consistent across pages.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn aria-pressed="false" aria-label="Bookmark">B</button></div></div></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="tabs__panel" role="tabpanel" id="tab-esport" hidden>
+              <div class="cards-grid">
+                <article class="news-card" data-search-item data-title="CS2 coach explains timeout strategy in semifinal" data-category="esport" data-url="article.html">
+                  <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="CS2 placeholder"></a>
+                  <div class="news-card__body"><div class="news-card__tags"><span class="tag">Esport</span><span class="tag">CS2</span></div><h3 class="news-card__title"><a href="article.html">CS2 coach explains timeout strategy in semifinal</a></h3><p class="news-card__excerpt">Tabbed panels are implemented in vanilla JS and hidden via semantic `hidden`.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn aria-pressed="false">B</button><button class="icon-btn" type="button" data-like-btn aria-pressed="false">L <span data-like-count>8</span></button></div></div></div>
+                </article>
+                <article class="news-card" data-search-item data-title="Dota 2 draft trends shift after patch 7.xx" data-category="esport" data-url="article.html">
+                  <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="Dota 2 placeholder"></a>
+                  <div class="news-card__body"><div class="news-card__tags"><span class="tag">Esport</span><span class="tag">Dota 2</span></div><h3 class="news-card__title"><a href="article.html">Dota 2 draft trends shift after patch 7.xx</a></h3><p class="news-card__excerpt">Students can connect card data attributes to client-side search and sorting.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn aria-pressed="false">B</button></div></div></div>
+                </article>
+                <article class="news-card" data-search-item data-title="PUBG invitational adds tactical timeout rule" data-category="esport" data-url="article.html">
+                  <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="PUBG placeholder"></a>
+                  <div class="news-card__body"><div class="news-card__tags"><span class="tag">Esport</span><span class="tag">PUBG</span></div><h3 class="news-card__title"><a href="article.html">PUBG invitational adds tactical timeout rule</a></h3><p class="news-card__excerpt">Small interaction details improve perceived quality without frameworks.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" type="button" data-bookmark-btn aria-pressed="false">B</button></div></div></div>
+                </article>
+              </div>
+            </div>
+
+            <div class="tabs__panel" role="tabpanel" id="tab-analysis" hidden>
+              <div class="panel panel--padded">
+                <h3 style="margin-top:0;">How to use this homepage section</h3>
+                <p class="section-subtitle">This tab panel is a teaching block. Replace with editor picks, stats or a video list. Keep the same `data-tabs` structure for accessible JS tabs.</p>
+                <div class="stat-grid" style="margin-top:1rem;">
+                  <div class="stat-card"><div class="stat-card__label">Stories today</div><div class="stat-card__value">24</div></div>
+                  <div class="stat-card"><div class="stat-card__label">Live matches</div><div class="stat-card__value">7</div></div>
+                  <div class="stat-card"><div class="stat-card__label">Esport finals</div><div class="stat-card__value">3</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel panel--padded" aria-labelledby="top-day-title">
+          <div class="section-header" style="margin-bottom:.75rem;">
+            <h2 class="section-title" id="top-day-title">Top of the day</h2>
+            <a class="link" href="catalog.html">See all</a>
+          </div>
+          <ol class="top-list">
+            <li class="top-list__item"><a href="article.html"><span class="top-list__meta">Football · 14:10</span><span class="top-list__title">Manager confirms lineup rotation before away match</span></a></li>
+            <li class="top-list__item"><a href="article.html"><span class="top-list__meta">CS2 · 13:20</span><span class="top-list__title">Regional qualifier enters decisive upper-bracket rounds</span></a></li>
+            <li class="top-list__item"><a href="article.html"><span class="top-list__meta">Basketball · 12:40</span><span class="top-list__title">Cup semifinal schedule updated after overtime finish</span></a></li>
+            <li class="top-list__item"><a href="article.html"><span class="top-list__meta">Dota 2 · 10:55</span><span class="top-list__title">Patch analysis: support priorities and lane tempo changes</span></a></li>
+            <li class="top-list__item"><a href="article.html"><span class="top-list__meta">Matches · 09:30</span><span class="top-list__title">How to structure a live-score widget for a student project</span></a></li>
+          </ol>
+
+          <div class="panel panel--padded" style="margin-top:1rem; background:transparent;">
+            <h3 style="margin-top:0; font-size:1rem;">Quick actions</h3>
+            <div style="display:grid; gap:.5rem;">
+              <button class="btn btn--primary btn--sm" type="button" data-open-modal="subscribe-modal">Open subscribe modal</button>
+              <a class="btn btn--ghost btn--sm" href="404.html">Open 404 page</a>
+              <a class="btn btn--ghost btn--sm" href="500.html">Open 500 page</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="cta-banner" aria-label="Call to action">
+        <h2 class="cta-banner__title">Build your own Django news portal with this template pack</h2>
+        <p class="cta-banner__text">Start with static pages, then split into `base.html`, partials and reusable components. The CSS and JS are intentionally framework-free and heavily commented for learning.</p>
+        <div class="cta-banner__actions">
+          <a class="btn btn--primary" href="catalog.html">Open catalog page</a>
+          <a class="btn btn--ghost" href="about.html">Read adaptation notes</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Shared footer (copy this block to other pages when adapting) -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <section>
+        <h2 class="site-footer__title">Sport News</h2>
+        <p class="site-footer__text">Educational front-end template pack for sports and esports news portals. Built with semantic HTML, CSS variables and vanilla JS.</p>
+      </section>
+      <section>
+        <h2 class="site-footer__title">Pages</h2>
+        <ul class="site-footer__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="article.html">Article</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="site-footer__title">Auth & errors</h2>
+        <ul class="site-footer__list">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="404.html">404</a></li>
+          <li><a href="500.html">500</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="container copyright">2024 Sport News Template. Free educational demo.</div>
+  </footer>
+
+  <!-- Global modals / overlays -->
+  <div class="overlay" id="page-overlay"></div>
+
+  <section class="modal" id="search-modal" aria-labelledby="search-modal-title" aria-modal="true" role="dialog">
+    <div class="modal__header">
+      <h2 class="modal__title" id="search-modal-title">Quick search</h2>
+      <button class="icon-btn" type="button" data-close-modal aria-label="Close search">x</button>
+    </div>
+    <div class="form__row">
+      <label for="site-search-input">Search headlines</label>
+      <input class="input" id="site-search-input" type="search" placeholder="Type football, cs2, finals...">
+    </div>
+    <div class="search-results" id="site-search-results" style="margin-top:1rem;"></div>
+  </section>
+
+  <section class="modal" id="subscribe-modal" aria-labelledby="subscribe-modal-title" aria-modal="true" role="dialog">
+    <div class="modal__header">
+      <h2 class="modal__title" id="subscribe-modal-title">Subscribe demo</h2>
+      <button class="icon-btn" type="button" data-close-modal aria-label="Close modal">x</button>
+    </div>
+    <p class="section-subtitle">This is a front-end only modal for UI demonstration.</p>
+    <form class="form" onsubmit="event.preventDefault();">
+      <div class="form__row"><label for="subscribe-email">Email</label><input class="input" id="subscribe-email" type="email" placeholder="you@example.com"></div>
+      <button class="btn btn--primary" type="button" data-toast-demo="Subscribed (demo only)">Subscribe</button>
+    </form>
+  </section>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">^</button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

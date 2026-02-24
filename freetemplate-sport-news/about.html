@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sport News template about page with accordion and adaptation notes.">
+  <title>Sport News | About</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+</head>
+<body data-page="about">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="container site-header__inner"><a class="brand" href="index.html"><span class="brand__mark">SN</span><span>Sport News</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation"><span class="nav-toggle__lines"></span></button><div class="nav" id="site-nav"><ul class="nav__list"><li class="nav__item"><a class="nav__link" href="index.html">Home</a></li><li class="nav__item"><a class="nav__link" href="catalog.html">News</a></li><li class="nav__item"><a class="nav__link" href="teams.html">Teams</a></li><li class="nav__item"><a class="nav__link" href="tournaments.html">Tournaments</a></li><li class="nav__item"><a class="nav__link" href="matches.html">Matches</a></li><li class="nav__item"><a class="nav__link is-active" href="about.html">About</a></li></ul><div class="header-tools"><button class="icon-btn" type="button" data-open-modal="search-modal">S</button><button class="theme-switch" type="button" data-theme-toggle role="switch" aria-checked="false"><span>Theme</span><span class="theme-switch__track"><span class="theme-switch__thumb"></span></span></button></div></div></div></header>
+
+  <main id="main-content" class="page-shell">
+    <div class="container">
+      <ol class="breadcrumbs" aria-label="Breadcrumb"><li><a href="index.html">Home</a></li><li>About</li></ol>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">About this template pack</h1>
+            <p class="section-subtitle">A clean front-end starter for sports and esports news projects.</p>
+          </div>
+          <button class="btn btn--soft btn--sm" type="button" data-open-modal="subscribe-modal">Open demo modal</button>
+        </div>
+        <div class="panel panel--padded">
+          <p>This template was built as a teaching pack: semantic HTML, CSS variables, reusable cards, responsive layouts, and vanilla JavaScript interactions. Students can first study the static version, then convert it to Django templates (`base.html`, includes, `{% block %}` sections).</p>
+          <p>Branding uses <strong>Sport News</strong> intentionally so the template can be reused in class projects without project-specific names.</p>
+        </div>
+      </section>
+
+      <section class="section grid-3" aria-label="Team roles sample">
+        <article class="tile"><div class="tile__media"><img src="assets/img/team.svg" alt="Designer placeholder"></div><h2 class="tile__title">Template Author</h2><p class="tile__meta">Builds layout, styles and UI states.</p></article>
+        <article class="tile"><div class="tile__media"><img src="assets/img/team.svg" alt="Developer placeholder"></div><h2 class="tile__title">Django Integrator</h2><p class="tile__meta">Connects static pages to models, views and forms.</p></article>
+        <article class="tile"><div class="tile__media"><img src="assets/img/team.svg" alt="Content placeholder"></div><h2 class="tile__title">Content Editor</h2><p class="tile__meta">Writes headlines, checks categories and media assets.</p></article>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><h2 class="section-title">FAQ (accordion demo)</h2></div>
+        <div class="accordion" data-accordion>
+          <div class="accordion__item">
+            <button class="accordion__btn" type="button" data-accordion-btn aria-expanded="false">How do I adapt this to Django? <span class="accordion__chevron">v</span></button>
+            <div class="accordion__panel"><div class="accordion__panel-inner">Create `base.html`, move CSS/JS into `static/`, replace repeated header/footer with `{% include %}`, and render cards in `{% for item in page_obj %}` loops.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__btn" type="button" data-accordion-btn aria-expanded="false">Can I use only parts of the JS? <span class="accordion__chevron">v</span></button>
+            <div class="accordion__panel"><div class="accordion__panel-inner">Yes. Every JS module checks if matching selectors exist. Remove unused markup and the corresponding feature will simply not run.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__btn" type="button" data-accordion-btn aria-expanded="false">Why no framework? <span class="accordion__chevron">v</span></button>
+            <div class="accordion__panel"><div class="accordion__panel-inner">To keep the learning path simple: HTML/CSS/JS first, then backend integration. No build tools are required.</div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container site-footer__inner"><section><h2 class="site-footer__title">Sport News</h2><p class="site-footer__text">Educational template pack for student projects.</p></section><section><h2 class="site-footer__title">Pages</h2><ul class="site-footer__list"><li><a href="index.html">Home</a></li><li><a href="catalog.html">Catalog</a></li><li><a href="article.html">Article</a></li></ul></section><section><h2 class="site-footer__title">Examples</h2><ul class="site-footer__list"><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="404.html">404</a></li></ul></section></div><div class="container copyright">2024 Sport News Template</div></footer>
+  <div class="overlay" id="page-overlay"></div>
+  <section class="modal" id="search-modal" aria-labelledby="search-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="search-modal-title">Quick search</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><div class="form__row"><label for="site-search-input">Search headlines</label><input class="input" id="site-search-input" type="search" placeholder="Type keywords"></div><div class="search-results" id="site-search-results" style="margin-top:1rem;"></div></section>
+  <section class="modal" id="subscribe-modal" aria-labelledby="subscribe-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="subscribe-modal-title">Subscribe demo</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><p class="section-subtitle">Demo modal for UI state testing.</p><button class="btn btn--primary" type="button" data-toast-demo="Subscribed (demo only)">Subscribe</button></section>
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">^</button>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

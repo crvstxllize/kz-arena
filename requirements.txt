@@ -1,4 +1,10 @@
+asgiref==3.11.1
 Django==4.2.11
+packaging==26.0
+pillow==11.1.0
+psycopg==3.2.6
+psycopg-binary==3.2.6
+psycopg2-binary==2.9.11
 python-dotenv==1.1.1
-Pillow==11.1.0
-psycopg[binary]==3.2.6
+sqlparse==0.5.5
+typing_extensions==4.15.0

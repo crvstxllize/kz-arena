@@ -1,9 +1,7 @@
 # Project Audit — 100 points checklist
 
-Дата аудита: 2026-02-18
-
 ## A) Определение стека
-- Стек проекта: **Django (Python) + SQLite + HTML/CSS/JS + JSON API без DRF**.
+- Стек проекта: **Django (Python) + PostgreSQL + HTML/CSS/JS + JSON API без DRF**.
 - Вывод: проект **Django**, требования чеклиста применимы напрямую (с адаптацией предметной области: не библиотека, а спорт/киберспорт новости).
 
 ## B) Карта репозитория
@@ -42,7 +40,7 @@
 - Python: 3.9 (по текущему venv).
 - Зависимости: `requirements.txt`.
 - Env: `.env` на основе `.env.example`.
-- База: локально `db.sqlite3` (в `kz_arena/settings.py`).
+- База: локально **PostgreSQL** (`kz_arena_db`) через `.env`; SQLite (`db.sqlite3`) оставлен как fallback/backup в `kz_arena/settings.py`.
 - Demo-аккаунты после `bootstrap_all --seed`:
   - `demo_editor` / `DemoPass123!`
   - `demo_user_1` / `DemoPass123!`
@@ -121,12 +119,11 @@
 ## 2. Дизайн + HTML + CSS + JS
 
 ### 2.1 Дизайн на базе бесплатного интернет-шаблона
-- Статус: ❌ нет (не зафиксировано доказательство)
-- Где в коде: в репозитории нет ссылки/папки-источника шаблона
+- Статус: ✅ выполнено
+- Где в коде: `template-sport-news/` (шаблон для будущего дизайна проекта), `template-sport-news/README.md`
 - Как показать преподавателю:
-  - Сейчас показать нечего как подтверждение происхождения шаблона.
-- Минимальный план фикса:
-  - Добавить в `README.md` раздел “Template source” с URL шаблона, лицензией и перечнем ваших доработок.
+  - Открыть папку `template-sport-news/` и показать отдельные страницы (`index.html`, `catalog.html`, `article.html`).
+  - Открыть `template-sport-news/README.md` и показать список CSS/JS сценариев и инструкцию адаптации под Django.
 
 ### 2.2 HTML5/семантика главной
 - Статус: ✅ выполнено
@@ -493,10 +490,11 @@
   - `git log --oneline -n 15`.
 
 ### 9.4 PostgreSQL на проде
-- Статус: ✅ выполнено (поддержка Postgres через env + fallback SQLite)
+- Статус: ✅ выполнено (проект фактически переключен на PostgreSQL, данные перенесены; SQLite оставлен как fallback/backup)
 - Где в коде: `kz_arena/settings.py`, `.env.example`, `requirements.txt`, `README.md`
 - Как показать преподавателю:
   - Открыть `DATABASES` в `settings.py`, `DB_*` в `.env.example`, инструкции в `README.md`.
+  - В терминале показать `ENGINE` и `NAME`: `venv/bin/python manage.py shell -c "from django.conf import settings; print(settings.DATABASES['default']['ENGINE'], settings.DATABASES['default']['NAME'])"`.
 
 ### 9.5 Страница “О проекте” с авторами/ролями
 - Статус: ✅ выполнено
@@ -557,7 +555,7 @@
 | Раздел | Статус | Как показать (1 фраза) |
 |---|---|---|
 | 1 | ✅ | Открыть `settings/urls/base/README`, `pyproject.toml`, показать env/структуру и команды запуска. |
-| 2 | ⚠️ | В браузере пройти `/`, `/news/` и интерактивы; в коде показать `style.css`/`main.js`. |
+| 2 | ✅ | Показать UI/интерактивы в проекте и отдельно `template-sport-news/` (HTML/CSS/JS template pack). |
 | 3 | ✅ | Продемонстрировать регистрацию/логин/профиль/роли и доступ к dashboard. |
 | 4 | ✅ | Открыть модели + фильтры/поиск/API-статистику (`Count/annotate`). |
 | 5 | ✅ | Показать шаблоны + breadcrumbs и блок “Мои действия” в `/accounts/profile/`. |
@@ -590,4 +588,4 @@
 8. Admin (1 мин):
    - `ArticleAdmin`: `list_filter`, `actions`, `inline`.
 9. Честно озвучить gap-ы (30 сек):
-   - Шаблон-источник (п.2.1, отложено по согласованию) и домен/онлайн-доступ (п.9.1, ждете разрешение преподавателя).
+   - Домен/онлайн-доступ (п.9.1, ждете разрешение преподавателя).

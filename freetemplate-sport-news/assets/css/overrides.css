@@ -1,0 +1,18 @@
+/*
+  Optional overrides layer.
+  Students can add custom tweaks here instead of editing style.css directly.
+*/
+
+.page-home .hero-card__title {
+  max-width: 22ch;
+}
+
+.page-catalog .section-header {
+  align-items: end;
+}
+
+.page-article .article-hero__body {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0)),
+    transparent;
+}

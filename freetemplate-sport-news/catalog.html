@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sport News catalog page with filters, fake pagination and client-side search.">
+  <title>Sport News | Catalog</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+</head>
+<body data-page="catalog">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html"><span class="brand__mark" aria-hidden="true">SN</span><span>Sport News</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__lines"></span></button>
+      <div class="nav" id="site-nav">
+        <ul class="nav__list" aria-label="Main navigation">
+          <li class="nav__item"><a class="nav__link" href="index.html">Home</a></li>
+          <li class="nav__item"><a class="nav__link is-active" href="catalog.html">News</a></li>
+          <li class="nav__item"><a class="nav__link" href="#" data-dropdown-toggle>Sections <span class="chevron">v</span></a><div class="dropdown"><a href="teams.html">Teams</a><a href="tournaments.html">Tournaments</a><a href="matches.html">Matches</a></div></li>
+          <li class="nav__item"><a class="nav__link" href="about.html">About</a></li>
+          <li class="nav__item"><a class="nav__link" href="login.html">Login</a></li>
+          <li class="nav__item"><a class="nav__link" href="register.html">Register</a></li>
+        </ul>
+        <div class="header-tools"><button class="icon-btn" type="button" data-open-modal="search-modal" aria-label="Open search">S</button><button class="theme-switch" type="button" data-theme-toggle role="switch" aria-checked="false"><span>Theme</span><span class="theme-switch__track"><span class="theme-switch__thumb"></span></span></button></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-shell">
+    <div class="container">
+      <ol class="breadcrumbs" aria-label="Breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li>Catalog</li>
+      </ol>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h1 class="section-title">News catalog</h1>
+            <p class="section-subtitle">Includes client-side search, chips filter, sorting, persistence and fake pagination.</p>
+          </div>
+          <button class="btn btn--soft btn--sm" type="button" data-toast-demo="Catalog filter demo is active">Check JS demo</button>
+        </div>
+
+        <div class="panel panel--padded filters" aria-label="Catalog filters">
+          <div class="alert alert--info">
+            <div class="alert__text">This page intentionally uses fake filtering and pagination so students can later replace it with backend logic (Django query params).</div>
+            <button class="icon-btn" type="button" data-alert-close aria-label="Close notice">x</button>
+          </div>
+
+          <div class="filters__row">
+            <input class="input" type="search" placeholder="Search by title, category or kind" data-card-search aria-label="Search cards">
+            <select class="select" aria-label="Discipline filter">
+              <option>All disciplines</option>
+              <option>Football</option>
+              <option>Basketball</option>
+              <option>CS2</option>
+              <option>Dota 2</option>
+            </select>
+            <select class="select" aria-label="Region filter">
+              <option>All regions</option>
+              <option>Europe</option>
+              <option>CIS</option>
+              <option>International</option>
+            </select>
+            <select class="select" data-sort-select aria-label="Sort cards">
+              <option value="newest">Newest</option>
+              <option value="popular">Popular</option>
+              <option value="oldest">Oldest</option>
+            </select>
+            <button class="btn btn--primary" type="button" data-toast-demo="Filters applied (demo)">Apply</button>
+          </div>
+
+          <div class="chip-group" data-chip-group aria-label="Kind filter chips">
+            <button class="chip is-active" type="button" data-chip="all">All</button>
+            <button class="chip" type="button" data-chip="sport">Sport</button>
+            <button class="chip" type="button" data-chip="esport">Esport</button>
+            <button class="chip" type="button" data-chip="analysis">Analysis</button>
+            <input type="hidden" value="all" data-filter-kind>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><h2 class="section-title">All stories</h2><p class="section-subtitle">9 cards for fake pagination demo</p></div>
+
+        <div class="cards-grid" data-sort-grid>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="Football derby ends level after late equalizer" data-category="football" data-kind="sport" data-order="9" data-popularity="94">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Football placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Football</span></div><h3 class="news-card__title"><a href="article.html">Football derby ends level after late equalizer</a></h3><p class="news-card__excerpt">Demo card with sortable popularity and order values.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button" aria-label="Bookmark">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="CS2 semifinal review: timeout changed momentum" data-category="cs2" data-kind="esport" data-order="8" data-popularity="88">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="CS2 placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Esport</span><span class="tag">CS2</span></div><h3 class="news-card__title"><a href="article.html">CS2 semifinal review: timeout changed momentum</a></h3><p class="news-card__excerpt">Use `data-kind` and `data-category` for client-side filtering.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="Basketball cup schedule updated for final stage" data-category="basketball" data-kind="sport" data-order="7" data-popularity="71">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Basketball placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Basketball</span></div><h3 class="news-card__title"><a href="article.html">Basketball cup schedule updated for final stage</a></h3><p class="news-card__excerpt">Cards preserve equal spacing through a reusable component pattern.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="Patch notes impact Dota 2 lane priorities" data-category="dota2" data-kind="analysis" data-order="6" data-popularity="66">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="Dota 2 placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Analysis</span><span class="tag">Dota 2</span></div><h3 class="news-card__title"><a href="article.html">Patch notes impact Dota 2 lane priorities</a></h3><p class="news-card__excerpt">Analysis label uses the same UI with different data tags.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="Volleyball finals move to larger arena" data-category="volleyball" data-kind="sport" data-order="5" data-popularity="59">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Volleyball placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Volleyball</span></div><h3 class="news-card__title"><a href="article.html">Volleyball finals move to larger arena</a></h3><p class="news-card__excerpt">Mobile responsive grid drops to 2 or 1 column depending on width.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="PUBG teams prepare for wildcard qualifier" data-category="pubg" data-kind="esport" data-order="4" data-popularity="63">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="PUBG placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Esport</span><span class="tag">PUBG</span></div><h3 class="news-card__title"><a href="article.html">PUBG teams prepare for wildcard qualifier</a></h3><p class="news-card__excerpt">Try searching “pubg” or filtering by Esport chip.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="Training analysis: pressing triggers explained" data-category="football" data-kind="analysis" data-order="3" data-popularity="81">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Training analysis placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Analysis</span><span class="tag">Football</span></div><h3 class="news-card__title"><a href="article.html">Training analysis: pressing triggers explained</a></h3><p class="news-card__excerpt">Sorting by popularity should move this card upward.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="National youth league opens with 12 clubs" data-category="football" data-kind="sport" data-order="2" data-popularity="52">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-sport.svg" alt="Youth league placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Sport</span><span class="tag">Youth</span></div><h3 class="news-card__title"><a href="article.html">National youth league opens with 12 clubs</a></h3><p class="news-card__excerpt">Pagination is front-end only and reacts to visible filtered cards.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+          <article class="news-card" data-filter-card data-search-item data-url="article.html" data-title="Esports academy launches scouting program" data-category="academy" data-kind="esport" data-order="1" data-popularity="44">
+            <a class="news-card__media" href="article.html"><img src="assets/img/card-esport.svg" alt="Academy placeholder"></a>
+            <div class="news-card__body"><div class="news-card__tags"><span class="tag">Esport</span><span class="tag">Academy</span></div><h3 class="news-card__title"><a href="article.html">Esports academy launches scouting program</a></h3><p class="news-card__excerpt">Great starter page to connect to a Django `page_obj` later.</p><div class="news-card__footer"><a class="btn btn--primary btn--sm" href="article.html">Read</a><div class="card-actions"><button class="icon-btn" data-bookmark-btn type="button">B</button></div></div></div>
+          </article>
+        </div>
+
+        <p class="panel panel--padded" data-empty-state hidden>No stories match current filters. Try another search term or chip.</p>
+
+        <nav class="pagination" data-pagination data-per-page="6" aria-label="Catalog pagination">
+          <button class="pagination__btn" type="button" data-page-prev aria-label="Previous page">&lt;</button>
+          <button class="pagination__btn is-active" type="button" data-page="1">1</button>
+          <button class="pagination__btn" type="button" data-page="2">2</button>
+          <button class="pagination__btn" type="button" data-page="3">3</button>
+          <button class="pagination__btn" type="button" data-page-next aria-label="Next page">&gt;</button>
+        </nav>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container site-footer__inner"><section><h2 class="site-footer__title">Sport News</h2><p class="site-footer__text">Reusable catalog template with front-end-only controls for teaching.</p></section><section><h2 class="site-footer__title">Pages</h2><ul class="site-footer__list"><li><a href="index.html">Home</a></li><li><a href="catalog.html">Catalog</a></li><li><a href="article.html">Article</a></li><li><a href="teams.html">Teams</a></li></ul></section><section><h2 class="site-footer__title">More</h2><ul class="site-footer__list"><li><a href="tournaments.html">Tournaments</a></li><li><a href="matches.html">Matches</a></li><li><a href="about.html">About</a></li><li><a href="register.html">Register</a></li></ul></section></div><div class="container copyright">2024 Sport News Template. Educational use.</div></footer>
+  <div class="overlay" id="page-overlay"></div>
+  <section class="modal" id="search-modal" aria-labelledby="search-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="search-modal-title">Quick search</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><div class="form__row"><label for="site-search-input">Search headlines</label><input class="input" id="site-search-input" type="search" placeholder="Type football, cs2, finals..."></div><div class="search-results" id="site-search-results" style="margin-top:1rem;"></div></section>
+  <section class="modal" id="subscribe-modal" aria-labelledby="subscribe-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="subscribe-modal-title">Subscribe demo</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><p class="section-subtitle">Front-end modal demo.</p><button class="btn btn--primary" type="button" data-toast-demo="Subscribed (demo only)">Subscribe</button></section>
+  <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">^</button>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

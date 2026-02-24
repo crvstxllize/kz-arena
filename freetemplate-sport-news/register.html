@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sport News | Register</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+</head>
+<body data-page="register">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="container site-header__inner"><a class="brand" href="index.html"><span class="brand__mark">SN</span><span>Sport News</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__lines"></span></button><div class="nav" id="site-nav"><ul class="nav__list"><li class="nav__item"><a class="nav__link" href="index.html">Home</a></li><li class="nav__item"><a class="nav__link" href="catalog.html">News</a></li><li class="nav__item"><a class="nav__link" href="about.html">About</a></li><li class="nav__item"><a class="nav__link" href="login.html">Login</a></li><li class="nav__item"><a class="nav__link is-active" href="register.html">Register</a></li></ul><div class="header-tools"><button class="theme-switch" type="button" data-theme-toggle role="switch" aria-checked="false"><span>Theme</span><span class="theme-switch__track"><span class="theme-switch__thumb"></span></span></button></div></div></div></header>
+
+  <main id="main-content" class="page-shell auth-layout">
+    <div class="container" style="display:grid; place-items:center;">
+      <section class="auth-card" aria-labelledby="register-title">
+        <h1 class="auth-card__title" id="register-title">Create account</h1>
+        <p class="auth-card__text">Demo registration form with password strength meter and client-side validation.</p>
+
+        <form class="form" id="register-form" novalidate>
+          <p class="field-error" id="register-error" hidden></p>
+          <div class="form__row"><label for="register-name">Full name</label><input class="input" id="register-name" type="text" placeholder="Aruzhan Editor" required></div>
+          <div class="form__row"><label for="register-email">Email</label><input class="input" id="register-email" type="email" placeholder="you@sportnews.example" required></div>
+          <div class="form__row">
+            <label for="register-password">Password</label>
+            <div class="input-wrap">
+              <input class="input" id="register-password" type="password" placeholder="At least 8 characters" required>
+              <button class="icon-btn" type="button" data-password-toggle="register-password" aria-label="Show or hide password">o</button>
+            </div>
+            <div class="strength">
+              <div class="strength__bar"><div class="strength__fill" data-strength-fill></div></div>
+              <div class="strength__text" data-strength-text>Password strength: Too weak</div>
+            </div>
+          </div>
+          <div class="form__row">
+            <label for="register-password-confirm">Confirm password</label>
+            <div class="input-wrap">
+              <input class="input" id="register-password-confirm" type="password" placeholder="Repeat password" required>
+              <button class="icon-btn" type="button" data-password-toggle="register-password-confirm" aria-label="Show or hide password">o</button>
+            </div>
+          </div>
+          <div class="form__row"><label style="display:flex; gap:.5rem; align-items:center;"><input id="register-terms" type="checkbox"> I agree to the terms and privacy policy (demo).</label></div>
+          <button class="btn btn--primary" type="submit">Create account</button>
+          <a class="btn btn--ghost" href="login.html">Already have an account?</a>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container site-footer__inner"><section><h2 class="site-footer__title">Sport News</h2><p class="site-footer__text">Registration page template for future backend integration.</p></section><section><h2 class="site-footer__title">Explore</h2><ul class="site-footer__list"><li><a href="catalog.html">Catalog</a></li><li><a href="about.html">About</a></li></ul></section><section><h2 class="site-footer__title">Examples</h2><ul class="site-footer__list"><li><a href="login.html">Login</a></li><li><a href="404.html">404</a></li></ul></section></div><div class="container copyright">2024 Sport News Template</div></footer>
+  <div class="overlay" id="page-overlay"></div><section class="modal" id="search-modal" aria-labelledby="search-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="search-modal-title">Quick search</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><div class="form__row"><label for="site-search-input">Search headlines</label><input class="input" id="site-search-input" type="search"></div><div class="search-results" id="site-search-results" style="margin-top:1rem;"></div></section><section class="modal" id="subscribe-modal" aria-labelledby="subscribe-modal-title" aria-modal="true" role="dialog"><div class="modal__header"><h2 class="modal__title" id="subscribe-modal-title">Subscribe demo</h2><button class="icon-btn" type="button" data-close-modal>x</button></div><button class="btn btn--primary" type="button" data-toast-demo="Subscribed (demo only)">Subscribe</button></section><div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="true"></div><button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">^</button><script src="assets/js/main.js"></script>
+</body>
+</html>

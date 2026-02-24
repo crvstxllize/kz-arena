@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Sport news placeholder image">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101827"/>
+      <stop offset="100%" stop-color="#2e3b68"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g2)"/>
+  <rect x="52" y="58" width="180" height="34" rx="17" fill="rgba(255,41,95,.2)" stroke="rgba(255,41,95,.45)"/>
+  <text x="78" y="81" fill="#fff" font-family="Segoe UI, Arial" font-size="15" font-weight="700">SPORT</text>
+  <circle cx="615" cy="176" r="88" fill="rgba(23,210,193,.15)"/>
+  <circle cx="615" cy="176" r="62" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="12"/>
+  <path d="M126 360 L250 280 L390 320 L520 230 L690 282" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10" stroke-linecap="round"/>
+  <text x="54" y="146" fill="#fff" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Sport News Card</text>
+  <text x="54" y="188" fill="rgba(255,255,255,.72)" font-family="Segoe UI, Arial" font-size="20">Placeholder image for football / basketball content</text>
+</svg>

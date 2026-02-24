@@ -1,0 +1,17 @@
+{
+  "auth.User": 9,
+  "accounts.Profile": 9,
+  "articles.Article": 24,
+  "comments.Comment": 27,
+  "teams.Team": 31,
+  "teams.Player": 12,
+  "tournaments.Tournament": 8,
+  "tournaments.Match": 4,
+  "tournaments.MatchResult": 0,
+  "taxonomy.Category": 4,
+  "taxonomy.Tag": 22,
+  "interactions.Favorite": 15,
+  "interactions.Reaction": 23,
+  "interactions.Subscription": 5,
+  "interactions.ArticleRating": 2
+}
