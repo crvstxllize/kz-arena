@@ -7,11 +7,7 @@ def generate_unique_slug(instance, source_value, slug_field="slug", max_length=2
     unique_slug = base_slug
     counter = 2
 
-    while (
-        model_class.objects.filter(**{slug_field: unique_slug})
-        .exclude(pk=instance.pk)
-        .exists()
-    ):
+    while model_class.objects.filter(**{slug_field: unique_slug}).exclude(pk=instance.pk).exists():
         suffix = f"-{counter}"
         unique_slug = f"{base_slug[: max_length - len(suffix)]}{suffix}"
         counter += 1

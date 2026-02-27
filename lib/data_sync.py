@@ -75,7 +75,14 @@ def _merge_results():
     matches_map = {item.id: item for item in matches}
 
     fetched_at = datetime.now(timezone.utc)
-    return list(teams_map.values()), list(tournaments_map.values()), list(matches_map.values()), sorted(set(sources)), fallback, fetched_at
+    return (
+        list(teams_map.values()),
+        list(tournaments_map.values()),
+        list(matches_map.values()),
+        sorted(set(sources)),
+        fallback,
+        fetched_at,
+    )
 
 
 @transaction.atomic
@@ -93,12 +100,16 @@ def refresh_sports_data(force: bool = False):
             name=item.name,
             defaults={
                 "kind": _kind_by_discipline(item.discipline),
-                "discipline": item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else "",
+                "discipline": (
+                    item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else ""
+                ),
                 "country": item.country or "Kazakhstan",
             },
         )
         team.kind = _kind_by_discipline(item.discipline)
-        team.discipline = item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else ""
+        team.discipline = (
+            item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else ""
+        )
         team.country = item.country or "Kazakhstan"
         team.city = item.city or ""
         team.source_url = item.source_url or ""
@@ -114,14 +125,20 @@ def refresh_sports_data(force: bool = False):
             name=item.name,
             defaults={
                 "kind": _kind_by_discipline(item.discipline),
-                "discipline": item.discipline if item.discipline in dict(Tournament.DISCIPLINE_CHOICES) else "",
+                "discipline": (
+                    item.discipline
+                    if item.discipline in dict(Tournament.DISCIPLINE_CHOICES)
+                    else ""
+                ),
                 "location": item.location or "",
                 "start_date": start,
                 "end_date": end,
             },
         )
         tournament.kind = _kind_by_discipline(item.discipline)
-        tournament.discipline = item.discipline if item.discipline in dict(Tournament.DISCIPLINE_CHOICES) else ""
+        tournament.discipline = (
+            item.discipline if item.discipline in dict(Tournament.DISCIPLINE_CHOICES) else ""
+        )
         tournament.location = item.location or ""
         tournament.start_date = start
         tournament.end_date = end

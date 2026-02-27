@@ -207,6 +207,65 @@ python manage.py sync_team_logos --force
 - `PUT /api/articles/<int:pk>/`
 - `DELETE /api/articles/<int:pk>/`
 
+### Фильтры API (query params)
+
+#### `GET /api/articles/`
+
+Поддерживаемые параметры:
+- `q` — поиск по `title`, `excerpt`, `content`, `author.username`
+- `category` — slug категории
+- `tag` — slug тега
+- `kind` — тип контента (`sport` / `esport`)
+- `discipline` — дисциплина (например `football`, `cs2`, `dota2`, `pubg`)
+- `ordering` — сортировка: `new` (по умолчанию) или `popular` (по `views_count`)
+- `page` — номер страницы (число, минимум `1`)
+- `page_size` — размер страницы (число, `1..50`)
+
+Примеры:
+
+```bash
+curl "http://127.0.0.1:8000/api/articles/?q=KZ&category=kibersport&ordering=popular&page=1&page_size=5"
+```
+
+```bash
+curl "http://127.0.0.1:8000/api/articles/?kind=esport&discipline=cs2&tag=cs2"
+```
+
+#### `GET /api/teams/`
+
+Поддерживаемые параметры:
+- `kind` — тип (`sport` / `esport`)
+- `discipline` — дисциплина
+
+Пример:
+
+```bash
+curl "http://127.0.0.1:8000/api/teams/?kind=esport&discipline=cs2"
+```
+
+#### `GET /api/tournaments/`
+
+Поддерживаемые параметры:
+- `kind` — тип (`sport` / `esport`)
+- `discipline` — дисциплина
+
+Пример:
+
+```bash
+curl "http://127.0.0.1:8000/api/tournaments/?kind=sport&discipline=football"
+```
+
+#### `GET /api/search/`
+
+Поддерживаемые параметры:
+- `q` — строка поиска (минимум 2 символа)
+
+Пример:
+
+```bash
+curl "http://127.0.0.1:8000/api/search/?q=astana"
+```
+
 Примеры:
 
 ```bash

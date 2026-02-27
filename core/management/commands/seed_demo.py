@@ -103,7 +103,9 @@ class Command(BaseCommand):
 
         result = {}
         for name, description in data:
-            category, _ = Category.objects.get_or_create(name=name, defaults={"description": description})
+            category, _ = Category.objects.get_or_create(
+                name=name, defaults={"description": description}
+            )
             if category.description != description:
                 category.description = description
                 category.save(update_fields=["description"])
@@ -144,15 +146,60 @@ class Command(BaseCommand):
 
     def _seed_teams(self):
         data = [
-            {"name": "Astana Falcons", "kind": "sport", "discipline": "football", "description": "Футбольный клуб из Астаны."},
-            {"name": "Shymkent United", "kind": "sport", "discipline": "football", "description": "Команда Премьер-лиги Казахстана."},
-            {"name": "Almaty Hoopers", "kind": "sport", "discipline": "basketball", "description": "Баскетбольный клуб Алматы."},
-            {"name": "Karaganda Eagles", "kind": "sport", "discipline": "basketball", "description": "Баскетбольная команда Караганды."},
-            {"name": "Qazaq Wolves", "kind": "esport", "discipline": "cs2", "description": "Профессиональный состав по CS2."},
-            {"name": "Aktobe Rush", "kind": "esport", "discipline": "cs2", "description": "Казахстанский CS2-коллектив."},
-            {"name": "Steppe Titans", "kind": "esport", "discipline": "dota2", "description": "Dota 2 команда из Казахстана."},
-            {"name": "Nomad Fire", "kind": "esport", "discipline": "pubg", "description": "PUBG-ростер с международным опытом."},
-            {"name": "Altay Phoenix", "kind": "esport", "discipline": "pubg", "description": "PUBG-команда восточного региона."},
+            {
+                "name": "Astana Falcons",
+                "kind": "sport",
+                "discipline": "football",
+                "description": "Футбольный клуб из Астаны.",
+            },
+            {
+                "name": "Shymkent United",
+                "kind": "sport",
+                "discipline": "football",
+                "description": "Команда Премьер-лиги Казахстана.",
+            },
+            {
+                "name": "Almaty Hoopers",
+                "kind": "sport",
+                "discipline": "basketball",
+                "description": "Баскетбольный клуб Алматы.",
+            },
+            {
+                "name": "Karaganda Eagles",
+                "kind": "sport",
+                "discipline": "basketball",
+                "description": "Баскетбольная команда Караганды.",
+            },
+            {
+                "name": "Qazaq Wolves",
+                "kind": "esport",
+                "discipline": "cs2",
+                "description": "Профессиональный состав по CS2.",
+            },
+            {
+                "name": "Aktobe Rush",
+                "kind": "esport",
+                "discipline": "cs2",
+                "description": "Казахстанский CS2-коллектив.",
+            },
+            {
+                "name": "Steppe Titans",
+                "kind": "esport",
+                "discipline": "dota2",
+                "description": "Dota 2 команда из Казахстана.",
+            },
+            {
+                "name": "Nomad Fire",
+                "kind": "esport",
+                "discipline": "pubg",
+                "description": "PUBG-ростер с международным опытом.",
+            },
+            {
+                "name": "Altay Phoenix",
+                "kind": "esport",
+                "discipline": "pubg",
+                "description": "PUBG-команда восточного региона.",
+            },
         ]
 
         result = {}
@@ -236,20 +283,86 @@ class Command(BaseCommand):
                     setattr(tournament, field, payload[field])
                     changed = True
             if changed:
-                tournament.save(update_fields=["kind", "discipline", "location", "start_date", "end_date"])
+                tournament.save(
+                    update_fields=["kind", "discipline", "location", "start_date", "end_date"]
+                )
             result[item["name"]] = tournament
         return result
 
     def _seed_matches(self, tournaments, teams):
         data = [
-            ("m1", "KZ Premier Football Spring", "Astana Falcons", "Shymkent United", datetime(2026, 3, 9, 19, 0), "Тур 2", "finished"),
-            ("m2", "KZ Premier Football Spring", "Shymkent United", "Astana Falcons", datetime(2026, 3, 16, 18, 0), "Тур 3", "scheduled"),
-            ("m3", "KZ Esports League CS2", "Qazaq Wolves", "Aktobe Rush", datetime(2026, 3, 24, 19, 0), "Полуфинал", "finished"),
-            ("m4", "KZ Esports League CS2", "Aktobe Rush", "Qazaq Wolves", datetime(2026, 3, 30, 20, 0), "Финал", "live"),
-            ("m5", "Central Asia Dota Cup", "Steppe Titans", "Nomad Fire", datetime(2026, 3, 20, 17, 0), "Группы", "scheduled"),
-            ("m6", "Central Asia Dota Cup", "Nomad Fire", "Steppe Titans", datetime(2026, 3, 28, 18, 0), "Плей-офф", "scheduled"),
-            ("m7", "PUBG Continental Series", "Nomad Fire", "Altay Phoenix", datetime(2026, 3, 26, 16, 0), "Квалификация", "finished"),
-            ("m8", "PUBG Continental Series", "Altay Phoenix", "Nomad Fire", datetime(2026, 4, 2, 16, 0), "Main Stage", "scheduled"),
+            (
+                "m1",
+                "KZ Premier Football Spring",
+                "Astana Falcons",
+                "Shymkent United",
+                datetime(2026, 3, 9, 19, 0),
+                "Тур 2",
+                "finished",
+            ),
+            (
+                "m2",
+                "KZ Premier Football Spring",
+                "Shymkent United",
+                "Astana Falcons",
+                datetime(2026, 3, 16, 18, 0),
+                "Тур 3",
+                "scheduled",
+            ),
+            (
+                "m3",
+                "KZ Esports League CS2",
+                "Qazaq Wolves",
+                "Aktobe Rush",
+                datetime(2026, 3, 24, 19, 0),
+                "Полуфинал",
+                "finished",
+            ),
+            (
+                "m4",
+                "KZ Esports League CS2",
+                "Aktobe Rush",
+                "Qazaq Wolves",
+                datetime(2026, 3, 30, 20, 0),
+                "Финал",
+                "live",
+            ),
+            (
+                "m5",
+                "Central Asia Dota Cup",
+                "Steppe Titans",
+                "Nomad Fire",
+                datetime(2026, 3, 20, 17, 0),
+                "Группы",
+                "scheduled",
+            ),
+            (
+                "m6",
+                "Central Asia Dota Cup",
+                "Nomad Fire",
+                "Steppe Titans",
+                datetime(2026, 3, 28, 18, 0),
+                "Плей-офф",
+                "scheduled",
+            ),
+            (
+                "m7",
+                "PUBG Continental Series",
+                "Nomad Fire",
+                "Altay Phoenix",
+                datetime(2026, 3, 26, 16, 0),
+                "Квалификация",
+                "finished",
+            ),
+            (
+                "m8",
+                "PUBG Continental Series",
+                "Altay Phoenix",
+                "Nomad Fire",
+                datetime(2026, 4, 2, 16, 0),
+                "Main Stage",
+                "scheduled",
+            ),
         ]
 
         result = {}
@@ -378,7 +491,9 @@ class Command(BaseCommand):
             article.cover.save(file_name, ContentFile(raw), save=False)
             article.save(update_fields=["cover"])
         except Exception as exc:
-            self.stdout.write(self.style.WARNING(f"Не удалось загрузить обложку для '{article.slug}': {exc}"))
+            self.stdout.write(
+                self.style.WARNING(f"Не удалось загрузить обложку для '{article.slug}': {exc}")
+            )
 
     def _seed_comments(self, articles, users):
         templates = [

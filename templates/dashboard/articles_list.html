@@ -4,14 +4,45 @@
 <section class="section">
   <div class="section-head">
     <h1>Статьи</h1>
-    <a href="{% url 'dashboard:article_create' %}" class="button">Создать статью</a>
+    <div class="dashboard-actions">
+      {% if user.is_staff %}
+        <a href="{% url 'dashboard:user_list' %}" class="button button--secondary">Пользователи</a>
+      {% endif %}
+      <a href="{% url 'dashboard:article_create' %}" class="button">Создать статью</a>
+    </div>
   </div>
 
+  <form method="get" class="dashboard-actions" aria-label="Поиск статьи по slug">
+    <div class="search-autocomplete" data-autocomplete-root>
+      <input
+        type="search"
+        name="slug"
+        value="{{ slug_query }}"
+        placeholder="Поиск по slug / названию"
+        aria-label="Поиск статьи"
+        autocomplete="off"
+        data-autocomplete-input
+        data-search-url="{% url 'dashboard:article_search' %}"
+      >
+      <div class="search-autocomplete__panel" data-autocomplete-list hidden></div>
+    </div>
+    <button type="submit" class="button button--secondary">Найти</button>
+    {% if slug_query %}
+      <a href="{% url 'dashboard:article_list' %}" class="button button--small">Сбросить</a>
+    {% endif %}
+  </form>
+
   {% if page_obj.object_list %}
+    <form id="bulk-delete-form" method="post" action="{% url 'dashboard:article_bulk_delete' %}" class="dashboard-actions">
+      {% csrf_token %}
+      <button type="submit" class="button button--danger">Удалить выбранные</button>
+    </form>
+
     <div class="dashboard-table-wrap">
       <table class="dashboard-table">
         <thead>
           <tr>
+            <th>Выбрать</th>
             <th>Заголовок</th>
             <th>Автор</th>
             <th>Статус</th>
@@ -22,6 +53,15 @@
         <tbody>
           {% for article in page_obj.object_list %}
           <tr>
+            <td>
+              <input
+                type="checkbox"
+                name="article_ids"
+                value="{{ article.pk }}"
+                form="bulk-delete-form"
+                aria-label="Выбрать статью {{ article.title }}"
+              >
+            </td>
             <td>
               <a href="{{ article.get_absolute_url }}" target="_blank" rel="noopener">{{ article.title }}</a>
             </td>
@@ -55,11 +95,11 @@
     {% if page_obj.paginator.num_pages > 1 %}
     <nav class="pagination" aria-label="Пагинация статей dashboard">
       {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Назад</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if slug_query %}&slug={{ slug_query|urlencode }}{% endif %}" class="pagination-link">Назад</a>
       {% endif %}
       <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
       {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Вперед</a>
+        <a href="?page={{ page_obj.next_page_number }}{% if slug_query %}&slug={{ slug_query|urlencode }}{% endif %}" class="pagination-link">Вперед</a>
       {% endif %}
     </nav>
     {% endif %}

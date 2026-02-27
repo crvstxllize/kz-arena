@@ -4,9 +4,16 @@ from articles.models import Article
 
 
 def home(request):
-    published = Article.objects.filter(status=Article.STATUS_PUBLISHED).select_related("author").prefetch_related("categories", "tags")
+    published = (
+        Article.objects.filter(status=Article.STATUS_PUBLISHED)
+        .select_related("author")
+        .prefetch_related("categories", "tags")
+    )
 
-    main_featured = published.filter(is_featured=True).order_by("-published_at").first() or published.order_by("-published_at").first()
+    main_featured = (
+        published.filter(is_featured=True).order_by("-published_at").first()
+        or published.order_by("-published_at").first()
+    )
 
     top_qs = published.order_by("-views_count", "-published_at")
     if main_featured:

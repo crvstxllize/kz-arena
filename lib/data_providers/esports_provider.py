@@ -47,7 +47,11 @@ class EsportsProvider:
 
         try:
             for discipline, query, url in self.tracked_pages:
-                api = self.liq_cs_api if discipline == "cs2" else self.liq_dota_api if discipline == "dota2" else self.liq_pubg_api
+                api = (
+                    self.liq_cs_api
+                    if discipline == "cs2"
+                    else self.liq_dota_api if discipline == "dota2" else self.liq_pubg_api
+                )
                 if self._page_exists(api, query):
                     teams.append(
                         TeamEntity(
@@ -61,7 +65,11 @@ class EsportsProvider:
                     )
 
             for discipline, title, url in self.tracked_tournaments:
-                api = self.liq_cs_api if discipline == "cs2" else self.liq_dota_api if discipline == "dota2" else self.liq_pubg_api
+                api = (
+                    self.liq_cs_api
+                    if discipline == "cs2"
+                    else self.liq_dota_api if discipline == "dota2" else self.liq_pubg_api
+                )
                 if self._page_exists(api, title):
                     tournaments.append(
                         TournamentEntity(

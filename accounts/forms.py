@@ -56,7 +56,9 @@ class LoginForm(AuthenticationForm):
 class LocalizedPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(label="Текущий пароль", strip=False, widget=forms.PasswordInput)
     new_password1 = forms.CharField(label="Новый пароль", strip=False, widget=forms.PasswordInput)
-    new_password2 = forms.CharField(label="Подтверждение нового пароля", strip=False, widget=forms.PasswordInput)
+    new_password2 = forms.CharField(
+        label="Подтверждение нового пароля", strip=False, widget=forms.PasswordInput
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

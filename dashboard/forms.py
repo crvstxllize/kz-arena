@@ -15,16 +15,12 @@ def _validate_image_upload(upload, field_label):
     lower_name = file_name.lower()
     if not any(lower_name.endswith(ext) for ext in ALLOWED_IMAGE_EXTENSIONS):
         allowed = ", ".join(sorted(ext.lstrip(".") for ext in ALLOWED_IMAGE_EXTENSIONS))
-        raise forms.ValidationError(
-            f"{field_label}: допустимы только файлы {allowed.upper()}."
-        )
+        raise forms.ValidationError(f"{field_label}: допустимы только файлы {allowed.upper()}.")
 
     file_size = getattr(upload, "size", 0) or 0
     if file_size > MAX_UPLOAD_SIZE_BYTES:
         max_mb = MAX_UPLOAD_SIZE_BYTES // (1024 * 1024)
-        raise forms.ValidationError(
-            f"{field_label}: размер файла не должен превышать {max_mb} MB."
-        )
+        raise forms.ValidationError(f"{field_label}: размер файла не должен превышать {max_mb} MB.")
 
     return upload
 

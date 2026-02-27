@@ -176,9 +176,11 @@ def news_detail(request, slug):
             "primary_category": primary_category,
             "user_category_subscribed": user_category_subscribed,
             "rating_summary": {
-                "average": round(float(rating_stats["average"]), 2)
-                if rating_stats["average"] is not None
-                else None,
+                "average": (
+                    round(float(rating_stats["average"]), 2)
+                    if rating_stats["average"] is not None
+                    else None
+                ),
                 "count": rating_stats["count"] or 0,
             },
             "rating_choices": [1, 2, 3, 4, 5],
@@ -219,7 +221,9 @@ def news_search(request):
                     {
                         "title": item.title,
                         "url": item.get_absolute_url(),
-                        "published_at": item.published_at.isoformat() if item.published_at else None,
+                        "published_at": (
+                            item.published_at.isoformat() if item.published_at else None
+                        ),
                     }
                     for item in results
                 ]

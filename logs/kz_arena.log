@@ -1,0 +1,1505 @@
+2026-02-25 10:39:02,739 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:40:22,558 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:40:33,321 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 12723
+2026-02-25 10:40:34,526 [INFO] django.server: "GET /matches/ HTTP/1.1" 200 13148
+2026-02-25 10:40:34,566 [WARNING] django.request: Not Found: /media/logos/ordabasy-shymkent_prmOu1Q.jpg
+2026-02-25 10:40:34,566 [WARNING] django.request: Not Found: /media/logos/astana_VWSVmxA.jpg
+2026-02-25 10:40:34,567 [WARNING] django.server: "GET /media/logos/ordabasy-shymkent_prmOu1Q.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:34,567 [WARNING] django.server: "GET /media/logos/astana_VWSVmxA.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:34,590 [WARNING] django.request: Not Found: /media/logos/kairat-almaty_zRgegfR.jpg
+2026-02-25 10:40:34,591 [WARNING] django.request: Not Found: /media/logos/nomad-fire.jpg
+2026-02-25 10:40:34,591 [WARNING] django.server: "GET /media/logos/kairat-almaty_zRgegfR.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:34,591 [WARNING] django.server: "GET /media/logos/nomad-fire.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:34,619 [WARNING] django.request: Not Found: /media/logos/team-kazakhstan-dota2.jpg
+2026-02-25 10:40:34,619 [WARNING] django.server: "GET /media/logos/team-kazakhstan-dota2.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:34,621 [WARNING] django.request: Not Found: /media/logos/avangar.jpg
+2026-02-25 10:40:34,621 [WARNING] django.server: "GET /media/logos/avangar.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:34,622 [WARNING] django.request: Not Found: /media/logos/k23.jpg
+2026-02-25 10:40:34,622 [WARNING] django.server: "GET /media/logos/k23.jpg HTTP/1.1" 404 4816
+2026-02-25 10:40:35,169 [INFO] django.server: "GET /about/ HTTP/1.1" 200 5523
+2026-02-25 10:40:36,898 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 12723
+2026-02-25 10:43:46,181 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 10:43:46,216 [INFO] django.server: "GET / HTTP/1.1" 200 24180
+2026-02-25 10:43:47,346 [INFO] django.server: "GET /accounts/register/ HTTP/1.1" 200 7127
+2026-02-25 10:43:49,089 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 5830
+2026-02-25 10:43:50,864 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-25 10:43:50,929 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7534
+2026-02-25 10:43:53,338 [INFO] django.server: "GET /accounts/profile/edit/ HTTP/1.1" 200 6721
+2026-02-25 10:43:56,715 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:45:11,378 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:45:12,986 [INFO] django.server: "GET /about/ HTTP/1.1" 200 5523
+2026-02-25 10:45:13,373 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:45:13,768 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:45:22,323 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:45:22,385 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:45:22,390 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:45:22,391 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:45:22,391 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,392 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:45:22,395 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,396 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:45:22,398 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:45:22,401 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,402 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:45:22,407 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,415 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:45:22,416 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:45:22,416 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,417 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:45:22,417 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,418 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,422 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:45:22,422 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,423 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:45:22,423 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,424 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:45:22,425 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,440 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:45:22,441 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:45:22,441 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,441 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:22,457 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:45:22,457 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,473 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:45:22,473 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,489 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:45:22,489 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,507 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:45:22,507 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,523 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:45:22,523 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,540 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:45:22,540 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,560 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:45:22,562 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:45:22,564 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:45:22,564 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:22,577 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:45:22,577 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,014 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 21213
+2026-02-25 10:45:31,072 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:45:31,078 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:45:31,078 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,079 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:45:31,082 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:45:31,084 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:45:31,085 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:45:31,087 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,086 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,086 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,086 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:45:31,102 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:45:31,103 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:45:31,103 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,103 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,112 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:45:31,113 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:45:31,113 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:45:31,113 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:45:31,114 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,114 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,114 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,114 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,134 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:45:31,134 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,135 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:45:31,135 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,155 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:45:31,155 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:45:31,155 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,155 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,156 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:45:31,156 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,173 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:45:31,173 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,193 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:45:31,193 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,211 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:45:31,211 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,228 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:45:31,229 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,245 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:45:31,245 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,270 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:45:31,270 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,271 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:45:31,274 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:45:31,283 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:45:31,283 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:45:31,284 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,284 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,286 [WARNING] django.request: Not Found: /static/admin/img/sorting-icons.svg
+2026-02-25 10:45:31,286 [WARNING] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 404 4816
+2026-02-25 10:45:31,296 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:45:31,296 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:46:09,352 [INFO] django.server: "GET /admin/auth/group/ HTTP/1.1" 200 15471
+2026-02-25 10:46:09,422 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:46:09,429 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:46:09,429 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:46:09,430 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:46:09,431 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:46:09,431 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,431 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,433 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:46:09,437 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:46:09,440 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,440 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,448 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:46:09,448 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,452 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:46:09,452 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,454 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:46:09,454 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,461 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:46:09,461 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:46:09,461 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,462 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:46:09,462 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,462 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,480 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:46:09,480 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:46:09,481 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:46:09,481 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,500 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:46:09,501 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,516 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:46:09,517 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,532 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:46:09,532 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,547 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:46:09,547 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,561 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:46:09,561 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,583 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:46:09,583 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:46:09,585 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:46:09,585 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:46:09,588 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:46:09,588 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:46:12,172 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:46:12,238 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:46:12,243 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:46:12,243 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,244 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:46:12,246 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:46:12,246 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:46:12,246 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,246 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:46:12,249 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,249 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,254 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:46:12,260 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:46:12,261 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,265 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:46:12,265 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,271 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:46:12,272 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:46:12,272 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,272 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,272 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:46:12,273 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,273 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:46:12,273 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,290 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:46:12,291 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:46:12,291 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:46:12,291 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,311 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:46:12,311 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,330 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:46:12,331 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,347 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:46:12,347 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,363 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:46:12,363 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,378 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:46:12,378 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,393 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:46:12,393 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,418 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:46:12,418 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:46:12,419 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:46:12,420 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:46:12,422 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:46:12,422 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:48:28,469 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:48:28,572 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:48:28,577 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:48:28,577 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:48:28,578 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:48:28,578 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,579 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:48:28,579 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:48:28,581 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:48:28,583 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,584 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,584 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,597 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:48:28,598 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,599 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:48:28,600 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,602 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:48:28,602 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,608 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:48:28,608 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:48:28,609 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,609 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,610 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:48:28,613 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,630 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:48:28,630 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:48:28,630 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,630 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:48:28,648 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:48:28,648 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,662 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:48:28,662 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,677 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:48:28,677 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,693 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:48:28,693 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,722 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:48:28,722 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:48:28,725 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:48:28,726 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:48:28,739 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:48:28,739 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:48:30,852 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:48:32,841 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5474
+2026-02-25 10:48:34,090 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20498
+2026-02-25 10:48:53,990 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:50:56,107 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/accounts/views.py changed, reloading.
+2026-02-25 10:50:56,537 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:51:07,851 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5474
+2026-02-25 10:51:14,331 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:51:17,868 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 21213
+2026-02-25 10:51:17,935 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:17,936 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,938 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:17,939 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:51:17,941 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:17,943 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,947 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:51:17,947 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:51:17,947 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,955 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:17,955 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,962 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:17,963 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:17,963 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,963 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,967 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:17,967 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:17,967 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,967 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,968 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:17,968 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,972 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:17,973 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,984 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:17,984 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:17,987 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:51:17,987 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:17,988 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:17,988 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:18,004 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:18,005 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:51:18,005 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:18,005 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,022 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:18,022 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,039 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:18,039 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,056 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:18,056 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,073 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:18,073 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,091 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:18,091 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,116 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:18,116 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:18,117 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:18,118 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:18,133 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:51:18,134 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:18,135 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:51:18,135 [WARNING] django.request: Not Found: /static/admin/img/sorting-icons.svg
+2026-02-25 10:51:18,135 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:18,136 [WARNING] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:18,145 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:51:18,145 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:32,586 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:51:32,646 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:51:32,650 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:32,650 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,651 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:32,654 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:32,654 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,655 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:51:32,659 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:32,659 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:51:32,659 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,659 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,678 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:32,678 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,680 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:32,680 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:32,680 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,680 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,688 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:32,689 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:32,689 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:32,689 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,689 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,689 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,707 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:32,707 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,708 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:32,708 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:32,724 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:32,724 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,741 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:32,741 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,759 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:32,759 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,779 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:32,779 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,804 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:32,804 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:32,804 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:32,804 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:32,814 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:51:32,814 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:37,760 [INFO] django.server: "GET /admin/accounts/profile/add/ HTTP/1.1" 200 17309
+2026-02-25 10:51:37,817 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:51:37,823 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:37,823 [WARNING] django.request: Not Found: /static/admin/css/forms.css
+2026-02-25 10:51:37,824 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:37,824 [WARNING] django.server: "GET /static/admin/css/forms.css HTTP/1.1" 404 4816
+2026-02-25 10:51:37,824 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,825 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,830 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:37,831 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:37,831 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,831 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,842 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:37,843 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,848 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:37,849 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:37,849 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,849 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,850 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:37,850 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,851 [WARNING] django.request: Not Found: /static/admin/js/change_form.js
+2026-02-25 10:51:37,851 [WARNING] django.server: "GET /static/admin/js/change_form.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,852 [WARNING] django.request: Not Found: /static/admin/js/prepopulate_init.js
+2026-02-25 10:51:37,852 [WARNING] django.server: "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,857 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:37,858 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,866 [WARNING] django.request: Not Found: /static/admin/img/icon-viewlink.svg
+2026-02-25 10:51:37,866 [WARNING] django.server: "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:37,872 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:37,872 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,889 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:37,889 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,907 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:37,907 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,927 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:37,927 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,943 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:37,943 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,959 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:37,959 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,983 [WARNING] django.request: Not Found: /static/admin/img/icon-viewlink.svg
+2026-02-25 10:51:37,983 [WARNING] django.request: Not Found: /static/admin/js/prepopulate_init.js
+2026-02-25 10:51:37,983 [WARNING] django.server: "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:37,984 [WARNING] django.server: "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:37,985 [WARNING] django.request: Not Found: /static/admin/js/change_form.js
+2026-02-25 10:51:37,985 [WARNING] django.server: "GET /static/admin/js/change_form.js HTTP/1.1" 404 4816
+2026-02-25 10:51:39,413 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/accounts/admin.py changed, reloading.
+2026-02-25 10:51:39,717 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:51:47,584 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:51:47,651 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:51:47,657 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:47,657 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:47,657 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:47,658 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:51:47,658 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:47,658 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,658 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:51:47,658 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,658 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,660 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,672 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:47,673 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,684 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:47,684 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,686 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:47,688 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,689 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:47,690 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:47,690 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:47,690 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,690 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,691 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,724 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:47,724 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:51:47,725 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:47,725 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,725 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:47,725 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:47,741 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:47,741 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,757 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:47,757 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,773 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:47,774 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,790 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:47,791 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,810 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:47,811 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:47,811 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:47,811 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,468 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 24745
+2026-02-25 10:51:53,523 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:51:53,524 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:53,525 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:53,526 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,530 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,533 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:51:53,534 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:53,534 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:53,534 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:51:53,535 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,541 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,547 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:53,547 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,548 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:53,549 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,550 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:53,550 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,556 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:53,556 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:53,557 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,557 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,559 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:51:53,560 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,577 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:51:53,578 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:51:53,578 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,578 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,579 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:53,579 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,595 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:51:53,596 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:51:53,596 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,596 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,616 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:51:53,617 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,618 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:51:53,618 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,619 [WARNING] django.request: Not Found: /static/admin/img/sorting-icons.svg
+2026-02-25 10:51:53,619 [WARNING] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,636 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:51:53,636 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,652 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:51:53,652 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,670 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:51:53,670 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,688 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:51:53,688 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,714 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:51:53,714 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:51:53,715 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,715 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:51:53,732 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:51:53,733 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:51:53,733 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:51:53,733 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:52:59,632 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:52:59,665 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:52:59,667 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:52:59,671 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:52:59,678 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:52:59,678 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:52:59,679 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:52:59,680 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,679 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,680 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,679 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:52:59,688 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,694 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:52:59,695 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,695 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:52:59,695 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,742 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:52:59,742 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,745 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:52:59,747 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,752 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:52:59,754 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:52:59,754 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,756 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,773 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:52:59,774 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:52:59,774 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:52:59,774 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,788 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:52:59,788 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,809 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:52:59,809 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,826 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:52:59,826 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,840 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:52:59,840 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:52:59,859 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:52:59,859 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:52:59,860 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:52:59,860 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,002 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 24745
+2026-02-25 10:53:01,053 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:53:01,053 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:53:01,055 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,059 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:53:01,060 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:53:01,060 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:53:01,061 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,061 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,062 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:53:01,062 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,069 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:53:01,083 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:53:01,084 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:53:01,084 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,084 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,092 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:53:01,092 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:53:01,093 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:53:01,093 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,093 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,093 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:53:01,094 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,093 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,114 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:53:01,115 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:53:01,115 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:53:01,115 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:53:01,116 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,116 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:53:01,133 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:53:01,133 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:53:01,133 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,133 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:53:01,149 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:53:01,150 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,166 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:53:01,167 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,185 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:53:01,185 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,204 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:53:01,204 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,219 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:53:01,219 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,243 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:53:01,243 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:53:01,243 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:53:01,243 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:53:01,249 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:53:01,250 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:53:01,250 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:53:01,250 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:53:02,010 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:53:05,855 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:53:06,275 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/accounts/admin.py changed, reloading.
+2026-02-25 10:53:06,591 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:53:11,994 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:53:38,488 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:53:42,233 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:53:43,217 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:56:05,767 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:56:06,772 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:56:20,083 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:56:30,483 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:56:32,507 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:56:33,373 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 10:56:33,781 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 14922
+2026-02-25 10:56:41,410 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:56:41,477 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:56:41,477 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:56:41,478 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:56:41,479 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,479 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,480 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:56:41,483 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:56:41,484 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,484 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,485 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:56:41,491 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:56:41,501 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:56:41,501 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,501 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:56:41,502 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,503 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:56:41,503 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,505 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:56:41,505 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,506 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:56:41,506 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,512 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:56:41,512 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,522 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:56:41,522 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:56:41,529 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:56:41,529 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:56:41,530 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:56:41,530 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,548 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:56:41,548 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,568 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:56:41,569 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,587 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:56:41,587 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,604 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:56:41,604 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,621 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:56:41,621 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,640 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:56:41,641 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:56:41,661 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:56:41,661 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:56:41,662 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:56:41,662 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,748 [INFO] django.server: "GET /admin/articles/article/ HTTP/1.1" 200 38155
+2026-02-25 10:57:23,817 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:57:23,819 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:23,820 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,822 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:23,824 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:57:23,824 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:23,824 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,825 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:57:23,825 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,827 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:23,833 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,839 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:23,840 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:23,840 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,841 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,846 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:23,846 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,846 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:23,847 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:23,847 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,847 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,851 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:23,851 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,863 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:23,864 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:23,866 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:57:23,867 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:23,867 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:23,867 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,884 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:23,885 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,902 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:23,902 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,919 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:23,919 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,935 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:23,935 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,951 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:23,951 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,968 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:23,968 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,996 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:23,997 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:23,997 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:23,997 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:24,015 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:57:24,016 [WARNING] django.request: Not Found: /static/admin/img/sorting-icons.svg
+2026-02-25 10:57:24,017 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:57:24,017 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:24,018 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:24,018 [WARNING] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:26,940 [INFO] django.server: "GET /admin/auth/group/ HTTP/1.1" 200 15471
+2026-02-25 10:57:27,008 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:27,008 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:57:27,011 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,012 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:27,014 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,015 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:27,017 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,018 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:27,021 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,022 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:57:27,025 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:57:27,031 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:27,033 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,034 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:27,034 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,037 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:27,037 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,038 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:27,038 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,039 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:27,039 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,045 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:27,045 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,053 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:27,053 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:27,058 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:27,059 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,075 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:27,075 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,093 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:27,093 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,113 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:27,113 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,128 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:27,128 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,143 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:27,143 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,158 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:27,158 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,179 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:27,180 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:27,180 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:27,180 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:27,181 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:57:27,181 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:28,814 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 25800
+2026-02-25 10:57:28,874 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:57:28,876 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:28,877 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,880 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:28,881 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,881 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:57:28,883 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:28,884 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:57:28,884 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:28,885 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,886 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,897 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:28,898 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,899 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:28,900 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:28,900 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,900 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,907 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:28,908 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:28,908 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:28,908 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,908 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,908 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,931 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:28,932 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:57:28,932 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:28,932 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:28,933 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,933 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:28,952 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:57:28,953 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:28,953 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,953 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:28,970 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:28,971 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:28,988 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:28,988 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:29,004 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:29,005 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:29,021 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:29,021 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:29,036 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:29,037 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:29,063 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:29,064 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:29,067 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:29,068 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:29,075 [WARNING] django.request: Not Found: /static/admin/img/sorting-icons.svg
+2026-02-25 10:57:29,075 [WARNING] django.request: Not Found: /static/admin/img/icon-yes.svg
+2026-02-25 10:57:29,075 [WARNING] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:29,076 [WARNING] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:29,076 [WARNING] django.request: Not Found: /static/admin/img/icon-no.svg
+2026-02-25 10:57:29,077 [WARNING] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:29,081 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:57:29,082 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:38,013 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 18460
+2026-02-25 10:57:38,066 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:57:38,066 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:38,068 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,072 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:38,073 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:57:38,073 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:57:38,074 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,074 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:38,074 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,075 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:57:38,077 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,086 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:38,087 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,089 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:38,089 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,096 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:38,097 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,098 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:38,098 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,099 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:57:38,099 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,100 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:38,102 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,117 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:57:38,117 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:38,117 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,117 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:38,134 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:57:38,135 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:57:38,135 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:57:38,135 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,153 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:57:38,153 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,171 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:57:38,171 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,187 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:57:38,188 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,203 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:57:38,204 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,225 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:57:38,226 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:57:38,226 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:57:38,226 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:58:24,967 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/accounts/admin.py changed, reloading.
+2026-02-25 10:58:25,326 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:58:37,607 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/accounts/admin.py changed, reloading.
+2026-02-25 10:58:37,901 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:59:21,354 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 19642
+2026-02-25 10:59:21,418 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:59:21,423 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:21,423 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:59:21,424 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:59:21,424 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:21,424 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:21,424 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,424 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:59:21,424 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,425 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,425 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,437 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:21,438 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,453 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:21,453 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:21,454 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:59:21,454 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:59:21,454 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,454 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,454 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,454 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:59:21,455 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,455 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,476 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:21,476 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:59:21,476 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,476 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:21,496 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:21,496 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,515 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:21,515 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,546 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:21,546 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,565 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:59:21,565 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,582 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:59:21,582 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,604 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:59:21,605 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:59:21,606 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:59:21,606 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:21,619 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:59:21,619 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:25,435 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 19642
+2026-02-25 10:59:25,498 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:59:25,503 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:59:25,503 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:59:25,503 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:59:25,504 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:25,506 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,508 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:25,509 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:25,509 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,510 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,511 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,518 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:25,519 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,523 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:25,524 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:59:25,524 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,524 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,527 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:59:25,527 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:59:25,527 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,527 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,547 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:59:25,547 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:59:25,548 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:25,548 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,558 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:59:25,558 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:25,652 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 19642
+2026-02-25 10:59:25,691 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:59:25,691 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:25,692 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:59:25,693 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:59:25,696 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,698 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:25,700 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:25,700 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,700 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,703 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:59:25,705 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,712 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:25,713 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,715 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:25,715 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,716 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:59:25,716 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,719 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:59:25,719 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,722 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:59:25,722 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,723 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:25,723 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,741 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:59:25,741 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:25,741 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,741 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:25,758 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:25,758 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,773 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:25,773 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,791 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:25,791 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,791 [INFO] django.server: - Broken pipe from ('127.0.0.1', 57642)
+2026-02-25 10:59:25,809 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 19642
+2026-02-25 10:59:25,837 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 10:59:25,841 [WARNING] django.request: Not Found: /static/admin/css/changelists.css
+2026-02-25 10:59:25,841 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:25,842 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:25,842 [WARNING] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 404 4816
+2026-02-25 10:59:25,842 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:25,843 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,843 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,844 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:25,845 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,845 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,853 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:25,853 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,857 [WARNING] django.request: Not Found: /static/admin/js/vendor/jquery/jquery.min.js
+2026-02-25 10:59:25,857 [WARNING] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,867 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:59:25,867 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:25,869 [WARNING] django.request: Not Found: /static/admin/js/jquery.init.js
+2026-02-25 10:59:25,869 [WARNING] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,884 [WARNING] django.request: Not Found: /static/admin/js/core.js
+2026-02-25 10:59:25,884 [WARNING] django.server: "GET /static/admin/js/core.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,900 [WARNING] django.request: Not Found: /static/admin/js/admin/RelatedObjectLookups.js
+2026-02-25 10:59:25,901 [WARNING] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,915 [WARNING] django.request: Not Found: /static/admin/js/actions.js
+2026-02-25 10:59:25,915 [WARNING] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,929 [WARNING] django.request: Not Found: /static/admin/js/urlify.js
+2026-02-25 10:59:25,929 [WARNING] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,945 [WARNING] django.request: Not Found: /static/admin/js/prepopulate.js
+2026-02-25 10:59:25,945 [WARNING] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,961 [WARNING] django.request: Not Found: /static/admin/js/vendor/xregexp/xregexp.min.js
+2026-02-25 10:59:25,961 [WARNING] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,981 [WARNING] django.request: Not Found: /static/admin/img/search.svg
+2026-02-25 10:59:25,981 [WARNING] django.request: Not Found: /static/admin/js/filters.js
+2026-02-25 10:59:25,982 [WARNING] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 404 4816
+2026-02-25 10:59:25,982 [WARNING] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:25,988 [WARNING] django.request: Not Found: /static/admin/img/tooltag-add.svg
+2026-02-25 10:59:25,989 [WARNING] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 404 4816
+2026-02-25 10:59:41,114 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 10:59:42,749 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 10:59:47,025 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16509
+2026-02-25 11:00:14,109 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 25792
+2026-02-25 11:00:14,125 [INFO] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+2026-02-25 11:00:14,125 [INFO] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+2026-02-25 11:00:14,125 [INFO] django.server: "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+2026-02-25 11:00:14,125 [INFO] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+2026-02-25 11:00:14,126 [INFO] django.server: "GET /static/admin/js/vendor/jquery/jquery.min.js HTTP/1.1" 200 89795
+2026-02-25 11:00:14,140 [INFO] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+2026-02-25 11:00:14,140 [INFO] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+2026-02-25 11:00:14,140 [INFO] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+2026-02-25 11:00:14,141 [INFO] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+2026-02-25 11:00:14,142 [INFO] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.min.js HTTP/1.1" 200 125266
+2026-02-25 11:00:14,152 [INFO] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+2026-02-25 11:00:14,156 [INFO] django.server: "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+2026-02-25 11:00:14,159 [INFO] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2026-02-25 11:00:14,161 [INFO] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2026-02-25 11:00:14,162 [INFO] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2026-02-25 11:00:14,164 [INFO] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2026-02-25 11:00:14,165 [INFO] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+2026-02-25 11:00:14,170 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:00:40,490 [INFO] django.server: "GET /admin/auth/user/1/change/ HTTP/1.1" 200 36251
+2026-02-25 11:00:40,498 [INFO] django.server: "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+2026-02-25 11:00:40,503 [INFO] django.server: "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+2026-02-25 11:00:40,504 [INFO] django.server: "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15292
+2026-02-25 11:00:40,504 [INFO] django.server: "GET /static/admin/js/inlines.js HTTP/1.1" 200 15526
+2026-02-25 11:00:40,504 [INFO] django.server: "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+2026-02-25 11:00:40,504 [INFO] django.server: "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+2026-02-25 11:00:40,505 [INFO] django.server: "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+2026-02-25 11:00:40,506 [INFO] django.server: "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+2026-02-25 11:00:40,508 [INFO] django.server: "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+2026-02-25 11:00:40,536 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:00:40,563 [INFO] django.server: "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+2026-02-25 11:00:40,563 [INFO] django.server: "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+2026-02-25 11:00:40,563 [INFO] django.server: "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+2026-02-25 11:00:40,564 [INFO] django.server: "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+2026-02-25 11:00:40,564 [INFO] django.server: "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2026-02-25 11:00:44,337 [INFO] django.server: "GET /admin/auth/user/1/delete/ HTTP/1.1" 200 14278
+2026-02-25 11:00:44,358 [INFO] django.server: "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+2026-02-25 11:00:52,759 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 25792
+2026-02-25 11:00:52,804 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:00:54,556 [INFO] django.server: "GET /admin/auth/user/9/change/ HTTP/1.1" 200 36213
+2026-02-25 11:00:54,593 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:00:57,379 [INFO] django.server: "GET /admin/auth/user/9/delete/ HTTP/1.1" 200 14629
+2026-02-25 11:01:09,748 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 25792
+2026-02-25 11:01:09,793 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:01:17,083 [INFO] django.server: "GET /admin/auth/user/9/change/ HTTP/1.1" 200 36213
+2026-02-25 11:01:17,131 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:01:19,217 [INFO] django.server: "GET /admin/auth/user/9/delete/ HTTP/1.1" 200 14629
+2026-02-25 11:01:20,746 [INFO] django.server: "POST /admin/auth/user/9/delete/ HTTP/1.1" 302 0
+2026-02-25 11:01:20,793 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 25178
+2026-02-25 11:01:20,831 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:01:28,749 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 25021
+2026-02-25 11:01:28,784 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:01:30,453 [INFO] django.server: "GET / HTTP/1.1" 200 24387
+2026-02-25 11:01:32,722 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5474
+2026-02-25 11:01:34,172 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20498
+2026-02-25 11:03:32,065 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/decorators.py changed, reloading.
+2026-02-25 11:03:32,422 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 11:03:49,836 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-25 11:03:50,043 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 11:04:04,357 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/urls.py changed, reloading.
+2026-02-25 11:04:04,659 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 11:06:01,936 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:06:03,180 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:06:05,210 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 10275
+2026-02-25 11:06:05,235 [INFO] django.server: "GET /static/img/favicon.svg HTTP/1.1" 200 204
+2026-02-25 11:06:14,085 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:06:15,441 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 10275
+2026-02-25 11:06:18,260 [INFO] django.server: "POST /dashboard/users/2/toggle-ban/ HTTP/1.1" 302 0
+2026-02-25 11:06:18,300 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 10517
+2026-02-25 11:06:32,819 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 11:06:32,877 [INFO] django.server: "GET / HTTP/1.1" 200 24180
+2026-02-25 11:06:33,694 [INFO] django.server: "GET /accounts/register/ HTTP/1.1" 200 7127
+2026-02-25 11:07:06,888 [INFO] django.server: "POST /accounts/register/ HTTP/1.1" 302 0
+2026-02-25 11:07:07,137 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 6958
+2026-02-25 11:07:11,051 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 11:07:11,116 [INFO] django.server: "GET / HTTP/1.1" 200 24180
+2026-02-25 11:07:12,079 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 5830
+2026-02-25 11:07:14,976 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-25 11:07:15,023 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7534
+2026-02-25 11:07:18,879 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:07:20,142 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 11077
+2026-02-25 11:07:26,932 [INFO] django.server: "POST /dashboard/users/10/toggle-ban/ HTTP/1.1" 302 0
+2026-02-25 11:07:26,988 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 11317
+2026-02-25 11:07:29,261 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 11:07:29,310 [INFO] django.server: "GET / HTTP/1.1" 200 24180
+2026-02-25 11:07:30,736 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 5830
+2026-02-25 11:07:39,642 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6273
+2026-02-25 11:09:01,291 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6160
+2026-02-25 11:09:03,674 [INFO] django.server: "GET /about/ HTTP/1.1" 200 5096
+2026-02-25 11:09:04,155 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 5830
+2026-02-25 11:09:12,985 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-25 11:09:13,034 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7534
+2026-02-25 11:09:15,194 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:09:16,313 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:09:19,483 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 14470
+2026-02-25 11:09:26,585 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:09:29,697 [INFO] django.server: "GET /dashboard/articles/25/delete/ HTTP/1.1" 200 5796
+2026-02-25 11:09:31,542 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:09:32,612 [INFO] django.server: "GET /dashboard/articles/create/ HTTP/1.1" 200 10893
+2026-02-25 11:09:48,004 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 11:09:48,064 [INFO] django.server: "GET / HTTP/1.1" 200 24180
+2026-02-25 11:09:49,795 [INFO] django.server: "GET /accounts/register/ HTTP/1.1" 200 7127
+2026-02-25 11:10:20,172 [INFO] django.server: "POST /accounts/register/ HTTP/1.1" 302 0
+2026-02-25 11:10:20,301 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 6956
+2026-02-25 11:10:25,407 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 11:10:25,475 [INFO] django.server: "GET / HTTP/1.1" 200 24180
+2026-02-25 11:10:26,538 [INFO] django.server: "GET /accounts/register/ HTTP/1.1" 200 7127
+2026-02-25 11:10:42,527 [INFO] django.server: "POST /accounts/register/ HTTP/1.1" 200 7665
+2026-02-25 11:11:02,231 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 5830
+2026-02-25 11:11:06,218 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-25 11:11:06,263 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7534
+2026-02-25 11:11:15,386 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18122
+2026-02-25 11:11:15,408 [INFO] django.server: "GET /static/teams/logos/atyrau.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,409 [INFO] django.server: "GET /static/teams/logos/bc-astana.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,409 [INFO] django.server: "GET /static/teams/logos/aktobe.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,410 [INFO] django.server: "GET /static/teams/logos/astana.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,412 [INFO] django.server: "GET /static/teams/logos/irbis-almaty.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,414 [INFO] django.server: "GET /static/teams/logos/ordabasy-shymkent.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,415 [INFO] django.server: "GET /static/teams/logos/avangar.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,416 [INFO] django.server: "GET /static/teams/logos/kairat-almaty.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,418 [INFO] django.server: "GET /static/teams/logos/jenis.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,418 [INFO] django.server: "GET /static/teams/logos/elimai-semey.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:15,419 [INFO] django.server: "GET /static/teams/logos/jetysu-taldykorgan.jpg HTTP/1.1" 304 0
+2026-02-25 11:11:17,543 [INFO] django.server: "GET /teams/?page=2 HTTP/1.1" 200 17487
+2026-02-25 11:11:17,574 [INFO] django.server: "GET /static/teams/logos/kaisar-kyzylorda.jpg HTTP/1.1" 200 66265
+2026-02-25 11:11:17,575 [INFO] django.server: "GET /static/teams/logos/k23.jpg HTTP/1.1" 200 82142
+2026-02-25 11:11:17,578 [INFO] django.server: "GET /static/teams/logos/okzhetpes-kokshetau.jpg HTTP/1.1" 200 265089
+2026-02-25 11:11:17,580 [INFO] django.server: "GET /static/teams/logos/nomad-fire.jpg HTTP/1.1" 200 141655
+2026-02-25 11:11:17,581 [INFO] django.server: "GET /static/teams/logos/kyzylzhar-petropavl.jpg HTTP/1.1" 200 164105
+2026-02-25 11:11:17,582 [INFO] django.server: "GET /static/teams/logos/tobol.jpg HTTP/1.1" 200 68364
+2026-02-25 11:11:17,582 [INFO] django.server: "GET /static/teams/logos/team-kazakhstan-dota2.jpg HTTP/1.1" 200 99726
+2026-02-25 11:11:17,583 [INFO] django.server: "GET /static/teams/logos/ulytau.jpg HTTP/1.1" 200 61937
+2026-02-25 11:11:17,584 [INFO] django.server: "GET /static/teams/logos/turan.jpg HTTP/1.1" 200 198148
+2026-02-25 11:14:11,543 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36174
+2026-02-25 11:14:13,510 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 23999
+2026-02-25 11:14:13,582 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 196
+2026-02-25 11:14:14,109 [INFO] django.server: "GET /static/placeholders/news/football.svg HTTP/1.1" 200 724
+2026-02-25 11:14:24,644 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 12723
+2026-02-25 11:14:28,761 [INFO] django.server: "GET /tournaments/central-asia-dota-cup/ HTTP/1.1" 200 10451
+2026-02-25 11:14:42,110 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:14:43,928 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:14:45,348 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 24974
+2026-02-25 11:14:45,738 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 192
+2026-02-25 11:14:50,419 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 14470
+2026-02-25 11:15:32,861 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36174
+2026-02-25 11:15:38,248 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 24974
+2026-02-25 11:15:38,305 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 192
+2026-02-25 11:15:46,263 [INFO] django.server: "GET /news/kpl-youth-breakthrough-report/ HTTP/1.1" 200 23372
+2026-02-25 11:15:46,307 [INFO] django.server: "GET /interactions/status/?article_id=24 HTTP/1.1" 200 196
+2026-02-25 11:34:25,965 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36363
+2026-02-25 11:39:56,678 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7315
+2026-02-25 11:43:28,876 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36363
+2026-02-25 11:43:39,557 [INFO] django.server: "GET /news/?q=&kind=esport&discipline=&category=&tag=&ordering=new HTTP/1.1" 200 28724
+2026-02-25 11:44:18,168 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:44:20,855 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:44:22,320 [INFO] django.server: "GET /dashboard/articles/26/edit/ HTTP/1.1" 200 12456
+2026-02-25 11:44:46,958 [INFO] django.server: "GET / HTTP/1.1" 200 24513
+2026-02-25 11:44:48,710 [WARNING] django.request: Not Found: /фвьшт
+2026-02-25 11:44:48,710 [WARNING] django.server: "GET /%D1%84%D0%B2%D1%8C%D1%88%D1%82 HTTP/1.1" 404 3667
+2026-02-25 11:44:52,953 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-25 11:44:52,973 [INFO] django.server: "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2026-02-25 11:44:58,125 [INFO] django.server: "GET /admin/tournaments/tournament/ HTTP/1.1" 200 21061
+2026-02-25 11:44:58,175 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:46:06,374 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36363
+2026-02-25 11:46:08,435 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 25037
+2026-02-25 11:46:08,497 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 192
+2026-02-25 11:46:12,654 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 102
+2026-02-25 11:46:14,533 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 98
+2026-02-25 11:46:18,837 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36363
+2026-02-25 11:46:20,908 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 24062
+2026-02-25 11:46:20,951 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 196
+2026-02-25 11:46:24,317 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-25 11:46:55,798 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36363
+2026-02-25 11:48:46,864 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 25045
+2026-02-25 11:48:46,912 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 191
+2026-02-25 11:48:51,580 [INFO] django.server: "POST /comments/add/ HTTP/1.1" 200 628
+2026-02-25 11:49:22,858 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-25 11:49:30,964 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 191
+2026-02-25 11:49:47,263 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-25 11:49:57,434 [INFO] django.server: "GET /admin/interactions/articlerating/ HTTP/1.1" 200 17626
+2026-02-25 11:49:57,474 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:50:28,103 [INFO] django.server: "GET /admin/articles/article/ HTTP/1.1" 200 38147
+2026-02-25 11:50:28,161 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:51:04,431 [INFO] django.server: "GET /admin/articles/article/ HTTP/1.1" 200 38147
+2026-02-25 11:51:04,464 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-25 11:51:06,771 [INFO] django.server: "GET / HTTP/1.1" 200 24513
+2026-02-25 11:51:08,706 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:51:09,696 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20659
+2026-02-25 11:51:12,196 [INFO] django.server: "GET /news/kz-basketball-cup-final-four-seeded/ HTTP/1.1" 200 16656
+2026-02-25 11:51:12,316 [INFO] django.server: "GET /interactions/status/?article_id=23 HTTP/1.1" 200 196
+2026-02-25 11:51:59,842 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-25 11:52:00,220 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 11:52:57,819 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20997
+2026-02-25 11:53:25,537 [INFO] django.server: "GET /dashboard/articles/?slug=kz HTTP/1.1" 200 11038
+2026-02-25 11:53:38,303 [INFO] django.server: "GET /news/kz-basketball-cup-final-four-seeded/ HTTP/1.1" 200 16656
+2026-02-25 11:53:38,365 [INFO] django.server: "GET /interactions/status/?article_id=23 HTTP/1.1" 200 196
+2026-02-25 11:53:53,893 [INFO] django.server: "GET /news/kz-basketball-cup-final-four-seeded/ HTTP/1.1" 200 16656
+2026-02-25 11:53:53,943 [INFO] django.server: "GET /interactions/status/?article_id=23 HTTP/1.1" 200 196
+2026-02-25 11:54:08,511 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20997
+2026-02-25 11:54:12,873 [INFO] django.server: "GET /dashboard/articles/?slug=kz-bas HTTP/1.1" 200 7375
+2026-02-25 11:54:34,119 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 20997
+2026-02-25 11:54:43,186 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 25473
+2026-02-25 11:54:43,250 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 191
+2026-02-25 11:56:09,568 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-25 11:56:09,904 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 11:56:20,230 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/urls.py changed, reloading.
+2026-02-25 11:56:20,532 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 11:57:13,689 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26005
+2026-02-25 11:58:24,157 [INFO] django.server: "GET /dashboard/articles/25/delete/ HTTP/1.1" 200 5796
+2026-02-25 11:58:25,613 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26005
+2026-02-25 11:58:33,591 [INFO] django.server: "GET /dashboard/articles/23/delete/ HTTP/1.1" 200 5762
+2026-02-25 11:58:36,649 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26005
+2026-02-25 11:58:42,444 [INFO] django.server: "POST /dashboard/articles/bulk-delete/ HTTP/1.1" 302 0
+2026-02-25 11:58:42,494 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26243
+2026-02-25 11:58:48,090 [INFO] django.server: "POST /dashboard/articles/bulk-delete/ HTTP/1.1" 302 0
+2026-02-25 11:58:48,141 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26545
+2026-02-25 11:59:03,600 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 23386
+2026-02-25 11:59:03,666 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 191
+2026-02-25 11:59:06,476 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7594
+2026-02-25 11:59:07,030 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:59:18,112 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7594
+2026-02-25 11:59:19,372 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5609
+2026-02-25 11:59:20,873 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26329
+2026-02-25 11:59:21,966 [INFO] django.server: "GET /news/%D0%B4%D0%B5%D0%BC%D0%BE-%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D1%8C-%D0%B1%D0%B5%D0%B7-%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8-placeholder-test/ HTTP/1.1" 200 19861
+2026-02-25 11:59:22,025 [INFO] django.server: "GET /interactions/status/?article_id=26 HTTP/1.1" 200 196
+2026-02-25 12:02:24,190 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36363
+2026-02-25 12:05:22,865 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36443
+2026-02-25 12:06:10,930 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:06:20,872 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:06:22,736 [INFO] django.server: "GET / HTTP/1.1" 200 24593
+2026-02-25 12:06:26,131 [INFO] django.server: "GET / HTTP/1.1" 200 24593
+2026-02-25 12:06:56,595 [INFO] django.server: "GET / HTTP/1.1" 200 24593
+2026-02-25 12:09:31,230 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:09:39,564 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:09:40,910 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:10:03,285 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 23711
+2026-02-25 12:10:03,338 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 191
+2026-02-25 12:10:11,742 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:11:04,447 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:11:06,073 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:11:09,538 [INFO] django.server: "GET /about/ HTTP/1.1" 200 5848
+2026-02-25 12:12:08,671 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-02-25 12:12:09,069 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:13:04,470 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:13:05,971 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:13:30,687 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:13:42,009 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:15:59,155 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/urls.py changed, reloading.
+2026-02-25 12:15:59,514 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:17:30,192 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 12:17:32,061 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:17:32,084 [INFO] django.server: "GET /static/js/main.js HTTP/1.1" 200 20950
+2026-02-25 12:17:32,085 [INFO] django.server: "GET /static/css/style.css HTTP/1.1" 200 59465
+2026-02-25 12:17:32,114 [INFO] django.server: "GET /favicon.ico HTTP/1.1" 302 0
+2026-02-25 12:17:32,116 [INFO] django.server: "GET /static/favicon.ico?v=5 HTTP/1.1" 200 4119
+2026-02-25 12:17:32,129 [WARNING] django.request: Not Found: /apple-touch-icon-precomposed.png
+2026-02-25 12:17:32,129 [WARNING] django.server: "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3824
+2026-02-25 12:17:32,133 [WARNING] django.request: Not Found: /apple-touch-icon.png
+2026-02-25 12:17:32,133 [WARNING] django.server: "GET /apple-touch-icon.png HTTP/1.1" 404 3788
+2026-02-25 12:17:46,696 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-25 12:20:44,060 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-25 12:20:44,714 [INFO] django.server: "GET /about/ HTTP/1.1" 200 6385
+2026-02-25 12:21:50,279 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 13048
+2026-02-25 12:21:53,525 [INFO] django.server: "GET /matches/ HTTP/1.1" 200 13473
+2026-02-25 12:21:53,544 [WARNING] django.request: Not Found: /media/logos/astana_VWSVmxA.jpg
+2026-02-25 12:21:53,545 [WARNING] django.request: Not Found: /media/logos/kairat-almaty_zRgegfR.jpg
+2026-02-25 12:21:53,545 [WARNING] django.server: "GET /media/logos/astana_VWSVmxA.jpg HTTP/1.1" 404 4031
+2026-02-25 12:21:53,546 [WARNING] django.server: "GET /media/logos/kairat-almaty_zRgegfR.jpg HTTP/1.1" 404 4059
+2026-02-25 12:21:53,553 [WARNING] django.request: Not Found: /media/logos/ordabasy-shymkent_prmOu1Q.jpg
+2026-02-25 12:21:53,553 [WARNING] django.request: Not Found: /media/logos/team-kazakhstan-dota2.jpg
+2026-02-25 12:21:53,554 [WARNING] django.server: "GET /media/logos/ordabasy-shymkent_prmOu1Q.jpg HTTP/1.1" 404 4075
+2026-02-25 12:21:53,554 [WARNING] django.server: "GET /media/logos/team-kazakhstan-dota2.jpg HTTP/1.1" 404 4059
+2026-02-25 12:21:53,561 [WARNING] django.request: Not Found: /media/logos/avangar.jpg
+2026-02-25 12:21:53,561 [WARNING] django.request: Not Found: /media/logos/nomad-fire.jpg
+2026-02-25 12:21:53,562 [WARNING] django.server: "GET /media/logos/nomad-fire.jpg HTTP/1.1" 404 4015
+2026-02-25 12:21:53,562 [WARNING] django.server: "GET /media/logos/avangar.jpg HTTP/1.1" 404 4003
+2026-02-25 12:21:53,565 [WARNING] django.request: Not Found: /media/logos/k23.jpg
+2026-02-25 12:21:53,565 [WARNING] django.server: "GET /media/logos/k23.jpg HTTP/1.1" 404 3987
+2026-02-25 12:21:55,857 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 13048
+2026-02-25 12:22:02,327 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18447
+2026-02-25 12:22:02,354 [INFO] django.server: "GET /static/teams/logos/aktobe.jpg HTTP/1.1" 200 69947
+2026-02-25 12:22:02,355 [INFO] django.server: "GET /static/teams/logos/bc-astana.jpg HTTP/1.1" 200 56364
+2026-02-25 12:22:02,356 [INFO] django.server: "GET /static/teams/logos/avangar.jpg HTTP/1.1" 200 82142
+2026-02-25 12:22:02,356 [INFO] django.server: "GET /static/teams/logos/atyrau.jpg HTTP/1.1" 200 131686
+2026-02-25 12:22:02,357 [INFO] django.server: "GET /static/teams/logos/astana.jpg HTTP/1.1" 200 134429
+2026-02-25 12:22:02,357 [INFO] django.server: "GET /static/teams/logos/elimai-semey.jpg HTTP/1.1" 200 139413
+2026-02-25 12:22:02,362 [INFO] django.server: "GET /static/teams/logos/jetysu-taldykorgan.jpg HTTP/1.1" 200 64953
+2026-02-25 12:22:02,362 [INFO] django.server: "GET /static/teams/logos/irbis-almaty.jpg HTTP/1.1" 200 56364
+2026-02-25 12:22:02,363 [INFO] django.server: "GET /static/teams/logos/jenis.jpg HTTP/1.1" 200 76393
+2026-02-25 12:22:02,363 [INFO] django.server: "GET /static/teams/logos/kairat-almaty.jpg HTTP/1.1" 200 93677
+2026-02-25 12:22:02,364 [INFO] django.server: "GET /static/teams/logos/ordabasy-shymkent.jpg HTTP/1.1" 200 184536
+2026-02-25 12:22:03,454 [INFO] django.server: "GET /teams/aktobe/ HTTP/1.1" 200 15315
+2026-02-25 12:22:03,467 [INFO] django.server: "GET /static/placeholders/news/football.svg HTTP/1.1" 200 724
+2026-02-25 12:22:07,996 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18447
+2026-02-25 12:22:10,811 [INFO] django.server: "GET /teams/astana/ HTTP/1.1" 200 15315
+2026-02-25 12:22:14,234 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18447
+2026-02-25 12:22:54,141 [INFO] django.server: "GET /teams/aktobe/ HTTP/1.1" 200 15315
+2026-02-25 12:22:59,919 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18447
+2026-02-25 12:23:00,879 [INFO] django.server: "GET /teams/astana/ HTTP/1.1" 200 15315
+2026-02-25 12:23:03,278 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18447
+2026-02-25 12:24:25,061 [INFO] django.server: "GET /api/ HTTP/1.1" 200 201
+2026-02-25 12:24:31,832 [INFO] django.server: "GET /api/articles/ HTTP/1.1" 200 21725
+2026-02-25 12:24:42,084 [INFO] django.server: "GET /api/teams/ HTTP/1.1" 200 6625
+2026-02-25 12:25:09,410 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:25:10,933 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 22308
+2026-02-25 12:25:10,992 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 195
+2026-02-25 12:27:17,079 [INFO] django.server: "GET /api/ HTTP/1.1" 200 201
+2026-02-25 12:27:38,336 [INFO] django.server: "GET /api/articles HTTP/1.1" 301 0
+2026-02-25 12:28:00,644 [WARNING] django.request: Not Found: /api/news
+2026-02-25 12:28:00,644 [WARNING] django.server: "GET /api/news HTTP/1.1" 404 4935
+2026-02-25 12:30:25,081 [INFO] django.server: "GET /api/articles/?ordering=popular&page=1&page_size=1 HTTP/1.1" 200 2876
+2026-02-25 12:34:47,010 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 12:34:47,053 [INFO] django.server: "GET / HTTP/1.1" 200 24631
+2026-02-25 12:37:26,189 [WARNING] django.request: Forbidden: /api/articles/
+2026-02-25 12:37:26,191 [WARNING] django.server: "POST /api/articles/ HTTP/1.1" 403 278
+2026-02-25 12:37:49,391 [WARNING] django.request: Bad Request: /api/search/
+2026-02-25 12:37:49,392 [WARNING] django.server: "GET /api/search/?q=a HTTP/1.1" 400 381
+2026-02-25 12:52:19,959 [INFO] django.server: "GET /about/ HTTP/1.1" 200 5958
+2026-02-25 12:56:09,832 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36261
+2026-02-25 12:56:12,717 [INFO] django.server: "GET /news/kpl-spring-round-astana-shymkent-preview/ HTTP/1.1" 200 21350
+2026-02-25 12:56:15,083 [WARNING] django.request: Unauthorized: /interactions/favorite/
+2026-02-25 12:56:15,084 [WARNING] django.server: "POST /interactions/favorite/ HTTP/1.1" 401 87
+2026-02-25 12:56:15,844 [INFO] django.server: "GET /accounts/login/?next=/news/kpl-spring-round-astana-shymkent-preview/ HTTP/1.1" 200 6202
+2026-02-25 12:56:17,979 [INFO] django.server: "POST /accounts/login/?next=/news/kpl-spring-round-astana-shymkent-preview/ HTTP/1.1" 302 0
+2026-02-25 12:56:18,041 [INFO] django.server: "GET /news/kpl-spring-round-astana-shymkent-preview/ HTTP/1.1" 200 22445
+2026-02-25 12:56:18,096 [INFO] django.server: "GET /interactions/status/?article_id=15 HTTP/1.1" 200 196
+2026-02-25 12:56:20,097 [INFO] django.server: "POST /interactions/favorite/ HTTP/1.1" 200 81
+2026-02-25 12:56:27,266 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 98
+2026-02-25 12:56:29,479 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 98
+2026-02-25 12:56:30,017 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 98
+2026-02-25 12:56:37,476 [INFO] django.server: "GET /news/kpl-spring-round-astana-shymkent-preview/ HTTP/1.1" 200 22243
+2026-02-25 12:56:37,617 [INFO] django.server: "GET /interactions/status/?article_id=15 HTTP/1.1" 200 191
+2026-02-25 12:56:41,190 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-25 12:56:42,326 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-25 12:56:42,342 [INFO] django.server: "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+2026-02-25 12:56:42,342 [INFO] django.server: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+2026-02-25 12:56:42,342 [INFO] django.server: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+2026-02-25 12:56:42,343 [INFO] django.server: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+2026-02-25 12:56:42,343 [INFO] django.server: "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+2026-02-25 12:56:42,343 [INFO] django.server: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+2026-02-25 12:56:42,344 [INFO] django.server: "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+2026-02-25 12:56:42,356 [INFO] django.server: "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2026-02-25 12:56:42,356 [INFO] django.server: "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2026-02-25 12:56:42,357 [INFO] django.server: "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2026-02-25 12:57:58,489 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-25 12:57:59,450 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 12:59:12,117 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-25 12:59:12,165 [INFO] django.server: "GET / HTTP/1.1" 200 24631
+2026-02-25 12:59:14,591 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 6155
+2026-02-25 12:59:20,495 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6596
+2026-02-25 12:59:23,872 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6596
+2026-02-25 12:59:27,206 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6596
+2026-02-25 12:59:34,674 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6596
+2026-02-25 12:59:37,759 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6596
+2026-02-25 12:59:42,385 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6679
+2026-02-25 13:00:15,573 [INFO] django.server: "GET /about/ HTTP/1.1" 200 5958
+2026-02-25 13:00:17,716 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 6155
+2026-02-25 13:00:21,249 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 200 6485
+2026-02-25 13:00:30,931 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-25 13:00:31,290 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 13:00:54,808 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/urls.py changed, reloading.
+2026-02-25 13:00:55,141 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 13:01:51,010 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-25 13:01:51,343 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-25 13:02:56,433 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-25 13:02:56,487 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8443
+2026-02-25 13:02:59,518 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-25 13:03:08,590 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-25 13:03:12,397 [INFO] django.server: "GET /dashboard/articles/search/?q=sds HTTP/1.1" 200 37
+2026-02-25 13:03:23,818 [INFO] django.server: "GET /dashboard/articles/search/?q=kz HTTP/1.1" 200 1335
+2026-02-25 13:03:30,680 [INFO] django.server: "GET /dashboard/articles/22/edit/ HTTP/1.1" 200 14136
+2026-02-25 13:03:35,084 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-25 13:03:37,584 [INFO] django.server: "GET /dashboard/articles/search/?q=kz HTTP/1.1" 200 1335
+2026-02-25 13:03:38,697 [INFO] django.server: "GET /dashboard/articles/search/?q=kz HTTP/1.1" 200 1335
+2026-02-25 13:03:41,735 [INFO] django.server: "GET /dashboard/articles/search/?q=ar HTTP/1.1" 200 767
+2026-02-25 13:03:42,156 [INFO] django.server: "GET /dashboard/articles/search/?q=are HTTP/1.1" 200 494
+2026-02-25 13:03:43,756 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 14803
+2026-02-25 16:36:21,945 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-25 16:37:14,560 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-25 16:37:19,992 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 20938
+2026-02-25 16:37:22,768 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 20938
+2026-02-27 12:32:49,974 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-27 12:32:50,025 [INFO] django.server: "GET / HTTP/1.1" 200 24631
+2026-02-27 12:32:50,063 [INFO] django.server: "GET /static/css/style.css HTTP/1.1" 304 0
+2026-02-27 12:32:50,067 [INFO] django.server: "GET /static/js/main.js HTTP/1.1" 304 0
+2026-02-27 12:32:55,014 [INFO] django.server: "GET / HTTP/1.1" 200 24411
+2026-02-27 12:32:56,292 [INFO] django.server: "GET / HTTP/1.1" 200 24411
+2026-02-27 12:32:56,817 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 302 0
+2026-02-27 12:32:56,830 [INFO] django.server: "GET /accounts/login/?next=/dashboard/ HTTP/1.1" 200 6166
+2026-02-27 12:32:58,276 [INFO] django.server: "GET /admin/ HTTP/1.1" 302 0
+2026-02-27 12:32:58,277 [INFO] django.server: - Broken pipe from ('127.0.0.1', 63063)
+2026-02-27 12:32:59,006 [INFO] django.server: "GET /admin/ HTTP/1.1" 302 0
+2026-02-27 12:32:59,034 [INFO] django.server: "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4181
+2026-02-27 12:32:59,047 [INFO] django.server: "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+2026-02-27 12:32:59,048 [INFO] django.server: "GET /static/admin/css/login.css HTTP/1.1" 200 958
+2026-02-27 12:32:59,049 [INFO] django.server: "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+2026-02-27 12:32:59,049 [INFO] django.server: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+2026-02-27 12:32:59,049 [INFO] django.server: "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2026-02-27 12:32:59,050 [INFO] django.server: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+2026-02-27 12:32:59,050 [INFO] django.server: "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2026-02-27 12:33:38,957 [INFO] django.server: "GET /accounts/register/ HTTP/1.1" 200 7452
+2026-02-27 12:34:38,022 [INFO] django.server: "POST /accounts/register/ HTTP/1.1" 200 7874
+2026-02-27 12:35:27,164 [INFO] django.server: "POST /accounts/register/ HTTP/1.1" 302 0
+2026-02-27 12:35:27,243 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7285
+2026-02-27 12:35:31,940 [INFO] django.server: "GET / HTTP/1.1" 200 24763
+2026-02-27 12:35:39,318 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 22085
+2026-02-27 12:35:39,320 [INFO] django.server: "GET /static/placeholders/news/football.svg HTTP/1.1" 304 0
+2026-02-27 12:35:39,389 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 196
+2026-02-27 12:35:56,542 [INFO] django.server: "POST /comments/add/ HTTP/1.1" 200 992
+2026-02-27 12:36:10,126 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-27 12:36:10,174 [INFO] django.server: "GET / HTTP/1.1" 200 24631
+2026-02-27 12:36:11,465 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 6155
+2026-02-27 12:36:14,076 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-27 12:36:14,124 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8443
+2026-02-27 12:36:29,607 [INFO] django.server: "GET /accounts/profile/edit/ HTTP/1.1" 200 7046
+2026-02-27 12:36:36,365 [INFO] django.server: "POST /accounts/profile/edit/ HTTP/1.1" 302 0
+2026-02-27 12:36:36,416 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8441
+2026-02-27 12:36:41,860 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-27 12:36:43,778 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 22798
+2026-02-27 12:36:43,831 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 195
+2026-02-27 12:36:57,565 [INFO] django.server: "POST /comments/add/ HTTP/1.1" 200 878
+2026-02-27 12:37:18,453 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8562
+2026-02-27 12:37:21,812 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:37:23,981 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 13001
+2026-02-27 12:37:24,003 [INFO] django.server: "GET /static/img/favicon.png?v=5 HTTP/1.1" 200 826
+2026-02-27 12:37:24,005 [INFO] django.server: "GET /static/favicon.ico?v=5 HTTP/1.1" 304 0
+2026-02-27 12:37:24,005 [INFO] django.server: "GET /static/img/favicon.svg?v=5 HTTP/1.1" 200 848
+2026-02-27 12:37:55,289 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:37:56,854 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-27 12:38:08,456 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 24312
+2026-02-27 12:38:24,535 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-27 12:38:26,857 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 23267
+2026-02-27 12:38:26,906 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 195
+2026-02-27 12:38:28,607 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 12:38:31,817 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-27 12:38:36,315 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 12:38:41,231 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8562
+2026-02-27 12:38:46,820 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:38:49,310 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-27 12:38:59,816 [INFO] django.server: "GET / HTTP/1.1" 200 24838
+2026-02-27 12:39:02,763 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:39:03,624 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-27 12:39:07,885 [INFO] django.server: "GET /dashboard/articles/search/?q=%D0%92%D0%95%D0%A1%D0%95 HTTP/1.1" 200 1982
+2026-02-27 12:39:09,620 [INFO] django.server: "GET /dashboard/articles/search/?q=%D0%92%D0%B5%D1%81%D0%B5 HTTP/1.1" 200 1982
+2026-02-27 12:39:11,322 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 14803
+2026-02-27 12:39:26,922 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:39:28,167 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-27 12:39:39,448 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 12:39:49,033 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8562
+2026-02-27 12:39:50,202 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:39:52,414 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 12:39:56,760 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18455
+2026-02-27 12:39:56,760 [INFO] django.server: - Broken pipe from ('127.0.0.1', 63092)
+2026-02-27 12:40:06,732 [INFO] django.server: "GET /dashboard/articles/create/ HTTP/1.1" 200 11218
+2026-02-27 12:40:17,248 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:40:21,260 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 13001
+2026-02-27 12:40:50,776 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:40:51,718 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26961
+2026-02-27 12:40:56,838 [INFO] django.server: "GET /dashboard/articles/17/delete/ HTTP/1.1" 200 6095
+2026-02-27 12:40:59,958 [INFO] django.server: "POST /dashboard/articles/17/delete/ HTTP/1.1" 302 0
+2026-02-27 12:41:00,025 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 27061
+2026-02-27 12:41:05,456 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36729
+2026-02-27 12:41:11,927 [INFO] django.server: "GET / HTTP/1.1" 200 25023
+2026-02-27 12:41:20,259 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36729
+2026-02-27 12:41:37,432 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:41:40,486 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26848
+2026-02-27 12:41:41,705 [INFO] django.server: "GET /dashboard/articles/create/ HTTP/1.1" 200 11218
+2026-02-27 12:42:30,727 [INFO] django.server: "POST /dashboard/articles/create/ HTTP/1.1" 200 11581
+2026-02-27 12:42:42,887 [INFO] django.server: "POST /dashboard/articles/create/ HTTP/1.1" 302 0
+2026-02-27 12:42:42,935 [INFO] django.server: "GET /dashboard/articles/27/edit/ HTTP/1.1" 200 12607
+2026-02-27 12:42:46,582 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:42:48,947 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26718
+2026-02-27 12:42:51,641 [INFO] django.server: "GET / HTTP/1.1" 200 25023
+2026-02-27 12:42:54,197 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36729
+2026-02-27 12:42:57,253 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 19163
+2026-02-27 12:42:59,339 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 19163
+2026-02-27 12:43:03,064 [INFO] django.server: "GET /news/?page=1 HTTP/1.1" 200 36729
+2026-02-27 12:43:13,693 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5934
+2026-02-27 12:43:18,046 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26718
+2026-02-27 12:43:23,698 [INFO] django.server: "POST /dashboard/articles/27/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 12:43:23,749 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 26959
+2026-02-27 12:43:26,378 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35997
+2026-02-27 12:43:31,078 [INFO] django.server: "GET /static/placeholders/news/basketball.svg HTTP/1.1" 200 729
+2026-02-27 12:43:42,081 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 21077

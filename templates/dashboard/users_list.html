@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h1>Пользователи</h1>
+      <p class="muted">Модерация обычных пользователей (не администраторы и не редакторы).</p>
+    </div>
+    <a href="{% url 'dashboard:article_list' %}" class="button button--secondary">К статьям</a>
+  </div>
+
+  <div class="dashboard-metrics">
+    <article class="metric-card">
+      <h2>Активные</h2>
+      <p>{{ active_count }}</p>
+    </article>
+    <article class="metric-card">
+      <h2>Забаненные</h2>
+      <p>{{ banned_count }}</p>
+    </article>
+    <article class="metric-card">
+      <h2>Всего обычных</h2>
+      <p>{{ page_obj.paginator.count }}</p>
+    </article>
+  </div>
+
+  {% if page_obj.object_list %}
+    <div class="dashboard-table-wrap">
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Логин</th>
+            <th>Email</th>
+            <th>Имя</th>
+            <th>Статус</th>
+            <th>Дата регистрации</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in page_obj.object_list %}
+          <tr>
+            <td>{{ item.username }}</td>
+            <td>{{ item.email|default:"-" }}</td>
+            <td>
+              {% if item.first_name or item.last_name %}
+                {{ item.first_name }} {{ item.last_name }}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+            <td>
+              {% if item.is_active %}
+                <span class="news-pill">Активен</span>
+              {% else %}
+                <span class="news-pill">Забанен</span>
+              {% endif %}
+            </td>
+            <td>{{ item.date_joined|date:"d.m.Y H:i" }}</td>
+            <td class="dashboard-actions">
+              <form method="post" action="{% url 'dashboard:user_toggle_ban' item.pk %}">
+                {% csrf_token %}
+                {% if item.is_active %}
+                  <button type="submit" class="button button--small button--danger">Забанить</button>
+                {% else %}
+                  <button type="submit" class="button button--small button--secondary">Разбанить</button>
+                {% endif %}
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="Пагинация пользователей dashboard">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Назад</a>
+      {% endif %}
+      <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Вперед</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  {% else %}
+    <p class="muted">Обычные пользователи не найдены.</p>
+  {% endif %}
+</section>
+{% endblock %}

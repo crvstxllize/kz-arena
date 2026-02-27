@@ -87,7 +87,9 @@ def _resolve_taxonomy(payload):
     tags = None
 
     if "category_slugs" in payload:
-        category_slugs = [str(slug).strip() for slug in payload.get("category_slugs", []) if str(slug).strip()]
+        category_slugs = [
+            str(slug).strip() for slug in payload.get("category_slugs", []) if str(slug).strip()
+        ]
         categories = list(Category.objects.filter(slug__in=category_slugs))
         found = {c.slug for c in categories}
         missing = [slug for slug in category_slugs if slug not in found]
@@ -95,7 +97,9 @@ def _resolve_taxonomy(payload):
             details["missing_category_slugs"] = missing
 
     if "tag_slugs" in payload:
-        tag_slugs = [str(slug).strip() for slug in payload.get("tag_slugs", []) if str(slug).strip()]
+        tag_slugs = [
+            str(slug).strip() for slug in payload.get("tag_slugs", []) if str(slug).strip()
+        ]
         tags = list(Tag.objects.filter(slug__in=tag_slugs))
         found = {t.slug for t in tags}
         missing = [slug for slug in tag_slugs if slug not in found]
@@ -442,8 +446,7 @@ def global_search(request):
             "articles": [{"title": article.title, "slug": article.slug} for article in articles],
             "teams": [{"name": team.name, "slug": team.slug} for team in teams],
             "tournaments": [
-                {"name": tournament.name, "slug": tournament.slug}
-                for tournament in tournaments
+                {"name": tournament.name, "slug": tournament.slug} for tournament in tournaments
             ],
         }
     )

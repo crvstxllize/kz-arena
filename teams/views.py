@@ -1,5 +1,5 @@
-﻿from django.db.models import Q
-from django.core.paginator import Paginator
+﻿from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
 
 from articles.models import Article

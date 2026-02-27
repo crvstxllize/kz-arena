@@ -1,10 +1,13 @@
 import gzip
 import json
+from typing import Any, Dict, Optional
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
-from typing import Optional, Dict, Any
 
-def fetch_json(url: str, params: Optional[Dict[str, Any]] = None, user_agent: str = "KZArenaData/1.0"):
+
+def fetch_json(
+    url: str, params: Optional[Dict[str, Any]] = None, user_agent: str = "KZArenaData/1.0"
+):
     target = url
     if params:
         target = f"{url}?{urlencode(params)}"

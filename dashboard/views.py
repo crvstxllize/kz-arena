@@ -1,13 +1,17 @@
 ﻿from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from articles.models import Article
 
-from .decorators import editor_required
+from .decorators import editor_required, staff_required
 from .forms import DashboardArticleForm, MediaAssetForm
 
 
@@ -20,6 +24,14 @@ def _get_dashboard_articles_queryset(user):
 
 def _check_article_permissions(user, article):
     return user.is_staff or article.author_id == user.id
+
+
+def _get_moderatable_users_queryset():
+    return (
+        User.objects.exclude(Q(is_superuser=True) | Q(is_staff=True) | Q(groups__name="Editors"))
+        .order_by("username")
+        .distinct()
+    )
 
 
 @login_required
@@ -46,6 +58,9 @@ def dashboard_index(request):
 @editor_required
 def article_list(request):
     queryset = _get_dashboard_articles_queryset(request.user).order_by("-updated_at")
+    slug_query = request.GET.get("slug", "").strip()
+    if slug_query:
+        queryset = queryset.filter(Q(slug__icontains=slug_query) | Q(title__icontains=slug_query))
     paginator = Paginator(queryset, 12)
     page_obj = paginator.get_page(request.GET.get("page"))
 
@@ -55,12 +70,42 @@ def article_list(request):
         {
             "page_title": "Управление статьями",
             "page_obj": page_obj,
+            "slug_query": slug_query,
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": "dashboard:index"},
                 {"label": "Статьи", "url": None},
             ],
         },
+    )
+
+
+@login_required
+@editor_required
+def article_search(request):
+    q = request.GET.get("q", "").strip()
+    if len(q) < 2:
+        return JsonResponse({"ok": True, "data": {"results": []}})
+
+    items = (
+        _get_dashboard_articles_queryset(request.user)
+        .filter(Q(title__icontains=q) | Q(slug__icontains=q))
+        .order_by("-updated_at")[:5]
+    )
+
+    return JsonResponse(
+        {
+            "ok": True,
+            "data": {
+                "results": [
+                    {
+                        "title": f"{article.title} ({article.slug})",
+                        "url": reverse("dashboard:article_edit", args=[article.pk]),
+                    }
+                    for article in items
+                ]
+            },
+        }
     )
 
 
@@ -184,6 +229,42 @@ def article_delete(request, pk):
 @login_required
 @editor_required
 @require_POST
+def article_bulk_delete(request):
+    raw_ids = request.POST.getlist("article_ids")
+    article_ids = []
+    for raw_id in raw_ids:
+        try:
+            article_ids.append(int(raw_id))
+        except (TypeError, ValueError):
+            continue
+
+    unique_ids = sorted(set(article_ids))
+    if not unique_ids:
+        messages.warning(request, "Выберите хотя бы одну статью.")
+        return redirect("dashboard:article_list")
+
+    queryset = _get_dashboard_articles_queryset(request.user).filter(pk__in=unique_ids)
+    deleted_articles_count = queryset.count()
+
+    if not deleted_articles_count:
+        messages.warning(request, "Нет доступных статей для удаления.")
+        return redirect("dashboard:article_list")
+
+    queryset.delete()
+
+    skipped_count = len(unique_ids) - deleted_articles_count
+    messages.success(request, f"Удалено статей: {deleted_articles_count}.")
+    if skipped_count > 0:
+        messages.warning(
+            request,
+            f"Пропущено статей (нет доступа или не найдены): {skipped_count}.",
+        )
+    return redirect("dashboard:article_list")
+
+
+@login_required
+@editor_required
+@require_POST
 def article_toggle_status(request, pk):
     article = get_object_or_404(Article, pk=pk)
 
@@ -204,3 +285,43 @@ def article_toggle_status(request, pk):
     article.save(update_fields=["status", "published_at", "updated_at"])
     messages.success(request, message_text)
     return redirect("dashboard:article_list")
+
+
+@login_required
+@staff_required
+def user_list(request):
+    queryset = _get_moderatable_users_queryset()
+    paginator = Paginator(queryset, 20)
+    page_obj = paginator.get_page(request.GET.get("page"))
+
+    return render(
+        request,
+        "dashboard/users_list.html",
+        {
+            "page_title": "Модерация пользователей",
+            "page_obj": page_obj,
+            "active_count": queryset.filter(is_active=True).count(),
+            "banned_count": queryset.filter(is_active=False).count(),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Пользователи", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@staff_required
+@require_POST
+def user_toggle_ban(request, pk):
+    target_user = get_object_or_404(_get_moderatable_users_queryset(), pk=pk)
+    target_user.is_active = not target_user.is_active
+    target_user.save(update_fields=["is_active"])
+
+    if target_user.is_active:
+        messages.success(request, f"Пользователь {target_user.username} разбанен.")
+    else:
+        messages.success(request, f"Пользователь {target_user.username} забанен.")
+
+    return redirect("dashboard:user_list")

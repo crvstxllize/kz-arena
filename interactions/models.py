@@ -137,7 +137,9 @@ class ArticleRating(models.Model):
     class Meta:
         ordering = ("-updated_at",)
         constraints = [
-            models.UniqueConstraint(fields=["article", "user"], name="unique_article_rating_per_user")
+            models.UniqueConstraint(
+                fields=["article", "user"], name="unique_article_rating_per_user"
+            )
         ]
 
     def __str__(self):

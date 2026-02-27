@@ -150,7 +150,7 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
@@ -182,6 +182,9 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = _env_bool("SECURE_SSL_REDIRECT", False)
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG" if DEBUG else "INFO").upper()
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+LOG_FILE = LOG_DIR / "kz_arena.log"
 
 LOGGING = {
     "version": 1,
@@ -196,14 +199,20 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "standard",
         },
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": str(LOG_FILE),
+            "formatter": "standard",
+            "encoding": "utf-8",
+        },
     },
     "root": {
-        "handlers": ["console"],
+        "handlers": ["console", "file"],
         "level": LOG_LEVEL,
     },
     "loggers": {
         "django": {
-            "handlers": ["console"],
+            "handlers": ["console", "file"],
             "level": "INFO",
             "propagate": False,
         },

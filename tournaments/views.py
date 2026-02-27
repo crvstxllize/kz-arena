@@ -12,7 +12,11 @@ from .models import Match, Tournament
 
 def tournament_list(request):
     data_meta = refresh_sports_data()
-    queryset = Tournament.objects.prefetch_related("matches").exclude(source_url="").order_by("-start_date")
+    queryset = (
+        Tournament.objects.prefetch_related("matches")
+        .exclude(source_url="")
+        .order_by("-start_date")
+    )
 
     kind = request.GET.get("kind", "").strip()
     discipline = request.GET.get("discipline", "").strip()
@@ -56,10 +60,7 @@ def tournament_detail(request, slug):
     data_meta = refresh_sports_data()
     tournament = get_object_or_404(Tournament, slug=slug)
 
-    matches = (
-        tournament.matches.select_related("team_a", "team_b", "result")
-        .order_by("datetime")
-    )
+    matches = tournament.matches.select_related("team_a", "team_b", "result").order_by("datetime")
 
     related_articles = (
         Article.objects.filter(
@@ -96,7 +97,8 @@ def match_list(request):
     data_meta = refresh_sports_data()
     now = timezone.now()
     queryset = (
-        Match.objects.filter(datetime__gte=now).exclude(source_url="")
+        Match.objects.filter(datetime__gte=now)
+        .exclude(source_url="")
         .select_related("team_a", "team_b", "tournament", "result")
         .order_by("datetime")
     )
