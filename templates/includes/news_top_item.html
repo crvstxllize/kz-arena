@@ -2,7 +2,7 @@
   <a href="{{ item.get_absolute_url }}" class="top-list__link" aria-label="Открыть материал: {{ item.title }}">
     <span class="top-list__meta">
       {% if item.discipline %}{{ item.get_discipline_display }} · {% endif %}
-      {% if item.published_at %}{{ item.published_at|date:"d.m H:i" }}{% endif %}
+      {% if item.publication_date_for_display %}{{ item.publication_date_for_display|date:"d.m H:i" }}{% endif %}
     </span>
     <span class="top-list__title">{{ item.title }}</span>
   </a>

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load user_display %}
 
 {% block content %}
 <section class="section">
   <div class="section-head">
     <div>
       <h1>Пользователи</h1>
-      <p class="muted">Модерация обычных пользователей (не администраторы и не редакторы).</p>
+      <p class="muted">Модерация пользователей: бан/разбан, назначение роли и удаление.</p>
     </div>
     <a href="{% url 'dashboard:article_list' %}" class="button button--secondary">К статьям</a>
   </div>
@@ -20,10 +21,12 @@
       <p>{{ banned_count }}</p>
     </article>
     <article class="metric-card">
-      <h2>Всего обычных</h2>
-      <p>{{ page_obj.paginator.count }}</p>
+      <h2>Всего пользователей</h2>
+      <p>{{ total_users_count }}</p>
     </article>
   </div>
+
+  {% include "includes/dashboard_search_bar.html" with action_url=request.path query_value=query placeholder="Поиск: логин, email, display name, имя/фамилия" aria_label="Поиск пользователя" input_aria_label="Поиск пользователя" reset_url=reset_url extra_class="dash-search--users" %}
 
   {% if page_obj.object_list %}
     <div class="dashboard-table-wrap">
@@ -32,7 +35,8 @@
           <tr>
             <th>Логин</th>
             <th>Email</th>
-            <th>Имя</th>
+            <th>Отображаемое имя</th>
+            <th>Роль</th>
             <th>Статус</th>
             <th>Дата регистрации</th>
             <th>Действия</th>
@@ -43,13 +47,8 @@
           <tr>
             <td>{{ item.username }}</td>
             <td>{{ item.email|default:"-" }}</td>
-            <td>
-              {% if item.first_name or item.last_name %}
-                {{ item.first_name }} {{ item.last_name }}
-              {% else %}
-                -
-              {% endif %}
-            </td>
+            <td>{{ item|public_name }}</td>
+            <td>{{ item.role_label }}</td>
             <td>
               {% if item.is_active %}
                 <span class="news-pill">Активен</span>
@@ -58,15 +57,38 @@
               {% endif %}
             </td>
             <td>{{ item.date_joined|date:"d.m.Y H:i" }}</td>
-            <td class="dashboard-actions">
-              <form method="post" action="{% url 'dashboard:user_toggle_ban' item.pk %}">
-                {% csrf_token %}
-                {% if item.is_active %}
-                  <button type="submit" class="button button--small button--danger">Забанить</button>
-                {% else %}
-                  <button type="submit" class="button button--small button--secondary">Разбанить</button>
-                {% endif %}
-              </form>
+            <td class="dashboard-actions dash-row-actions">
+              {% if item.pk == user.pk %}
+                <span class="muted">Недоступно для текущего пользователя</span>
+              {% else %}
+                <form method="post" action="{% url 'dashboard:user_set_role' item.pk %}" class="dashboard-actions dash-inline-form">
+                  {% csrf_token %}
+                  <select name="role" class="auth-input dash-select-role" aria-label="Роль пользователя {{ item.username }}">
+                    {% for role_value, role_label in role_choices %}
+                      <option value="{{ role_value }}" {% if item.role_key == role_value %}selected{% endif %}>{{ role_label }}</option>
+                    {% endfor %}
+                  </select>
+                  <button type="submit" class="button button--small button--secondary dash-btn dash-btn--row dash-btn--toggle">Сохранить</button>
+                </form>
+
+                <form method="post" action="{% url 'dashboard:user_toggle_ban' item.pk %}">
+                  {% csrf_token %}
+                  {% if item.is_active %}
+                    <button type="submit" class="button button--small button--danger dash-btn dash-btn--row">Забанить</button>
+                  {% else %}
+                    <button type="submit" class="button button--small button--secondary dash-btn dash-btn--row dash-btn--toggle">Разбанить</button>
+                  {% endif %}
+                </form>
+
+                <form method="post" action="{% url 'dashboard:user_delete' item.pk %}">
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    class="button button--small button--danger dash-btn dash-btn--row dash-btn--delete"
+                    onclick="return confirm('Удалить пользователя {{ item.username }}? Действие необратимо.');"
+                  >Удалить</button>
+                </form>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
@@ -77,16 +99,16 @@
     {% if page_obj.paginator.num_pages > 1 %}
     <nav class="pagination" aria-label="Пагинация пользователей dashboard">
       {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">Назад</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}" class="pagination-link">Назад</a>
       {% endif %}
       <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
       {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">Вперед</a>
+        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}" class="pagination-link">Вперед</a>
       {% endif %}
     </nav>
     {% endif %}
   {% else %}
-    <p class="muted">Обычные пользователи не найдены.</p>
+    <p class="muted">Пользователи не найдены.</p>
   {% endif %}
 </section>
 {% endblock %}

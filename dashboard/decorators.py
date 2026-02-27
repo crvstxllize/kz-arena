@@ -2,11 +2,13 @@
 
 from django.core.exceptions import PermissionDenied
 
+from accounts.roles import can_edit_articles, can_manage_users
+
 
 def editor_required(view_func):
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
-        if request.user.is_staff or request.user.groups.filter(name="Editors").exists():
+        if can_edit_articles(request.user):
             return view_func(request, *args, **kwargs)
         raise PermissionDenied("У вас нет доступа к dashboard.")
 
@@ -16,7 +18,7 @@ def editor_required(view_func):
 def staff_required(view_func):
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
-        if request.user.is_staff or request.user.is_superuser:
+        if can_manage_users(request.user):
             return view_func(request, *args, **kwargs)
         raise PermissionDenied("Доступ только для администратора.")
 

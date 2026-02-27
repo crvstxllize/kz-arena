@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="section dashboard-summary">
-  <h1>Dashboard редактора</h1>
+  <h1>Dashboard</h1>
   <p>Управление публикациями KZ Arena.</p>
 
   <div class="dashboard-metrics">
@@ -22,7 +22,7 @@
 
   <p>
     <a href="{% url 'dashboard:article_list' %}" class="button">Перейти к статьям</a>
-    {% if user.is_staff %}
+    {% if can_manage_users %}
       <a href="{% url 'dashboard:user_list' %}" class="button button--secondary">Модерация пользователей</a>
     {% endif %}
   </p>

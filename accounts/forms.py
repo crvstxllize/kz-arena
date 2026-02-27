@@ -1,8 +1,12 @@
-﻿from django import forms
+﻿import re
+
+from django import forms
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 
 from .models import Profile
+
+DISPLAY_NAME_RE = re.compile(r"^[\w ._-]+$")
 
 
 def _apply_base_input_attrs(field, *, autocomplete=None):
@@ -14,6 +18,11 @@ def _apply_base_input_attrs(field, *, autocomplete=None):
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email", required=True)
+    display_name = forms.CharField(
+        label="Отображаемое имя",
+        required=False,
+        max_length=30,
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -22,10 +31,13 @@ class RegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["username"].label = "Логин"
+        self.fields["email"].label = "Email"
         self.fields["password1"].label = "Пароль"
         self.fields["password2"].label = "Подтверждение пароля"
+        self.order_fields(["username", "email", "display_name", "password1", "password2"])
         _apply_base_input_attrs(self.fields["username"], autocomplete="username")
         _apply_base_input_attrs(self.fields["email"], autocomplete="email")
+        _apply_base_input_attrs(self.fields["display_name"], autocomplete="nickname")
         _apply_base_input_attrs(self.fields["password1"], autocomplete="new-password")
         _apply_base_input_attrs(self.fields["password2"], autocomplete="new-password")
 
@@ -35,11 +47,29 @@ class RegisterForm(UserCreationForm):
             raise forms.ValidationError("Пользователь с таким email уже существует.")
         return email
 
+    def clean_display_name(self):
+        display_name = (self.cleaned_data.get("display_name") or "").strip()
+        if not display_name:
+            return ""
+
+        if not 2 <= len(display_name) <= 30:
+            raise forms.ValidationError("Отображаемое имя должно быть длиной от 2 до 30 символов.")
+
+        if not DISPLAY_NAME_RE.fullmatch(display_name):
+            raise forms.ValidationError(
+                "Разрешены только буквы, цифры, пробел, а также символы . _ -"
+            )
+
+        return display_name
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
+            profile, _ = Profile.objects.get_or_create(user=user)
+            profile.display_name = self.cleaned_data.get("display_name", "")
+            profile.save(update_fields=["display_name"])
         return user
 
 

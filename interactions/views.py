@@ -75,21 +75,28 @@ def react_view(request):
 
     article = get_object_or_404(Article, pk=article_id, status=Article.STATUS_PUBLISHED)
 
-    reaction, created = Reaction.objects.get_or_create(
-        article=article,
-        user=request.user,
-        defaults={"type": reaction_type},
-    )
+    reaction = Reaction.objects.filter(article=article, user=request.user).first()
+    action = "set"
+    reaction_value = reaction_type
 
-    if not created and reaction.type != reaction_type:
+    if reaction and reaction.type == reaction_type:
+        reaction.delete()
+        reaction_value = None
+        action = "removed"
+    elif reaction and reaction.type != reaction_type:
         reaction.type = reaction_type
         reaction.save(update_fields=["type"])
+        action = "switched"
+    else:
+        Reaction.objects.create(article=article, user=request.user, type=reaction_type)
+        action = "set"
 
     counts = _reaction_counts(article.pk)
     return _json_ok(
         {
             "article_id": article.pk,
-            "reaction": reaction.type,
+            "reaction": reaction_value,
+            "action": action,
             "counts": counts,
         }
     )
@@ -173,19 +180,31 @@ def rate_view(request):
         return _json_error("Оценка должна быть в диапазоне 1..5")
 
     article = get_object_or_404(Article, pk=article_id, status=Article.STATUS_PUBLISHED)
-    rating, created = ArticleRating.objects.get_or_create(
-        article=article,
-        user=request.user,
-        defaults={"value": rating_value},
-    )
-    if not created and rating.value != rating_value:
+    rating = ArticleRating.objects.filter(article=article, user=request.user).first()
+    action = "set"
+    user_rating = rating_value
+
+    if rating and rating.value == rating_value:
+        rating.delete()
+        user_rating = None
+        action = "removed"
+    elif rating and rating.value != rating_value:
         rating.value = rating_value
         rating.save(update_fields=["value", "updated_at"])
+        action = "updated"
+    else:
+        ArticleRating.objects.create(
+            article=article,
+            user=request.user,
+            value=rating_value,
+        )
+        action = "set"
 
     return _json_ok(
         {
             "article_id": article.pk,
-            "user_rating": rating.value,
+            "user_rating": user_rating,
+            "action": action,
             "rating": _rating_stats(article.pk),
         }
     )

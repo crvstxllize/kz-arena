@@ -16,8 +16,8 @@
       <span class="news-pill">{{ item.get_kind_display }}</span>
       {% if item.discipline %}<span class="news-pill">{{ item.get_discipline_display }}</span>{% endif %}
       {% if item.is_featured %}<span class="news-pill news-pill--urgent">Главное</span>{% endif %}
-      {% if item.published_at %}
-        <time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"d.m.Y H:i" }}</time>
+      {% if item.publication_date_for_display %}
+        <time datetime="{{ item.publication_date_for_display|date:'c' }}">{{ item.publication_date_for_display|date:"d.m.Y H:i" }}</time>
       {% endif %}
     </div>
 

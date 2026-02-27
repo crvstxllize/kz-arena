@@ -1,37 +1,117 @@
 ﻿from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.db import transaction
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
+from accounts.models import Profile
+from accounts.roles import (
+    can_edit_articles,
+    can_manage_users,
+    get_role_key,
+    get_role_label,
+    set_user_role,
+)
 from articles.models import Article
+from comments.models import Comment, CommentReport
+from interactions.models import ArticleRating, Favorite, Reaction, Subscription
 
 from .decorators import editor_required, staff_required
 from .forms import DashboardArticleForm, MediaAssetForm
 
+DELETED_USERNAME = "deleted_user"
+DELETED_DISPLAY_NAME = "Удалённый пользователь"
+ROLE_CHOICES = (
+    ("user", "Пользователь"),
+    ("editor", "Редактор"),
+    ("admin", "Администратор"),
+)
+
 
 def _get_dashboard_articles_queryset(user):
     queryset = Article.objects.select_related("author").prefetch_related("categories", "tags")
-    if user.is_staff:
+    if can_edit_articles(user):
         return queryset
     return queryset.filter(author=user)
 
 
 def _check_article_permissions(user, article):
-    return user.is_staff or article.author_id == user.id
+    return can_edit_articles(user) or article.author_id == user.id
 
 
 def _get_moderatable_users_queryset():
     return (
-        User.objects.exclude(Q(is_superuser=True) | Q(is_staff=True) | Q(groups__name="Editors"))
+        User.objects.exclude(is_superuser=True)
+        .exclude(username=DELETED_USERNAME)
+        .select_related("profile")
         .order_by("username")
         .distinct()
     )
+
+
+def _get_or_create_deleted_user():
+    deleted_user, created = User.objects.get_or_create(
+        username=DELETED_USERNAME,
+        defaults={
+            "email": "",
+            "first_name": "Deleted",
+            "last_name": "User",
+            "is_active": False,
+            "is_staff": False,
+            "is_superuser": False,
+        },
+    )
+
+    if created:
+        deleted_user.set_unusable_password()
+        deleted_user.save(update_fields=["password"])
+
+    changed_fields = []
+    if deleted_user.is_active:
+        deleted_user.is_active = False
+        changed_fields.append("is_active")
+    if deleted_user.is_staff:
+        deleted_user.is_staff = False
+        changed_fields.append("is_staff")
+    if deleted_user.is_superuser:
+        deleted_user.is_superuser = False
+        changed_fields.append("is_superuser")
+    if changed_fields:
+        deleted_user.save(update_fields=changed_fields)
+
+    deleted_user.groups.clear()
+    profile, _ = Profile.objects.get_or_create(user=deleted_user)
+    if profile.display_name != DELETED_DISPLAY_NAME:
+        profile.display_name = DELETED_DISPLAY_NAME
+        profile.save(update_fields=["display_name"])
+
+    return deleted_user
+
+
+def _delete_user_safely(target_user):
+    with transaction.atomic():
+        deleted_user = _get_or_create_deleted_user()
+        if target_user.pk == deleted_user.pk:
+            raise ValueError("Системного пользователя deleted_user удалять нельзя.")
+
+        Article.objects.filter(author=target_user).update(author=deleted_user)
+        Comment.objects.filter(user=target_user).update(user=deleted_user)
+        CommentReport.objects.filter(user=target_user).update(user=deleted_user)
+
+        # These models have unique constraints by (entity, user), so we remove them.
+        Reaction.objects.filter(user=target_user).delete()
+        Favorite.objects.filter(user=target_user).delete()
+        Subscription.objects.filter(user=target_user).delete()
+        ArticleRating.objects.filter(user=target_user).delete()
+
+        target_user.groups.clear()
+        target_user.delete()
 
 
 @login_required
@@ -46,6 +126,7 @@ def dashboard_index(request):
             "total_articles": articles_qs.count(),
             "published_articles": articles_qs.filter(status=Article.STATUS_PUBLISHED).count(),
             "draft_articles": articles_qs.filter(status=Article.STATUS_DRAFT).count(),
+            "can_manage_users": can_manage_users(request.user),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": None},
@@ -57,10 +138,10 @@ def dashboard_index(request):
 @login_required
 @editor_required
 def article_list(request):
-    queryset = _get_dashboard_articles_queryset(request.user).order_by("-updated_at")
-    slug_query = request.GET.get("slug", "").strip()
-    if slug_query:
-        queryset = queryset.filter(Q(slug__icontains=slug_query) | Q(title__icontains=slug_query))
+    queryset = _get_dashboard_articles_queryset(request.user).order_by("-created_at", "-id")
+    query = (request.GET.get("q") or request.GET.get("slug") or "").strip()
+    if query:
+        queryset = queryset.filter(Q(slug__icontains=query) | Q(title__icontains=query))
     paginator = Paginator(queryset, 12)
     page_obj = paginator.get_page(request.GET.get("page"))
 
@@ -70,7 +151,10 @@ def article_list(request):
         {
             "page_title": "Управление статьями",
             "page_obj": page_obj,
-            "slug_query": slug_query,
+            "query": query,
+            "search_url": reverse("dashboard:article_search"),
+            "reset_url": reverse("dashboard:article_list"),
+            "can_manage_users": can_manage_users(request.user),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": "dashboard:index"},
@@ -90,7 +174,7 @@ def article_search(request):
     items = (
         _get_dashboard_articles_queryset(request.user)
         .filter(Q(title__icontains=q) | Q(slug__icontains=q))
-        .order_by("-updated_at")[:5]
+        .order_by("-created_at", "-id")[:5]
     )
 
     return JsonResponse(
@@ -120,6 +204,10 @@ def article_create(request):
             article.status = Article.STATUS_DRAFT
             article.save()
             form.save_m2m()
+            if article.is_featured:
+                Article.objects.filter(is_featured=True).exclude(pk=article.pk).update(
+                    is_featured=False
+                )
             messages.success(request, "Статья создана в статусе черновика.")
             return redirect("dashboard:article_edit", pk=article.pk)
         messages.error(request, "Исправьте ошибки в форме.")
@@ -168,7 +256,11 @@ def article_edit(request, pk):
         form = DashboardArticleForm(request.POST, request.FILES, instance=article)
         asset_form = MediaAssetForm()
         if form.is_valid():
-            form.save()
+            updated_article = form.save()
+            if updated_article.is_featured:
+                Article.objects.filter(is_featured=True).exclude(pk=updated_article.pk).update(
+                    is_featured=False
+                )
             messages.success(request, "Изменения сохранены.")
             return redirect("dashboard:article_edit", pk=article.pk)
         messages.error(request, "Исправьте ошибки в форме.")
@@ -275,8 +367,7 @@ def article_toggle_status(request, pk):
 
     if article.status == Article.STATUS_DRAFT:
         article.status = Article.STATUS_PUBLISHED
-        if not article.published_at:
-            article.published_at = timezone.now()
+        article.published_at = timezone.now()
         message_text = "Статья опубликована."
     else:
         article.status = Article.STATUS_DRAFT
@@ -290,9 +381,24 @@ def article_toggle_status(request, pk):
 @login_required
 @staff_required
 def user_list(request):
-    queryset = _get_moderatable_users_queryset()
-    paginator = Paginator(queryset, 20)
+    base_queryset = _get_moderatable_users_queryset()
+    query = request.GET.get("q", "").strip()
+
+    filtered_queryset = base_queryset
+    if query:
+        filtered_queryset = filtered_queryset.filter(
+            Q(username__icontains=query)
+            | Q(email__icontains=query)
+            | Q(first_name__icontains=query)
+            | Q(last_name__icontains=query)
+            | Q(profile__display_name__icontains=query)
+        )
+
+    paginator = Paginator(filtered_queryset.distinct(), 20)
     page_obj = paginator.get_page(request.GET.get("page"))
+    for user_item in page_obj.object_list:
+        user_item.role_key = get_role_key(user_item)
+        user_item.role_label = get_role_label(user_item)
 
     return render(
         request,
@@ -300,8 +406,12 @@ def user_list(request):
         {
             "page_title": "Модерация пользователей",
             "page_obj": page_obj,
-            "active_count": queryset.filter(is_active=True).count(),
-            "banned_count": queryset.filter(is_active=False).count(),
+            "query": query,
+            "reset_url": reverse("dashboard:user_list"),
+            "active_count": base_queryset.filter(is_active=True).count(),
+            "banned_count": base_queryset.filter(is_active=False).count(),
+            "total_users_count": base_queryset.count(),
+            "role_choices": ROLE_CHOICES,
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": "dashboard:index"},
@@ -316,6 +426,10 @@ def user_list(request):
 @require_POST
 def user_toggle_ban(request, pk):
     target_user = get_object_or_404(_get_moderatable_users_queryset(), pk=pk)
+    if target_user.pk == request.user.pk:
+        messages.error(request, "Нельзя забанить или разбанить самого себя.")
+        return redirect("dashboard:user_list")
+
     target_user.is_active = not target_user.is_active
     target_user.save(update_fields=["is_active"])
 
@@ -324,4 +438,44 @@ def user_toggle_ban(request, pk):
     else:
         messages.success(request, f"Пользователь {target_user.username} забанен.")
 
+    return redirect("dashboard:user_list")
+
+
+@login_required
+@staff_required
+@require_POST
+def user_set_role(request, pk):
+    target_user = get_object_or_404(_get_moderatable_users_queryset(), pk=pk)
+    if target_user.pk == request.user.pk:
+        messages.error(request, "Нельзя менять роль самому себе.")
+        return redirect("dashboard:user_list")
+
+    role = (request.POST.get("role") or "").strip()
+    if role not in {item[0] for item in ROLE_CHOICES}:
+        messages.error(request, "Неизвестная роль.")
+        return redirect("dashboard:user_list")
+
+    old_role = get_role_label(target_user)
+    set_user_role(target_user, role)
+    messages.success(request, f"Роль пользователя {target_user.username}: {old_role} -> {get_role_label(target_user)}.")
+    return redirect("dashboard:user_list")
+
+
+@login_required
+@staff_required
+@require_POST
+def user_delete(request, pk):
+    target_user = get_object_or_404(_get_moderatable_users_queryset(), pk=pk)
+    if target_user.pk == request.user.pk:
+        messages.error(request, "Нельзя удалить самого себя.")
+        return redirect("dashboard:user_list")
+
+    try:
+        username = target_user.username
+        _delete_user_safely(target_user)
+    except ValueError as exc:
+        messages.error(request, str(exc))
+        return redirect("dashboard:user_list")
+
+    messages.success(request, f"Пользователь {username} удален. Связанные данные обработаны безопасно.")
     return redirect("dashboard:user_list")

@@ -29,7 +29,7 @@
       root.setAttribute("data-theme", theme);
     })();
   </script>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=13">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к контенту</a>
@@ -44,6 +44,6 @@
   <button id="back-to-top" class="back-to-top" type="button" aria-label="Прокрутить вверх">Наверх</button>
   {% include "includes/footer.html" %}
   {% include "includes/toasts.html" %}
-  <script src="{% static 'js/main.js' %}" defer></script>
+  <script src="{% static 'js/main.js' %}?v=7" defer></script>
 </body>
 </html>

@@ -4,21 +4,35 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from comments.models import Comment
+from core.utils import get_public_name
 from interactions.models import ArticleRating, Favorite, Reaction, Subscription
 from taxonomy.models import Category, Tag
 
 from .models import Article
 
+PUBLIC_NEWS_ORDERING = ("-published_at", "-created_at", "-id")
+PUBLIC_POPULAR_ORDERING = ("-views_count", "-published_at", "-created_at", "-id")
+TOP_NEWS_ORDERING = ("-likes_count", "-published_at", "-created_at", "-id")
+
 
 def _base_published_queryset():
     return (
         Article.objects.filter(status=Article.STATUS_PUBLISHED)
-        .select_related("author")
+        .select_related("author", "author__profile")
         .prefetch_related("categories", "tags")
     )
 
 
+def _normalize_published_timestamps():
+    Article.sanitize_published_timestamps()
+
+
+def _order_public_news(queryset):
+    return queryset.order_by(*PUBLIC_NEWS_ORDERING)
+
+
 def news_list(request):
+    _normalize_published_timestamps()
     queryset = _base_published_queryset()
 
     q = request.GET.get("q", "").strip()
@@ -50,22 +64,28 @@ def news_list(request):
         queryset = queryset.filter(tags__slug=tag_slug)
 
     if ordering == "popular":
-        queryset = queryset.order_by("-views_count", "-published_at", "-id")
+        queryset = queryset.order_by(*PUBLIC_POPULAR_ORDERING)
     else:
         ordering = "new"
-        queryset = queryset.order_by("-published_at", "-id")
+        queryset = _order_public_news(queryset)
 
     queryset = queryset.distinct()
 
     featured = (
-        _base_published_queryset().filter(is_featured=True).order_by("-published_at").first()
-        or _base_published_queryset().order_by("-published_at").first()
+        _order_public_news(_base_published_queryset().filter(is_featured=True)).first()
+        or _order_public_news(_base_published_queryset()).first()
     )
 
-    top_items_qs = _base_published_queryset().order_by("-views_count", "-published_at")
-    if featured:
-        top_items_qs = top_items_qs.exclude(pk=featured.pk)
-    top_items = list(top_items_qs[:5])
+    top_items = list(
+        _base_published_queryset()
+        .annotate(
+            likes_count=Count(
+                "reactions",
+                filter=Q(reactions__type=Reaction.TYPE_LIKE),
+            )
+        )
+        .order_by(*TOP_NEWS_ORDERING)[:6]
+    )
 
     paginator = Paginator(queryset, 9)
     page_obj = paginator.get_page(request.GET.get("page"))
@@ -105,6 +125,7 @@ def news_list(request):
 
 
 def news_detail(request, slug):
+    _normalize_published_timestamps()
     article = get_object_or_404(
         _base_published_queryset(),
         slug=slug,
@@ -122,7 +143,7 @@ def news_detail(request, slug):
     elif article.categories.exists():
         related = related.filter(categories__in=article.categories.all())
 
-    related_items = related.distinct().order_by("-published_at")[:4]
+    related_items = _order_public_news(related.distinct())[:4]
 
     reaction_counts = Reaction.objects.filter(article=article).aggregate(
         likes=Count("id", filter=Q(type=Reaction.TYPE_LIKE)),
@@ -153,7 +174,10 @@ def news_detail(request, slug):
                 category=primary_category,
             ).exists()
 
-    comments = Comment.objects.filter(article=article, is_approved=True).select_related("user")
+    comments = (
+        Comment.objects.filter(article=article, is_approved=True)
+        .select_related("user", "user__profile")
+    )
     rating_stats = ArticleRating.objects.filter(article=article).aggregate(
         average=Avg("value"),
         count=Count("id"),
@@ -186,6 +210,7 @@ def news_detail(request, slug):
             "rating_choices": [1, 2, 3, 4, 5],
             "comments": comments,
             "comments_count": comments.count(),
+            "article_author_name": get_public_name(article.author),
             "page_title": article.title,
             "page_description": article.excerpt or article.title,
             "breadcrumbs": [
@@ -198,6 +223,7 @@ def news_detail(request, slug):
 
 
 def news_search(request):
+    _normalize_published_timestamps()
     q = request.GET.get("q", "").strip()
     if not q:
         return JsonResponse({"ok": True, "data": {"results": []}})
@@ -210,7 +236,7 @@ def news_search(request):
             | Q(content__icontains=q)
             | Q(author__username__icontains=q)
         )
-        .order_by("-published_at")[:5]
+        .order_by(*PUBLIC_NEWS_ORDERING)[:5]
     )
 
     return JsonResponse(

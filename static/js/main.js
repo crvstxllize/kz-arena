@@ -401,7 +401,7 @@ function initNewsDetailInteractions() {
         setReactionState(payload.data.reaction);
         likeCountEl.textContent = payload.data.counts.likes;
         dislikeCountEl.textContent = payload.data.counts.dislikes;
-        showToast("Реакция сохранена", "success");
+        showToast(payload.data.action === "removed" ? "Реакция убрана" : "Реакция сохранена", "success");
       } catch (_error) {
         // handled in fetchJSON
       }
@@ -473,7 +473,7 @@ function initNewsDetailInteractions() {
         if (ratingCountEl && typeof rating.count === "number") {
           ratingCountEl.textContent = String(rating.count);
         }
-        showToast("Оценка сохранена", "success");
+        showToast(payload.data?.action === "removed" ? "Оценка снята" : "Оценка сохранена", "success");
       } catch (_error) {
         // handled in fetchJSON
       }
@@ -488,6 +488,8 @@ function initNewsDetailInteractions() {
           setReactionState("like");
         } else if (data.disliked) {
           setReactionState("dislike");
+        } else {
+          setReactionState(null);
         }
         if (typeof data.counts?.likes === "number") {
           likeCountEl.textContent = data.counts.likes;
@@ -501,6 +503,8 @@ function initNewsDetailInteractions() {
         }
         if (typeof data.user_rating === "number") {
           setRatingState(data.user_rating);
+        } else {
+          setRatingState(null);
         }
         if (ratingAverageEl && data.rating) {
           ratingAverageEl.textContent =
@@ -706,5 +710,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.showToast = showToast;
-
 

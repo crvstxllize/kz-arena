@@ -19,8 +19,8 @@
     <p class="news-detail__meta">
       <span class="news-pill">{{ article.get_kind_display }}</span>
       {% if article.discipline %}<span class="news-pill">{{ article.get_discipline_display }}</span>{% endif %}
-      <span>{{ article.published_at|date:"d.m.Y H:i" }}</span>
-      <span>Автор: {{ article.author.username }}</span>
+      <span>{{ article.publication_date_for_display|date:"d.m.Y H:i" }}</span>
+      <span>Автор: {{ article_author_name }}</span>
       <span>Просмотры: {{ article.views_count }}</span>
     </p>
     <h1>{{ article.title }}</h1>

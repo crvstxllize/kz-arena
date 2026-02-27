@@ -420,6 +420,7 @@ class Command(BaseCommand):
             published_at = datetime.fromisoformat(item["publishedAt"])
             if timezone.is_naive(published_at):
                 published_at = timezone.make_aware(published_at)
+            published_at = Article.normalize_publication_datetime(published_at)
 
             article, _ = Article.objects.get_or_create(
                 slug=item["slug"],
@@ -465,7 +466,7 @@ class Command(BaseCommand):
             self._attach_cover(article, item.get("image"))
             result.append(article)
 
-        result.sort(key=lambda x: x.published_at or timezone.now(), reverse=True)
+        result.sort(key=lambda x: x.publication_date_for_display, reverse=True)
         return result
 
     def _attach_cover(self, article, image_url):

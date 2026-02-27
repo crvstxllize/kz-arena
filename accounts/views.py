@@ -11,6 +11,7 @@ from django.views.decorators.http import require_http_methods, require_POST
 from comments.models import Comment
 from interactions.models import Favorite
 
+from .roles import get_role_label
 from .forms import (
     LocalizedPasswordChangeForm,
     LoginForm,
@@ -34,11 +35,7 @@ def _safe_redirect_url(request, raw_url):
 
 
 def _resolve_role(user):
-    if user.is_superuser or user.is_staff:
-        return "Администратор"
-    if user.groups.filter(name="Editors").exists():
-        return "Редактор"
-    return "Пользователь"
+    return get_role_label(user)
 
 
 def _client_ip(request):

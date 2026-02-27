@@ -1,4 +1,5 @@
 ﻿{% extends "base.html" %}
+{% load user_display %}
 
 {% block content %}
 <section class="auth-shell auth-shell--profile">
@@ -19,7 +20,7 @@
       </div>
       <div class="profile-item">
         <dt>Отображаемое имя</dt>
-        <dd>{{ profile.display_name|default:"Не указано" }}</dd>
+        <dd>{{ user|public_name }}</dd>
       </div>
       <div class="profile-item">
         <dt>Имя</dt>

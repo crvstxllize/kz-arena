@@ -1,0 +1,22 @@
+<form method="get" action="{{ action_url }}" class="dash-search{% if extra_class %} {{ extra_class }}{% endif %}" aria-label="{{ aria_label|default:'Поиск' }}">
+  <div class="search-autocomplete dash-search__field" data-autocomplete-root>
+    <input
+      type="search"
+      class="auth-input dash-input"
+      name="q"
+      value="{{ query_value|default:'' }}"
+      placeholder="{{ placeholder|default:'Поиск' }}"
+      aria-label="{{ input_aria_label|default:'Поиск' }}"
+      autocomplete="off"
+      data-autocomplete-input
+      {% if search_url %}data-search-url="{{ search_url }}"{% endif %}
+    >
+    {% if search_url %}
+      <div class="search-autocomplete__panel" data-autocomplete-list hidden></div>
+    {% endif %}
+  </div>
+  <button type="submit" class="button button--secondary button--small dash-btn">Найти</button>
+  {% if query_value %}
+    <a href="{{ reset_url }}" class="button button--small dash-btn">Сбросить</a>
+  {% endif %}
+</form>

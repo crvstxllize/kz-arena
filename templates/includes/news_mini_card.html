@@ -6,8 +6,8 @@
 
   <div class="news-mini-card__body">
     <p class="news-mini-card__meta">
-      {{ item.get_kind_display }}{% if item.discipline %} · {{ item.get_discipline_display }}{% endif %}{% if item.published_at %} · {% endif %}
-      {% if item.published_at %}<time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"d.m H:i" }}</time>{% endif %}
+      {{ item.get_kind_display }}{% if item.discipline %} · {{ item.get_discipline_display }}{% endif %}{% if item.publication_date_for_display %} · {% endif %}
+      {% if item.publication_date_for_display %}<time datetime="{{ item.publication_date_for_display|date:'c' }}">{{ item.publication_date_for_display|date:"d.m H:i" }}</time>{% endif %}
     </p>
     <h3 class="news-mini-card__title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
   </div>

@@ -5,44 +5,26 @@
   <div class="section-head">
     <h1>Статьи</h1>
     <div class="dashboard-actions">
-      {% if user.is_staff %}
+      {% if can_manage_users %}
         <a href="{% url 'dashboard:user_list' %}" class="button button--secondary">Пользователи</a>
       {% endif %}
       <a href="{% url 'dashboard:article_create' %}" class="button">Создать статью</a>
     </div>
   </div>
 
-  <form method="get" class="dashboard-actions" aria-label="Поиск статьи по slug">
-    <div class="search-autocomplete" data-autocomplete-root>
-      <input
-        type="search"
-        name="slug"
-        value="{{ slug_query }}"
-        placeholder="Поиск по slug / названию"
-        aria-label="Поиск статьи"
-        autocomplete="off"
-        data-autocomplete-input
-        data-search-url="{% url 'dashboard:article_search' %}"
-      >
-      <div class="search-autocomplete__panel" data-autocomplete-list hidden></div>
-    </div>
-    <button type="submit" class="button button--secondary">Найти</button>
-    {% if slug_query %}
-      <a href="{% url 'dashboard:article_list' %}" class="button button--small">Сбросить</a>
-    {% endif %}
-  </form>
+  {% include "includes/dashboard_search_bar.html" with action_url=request.path query_value=query placeholder="Поиск по slug / названию" aria_label="Поиск статьи" input_aria_label="Поиск статьи" search_url=search_url reset_url=reset_url %}
 
   {% if page_obj.object_list %}
     <form id="bulk-delete-form" method="post" action="{% url 'dashboard:article_bulk_delete' %}" class="dashboard-actions">
       {% csrf_token %}
-      <button type="submit" class="button button--danger">Удалить выбранные</button>
+      <button type="submit" class="button button--danger button--small button--secondary-danger dash-btn">Удалить выбранные</button>
     </form>
 
     <div class="dashboard-table-wrap">
       <table class="dashboard-table">
         <thead>
           <tr>
-            <th>Выбрать</th>
+            <th class="dash-select-cell">Выбрать</th>
             <th>Заголовок</th>
             <th>Автор</th>
             <th>Статус</th>
@@ -53,14 +35,18 @@
         <tbody>
           {% for article in page_obj.object_list %}
           <tr>
-            <td>
-              <input
-                type="checkbox"
-                name="article_ids"
-                value="{{ article.pk }}"
-                form="bulk-delete-form"
-                aria-label="Выбрать статью {{ article.title }}"
-              >
+            <td class="dash-select-cell">
+              <label class="dash-check">
+                <input
+                  type="checkbox"
+                  class="dash-check__input"
+                  name="article_ids"
+                  value="{{ article.pk }}"
+                  form="bulk-delete-form"
+                  aria-label="Выбрать статью {{ article.title }}"
+                >
+                <span class="dash-check__box" aria-hidden="true"></span>
+              </label>
             </td>
             <td>
               <a href="{{ article.get_absolute_url }}" target="_blank" rel="noopener">{{ article.title }}</a>
@@ -74,17 +60,17 @@
               {% endif %}
             </td>
             <td>{{ article.updated_at|date:"d.m.Y H:i" }}</td>
-            <td class="dashboard-actions">
-              <a href="{% url 'dashboard:article_edit' article.pk %}" class="button button--small">Редактировать</a>
+            <td class="dashboard-actions dash-row-actions">
+              <a href="{% url 'dashboard:article_edit' article.pk %}" class="button button--small dash-btn dash-btn--row dash-btn--edit">Редактировать</a>
 
               <form method="post" action="{% url 'dashboard:article_toggle_status' article.pk %}">
                 {% csrf_token %}
-                <button type="submit" class="button button--small button--secondary">
+                <button type="submit" class="button button--small button--secondary dash-btn dash-btn--row dash-btn--toggle">
                   {% if article.status == 'published' %}Снять с публикации{% else %}Опубликовать{% endif %}
                 </button>
               </form>
 
-              <a href="{% url 'dashboard:article_delete' article.pk %}" class="button button--small button--danger">Удалить</a>
+              <a href="{% url 'dashboard:article_delete' article.pk %}" class="button button--small button--danger dash-btn dash-btn--row dash-btn--delete">Удалить</a>
             </td>
           </tr>
           {% endfor %}
@@ -95,11 +81,11 @@
     {% if page_obj.paginator.num_pages > 1 %}
     <nav class="pagination" aria-label="Пагинация статей dashboard">
       {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}{% if slug_query %}&slug={{ slug_query|urlencode }}{% endif %}" class="pagination-link">Назад</a>
+        <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}" class="pagination-link">Назад</a>
       {% endif %}
       <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
       {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}{% if slug_query %}&slug={{ slug_query|urlencode }}{% endif %}" class="pagination-link">Вперед</a>
+        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}" class="pagination-link">Вперед</a>
       {% endif %}
     </nav>
     {% endif %}

@@ -1503,3 +1503,667 @@
 2026-02-27 12:43:26,378 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35997
 2026-02-27 12:43:31,078 [INFO] django.server: "GET /static/placeholders/news/basketball.svg HTTP/1.1" 200 729
 2026-02-27 12:43:42,081 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 21077
+2026-02-27 14:56:54,814 [INFO] django.server: "GET /dashboard/users/?q=aid HTTP/1.1" 200 9561
+2026-02-27 14:57:00,058 [INFO] django.server: "GET /dashboard/users/?q=al HTTP/1.1" 200 21233
+2026-02-27 14:57:10,677 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31139
+2026-02-27 14:57:15,142 [INFO] django.server: "GET /dashboard/articles/search/?q=%D0%91%D0%BA HTTP/1.1" 200 37
+2026-02-27 14:57:15,813 [INFO] django.server: "GET /dashboard/articles/search/?q=%D0%91%D0%B0%D1%81 HTTP/1.1" 200 577
+2026-02-27 14:57:18,774 [INFO] django.server: "GET /dashboard/articles/search/?q=%D0%91%D0%B0 HTTP/1.1" 200 577
+2026-02-27 14:57:24,154 [INFO] django.server: "GET /dashboard/articles/search/?q=Ar HTTP/1.1" 200 767
+2026-02-27 14:57:24,524 [INFO] django.server: "GET /dashboard/articles/search/?q=Are HTTP/1.1" 200 494
+2026-02-27 14:57:28,346 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25729
+2026-02-27 14:58:26,587 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5915
+2026-02-27 14:58:34,862 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5915
+2026-02-27 14:58:36,566 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31139
+2026-02-27 14:58:41,523 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31139
+2026-02-27 14:59:39,202 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5915
+2026-02-27 14:59:40,110 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5915
+2026-02-27 14:59:41,539 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25729
+2026-02-27 14:59:58,535 [INFO] django.server: "GET /dashboard/users/?q=%D0%9C%D0%B8 HTTP/1.1" 200 9600
+2026-02-27 15:00:03,899 [INFO] django.server: "GET /dashboard/users/?q= HTTP/1.1" 200 25729
+2026-02-27 15:00:37,749 [INFO] django.server: "GET / HTTP/1.1" 200 25023
+2026-02-27 15:00:39,836 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 23810
+2026-02-27 15:00:39,954 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 194
+2026-02-27 15:02:07,276 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:02:07,282 [INFO] django.server: "GET /static/js/main.js?v=6 HTTP/1.1" 200 20950
+2026-02-27 15:02:07,283 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 200 62811
+2026-02-27 15:02:08,764 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:02:17,724 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25737
+2026-02-27 15:02:33,543 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:02:45,883 [INFO] django.server: "GET /dashboard/articles/search/?q=%D0%B1%D0%B0%D1%81 HTTP/1.1" 200 577
+2026-02-27 15:02:46,486 [INFO] django.server: "GET /dashboard/articles/?q=%D0%B1%D0%B0%D1%81 HTTP/1.1" 200 11020
+2026-02-27 15:02:46,492 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:02:51,878 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:02:55,572 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25737
+2026-02-27 15:04:37,109 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25737
+2026-02-27 15:04:37,119 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:04:46,727 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:04:55,840 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25737
+2026-02-27 15:05:05,912 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:05:20,267 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 25737
+2026-02-27 15:05:29,595 [INFO] django.server: "POST /dashboard/users/13/set-role/ HTTP/1.1" 302 0
+2026-02-27 15:05:29,638 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 26023
+2026-02-27 15:05:29,645 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:05:38,766 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-27 15:05:38,816 [INFO] django.server: "GET / HTTP/1.1" 200 24824
+2026-02-27 15:05:40,269 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 6163
+2026-02-27 15:06:07,503 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-27 15:06:07,714 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7975
+2026-02-27 15:06:10,958 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:06:12,358 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:06:14,206 [INFO] django.server: "GET /dashboard/articles/27/edit/ HTTP/1.1" 200 12365
+2026-02-27 15:06:16,467 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:06:18,576 [INFO] django.server: "POST /dashboard/articles/27/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 15:06:18,615 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31362
+2026-02-27 15:06:19,864 [INFO] django.server: "POST /dashboard/articles/27/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 15:06:19,921 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31370
+2026-02-27 15:06:21,374 [INFO] django.server: "GET /dashboard/articles/27/edit/ HTTP/1.1" 200 12365
+2026-02-27 15:06:22,818 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:06:23,913 [INFO] django.server: "POST /dashboard/articles/26/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 15:06:23,962 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31362
+2026-02-27 15:06:27,192 [INFO] django.server: "POST /dashboard/articles/26/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 15:06:27,261 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31370
+2026-02-27 15:06:27,271 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 200 63089
+2026-02-27 15:06:38,133 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 24998
+2026-02-27 15:06:38,144 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:06:55,861 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:06:55,869 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:07:21,899 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 24998
+2026-02-27 15:07:21,904 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:11:39,619 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7756
+2026-02-27 15:11:39,635 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:12:37,253 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36005
+2026-02-27 15:12:37,270 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:12:38,785 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 23715
+2026-02-27 15:12:38,841 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 195
+2026-02-27 15:12:44,710 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36005
+2026-02-27 15:12:46,246 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 23835
+2026-02-27 15:12:46,296 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 190
+2026-02-27 15:13:55,473 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 15:13:55,856 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 15:14:00,905 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:14:00,910 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:15:02,139 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:15:02,144 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:15:03,649 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 24569
+2026-02-27 15:15:25,383 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:15:36,519 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 24569
+2026-02-27 15:17:07,770 [INFO] django.server: "GET /dashboard/users/?q=777 HTTP/1.1" 200 7883
+2026-02-27 15:17:07,781 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:17:13,643 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 24569
+2026-02-27 15:17:15,566 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:17:21,681 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 28368
+2026-02-27 15:17:26,881 [INFO] django.server: "GET /dashboard/articles/?page=1 HTTP/1.1" 200 31147
+2026-02-27 15:17:29,736 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 24569
+2026-02-27 15:17:54,503 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7756
+2026-02-27 15:18:05,046 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 23835
+2026-02-27 15:18:05,105 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 190
+2026-02-27 15:18:14,050 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7756
+2026-02-27 15:18:14,060 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:18:54,379 [INFO] django.server: "POST /accounts/logout/ HTTP/1.1" 302 0
+2026-02-27 15:18:54,427 [INFO] django.server: "GET / HTTP/1.1" 200 24824
+2026-02-27 15:19:00,569 [INFO] django.server: "GET /accounts/login/ HTTP/1.1" 200 6163
+2026-02-27 15:19:02,926 [INFO] django.server: "POST /accounts/login/ HTTP/1.1" 302 0
+2026-02-27 15:19:02,968 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8789
+2026-02-27 15:19:05,185 [INFO] django.server: "GET /accounts/profile/edit/ HTTP/1.1" 200 7054
+2026-02-27 15:19:07,249 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8570
+2026-02-27 15:19:10,518 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:19:13,385 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 26370
+2026-02-27 15:21:37,152 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 26370
+2026-02-27 15:21:37,169 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:21:44,243 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:21:45,926 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:21:49,773 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 26370
+2026-02-27 15:50:08,720 [INFO] django.server: "GET / HTTP/1.1" 200 25031
+2026-02-27 15:50:08,745 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:50:12,529 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 15:50:14,420 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 15:56:03,927 [INFO] django.server: "GET / HTTP/1.1" 200 25031
+2026-02-27 15:56:03,942 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 15:56:15,653 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36005
+2026-02-27 16:01:55,270 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8570
+2026-02-27 16:01:55,275 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 16:01:57,180 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:01:58,287 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31147
+2026-02-27 16:02:04,270 [INFO] django.server: "GET / HTTP/1.1" 200 25031
+2026-02-27 16:02:14,930 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36005
+2026-02-27 16:02:25,621 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18463
+2026-02-27 16:02:28,241 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36005
+2026-02-27 16:08:29,086 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/models.py changed, reloading.
+2026-02-27 16:08:29,468 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 16:08:51,964 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 16:08:52,252 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 16:09:17,792 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/views.py changed, reloading.
+2026-02-27 16:09:18,023 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 16:09:38,448 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/core/views.py changed, reloading.
+2026-02-27 16:09:38,765 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 16:10:25,248 [INFO] django.server: "GET / HTTP/1.1" 200 25080
+2026-02-27 16:10:25,264 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 16:10:28,259 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36061
+2026-02-27 16:14:33,671 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36061
+2026-02-27 16:14:41,924 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18463
+2026-02-27 16:14:43,374 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36061
+2026-02-27 16:14:48,927 [INFO] django.server: "GET /news/?q=&kind=&discipline=&category=&tag=&ordering=new HTTP/1.1" 200 36199
+2026-02-27 16:14:54,543 [INFO] django.server: "GET /news/?q=&kind=&discipline=&category=&tag=&ordering=popular HTTP/1.1" 200 37199
+2026-02-27 16:14:59,812 [INFO] django.server: "GET /news/?q=&kind=&discipline=&category=&tag=&ordering=new HTTP/1.1" 200 36199
+2026-02-27 16:15:08,378 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:15:09,858 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30518
+2026-02-27 16:15:20,478 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 28997
+2026-02-27 16:15:28,059 [INFO] django.server: "GET /dashboard/articles/?page=1 HTTP/1.1" 200 30518
+2026-02-27 16:15:30,211 [INFO] django.server: "GET /dashboard/articles/create/ HTTP/1.1" 200 11226
+2026-02-27 16:16:08,543 [INFO] django.server: "POST /dashboard/articles/create/ HTTP/1.1" 302 0
+2026-02-27 16:16:08,592 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 12586
+2026-02-27 16:16:11,352 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:16:12,826 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30518
+2026-02-27 16:16:17,053 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 30663
+2026-02-27 16:16:24,661 [INFO] django.server: "POST /dashboard/articles/28/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 16:16:24,723 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30741
+2026-02-27 16:16:26,645 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35179
+2026-02-27 16:16:32,149 [INFO] django.server: "GET / HTTP/1.1" 200 23862
+2026-02-27 16:16:40,768 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35179
+2026-02-27 16:16:49,789 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:16:49,798 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 16:16:51,436 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30518
+2026-02-27 16:17:19,560 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 30681
+2026-02-27 16:17:29,127 [INFO] django.server: "GET /dashboard/articles/?page=1 HTTP/1.1" 200 30518
+2026-02-27 16:18:39,731 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:19:02,454 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 16:19:02,798 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 16:19:25,706 [INFO] django.server: "GET /dashboard/users/ HTTP/1.1" 200 26370
+2026-02-27 16:20:01,133 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:20:14,951 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:20:16,888 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30683
+2026-02-27 16:20:18,759 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 30516
+2026-02-27 16:20:20,561 [INFO] django.server: "GET /dashboard/articles/?page=1 HTTP/1.1" 200 30683
+2026-02-27 16:20:24,400 [INFO] django.server: "POST /dashboard/articles/27/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 16:20:24,475 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30898
+2026-02-27 16:20:26,843 [INFO] django.server: "POST /dashboard/articles/27/toggle-status/ HTTP/1.1" 302 0
+2026-02-27 16:20:26,895 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30906
+2026-02-27 16:20:31,660 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35179
+2026-02-27 16:20:40,155 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8570
+2026-02-27 16:20:42,335 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 16:20:43,315 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 30683
+2026-02-27 16:20:45,485 [INFO] django.server: "GET /dashboard/articles/27/delete/ HTTP/1.1" 200 6004
+2026-02-27 16:20:47,337 [INFO] django.server: "POST /dashboard/articles/27/delete/ HTTP/1.1" 302 0
+2026-02-27 16:20:47,383 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31335
+2026-02-27 16:20:51,569 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35966
+2026-02-27 17:01:28,406 [INFO] django.server: "GET / HTTP/1.1" 200 23862
+2026-02-27 17:01:28,419 [INFO] django.server: "GET /static/css/style.css?v=6 HTTP/1.1" 304 0
+2026-02-27 17:04:14,306 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 17:04:58,127 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35966
+2026-02-27 17:05:09,340 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/core/views.py changed, reloading.
+2026-02-27 17:05:09,669 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:05:23,260 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18463
+2026-02-27 17:05:29,147 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/views.py changed, reloading.
+2026-02-27 17:05:29,450 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:05:49,911 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/views.py changed, reloading.
+2026-02-27 17:05:50,166 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:07:48,012 [INFO] django.server: "GET / HTTP/1.1" 200 24523
+2026-02-27 17:07:51,573 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:08:05,967 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 24914
+2026-02-27 17:08:06,114 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 194
+2026-02-27 17:08:09,659 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:08:10,731 [INFO] django.server: "GET /news/steppe-titans-announce-new-captain/ HTTP/1.1" 200 17625
+2026-02-27 17:08:10,777 [INFO] django.server: "GET /interactions/status/?article_id=20 HTTP/1.1" 200 196
+2026-02-27 17:08:12,438 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:15,691 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:18,039 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:18,242 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:18,426 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:18,607 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:20,485 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 102
+2026-02-27 17:08:21,449 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 102
+2026-02-27 17:08:24,332 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 98
+2026-02-27 17:08:25,161 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 98
+2026-02-27 17:08:33,998 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:34,663 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 102
+2026-02-27 17:08:37,472 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:08:41,201 [INFO] django.server: "GET /news/aktobe-rush-sign-analyst-before-playoffs/ HTTP/1.1" 200 15872
+2026-02-27 17:08:41,251 [INFO] django.server: "GET /interactions/status/?article_id=18 HTTP/1.1" 200 196
+2026-02-27 17:08:42,999 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:45,042 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:08:48,663 [INFO] django.server: "GET /news/kazakhstan-basketball-superleague-roundup/ HTTP/1.1" 200 15755
+2026-02-27 17:08:48,709 [INFO] django.server: "GET /interactions/status/?article_id=16 HTTP/1.1" 200 196
+2026-02-27 17:08:50,767 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:08:52,809 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:12:23,713 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:12:23,730 [INFO] django.server: "GET /static/css/style.css?v=7 HTTP/1.1" 200 63359
+2026-02-27 17:12:59,721 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 24914
+2026-02-27 17:12:59,732 [INFO] django.server: "GET /static/css/style.css?v=7 HTTP/1.1" 304 0
+2026-02-27 17:12:59,764 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 194
+2026-02-27 17:13:04,035 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:13:05,719 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 102
+2026-02-27 17:13:06,274 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:13:06,827 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 99
+2026-02-27 17:16:24,000 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/interactions/views.py changed, reloading.
+2026-02-27 17:16:24,339 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:18:31,765 [INFO] django.server: "GET /news/kff-announces-world-cup-2026-camp/ HTTP/1.1" 200 24914
+2026-02-27 17:18:31,783 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 200 21182
+2026-02-27 17:18:31,783 [INFO] django.server: "GET /static/css/style.css?v=8 HTTP/1.1" 200 63360
+2026-02-27 17:18:31,826 [INFO] django.server: "GET /interactions/status/?article_id=14 HTTP/1.1" 200 194
+2026-02-27 17:18:33,122 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 118
+2026-02-27 17:18:35,450 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 116
+2026-02-27 17:18:37,044 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 115
+2026-02-27 17:18:37,768 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 122
+2026-02-27 17:18:43,424 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:18:43,433 [INFO] django.server: "GET /static/css/style.css?v=8 HTTP/1.1" 304 0
+2026-02-27 17:18:43,433 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:18:50,275 [INFO] django.server: "GET / HTTP/1.1" 200 24523
+2026-02-27 17:21:35,547 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36627
+2026-02-27 17:21:35,555 [INFO] django.server: "GET /static/css/style.css?v=8 HTTP/1.1" 304 0
+2026-02-27 17:21:35,558 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:21:38,208 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5923
+2026-02-27 17:21:41,109 [INFO] django.server: "GET / HTTP/1.1" 200 24523
+2026-02-27 17:26:31,468 [INFO] django.server: "GET / HTTP/1.1" 200 24582
+2026-02-27 17:26:31,578 [INFO] django.server: "GET /static/css/style.css?v=9 HTTP/1.1" 200 63509
+2026-02-27 17:26:31,579 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:26:33,209 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-27 17:26:45,059 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 20448
+2026-02-27 17:26:45,067 [INFO] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+2026-02-27 17:26:45,067 [INFO] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+2026-02-27 17:26:45,068 [INFO] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+2026-02-27 17:26:45,068 [INFO] django.server: "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+2026-02-27 17:26:45,069 [INFO] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+2026-02-27 17:26:45,069 [INFO] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+2026-02-27 17:26:45,070 [INFO] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+2026-02-27 17:26:45,070 [INFO] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+2026-02-27 17:26:45,071 [INFO] django.server: "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+2026-02-27 17:26:45,071 [INFO] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+2026-02-27 17:26:45,072 [INFO] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2026-02-27 17:26:45,102 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-27 17:26:45,123 [INFO] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2026-02-27 17:27:06,573 [INFO] django.server: "POST /admin/accounts/profile/ HTTP/1.1" 302 0
+2026-02-27 17:27:06,631 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 20573
+2026-02-27 17:27:06,670 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-27 17:27:06,679 [INFO] django.server: "GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+2026-02-27 17:27:09,869 [INFO] django.server: "GET /admin/accounts/profile/13/change/ HTTP/1.1" 200 17639
+2026-02-27 17:27:09,876 [INFO] django.server: "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+2026-02-27 17:27:09,879 [INFO] django.server: "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+2026-02-27 17:27:09,879 [INFO] django.server: "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+2026-02-27 17:27:09,880 [INFO] django.server: "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+2026-02-27 17:27:09,881 [INFO] django.server: "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+2026-02-27 17:27:09,900 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-27 17:27:27,178 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 20448
+2026-02-27 17:27:27,208 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-27 17:27:39,962 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 20448
+2026-02-27 17:27:40,006 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-02-27 17:27:41,978 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-27 17:27:42,115 [INFO] django.server: "GET /admin HTTP/1.1" 301 0
+2026-02-27 17:27:42,163 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-27 17:28:52,026 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 16786
+2026-02-27 17:28:53,300 [INFO] django.server: "GET / HTTP/1.1" 200 24582
+2026-02-27 17:28:53,318 [INFO] django.server: "GET /static/css/style.css?v=9 HTTP/1.1" 304 0
+2026-02-27 17:28:53,318 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:29:01,470 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36686
+2026-02-27 17:29:07,711 [INFO] django.server: "GET / HTTP/1.1" 200 24582
+2026-02-27 17:29:17,208 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36686
+2026-02-27 17:31:29,083 [INFO] django.server: "GET / HTTP/1.1" 200 24582
+2026-02-27 17:31:29,095 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:31:29,097 [INFO] django.server: "GET /static/css/style.css?v=9 HTTP/1.1" 200 63610
+2026-02-27 17:33:25,101 [INFO] django.server: "GET / HTTP/1.1" 200 24583
+2026-02-27 17:33:25,117 [INFO] django.server: "GET /static/css/style.css?v=10 HTTP/1.1" 200 63610
+2026-02-27 17:33:25,119 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:33:27,634 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36687
+2026-02-27 17:33:32,030 [INFO] django.server: "GET / HTTP/1.1" 200 24583
+2026-02-27 17:34:53,029 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36687
+2026-02-27 17:34:53,092 [INFO] django.server: "GET /static/css/style.css?v=10 HTTP/1.1" 200 63610
+2026-02-27 17:34:56,200 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 21813
+2026-02-27 17:35:13,964 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:35:13,971 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 200 63610
+2026-02-27 17:35:13,972 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:35:18,860 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31182
+2026-02-27 17:35:18,871 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:35:21,500 [INFO] django.server: "GET /dashboard/articles/?page=2 HTTP/1.1" 200 28428
+2026-02-27 17:35:24,592 [INFO] django.server: "GET /dashboard/articles/?page=1 HTTP/1.1" 200 31182
+2026-02-27 17:35:24,602 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:35:27,365 [INFO] django.server: "GET /dashboard/articles/26/delete/ HTTP/1.1" 200 6122
+2026-02-27 17:35:28,833 [INFO] django.server: "POST /dashboard/articles/26/delete/ HTTP/1.1" 302 0
+2026-02-27 17:35:28,881 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31259
+2026-02-27 17:35:44,808 [INFO] django.server: "GET / HTTP/1.1" 200 24583
+2026-02-27 17:35:44,820 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:35:52,955 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36687
+2026-02-27 17:35:52,968 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:36:43,649 [INFO] django.server: "GET / HTTP/1.1" 200 24583
+2026-02-27 17:36:43,655 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:37:00,410 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:37:00,417 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:37:02,866 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:37:05,826 [INFO] django.server: "GET /news/test2/ HTTP/1.1" 200 19244
+2026-02-27 17:37:05,947 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:37:05,992 [INFO] django.server: "GET /interactions/status/?article_id=28 HTTP/1.1" 200 196
+2026-02-27 17:37:21,423 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 12396
+2026-02-27 17:37:21,427 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:37:21,428 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:39:15,989 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:39:15,998 [INFO] django.server: "GET /static/css/style.css?v=11 HTTP/1.1" 304 0
+2026-02-27 17:39:26,573 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18523
+2026-02-27 17:39:26,584 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:41:18,782 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/forms.py changed, reloading.
+2026-02-27 17:41:19,204 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:44:27,228 [INFO] django.server: "GET / HTTP/1.1" 200 24583
+2026-02-27 17:44:27,248 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:44:27,249 [INFO] django.server: "GET /static/css/style.css?v=12 HTTP/1.1" 200 67088
+2026-02-27 17:44:31,759 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36687
+2026-02-27 17:44:38,026 [INFO] django.server: "GET /news/?page=2 HTTP/1.1" 200 19899
+2026-02-27 17:45:41,066 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:45:41,074 [INFO] django.server: "GET /static/css/style.css?v=12 HTTP/1.1" 304 0
+2026-02-27 17:45:42,510 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:45:44,735 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 13619
+2026-02-27 17:47:12,100 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36687
+2026-02-27 17:47:12,118 [INFO] django.server: "GET /static/css/style.css?v=12 HTTP/1.1" 304 0
+2026-02-27 17:47:14,971 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:47:14,980 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:47:16,692 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:47:19,810 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 16526
+2026-02-27 17:47:19,841 [WARNING] django.request: Not Found: /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg
+2026-02-27 17:47:19,841 [WARNING] django.server: "GET /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg HTTP/1.1" 404 4163
+2026-02-27 17:47:32,898 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:47:34,098 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:47:35,553 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 13619
+2026-02-27 17:48:34,924 [DEBUG] PIL.Image: Importing BlpImagePlugin
+2026-02-27 17:48:34,926 [DEBUG] PIL.Image: Importing BmpImagePlugin
+2026-02-27 17:48:34,926 [DEBUG] PIL.Image: Importing BufrStubImagePlugin
+2026-02-27 17:48:34,926 [DEBUG] PIL.Image: Importing CurImagePlugin
+2026-02-27 17:48:34,926 [DEBUG] PIL.Image: Importing DcxImagePlugin
+2026-02-27 17:48:34,927 [DEBUG] PIL.Image: Importing DdsImagePlugin
+2026-02-27 17:48:34,929 [DEBUG] PIL.Image: Importing EpsImagePlugin
+2026-02-27 17:48:34,929 [DEBUG] PIL.Image: Importing FitsImagePlugin
+2026-02-27 17:48:34,930 [DEBUG] PIL.Image: Importing FliImagePlugin
+2026-02-27 17:48:34,930 [DEBUG] PIL.Image: Importing FpxImagePlugin
+2026-02-27 17:48:34,930 [DEBUG] PIL.Image: Image: failed to import FpxImagePlugin: No module named 'olefile'
+2026-02-27 17:48:34,930 [DEBUG] PIL.Image: Importing FtexImagePlugin
+2026-02-27 17:48:34,930 [DEBUG] PIL.Image: Importing GbrImagePlugin
+2026-02-27 17:48:34,931 [DEBUG] PIL.Image: Importing GifImagePlugin
+2026-02-27 17:48:34,931 [DEBUG] PIL.Image: Importing GribStubImagePlugin
+2026-02-27 17:48:34,931 [DEBUG] PIL.Image: Importing Hdf5StubImagePlugin
+2026-02-27 17:48:34,931 [DEBUG] PIL.Image: Importing IcnsImagePlugin
+2026-02-27 17:48:34,933 [DEBUG] PIL.Image: Importing IcoImagePlugin
+2026-02-27 17:48:34,933 [DEBUG] PIL.Image: Importing ImImagePlugin
+2026-02-27 17:48:34,934 [DEBUG] PIL.Image: Importing ImtImagePlugin
+2026-02-27 17:48:34,934 [DEBUG] PIL.Image: Importing IptcImagePlugin
+2026-02-27 17:48:34,934 [DEBUG] PIL.Image: Importing JpegImagePlugin
+2026-02-27 17:48:34,934 [DEBUG] PIL.Image: Importing Jpeg2KImagePlugin
+2026-02-27 17:48:34,934 [DEBUG] PIL.Image: Importing McIdasImagePlugin
+2026-02-27 17:48:34,934 [DEBUG] PIL.Image: Importing MicImagePlugin
+2026-02-27 17:48:34,935 [DEBUG] PIL.Image: Image: failed to import MicImagePlugin: No module named 'olefile'
+2026-02-27 17:48:34,935 [DEBUG] PIL.Image: Importing MpegImagePlugin
+2026-02-27 17:48:34,935 [DEBUG] PIL.Image: Importing MpoImagePlugin
+2026-02-27 17:48:34,938 [DEBUG] PIL.Image: Importing MspImagePlugin
+2026-02-27 17:48:34,938 [DEBUG] PIL.Image: Importing PalmImagePlugin
+2026-02-27 17:48:34,939 [DEBUG] PIL.Image: Importing PcdImagePlugin
+2026-02-27 17:48:34,940 [DEBUG] PIL.Image: Importing PcxImagePlugin
+2026-02-27 17:48:34,940 [DEBUG] PIL.Image: Importing PdfImagePlugin
+2026-02-27 17:48:34,962 [DEBUG] PIL.Image: Importing PixarImagePlugin
+2026-02-27 17:48:34,962 [DEBUG] PIL.Image: Importing PngImagePlugin
+2026-02-27 17:48:34,962 [DEBUG] PIL.Image: Importing PpmImagePlugin
+2026-02-27 17:48:34,962 [DEBUG] PIL.Image: Importing PsdImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing QoiImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing SgiImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing SpiderImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing SunImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing TgaImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing TiffImagePlugin
+2026-02-27 17:48:34,963 [DEBUG] PIL.Image: Importing WebPImagePlugin
+2026-02-27 17:48:35,050 [DEBUG] PIL.Image: Importing WmfImagePlugin
+2026-02-27 17:48:35,050 [DEBUG] PIL.Image: Importing XbmImagePlugin
+2026-02-27 17:48:35,051 [DEBUG] PIL.Image: Importing XpmImagePlugin
+2026-02-27 17:48:35,051 [DEBUG] PIL.Image: Importing XVThumbImagePlugin
+2026-02-27 17:48:35,059 [INFO] django.server: "POST /dashboard/articles/28/edit/ HTTP/1.1" 302 0
+2026-02-27 17:48:35,118 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14439
+2026-02-27 17:48:35,130 [INFO] django.server: "GET /static/css/style.css?v=12 HTTP/1.1" 304 0
+2026-02-27 17:48:35,132 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 200 64184
+2026-02-27 17:48:38,703 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 17:48:38,722 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 17:51:20,700 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8630
+2026-02-27 17:51:20,710 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 200 67724
+2026-02-27 17:51:20,711 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:51:21,287 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:51:21,906 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8630
+2026-02-27 17:51:22,580 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:51:24,088 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:51:25,971 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14216
+2026-02-27 17:51:25,980 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 17:51:58,847 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:51:58,857 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:52:15,408 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:52:15,417 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:52:18,269 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14216
+2026-02-27 17:52:18,281 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 17:52:27,607 [INFO] django.server: "POST /dashboard/articles/28/edit/ HTTP/1.1" 302 0
+2026-02-27 17:52:27,654 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14447
+2026-02-27 17:52:30,000 [INFO] django.server: "GET / HTTP/1.1" 200 24647
+2026-02-27 17:52:34,169 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35465
+2026-02-27 17:52:34,178 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:52:37,816 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8630
+2026-02-27 17:52:38,583 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:52:39,837 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:52:44,157 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 16526
+2026-02-27 17:52:44,171 [WARNING] django.request: Not Found: /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg
+2026-02-27 17:52:44,171 [WARNING] django.server: "GET /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg HTTP/1.1" 404 4163
+2026-02-27 17:52:49,816 [ERROR] django.request: Internal Server Error: /dashboard/articles/25/edit/
+Traceback (most recent call last):
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/decorators.py", line 12, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/views.py", line 254, in article_edit
+    if form.is_valid():
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 30, in clean_cover
+    return _validate_image_upload(self.cleaned_data.get("cover"), "Обложка")
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 20, in _validate_image_upload
+    file_size = getattr(upload, "size", 0) or 0
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/db/models/fields/files.py", line 74, in size
+    return self.storage.size(self.name)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/files/storage/filesystem.py", line 182, in size
+    return os.path.getsize(self.path(name))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/nurserik/Desktop/kz-arena/media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg'
+2026-02-27 17:52:49,822 [ERROR] django.server: "POST /dashboard/articles/25/edit/ HTTP/1.1" 500 113614
+2026-02-27 17:52:58,928 [ERROR] django.request: Internal Server Error: /dashboard/articles/25/edit/
+Traceback (most recent call last):
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/decorators.py", line 12, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/views.py", line 254, in article_edit
+    if form.is_valid():
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 30, in clean_cover
+    return _validate_image_upload(self.cleaned_data.get("cover"), "Обложка")
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 20, in _validate_image_upload
+    file_size = getattr(upload, "size", 0) or 0
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/db/models/fields/files.py", line 74, in size
+    return self.storage.size(self.name)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/files/storage/filesystem.py", line 182, in size
+    return os.path.getsize(self.path(name))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/nurserik/Desktop/kz-arena/media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg'
+2026-02-27 17:52:58,928 [ERROR] django.server: "POST /dashboard/articles/25/edit/ HTTP/1.1" 500 113747
+2026-02-27 17:53:03,992 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:53:04,004 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:53:05,901 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35465
+2026-02-27 17:53:05,905 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 17:53:06,859 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:53:07,645 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:53:09,529 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14224
+2026-02-27 17:53:12,874 [INFO] django.server: "POST /dashboard/articles/28/edit/ HTTP/1.1" 302 0
+2026-02-27 17:53:12,921 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14439
+2026-02-27 17:53:15,102 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 17:53:16,435 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 8630
+2026-02-27 17:53:16,976 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:53:18,808 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:53:21,543 [INFO] django.server: "GET /news/hero-kz-arena-spring-calendar-main-events/ HTTP/1.1" 200 22980
+2026-02-27 17:53:21,685 [INFO] django.server: "GET /interactions/status/?article_id=25 HTTP/1.1" 200 191
+2026-02-27 17:53:26,584 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 16526
+2026-02-27 17:53:26,589 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:53:26,590 [WARNING] django.request: Not Found: /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg
+2026-02-27 17:53:26,591 [WARNING] django.server: "GET /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg HTTP/1.1" 404 4163
+2026-02-27 17:53:31,434 [ERROR] django.request: Internal Server Error: /dashboard/articles/25/edit/
+Traceback (most recent call last):
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/decorators.py", line 12, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/views.py", line 254, in article_edit
+    if form.is_valid():
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 30, in clean_cover
+    return _validate_image_upload(self.cleaned_data.get("cover"), "Обложка")
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 20, in _validate_image_upload
+    file_size = getattr(upload, "size", 0) or 0
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/db/models/fields/files.py", line 74, in size
+    return self.storage.size(self.name)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/files/storage/filesystem.py", line 182, in size
+    return os.path.getsize(self.path(name))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/nurserik/Desktop/kz-arena/media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg'
+2026-02-27 17:53:31,435 [ERROR] django.server: "POST /dashboard/articles/25/edit/ HTTP/1.1" 500 113614
+2026-02-27 17:53:57,478 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:53:57,488 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:53:58,618 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 17:53:58,621 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 17:54:00,523 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:54:01,790 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 17:54:04,350 [INFO] django.server: "GET /news/pubg-kz-teams-lan-bootcamp/ HTTP/1.1" 200 17549
+2026-02-27 17:54:04,426 [INFO] django.server: "GET /interactions/status/?article_id=22 HTTP/1.1" 200 196
+2026-02-27 17:54:12,333 [INFO] django.server: "GET /dashboard/articles/22/edit/ HTTP/1.1" 200 15829
+2026-02-27 17:54:12,341 [WARNING] django.request: Not Found: /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg
+2026-02-27 17:54:12,342 [WARNING] django.server: "GET /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg HTTP/1.1" 404 4103
+2026-02-27 17:54:19,524 [ERROR] django.request: Internal Server Error: /dashboard/articles/22/edit/
+Traceback (most recent call last):
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/decorators.py", line 12, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/views.py", line 254, in article_edit
+    if form.is_valid():
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 201, in is_valid
+    return self.is_bound and not self.errors
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 196, in errors
+    self.full_clean()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 433, in full_clean
+    self._clean_fields()
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/forms/forms.py", line 448, in _clean_fields
+    value = getattr(self, "clean_%s" % name)()
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 30, in clean_cover
+    return _validate_image_upload(self.cleaned_data.get("cover"), "Обложка")
+  File "/Users/nurserik/Desktop/kz-arena/dashboard/forms.py", line 20, in _validate_image_upload
+    file_size = getattr(upload, "size", 0) or 0
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/db/models/fields/files.py", line 74, in size
+    return self.storage.size(self.name)
+  File "/Users/nurserik/Desktop/kz-arena/venv/lib/python3.9/site-packages/django/core/files/storage/filesystem.py", line 182, in size
+    return os.path.getsize(self.path(name))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/genericpath.py", line 50, in getsize
+    return os.stat(filename).st_size
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/nurserik/Desktop/kz-arena/media/covers/news-pubg-kz-teams-lan-bootcamp.jpg'
+2026-02-27 17:54:19,525 [ERROR] django.server: "POST /dashboard/articles/22/edit/ HTTP/1.1" 500 112876
+2026-02-27 17:55:49,038 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36688
+2026-02-27 17:55:49,041 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 17:55:49,049 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 17:55:49,051 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 17:55:57,658 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 17:57:46,834 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/forms.py changed, reloading.
+2026-02-27 17:57:47,203 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:58:29,973 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 17:58:30,216 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 17:59:07,891 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 17:59:08,184 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 18:02:08,214 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 18:02:08,224 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 18:02:08,226 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 18:02:12,237 [INFO] django.server: "GET /dashboard/articles/22/edit/ HTTP/1.1" 200 15829
+2026-02-27 18:02:12,260 [WARNING] django.request: Not Found: /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg
+2026-02-27 18:02:12,261 [WARNING] django.server: "GET /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg HTTP/1.1" 404 4103
+2026-02-27 18:02:16,548 [INFO] django.server: "POST /dashboard/articles/22/edit/ HTTP/1.1" 302 0
+2026-02-27 18:02:16,585 [INFO] django.server: "GET /dashboard/articles/22/edit/ HTTP/1.1" 200 16064
+2026-02-27 18:02:16,596 [WARNING] django.request: Not Found: /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg
+2026-02-27 18:02:16,596 [WARNING] django.server: "GET /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg HTTP/1.1" 404 4103
+2026-02-27 18:02:18,293 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36362
+2026-02-27 18:02:18,298 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 18:02:23,240 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 18:02:25,398 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 18:02:28,657 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 16518
+2026-02-27 18:02:28,667 [WARNING] django.request: Not Found: /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg
+2026-02-27 18:02:28,667 [WARNING] django.server: "GET /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg HTTP/1.1" 404 4163
+2026-02-27 18:02:32,701 [INFO] django.server: "POST /dashboard/articles/25/edit/ HTTP/1.1" 302 0
+2026-02-27 18:02:32,742 [INFO] django.server: "GET /dashboard/articles/25/edit/ HTTP/1.1" 200 16755
+2026-02-27 18:02:32,753 [WARNING] django.request: Not Found: /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg
+2026-02-27 18:02:32,753 [WARNING] django.server: "GET /media/covers/news-hero-kz-arena-spring-calendar-main-events.jpg HTTP/1.1" 404 4163
+2026-02-27 18:02:34,605 [INFO] django.server: "GET /news/ HTTP/1.1" 200 36625
+2026-02-27 18:02:35,303 [INFO] django.server: "GET / HTTP/1.1" 200 24584
+2026-02-27 18:02:36,561 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 18:02:39,191 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 18:02:41,908 [INFO] django.server: "GET /dashboard/articles/22/edit/ HTTP/1.1" 200 15833
+2026-02-27 18:02:41,912 [WARNING] django.request: Not Found: /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg
+2026-02-27 18:02:41,913 [WARNING] django.server: "GET /media/covers/news-pubg-kz-teams-lan-bootcamp.jpg HTTP/1.1" 404 4103
+2026-02-27 18:02:47,148 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 18:02:51,159 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 31046
+2026-02-27 18:02:57,696 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14216
+2026-02-27 18:03:02,271 [INFO] django.server: "POST /dashboard/articles/28/edit/ HTTP/1.1" 302 0
+2026-02-27 18:03:02,316 [INFO] django.server: "GET /dashboard/articles/28/edit/ HTTP/1.1" 200 14447
+2026-02-27 18:03:03,700 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35339
+2026-02-27 18:03:06,989 [INFO] django.server: "GET / HTTP/1.1" 200 24584
+2026-02-27 18:03:15,044 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35339
+2026-02-27 18:03:26,757 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18523
+2026-02-27 18:03:26,768 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 18:03:57,144 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 13116
+2026-02-27 18:03:57,869 [INFO] django.server: "GET /matches/ HTTP/1.1" 200 13541
+2026-02-27 18:03:57,879 [WARNING] django.request: Not Found: /media/logos/kairat-almaty_zRgegfR.jpg
+2026-02-27 18:03:57,880 [WARNING] django.request: Not Found: /media/logos/astana_VWSVmxA.jpg
+2026-02-27 18:03:57,880 [WARNING] django.server: "GET /media/logos/kairat-almaty_zRgegfR.jpg HTTP/1.1" 404 4059
+2026-02-27 18:03:57,880 [WARNING] django.server: "GET /media/logos/astana_VWSVmxA.jpg HTTP/1.1" 404 4031
+2026-02-27 18:03:57,888 [WARNING] django.request: Not Found: /media/logos/team-kazakhstan-dota2.jpg
+2026-02-27 18:03:57,888 [WARNING] django.server: "GET /media/logos/team-kazakhstan-dota2.jpg HTTP/1.1" 404 4059
+2026-02-27 18:03:57,889 [WARNING] django.request: Not Found: /media/logos/ordabasy-shymkent_prmOu1Q.jpg
+2026-02-27 18:03:57,889 [WARNING] django.server: "GET /media/logos/ordabasy-shymkent_prmOu1Q.jpg HTTP/1.1" 404 4075
+2026-02-27 18:03:57,895 [WARNING] django.request: Not Found: /media/logos/nomad-fire.jpg
+2026-02-27 18:03:57,896 [WARNING] django.request: Not Found: /media/logos/avangar.jpg
+2026-02-27 18:03:57,896 [WARNING] django.server: "GET /media/logos/avangar.jpg HTTP/1.1" 404 4003
+2026-02-27 18:03:57,896 [WARNING] django.server: "GET /media/logos/nomad-fire.jpg HTTP/1.1" 404 4015
+2026-02-27 18:03:57,900 [WARNING] django.request: Not Found: /media/logos/k23.jpg
+2026-02-27 18:03:57,900 [WARNING] django.server: "GET /media/logos/k23.jpg HTTP/1.1" 404 3987
+2026-02-27 18:03:58,607 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 13116
+2026-02-27 18:03:59,283 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18523
+2026-02-27 18:04:01,301 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 13116
+2026-02-27 18:04:04,867 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18523

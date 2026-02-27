@@ -1,4 +1,6 @@
-﻿from django.conf import settings
+from datetime import timedelta
+
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -55,6 +57,8 @@ class Article(models.Model):
     views_count = models.PositiveIntegerField(default=0)
     is_featured = models.BooleanField(default=False)
 
+    MAX_PUBLISH_FUTURE_DRIFT_MINUTES = 5
+
     class Meta:
         ordering = ("-published_at", "-created_at")
         indexes = [
@@ -63,12 +67,38 @@ class Article(models.Model):
             models.Index(fields=["is_featured"]),
         ]
 
+    @property
+    def publication_date_for_display(self):
+        return self.published_at or self.created_at
+
+    @classmethod
+    def normalize_publication_datetime(cls, value, now=None):
+        current_now = now or timezone.now()
+        max_allowed = current_now + timedelta(minutes=cls.MAX_PUBLISH_FUTURE_DRIFT_MINUTES)
+        if value is None or value > max_allowed:
+            return current_now
+        return value
+
+    @classmethod
+    def sanitize_published_timestamps(cls, now=None):
+        current_now = now or timezone.now()
+        max_allowed = current_now + timedelta(minutes=cls.MAX_PUBLISH_FUTURE_DRIFT_MINUTES)
+        missing_count = cls.objects.filter(
+            status=cls.STATUS_PUBLISHED,
+            published_at__isnull=True,
+        ).update(published_at=current_now)
+        future_count = cls.objects.filter(
+            status=cls.STATUS_PUBLISHED,
+            published_at__gt=max_allowed,
+        ).update(published_at=current_now)
+        return missing_count + future_count
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = generate_unique_slug(self, self.title)
 
-        if self.status == self.STATUS_PUBLISHED and not self.published_at:
-            self.published_at = timezone.now()
+        if self.status == self.STATUS_PUBLISHED:
+            self.published_at = self.normalize_publication_datetime(self.published_at)
 
         super().save(*args, **kwargs)
 

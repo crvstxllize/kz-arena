@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.http import require_GET, require_POST
 
 from articles.models import Article
+from core.utils import get_public_name
 
 from .models import Comment
 
@@ -73,7 +74,8 @@ def comment_add_view(request):
             "comment": {
                 "id": comment.pk,
                 "text": comment.text,
-                "username": comment.user.username,
+                "username": get_public_name(comment.user),
+                "login": comment.user.username,
                 "created_at": comment.created_at.isoformat(),
             },
             "html": html,
@@ -103,7 +105,10 @@ def comment_list_view(request):
     article_id = request.GET.get("article_id")
     article = get_object_or_404(Article, pk=article_id, status=Article.STATUS_PUBLISHED)
 
-    comments = Comment.objects.filter(article=article, is_approved=True).select_related("user")
+    comments = (
+        Comment.objects.filter(article=article, is_approved=True)
+        .select_related("user", "user__profile")
+    )
     html = render_to_string(
         "comments/comment_list_items.html",
         {

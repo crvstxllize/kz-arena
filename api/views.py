@@ -2,6 +2,7 @@
 from django.views.decorators.csrf import csrf_exempt
 
 from articles.models import Article
+from core.utils import get_public_name
 from taxonomy.models import Category, Tag
 from teams.models import Team
 from tournaments.models import Tournament
@@ -39,7 +40,10 @@ def _serialize_article(article, request):
         "status": article.status,
         "published_at": article.published_at.isoformat() if article.published_at else None,
         "views_count": article.views_count,
-        "author": {"username": article.author.username},
+        "author": {
+            "username": article.author.username,
+            "public_name": get_public_name(article.author),
+        },
         "categories": [{"name": c.name, "slug": c.slug} for c in article.categories.all()],
         "tags": [{"name": t.name, "slug": t.slug} for t in article.tags.all()],
         "cover_url": _file_url(request, article.cover),
@@ -114,7 +118,7 @@ def articles_collection(request):
     if request.method == "GET":
         queryset = (
             Article.objects.filter(status=Article.STATUS_PUBLISHED)
-            .select_related("author")
+            .select_related("author", "author__profile")
             .prefetch_related("categories", "tags")
         )
 
@@ -236,7 +240,7 @@ def articles_collection(request):
         article.tags.set(tags)
 
     article = (
-        Article.objects.select_related("author")
+        Article.objects.select_related("author", "author__profile")
         .prefetch_related("categories", "tags")
         .get(pk=article.pk)
     )
@@ -250,7 +254,7 @@ def article_detail(request, slug):
 
     article = (
         Article.objects.filter(status=Article.STATUS_PUBLISHED, slug=slug)
-        .select_related("author")
+        .select_related("author", "author__profile")
         .prefetch_related("categories", "tags", "assets")
         .first()
     )
@@ -281,7 +285,7 @@ def article_by_pk(request, pk):
         return _method_not_allowed()
 
     article = (
-        Article.objects.select_related("author")
+        Article.objects.select_related("author", "author__profile")
         .prefetch_related("categories", "tags")
         .filter(pk=pk)
         .first()
@@ -346,7 +350,7 @@ def article_by_pk(request, pk):
         article.tags.set(tags)
 
     article = (
-        Article.objects.select_related("author")
+        Article.objects.select_related("author", "author__profile")
         .prefetch_related("categories", "tags")
         .get(pk=article.pk)
     )
