@@ -2243,3 +2243,106 @@ FileNotFoundError: [Errno 2] No such file or directory: '/Users/nurserik/Desktop
 2026-02-27 18:58:21,086 [INFO] django.server: "GET /news/ HTTP/1.1" 200 35339
 2026-02-27 18:59:17,949 [INFO] django.server: "GET / HTTP/1.1" 200 24584
 2026-02-27 18:59:27,935 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 18523
+2026-02-27 19:10:05,024 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:10:12,542 [INFO] django.server: "GET /teams/fc-kairat/ HTTP/1.1" 200 15165
+2026-02-27 19:10:12,647 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 19:10:12,648 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 19:10:12,665 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 19:11:46,268 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 5983
+2026-02-27 19:26:20,916 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/models.py changed, reloading.
+2026-02-27 19:26:21,311 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:26:56,047 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/lib/data_sync.py changed, reloading.
+2026-02-27 19:26:56,334 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:27:42,125 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/views.py changed, reloading.
+2026-02-27 19:27:42,417 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:28:16,051 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/views.py changed, reloading.
+2026-02-27 19:28:16,397 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:30:50,839 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/forms.py changed, reloading.
+2026-02-27 19:30:51,228 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:31:23,854 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/forms.py changed, reloading.
+2026-02-27 19:31:24,136 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:32:33,298 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 19:32:33,625 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:33:08,237 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/urls.py changed, reloading.
+2026-02-27 19:33:08,561 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:35:35,777 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 19:35:36,060 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:38:20,507 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/admin.py changed, reloading.
+2026-02-27 19:38:20,838 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:40:49,016 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/views.py changed, reloading.
+2026-02-27 19:40:49,352 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:41:29,038 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/migrations/0003_team_is_active_team_is_manual_and_more.py changed, reloading.
+2026-02-27 19:41:29,330 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:43:06,369 [INFO] django.server: "GET / HTTP/1.1" 200 24584
+2026-02-27 19:43:06,372 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 19:43:06,424 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 19:43:06,428 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 19:43:51,628 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/views.py changed, reloading.
+2026-02-27 19:43:51,935 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:45:50,832 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/views.py changed, reloading.
+2026-02-27 19:45:51,185 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 19:58:26,245 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-27 19:58:26,290 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 19:58:26,293 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 19:58:28,150 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 19:58:28,184 [INFO] django.server: "GET /static/img/favicon.png?v=5 HTTP/1.1" 304 0
+2026-02-27 19:58:36,190 [INFO] django.server: "GET /dashboard/teams/8/edit/ HTTP/1.1" 200 16085
+2026-02-27 19:58:36,201 [INFO] django.server: "GET /static/teams/logos/aktobe-rush.jpg HTTP/1.1" 200 82142
+2026-02-27 19:58:47,076 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 13532
+2026-02-27 19:58:47,105 [INFO] django.server: "GET /static/teams/logos/almaty-hoopers.jpg HTTP/1.1" 200 56364
+2026-02-27 19:58:47,108 [INFO] django.server: "GET /static/teams/logos/karaganda-eagles.jpg HTTP/1.1" 200 56364
+2026-02-27 19:58:47,108 [INFO] django.server: "GET /static/teams/logos/qazaq-wolves.jpg HTTP/1.1" 200 82142
+2026-02-27 19:58:47,109 [INFO] django.server: "GET /static/teams/logos/shymkent-united.jpg HTTP/1.1" 200 87491
+2026-02-27 19:58:47,110 [INFO] django.server: "GET /static/teams/logos/astana-falcons.jpg HTTP/1.1" 200 87491
+2026-02-27 19:58:47,111 [INFO] django.server: "GET /static/teams/logos/steppe-titans.jpg HTTP/1.1" 200 99726
+2026-02-27 19:58:47,111 [INFO] django.server: "GET /static/teams/logos/altay-phoenix.jpg HTTP/1.1" 200 141655
+2026-02-27 19:58:54,868 [INFO] django.server: "GET /teams/aktobe-rush/ HTTP/1.1" 200 9926
+2026-02-27 19:59:08,135 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 13532
+2026-02-27 19:59:24,975 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/accounts/admin.py changed, reloading.
+2026-02-27 19:59:25,456 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 20:04:25,673 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 13532
+2026-02-27 20:04:56,895 [INFO] django.server: "GET /teams/astana-falcons/ HTTP/1.1" 200 15982
+2026-02-27 20:04:56,918 [INFO] django.server: "GET /media/covers/article_golffil_main.webp HTTP/1.1" 304 0
+2026-02-27 20:05:03,002 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 13532
+2026-02-27 20:05:05,872 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-27 20:05:06,843 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:10:16,147 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/templatetags/team_media.py changed, reloading.
+2026-02-27 20:10:16,548 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 20:15:41,797 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:15:41,848 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-27 20:15:41,848 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 200 68719
+2026-02-27 20:15:45,593 [INFO] django.server: "GET /dashboard/teams/8/edit/ HTTP/1.1" 200 16085
+2026-02-27 20:16:06,823 [INFO] django.server: "GET /about/ HTTP/1.1" 200 6453
+2026-02-27 20:16:06,832 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 20:16:08,271 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 13532
+2026-02-27 20:16:15,707 [INFO] django.server: "GET /teams/aktobe-rush/ HTTP/1.1" 200 10696
+2026-02-27 20:16:15,721 [INFO] django.server: "GET /static/placeholders/players/default.svg HTTP/1.1" 200 646
+2026-02-27 20:16:28,829 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-27 20:16:28,837 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 20:16:30,052 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:16:32,426 [INFO] django.server: "GET /teams/almaty-hoopers/ HTTP/1.1" 200 9549
+2026-02-27 20:16:32,987 [INFO] django.server: "GET /static/placeholders/players/default.svg HTTP/1.1" 304 0
+2026-02-27 20:16:37,522 [INFO] django.server: "GET /dashboard/teams/2/edit/ HTTP/1.1" 200 14141
+2026-02-27 20:21:14,182 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/forms.py changed, reloading.
+2026-02-27 20:21:14,564 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-27 20:23:59,805 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-27 20:23:59,815 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 20:24:08,094 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:24:10,711 [INFO] django.server: "GET /dashboard/teams/8/edit/ HTTP/1.1" 200 24227
+2026-02-27 20:24:38,152 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:24:44,323 [INFO] django.server: "GET /dashboard/teams/1/edit/ HTTP/1.1" 200 24317
+2026-02-27 20:25:01,371 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-27 20:25:03,442 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:25:03,447 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 20:25:06,962 [INFO] django.server: "GET /dashboard/teams/8/edit/ HTTP/1.1" 200 24227
+2026-02-27 20:25:15,159 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 13532
+2026-02-27 20:26:01,970 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-27 20:26:22,707 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-27 20:26:22,713 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-27 20:26:39,942 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 6183
+2026-02-28 15:03:42,942 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-02-28 15:04:05,270 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 14747
+2026-02-28 15:04:05,274 [INFO] django.server: "GET /static/img/favicon.png?v=5 HTTP/1.1" 304 0
+2026-02-28 15:04:05,318 [INFO] django.server: "GET /static/css/style.css?v=13 HTTP/1.1" 304 0
+2026-02-28 15:04:05,324 [INFO] django.server: "GET /static/js/main.js?v=7 HTTP/1.1" 304 0
+2026-02-28 15:04:22,706 [INFO] django.server: "GET /static/placeholders/players/default.svg HTTP/1.1" 304 0

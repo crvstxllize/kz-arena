@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load team_media %}
+
+{% block content %}
+<section class="section auth-section dashboard-form">
+  <div class="section-head">
+    <h1>{% if team %}Редактирование команды{% else %}Создание команды{% endif %}</h1>
+    <a href="{% url 'dashboard:team_list' %}" class="button button--secondary">К списку</a>
+  </div>
+
+  <form method="post" enctype="multipart/form-data" class="auth-form dashboard-article-form" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="form-row{% if field.name == 'logo' %} cover-row{% endif %}">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {% if field.name == 'logo' and team and team.logo %}
+          <div class="dashboard-cover-preview">
+            <img src="{{ team|team_logo_url }}" alt="Текущий логотип {{ team.name }}">
+            <div>
+              <p class="dashboard-cover-preview__title">Текущий логотип</p>
+              <p class="muted">{{ team.logo.name }}</p>
+            </div>
+          </div>
+        {% endif %}
+        {{ field }}
+        {% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}
+        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+      </div>
+    {% endfor %}
+
+    {% if members_formset %}
+      <section class="section" style="margin-top: 0.35rem;">
+        <div class="section-head">
+          <h2 class="section-title">Состав</h2>
+          <button type="button" id="add-member-slot" class="button button--secondary button--small">+ Добавить игрока</button>
+        </div>
+        <p class="muted">Добавляйте/редактируйте игроков вручную. Количество слотов не ограничено.</p>
+
+        {{ members_formset.management_form }}
+        <div id="members-forms-container">
+          {% for member_form in members_formset %}
+            <article class="asset-card member-form-card" style="margin-bottom: 0.65rem;">
+              <p class="muted member-slot-label" style="margin-top: 0;">
+                {% if member_form.instance.pk %}Игрок #{{ member_form.instance.pk }}{% else %}Новый игрок{% endif %}
+              </p>
+
+              {% for hidden in member_form.hidden_fields %}
+                {{ hidden }}
+              {% endfor %}
+
+              {% for field in member_form.visible_fields %}
+                {% if field.name == "DELETE" %}
+                  <div class="form-row">
+                    <label for="{{ field.id_for_label }}">Удалить игрока</label>
+                    {{ field }}
+                    {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                  </div>
+                {% else %}
+                  <div class="form-row">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </article>
+          {% endfor %}
+        </div>
+
+        <template id="member-form-template">
+          <article class="asset-card member-form-card" style="margin-bottom: 0.65rem;">
+            <p class="muted member-slot-label" style="margin-top: 0;">Новый игрок</p>
+
+            {% for hidden in members_formset.empty_form.hidden_fields %}
+              {{ hidden }}
+            {% endfor %}
+
+            {% for field in members_formset.empty_form.visible_fields %}
+              {% if field.name == "DELETE" %}
+                <div class="form-row">
+                  <label for="{{ field.id_for_label }}">Удалить игрока</label>
+                  {{ field }}
+                </div>
+              {% else %}
+                <div class="form-row">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {{ field }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </article>
+        </template>
+      </section>
+    {% endif %}
+
+    {% for error in form.non_field_errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+    {% if members_formset %}
+      {% for error in members_formset.non_form_errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+    {% endif %}
+
+    <div class="form-actions">
+      <button type="submit" class="button">Сохранить</button>
+    </div>
+  </form>
+</section>
+
+{% if members_formset %}
+<script>
+  (function () {
+    var addBtn = document.getElementById("add-member-slot");
+    var formsContainer = document.getElementById("members-forms-container");
+    var templateEl = document.getElementById("member-form-template");
+    var totalFormsInput = document.getElementById("id_members-TOTAL_FORMS");
+
+    if (!addBtn || !formsContainer || !templateEl || !totalFormsInput) {
+      return;
+    }
+
+    addBtn.addEventListener("click", function () {
+      var nextIndex = parseInt(totalFormsInput.value, 10);
+      if (Number.isNaN(nextIndex)) {
+        return;
+      }
+
+      var html = templateEl.innerHTML.replace(/__prefix__/g, String(nextIndex));
+      var wrapper = document.createElement("div");
+      wrapper.innerHTML = html.trim();
+      var newCard = wrapper.firstElementChild;
+      if (!newCard) {
+        return;
+      }
+
+      formsContainer.appendChild(newCard);
+      totalFormsInput.value = String(nextIndex + 1);
+
+      var firstInput = newCard.querySelector("input[type='text'], textarea");
+      if (firstInput) {
+        firstInput.focus();
+      }
+    });
+  })();
+</script>
+{% endif %}
+{% endblock %}

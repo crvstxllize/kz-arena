@@ -5,6 +5,11 @@
 <section class="section section-filters" aria-label="Фильтры команд">
   <h1>Команды</h1>
   <p>Составы команд, текущая форма и ключевые показатели.</p>
+  {% if is_demo_mode %}
+    <div class="message message--warning" role="status">
+      Данные команд временно из демо-режима. Добавьте команды в Dashboard, чтобы использовать ручной режим.
+    </div>
+  {% endif %}
   {% include "includes/data_freshness.html" %}
 
   <form method="get" class="news-filters">

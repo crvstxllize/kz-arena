@@ -1,8 +1,10 @@
 from django import forms
 from django.core.files.uploadedfile import UploadedFile
 from django.forms import CheckboxSelectMultiple
+from django.forms import inlineformset_factory
 
 from articles.models import Article, MediaAsset
+from teams.models import Player, Team
 
 ALLOWED_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 MAX_UPLOAD_SIZE_BYTES = 5 * 1024 * 1024
@@ -91,3 +93,71 @@ class MediaAssetForm(forms.ModelForm):
         help_texts = {
             "file": "Можно добавлять свои изображения к статье (до 5 MB).",
         }
+
+
+class TeamDashboardForm(forms.ModelForm):
+    def clean_logo(self):
+        return _validate_image_upload(self.cleaned_data.get("logo"), "Логотип")
+
+    class Meta:
+        model = Team
+        fields = [
+            "name",
+            "slug",
+            "kind",
+            "discipline",
+            "city",
+            "country",
+            "description",
+            "logo",
+            "source_url",
+            "is_active",
+        ]
+        widgets = {
+            "description": forms.Textarea(attrs={"rows": 4}),
+        }
+        labels = {
+            "name": "Название команды",
+            "slug": "Slug",
+            "kind": "Тип",
+            "discipline": "Дисциплина",
+            "city": "Город",
+            "country": "Страна",
+            "description": "Описание",
+            "logo": "Логотип",
+            "source_url": "Источник",
+            "is_active": "Показывать на сайте",
+        }
+        help_texts = {
+            "slug": "Оставьте пустым для авто-генерации.",
+            "logo": "JPG, JPEG, PNG, WEBP. Максимальный размер 5 MB.",
+            "source_url": "Ссылка на официальный или проверенный источник (опционально).",
+        }
+
+
+class TeamMemberForm(forms.ModelForm):
+    def clean_photo(self):
+        return _validate_image_upload(self.cleaned_data.get("photo"), "Фото игрока")
+
+    class Meta:
+        model = Player
+        fields = ["name", "position", "bio", "photo"]
+        widgets = {
+            "bio": forms.Textarea(attrs={"rows": 2}),
+        }
+        labels = {
+            "name": "Игрок",
+            "position": "Позиция/роль",
+            "bio": "Описание",
+            "photo": "Фото",
+        }
+
+
+TeamMemberFormSet = inlineformset_factory(
+    Team,
+    Player,
+    form=TeamMemberForm,
+    extra=3,
+    can_delete=True,
+    fields=["name", "position", "bio", "photo"],
+)

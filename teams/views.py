@@ -1,6 +1,7 @@
 ﻿from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
+from django.utils import timezone
 
 from articles.models import Article
 from lib.data_sync import refresh_sports_data
@@ -10,11 +11,24 @@ from .models import Team
 
 
 def team_list(request):
-    data_meta = refresh_sports_data()
-    queryset = Team.objects.prefetch_related("players").exclude(source_url="").order_by("name")
-
     kind = request.GET.get("kind", "").strip()
     discipline = request.GET.get("discipline", "").strip()
+
+    manual_queryset = (
+        Team.objects.filter(is_manual=True, is_active=True).prefetch_related("players").order_by("name")
+    )
+    is_demo_mode = not manual_queryset.exists()
+
+    if is_demo_mode:
+        data_meta = refresh_sports_data()
+        queryset = (
+            Team.objects.filter(is_manual=False, is_active=True)
+            .prefetch_related("players")
+            .order_by("name")
+        )
+    else:
+        data_meta = None
+        queryset = manual_queryset
 
     if kind in {Team.KIND_SPORT, Team.KIND_ESPORT}:
         queryset = queryset.filter(kind=kind)
@@ -47,18 +61,27 @@ def team_list(request):
                 {"label": "Команды", "url": None},
             ],
             "data_meta": data_meta,
+            "is_demo_mode": is_demo_mode,
         },
     )
 
 
 def team_detail(request, slug):
     data_meta = refresh_sports_data()
-    team = get_object_or_404(Team.objects.prefetch_related("players"), slug=slug)
+    team = get_object_or_404(Team.objects.prefetch_related("players"), slug=slug, is_active=True)
+    now = timezone.now()
+    team_name = (team.name or "").strip()
 
-    recent_matches = (
-        Match.objects.filter(Q(team_a=team) | Q(team_b=team))
+    upcoming_matches = (
+        Match.objects.filter(
+            Q(datetime__gte=now),
+            Q(team_a=team)
+            | Q(team_b=team)
+            | Q(team_a__name__iexact=team_name)
+            | Q(team_b__name__iexact=team_name),
+        )
         .select_related("team_a", "team_b", "tournament", "result")
-        .order_by("-datetime")[:8]
+        .order_by("datetime")[:8]
     )
 
     related_articles = (
@@ -78,7 +101,7 @@ def team_detail(request, slug):
         "teams/team_detail.html",
         {
             "team": team,
-            "recent_matches": recent_matches,
+            "upcoming_matches": upcoming_matches,
             "related_articles": related_articles,
             "page_title": team.name,
             "page_description": team.description or team.name,

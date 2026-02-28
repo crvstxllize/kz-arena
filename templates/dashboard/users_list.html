@@ -8,7 +8,10 @@
       <h1>Пользователи</h1>
       <p class="muted">Модерация пользователей: бан/разбан, назначение роли и удаление.</p>
     </div>
-    <a href="{% url 'dashboard:article_list' %}" class="button button--secondary">К статьям</a>
+    <div class="dashboard-actions">
+      <a href="{% url 'dashboard:team_list' %}" class="button button--secondary">Команды</a>
+      <a href="{% url 'dashboard:article_list' %}" class="button button--secondary">К статьям</a>
+    </div>
   </div>
 
   <div class="dashboard-metrics">

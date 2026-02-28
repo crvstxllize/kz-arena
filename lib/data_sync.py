@@ -104,17 +104,21 @@ def refresh_sports_data(force: bool = False):
                     item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else ""
                 ),
                 "country": item.country or "Kazakhstan",
+                "is_manual": False,
+                "is_active": True,
             },
         )
-        team.kind = _kind_by_discipline(item.discipline)
-        team.discipline = (
-            item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else ""
-        )
-        team.country = item.country or "Kazakhstan"
-        team.city = item.city or ""
-        team.source_url = item.source_url or ""
-        team.source_updated_at = _to_aware(item.updated_at)
-        team.save()
+        if not team.is_manual:
+            team.kind = _kind_by_discipline(item.discipline)
+            team.discipline = (
+                item.discipline if item.discipline in dict(Team.DISCIPLINE_CHOICES) else ""
+            )
+            team.country = item.country or "Kazakhstan"
+            team.city = item.city or ""
+            team.source_url = item.source_url or ""
+            team.source_updated_at = _to_aware(item.updated_at)
+            team.is_active = True
+            team.save()
         teams_by_name[item.name] = team
 
     tournaments_by_ext: Dict[str, Tournament] = {}

@@ -20,3 +20,15 @@ def team_logo_url(team):
     if mapped:
         return static(mapped)
     return static("img/placeholder.svg")
+
+
+@register.filter(name="player_photo_url")
+def player_photo_url(player):
+    photo = getattr(player, "photo", None)
+    if photo and getattr(photo, "name", ""):
+        try:
+            if photo.storage.exists(photo.name):
+                return photo.url
+        except Exception:
+            pass
+    return static("placeholders/players/default.svg")

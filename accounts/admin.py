@@ -117,16 +117,13 @@ class ProfileAdmin(admin.ModelAdmin):
     search_fields = ("user__username", "user__email", "display_name")
     list_select_related = ("user",)
     list_filter = (UserRoleListFilter, "user__is_active")
+    fields = ("user", "display_name", "avatar", "role", "is_active")
     actions = (
         "set_role_admin",
         "set_role_editor",
         "set_role_user",
         "ban_profiles",
         "unban_profiles",
-    )
-    fieldsets = (
-        (None, {"fields": ("user", "display_name", "avatar")}),
-        ("Модерация", {"fields": ("role", "is_active")}),
     )
 
     @admin.display(description="Роль")
@@ -322,8 +319,25 @@ class UserModerationAdmin(DjangoUserAdmin):
     def save_related(self, request, form, formsets, change):
         super().save_related(request, form, formsets, change)
         role = form.cleaned_data.get("role")
+        if form.instance.pk == request.user.pk and role != "admin":
+            self.message_user(
+                request,
+                "Нельзя снять у самого себя роль администратора через админку.",
+                level=messages.WARNING,
+            )
+            role = "admin"
         if role:
             set_user_role(form.instance, role)
+
+    def save_model(self, request, obj, form, change):
+        if obj.pk == request.user.pk and not form.cleaned_data.get("is_active", True):
+            self.message_user(
+                request,
+                "Нельзя забанить самого себя через админку.",
+                level=messages.WARNING,
+            )
+            obj.is_active = True
+        super().save_model(request, obj, form, change)
 
     @admin.action(description='Назначить роль "Администратор"')
     def set_role_admin(self, request, queryset):

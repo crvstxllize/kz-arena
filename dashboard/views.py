@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db import transaction
 from django.db.models import Q
+from django.db.models.deletion import ProtectedError
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -21,9 +22,10 @@ from accounts.roles import (
 from articles.models import Article
 from comments.models import Comment, CommentReport
 from interactions.models import ArticleRating, Favorite, Reaction, Subscription
+from teams.models import Team
 
 from .decorators import editor_required, staff_required
-from .forms import DashboardArticleForm, MediaAssetForm
+from .forms import DashboardArticleForm, MediaAssetForm, TeamDashboardForm, TeamMemberFormSet
 
 DELETED_USERNAME = "deleted_user"
 DELETED_DISPLAY_NAME = "Удалённый пользователь"
@@ -43,6 +45,10 @@ def _get_dashboard_articles_queryset(user):
 
 def _check_article_permissions(user, article):
     return can_edit_articles(user) or article.author_id == user.id
+
+
+def _get_dashboard_teams_queryset():
+    return Team.objects.filter(is_manual=True).prefetch_related("players")
 
 
 def _get_moderatable_users_queryset():
@@ -118,6 +124,7 @@ def _delete_user_safely(target_user):
 @editor_required
 def dashboard_index(request):
     articles_qs = _get_dashboard_articles_queryset(request.user)
+    teams_qs = _get_dashboard_teams_queryset()
     return render(
         request,
         "dashboard/index.html",
@@ -126,6 +133,7 @@ def dashboard_index(request):
             "total_articles": articles_qs.count(),
             "published_articles": articles_qs.filter(status=Article.STATUS_PUBLISHED).count(),
             "draft_articles": articles_qs.filter(status=Article.STATUS_DRAFT).count(),
+            "total_teams": teams_qs.count(),
             "can_manage_users": can_manage_users(request.user),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
@@ -155,6 +163,7 @@ def article_list(request):
             "search_url": reverse("dashboard:article_search"),
             "reset_url": reverse("dashboard:article_list"),
             "can_manage_users": can_manage_users(request.user),
+            "can_manage_teams": can_edit_articles(request.user),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": "dashboard:index"},
@@ -379,6 +388,167 @@ def article_toggle_status(request, pk):
 
 
 @login_required
+@editor_required
+def team_list(request):
+    queryset = _get_dashboard_teams_queryset().order_by("name", "id")
+    query = request.GET.get("q", "").strip()
+    kind = request.GET.get("kind", "").strip()
+    discipline = request.GET.get("discipline", "").strip()
+
+    if query:
+        queryset = queryset.filter(
+            Q(name__icontains=query)
+            | Q(slug__icontains=query)
+            | Q(city__icontains=query)
+            | Q(country__icontains=query)
+            | Q(description__icontains=query)
+        )
+    if kind in {Team.KIND_SPORT, Team.KIND_ESPORT}:
+        queryset = queryset.filter(kind=kind)
+    if discipline in {value for value, _ in Team.DISCIPLINE_CHOICES}:
+        queryset = queryset.filter(discipline=discipline)
+
+    paginator = Paginator(queryset, 12)
+    page_obj = paginator.get_page(request.GET.get("page"))
+    query_params = request.GET.copy()
+    query_params.pop("page", None)
+
+    return render(
+        request,
+        "dashboard/teams_list.html",
+        {
+            "page_title": "Управление командами",
+            "page_obj": page_obj,
+            "query": query,
+            "current_filters": {
+                "kind": kind,
+                "discipline": discipline,
+            },
+            "kind_choices": Team.CONTENT_KIND_CHOICES,
+            "discipline_choices": Team.DISCIPLINE_CHOICES,
+            "pagination_query": query_params.urlencode(),
+            "reset_url": reverse("dashboard:team_list"),
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Команды", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def team_create(request):
+    if request.method == "POST":
+        form = TeamDashboardForm(request.POST, request.FILES)
+        if form.is_valid():
+            team = form.save(commit=False)
+            team.is_manual = True
+            team.save()
+            messages.success(request, "Команда создана. Добавьте состав в форме редактирования.")
+            return redirect("dashboard:team_edit", pk=team.pk)
+        messages.error(request, "Исправьте ошибки в форме.")
+    else:
+        form = TeamDashboardForm()
+
+    return render(
+        request,
+        "dashboard/team_form.html",
+        {
+            "page_title": "Создать команду",
+            "team": None,
+            "form": form,
+            "members_formset": None,
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Команды", "url": "dashboard:team_list"},
+                {"label": "Создать", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def team_edit(request, pk):
+    team = get_object_or_404(_get_dashboard_teams_queryset(), pk=pk)
+
+    if request.method == "POST":
+        form = TeamDashboardForm(request.POST, request.FILES, instance=team)
+        members_formset = TeamMemberFormSet(
+            request.POST,
+            request.FILES,
+            instance=team,
+            prefix="members",
+        )
+        if form.is_valid() and members_formset.is_valid():
+            with transaction.atomic():
+                updated_team = form.save(commit=False)
+                updated_team.is_manual = True
+                updated_team.save()
+                members_formset.save()
+            messages.success(request, "Изменения команды и состава сохранены.")
+            return redirect("dashboard:team_edit", pk=team.pk)
+        messages.error(request, "Исправьте ошибки в форме.")
+    else:
+        form = TeamDashboardForm(instance=team)
+        members_formset = TeamMemberFormSet(instance=team, prefix="members")
+
+    return render(
+        request,
+        "dashboard/team_form.html",
+        {
+            "page_title": f"Команда: {team.name}",
+            "team": team,
+            "form": form,
+            "members_formset": members_formset,
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Команды", "url": "dashboard:team_list"},
+                {"label": "Редактирование", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def team_delete(request, pk):
+    team = get_object_or_404(_get_dashboard_teams_queryset(), pk=pk)
+    if request.method == "POST":
+        try:
+            team.delete()
+            messages.success(request, "Команда удалена.")
+        except ProtectedError:
+            messages.error(
+                request,
+                "Команду нельзя удалить: она связана с матчами/турнирами. Сначала измените связанные данные.",
+            )
+        return redirect("dashboard:team_list")
+
+    return render(
+        request,
+        "dashboard/team_confirm_delete.html",
+        {
+            "page_title": "Удаление команды",
+            "team": team,
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Команды", "url": "dashboard:team_list"},
+                {"label": "Удаление", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
 @staff_required
 def user_list(request):
     base_queryset = _get_moderatable_users_queryset()
@@ -412,6 +582,7 @@ def user_list(request):
             "banned_count": base_queryset.filter(is_active=False).count(),
             "total_users_count": base_queryset.count(),
             "role_choices": ROLE_CHOICES,
+            "can_manage_teams": can_edit_articles(request.user),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": "dashboard:index"},

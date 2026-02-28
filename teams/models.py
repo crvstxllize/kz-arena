@@ -34,12 +34,17 @@ class Team(models.Model):
     city = models.CharField(max_length=120, blank=True)
     source_url = models.URLField(blank=True)
     source_updated_at = models.DateTimeField(blank=True, null=True)
+    is_manual = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ("name",)
-        indexes = [models.Index(fields=["kind", "discipline"])]
+        indexes = [
+            models.Index(fields=["kind", "discipline"]),
+            models.Index(fields=["is_manual", "is_active"]),
+        ]
 
     def save(self, *args, **kwargs):
         if not self.slug:

@@ -147,6 +147,70 @@ class Command(BaseCommand):
     def _seed_teams(self):
         data = [
             {
+                "name": "Кайрат",
+                "kind": "sport",
+                "discipline": "football",
+                "city": "Алматы",
+                "description": "Футбольный клуб. Состав заполнен демо-игроками и требует ручной верификации.",
+                "source_url": "https://fckairat.com/",
+            },
+            {
+                "name": "Астана",
+                "kind": "sport",
+                "discipline": "football",
+                "city": "Астана",
+                "description": "Футбольный клуб. Состав заполнен демо-игроками и требует ручной верификации.",
+                "source_url": "https://fcastana.kz/",
+            },
+            {
+                "name": "Demo: BC Astana (needs review)",
+                "kind": "sport",
+                "discipline": "basketball",
+                "city": "Астана",
+                "description": "Требует подтверждения перед публикацией на проде.",
+                "source_url": "https://pbcastana.kz/",
+            },
+            {
+                "name": "Demo: Irbis Almaty (needs review)",
+                "kind": "sport",
+                "discipline": "basketball",
+                "city": "Алматы",
+                "description": "Требует подтверждения перед публикацией на проде.",
+                "source_url": "",
+            },
+            {
+                "name": "Demo: K23 (needs review)",
+                "kind": "esport",
+                "discipline": "cs2",
+                "city": "Казахстан",
+                "description": "Требует подтверждения перед публикацией на проде.",
+                "source_url": "https://liquipedia.net/counterstrike/K23",
+            },
+            {
+                "name": "Demo: AVANGAR (needs review)",
+                "kind": "esport",
+                "discipline": "cs2",
+                "city": "Казахстан",
+                "description": "Требует подтверждения перед публикацией на проде.",
+                "source_url": "https://liquipedia.net/counterstrike/AVANGAR",
+            },
+            {
+                "name": "Demo: Team Kazakhstan Dota 2 (needs review)",
+                "kind": "esport",
+                "discipline": "dota2",
+                "city": "Казахстан",
+                "description": "Требует подтверждения перед публикацией на проде.",
+                "source_url": "",
+            },
+            {
+                "name": "Demo: Nomad Dota 2 (needs review)",
+                "kind": "esport",
+                "discipline": "dota2",
+                "city": "Казахстан",
+                "description": "Требует подтверждения перед публикацией на проде.",
+                "source_url": "",
+            },
+            {
                 "name": "Astana Falcons",
                 "kind": "sport",
                 "discipline": "football",
@@ -210,15 +274,38 @@ class Command(BaseCommand):
                     "kind": item["kind"],
                     "discipline": item["discipline"],
                     "description": item["description"],
+                    "city": item.get("city", ""),
+                    "source_url": item.get("source_url", ""),
+                    "is_manual": True,
+                    "is_active": True,
                 },
             )
             changed = False
-            for field in ("kind", "discipline", "description"):
-                if getattr(team, field) != item[field]:
-                    setattr(team, field, item[field])
+            for field in (
+                "kind",
+                "discipline",
+                "description",
+                "city",
+                "source_url",
+                "is_manual",
+                "is_active",
+            ):
+                incoming_value = item.get(field, True if field in {"is_manual", "is_active"} else "")
+                if getattr(team, field) != incoming_value:
+                    setattr(team, field, incoming_value)
                     changed = True
             if changed:
-                team.save(update_fields=["kind", "discipline", "description"])
+                team.save(
+                    update_fields=[
+                        "kind",
+                        "discipline",
+                        "description",
+                        "city",
+                        "source_url",
+                        "is_manual",
+                        "is_active",
+                    ]
+                )
             result[item["name"]] = team
 
         return result
@@ -236,26 +323,39 @@ class Command(BaseCommand):
             ("Bek sultan", "Steppe Titans", "Carry"),
             ("Dias nomad", "Nomad Fire", "IGL"),
             ("Aidar arc", "Altay Phoenix", "Fragger"),
+            ("Игрок 1", "Кайрат", "Нападающий"),
+            ("Игрок 2", "Кайрат", "Полузащитник"),
+            ("Игрок 3", "Кайрат", "Защитник"),
+            ("Игрок 4", "Кайрат", "Защитник"),
+            ("Игрок 5", "Кайрат", "Вратарь"),
+            ("Игрок 1", "Астана", "Нападающий"),
+            ("Игрок 2", "Астана", "Полузащитник"),
+            ("Игрок 3", "Астана", "Защитник"),
+            ("Игрок 4", "Астана", "Защитник"),
+            ("Игрок 5", "Астана", "Вратарь"),
+            ("Игрок A", "Demo: BC Astana (needs review)", "Guard"),
+            ("Игрок B", "Demo: BC Astana (needs review)", "Forward"),
+            ("Игрок A", "Demo: K23 (needs review)", "Rifler"),
+            ("Игрок B", "Demo: K23 (needs review)", "AWPer"),
+            ("Игрок A", "Demo: Team Kazakhstan Dota 2 (needs review)", "Carry"),
+            ("Игрок B", "Demo: Team Kazakhstan Dota 2 (needs review)", "Support"),
         ]
 
         for name, team_name, position in data:
             player, _ = Player.objects.get_or_create(
                 name=name,
+                team=teams[team_name],
                 defaults={
-                    "team": teams[team_name],
                     "position": position,
                     "bio": f"Игрок команды {team_name}.",
                 },
             )
             changed = False
-            if player.team_id != teams[team_name].id:
-                player.team = teams[team_name]
-                changed = True
             if player.position != position:
                 player.position = position
                 changed = True
             if changed:
-                player.save(update_fields=["team", "position"])
+                player.save(update_fields=["position"])
 
     def _seed_tournaments(self):
         allowed_names = {item["name"] for item in TOURNAMENT_ITEMS}

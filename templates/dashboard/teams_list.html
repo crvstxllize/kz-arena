@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="section-head">
+    <h1>Команды</h1>
+    <div class="dashboard-actions">
+      <a href="{% url 'dashboard:article_list' %}" class="button button--secondary">Статьи</a>
+      {% if can_manage_users %}
+        <a href="{% url 'dashboard:user_list' %}" class="button button--secondary">Пользователи</a>
+      {% endif %}
+      <a href="{% url 'dashboard:team_create' %}" class="button">Создать команду</a>
+    </div>
+  </div>
+
+  {% include "includes/dashboard_search_bar.html" with action_url=request.path query_value=query placeholder="Поиск по названию / slug / городу" aria_label="Поиск команды" input_aria_label="Поиск команды" reset_url=reset_url %}
+
+  <form method="get" class="dashboard-actions" style="margin-bottom: 0.75rem;">
+    {% if query %}<input type="hidden" name="q" value="{{ query }}">{% endif %}
+    <label class="filter-label" for="kind">Тип</label>
+    <select class="filter-select" id="kind" name="kind">
+      <option value="">Все</option>
+      {% for value, label in kind_choices %}
+        <option value="{{ value }}" {% if current_filters.kind == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+    <label class="filter-label" for="discipline">Дисциплина</label>
+    <select class="filter-select" id="discipline" name="discipline">
+      <option value="">Все</option>
+      {% for value, label in discipline_choices %}
+        <option value="{{ value }}" {% if current_filters.discipline == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="button button--secondary button--small dash-btn">Фильтр</button>
+    <a href="{{ reset_url }}" class="button button--small dash-btn">Сбросить</a>
+  </form>
+
+  {% if page_obj.object_list %}
+    <div class="dashboard-table-wrap">
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Тип</th>
+            <th>Дисциплина</th>
+            <th>Игроков</th>
+            <th>Статус</th>
+            <th>Обновлено</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for team in page_obj.object_list %}
+            <tr>
+              <td>
+                <a href="{% url 'teams:team_detail' team.slug %}" target="_blank" rel="noopener">{{ team.name }}</a>
+              </td>
+              <td>{{ team.get_kind_display }}</td>
+              <td>{{ team.get_discipline_display|default:"-" }}</td>
+              <td>{{ team.players.all|length }}</td>
+              <td>
+                {% if team.is_active %}
+                  <span class="news-pill">Активна</span>
+                {% else %}
+                  <span class="news-pill">Скрыта</span>
+                {% endif %}
+              </td>
+              <td>{{ team.updated_at|date:"d.m.Y H:i" }}</td>
+              <td class="dashboard-actions dash-row-actions">
+                <a href="{% url 'dashboard:team_edit' team.pk %}" class="button button--small dash-btn dash-btn--row dash-btn--edit">Редактировать</a>
+                <a href="{% url 'dashboard:team_delete' team.pk %}" class="button button--small button--danger dash-btn dash-btn--row dash-btn--delete">Удалить</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if page_obj.paginator.num_pages > 1 %}
+      <nav class="pagination" aria-label="Пагинация команд dashboard">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Назад</a>
+        {% endif %}
+        <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Вперед</a>
+        {% endif %}
+      </nav>
+    {% endif %}
+  {% else %}
+    <p class="muted">Команды не найдены.</p>
+  {% endif %}
+</section>
+{% endblock %}

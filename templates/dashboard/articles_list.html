@@ -5,6 +5,7 @@
   <div class="section-head">
     <h1>Статьи</h1>
     <div class="dashboard-actions">
+      <a href="{% url 'dashboard:team_list' %}" class="button button--secondary">Команды</a>
       {% if can_manage_users %}
         <a href="{% url 'dashboard:user_list' %}" class="button button--secondary">Пользователи</a>
       {% endif %}
