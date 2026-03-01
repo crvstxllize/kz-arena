@@ -143,6 +143,68 @@ python manage.py runserver
 
 Смотреть вывод в том же терминале.
 
+## Deploy на Render
+
+Для проекта подготовлен blueprint:
+- [render.yaml](/Users/nurserik/Desktop/kz-arena/render.yaml)
+
+Что уже учтено:
+- `gunicorn` для запуска Django в production
+- `WhiteNoise` для раздачи `staticfiles`
+- persistent disk для `media/`
+- PostgreSQL в том же регионе
+- поддержка custom domain через `PRIMARY_DOMAIN`
+
+### Рекомендуемая конфигурация Render
+- Web Service: `Starter`
+- Region: `Frankfurt`
+- Database: `basic-256mb` или выше
+- Persistent Disk: `2 GB`, mount path:
+
+```bash
+/opt/render/project/src/media
+```
+
+### Если создаёте сервис вручную
+
+Build Command:
+
+```bash
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+```
+
+Start Command:
+
+```bash
+gunicorn kz_arena.wsgi:application --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+```
+
+### Обязательные env vars
+
+Минимум:
+
+```env
+ENV_NAME=prod
+DEBUG=0
+SECRET_KEY=<generated>
+USE_HTTPS=1
+SECURE_SSL_REDIRECT=1
+SERVE_MEDIA=1
+LOG_LEVEL=INFO
+PRIMARY_DOMAIN=your-domain.com
+DB_ENGINE=postgres
+DB_NAME=<from render postgres>
+DB_USER=<from render postgres>
+DB_PASSWORD=<from render postgres>
+DB_HOST=<from render postgres>
+DB_PORT=5432
+```
+
+Примечания:
+- `PRIMARY_DOMAIN` автоматически добавляется в `ALLOWED_HOSTS` и `CSRF_TRUSTED_ORIGINS`
+- Render hostname (`RENDER_EXTERNAL_HOSTNAME`) тоже подхватывается автоматически
+- пример локального/production env вынесен в `.env.example`
+
 ## Линтинг и форматирование (минимальная настройка)
 
 В проект добавлена минимальная конфигурация `black` и `isort` в `pyproject.toml`.

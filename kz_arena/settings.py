@@ -49,6 +49,16 @@ if not SECRET_KEY:
 
 ALLOWED_HOSTS = _env_csv("ALLOWED_HOSTS", "127.0.0.1,localhost")
 CSRF_TRUSTED_ORIGINS = _env_csv("CSRF_TRUSTED_ORIGINS", "")
+PRIMARY_DOMAIN = os.getenv("PRIMARY_DOMAIN", "").strip()
+RENDER_EXTERNAL_HOSTNAME = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").strip()
+
+for hostname in {PRIMARY_DOMAIN, RENDER_EXTERNAL_HOSTNAME}:
+    if hostname and hostname not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(hostname)
+    if hostname:
+        trusted_origin = f"https://{hostname}"
+        if trusted_origin not in CSRF_TRUSTED_ORIGINS:
+            CSRF_TRUSTED_ORIGINS.append(trusted_origin)
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -71,6 +81,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -153,9 +164,12 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+WHITENOISE_MAX_AGE = 60 if DEBUG else 31536000
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+SERVE_MEDIA = _env_bool("SERVE_MEDIA", DEBUG)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -170,6 +184,7 @@ SECURE_REFERRER_POLICY = "same-origin"
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 if not DEBUG:
     use_https = _env_bool("USE_HTTPS", False)
