@@ -1,18 +1,19 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% load team_media %}
 
 {% block content %}
 <section class="section team-detail">
   <div class="team-detail__header">
     <div class="team-detail__logo-wrap">
-      <img src="{{ team|team_logo_url }}" alt="{{ team.name }}" class="team-detail__logo">
+      <img src="{{ team|team_logo_url }}" alt="{{ team.display_name|default:team.name }}" class="team-detail__logo">
     </div>
 
     <div>
-      <h1>{{ team.name }}</h1>
+      <h1>{{ team.display_name|default:team.name }}</h1>
       <p class="news-card__meta">
         <span class="news-pill">{{ team.get_kind_display }}</span>
         {% if team.discipline %}<span class="news-pill">{{ team.get_discipline_display }}</span>{% endif %}
+        {% if team.is_example %}<span class="news-pill">Пример</span>{% endif %}
         <span>{{ team.country }}</span>
       </p>
       <p>{% if team.description %}{{ team.description }}{% else %}Описание пока отсутствует.{% endif %}</p>
@@ -45,34 +46,46 @@
 
 <section class="section">
   <div class="section-head"><h2 class="section-title">Ближайшие матчи</h2></div>
-  <p class="muted">Матчи: данные из открытых источников/демо.</p>
   {% if upcoming_matches %}
-    <div class="match-table-wrap">
-      <table class="match-table">
-        <thead>
-          <tr><th>Дата</th><th>Турнир</th><th>Матч</th><th>Статус</th><th>Счет</th></tr>
-        </thead>
-        <tbody>
-          {% for match in upcoming_matches %}
-            <tr>
-              <td>{{ match.datetime|date:"d.m.Y H:i" }}</td>
-              <td><a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}">{{ match.tournament.name }}</a></td>
-              <td><a href="{% url 'matches:match_detail' match.id %}">{{ match.team_a.name }} vs {{ match.team_b.name }}</a></td>
-              <td>{{ match.get_status_display }}</td>
-              <td>
-                {% if match.result %}
-                  {{ match.result.score_a }} : {{ match.result.score_b }}
-                {% else %}
-                  -
-                {% endif %}
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="team-upcoming-matches" aria-label="Ближайшие матчи {{ team.name }}">
+      {% for match in upcoming_matches %}
+        <article class="team-upcoming-match">
+          <div class="team-upcoming-match__date">
+            <span class="team-upcoming-match__day">{{ match.start_datetime|date:"d.m" }}</span>
+            <span class="team-upcoming-match__time">{{ match.start_datetime|date:"H:i" }}</span>
+          </div>
+
+          <div class="team-upcoming-match__body">
+            <div class="team-upcoming-match__meta">
+              <span class="news-pill">{{ match.get_kind_display }}</span>
+              {% if match.discipline %}<span class="news-pill">{{ match.get_discipline_display }}</span>{% endif %}
+              <span class="news-pill">{{ match.get_status_display }}</span>
+              {% if match.is_example %}<span class="news-pill">Пример</span>{% endif %}
+            </div>
+
+            <h3 class="team-upcoming-match__title">
+              <a href="{% url 'matches:match_detail' match.id %}">{{ match.participants_display }}</a>
+            </h3>
+
+            <p class="team-upcoming-match__details">
+              {% if match.tournament %}
+                <a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}">{{ match.tournament.name }}</a>
+              {% else %}
+                Без турнира
+              {% endif %}
+              {% if match.location_display %}<span>{{ match.location_display }}</span>{% endif %}
+            </p>
+          </div>
+
+          <div class="team-upcoming-match__side">
+            <span class="team-upcoming-match__score">{{ match.score_display|default:"vs" }}</span>
+            <a href="{% url 'matches:match_detail' match.id %}" class="button button--secondary button--small">Открыть матч</a>
+          </div>
+        </article>
+      {% endfor %}
     </div>
   {% else %}
-    <p class="muted">Данные отсутствуют.</p>
+    <p class="muted">Матчи пока не добавлены.</p>
   {% endif %}
 </section>
 

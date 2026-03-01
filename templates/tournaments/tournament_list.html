@@ -4,9 +4,11 @@
 <section class="section section-filters" aria-label="Фильтры турниров">
   <h1>Турниры</h1>
   <p>Календарь и статус текущих и предстоящих турниров.</p>
-  {% include "includes/data_freshness.html" %}
+  <div class="message message--warning tournament-notice" role="status">
+    Раздел работает в тестовом режиме и скоро вступит в действие.
+  </div>
 
-  <form method="get" class="news-filters">
+  <form method="get" class="news-filters tournament-filters">
     <div class="filter-group" role="radiogroup" aria-label="Тип турниров">
       <label class="filter-chip {% if not current_filters.kind %}is-active{% endif %}"><input type="radio" name="kind" value="" {% if not current_filters.kind %}checked{% endif %}>Все</label>
       <label class="filter-chip {% if current_filters.kind == 'sport' %}is-active{% endif %}"><input type="radio" name="kind" value="sport" {% if current_filters.kind == 'sport' %}checked{% endif %}>Спорт</label>
@@ -36,18 +38,18 @@
   {% if page_obj.object_list %}
     <div class="entity-grid">
       {% for tournament in page_obj.object_list %}
-        <article class="entity-card entity-card--plain">
+        <article class="entity-card entity-card--plain{% if tournament.status == 'finished' %} entity-card--finished{% endif %}">
           <div class="entity-card__body">
             <div class="news-card__meta">
               <span class="news-pill">{{ tournament.get_kind_display }}</span>
               {% if tournament.discipline %}<span class="news-pill">{{ tournament.get_discipline_display }}</span>{% endif %}
-              <span>Матчей: {{ tournament.matches.count }}</span>
+              {% if tournament.is_example %}<span class="news-pill">Пример</span>{% endif %}
+              <span>{{ tournament.get_status_display }}</span>
+              <span>{{ tournament.matches_count_label }}: {{ tournament.display_matches_count }}</span>
             </div>
             <h3 class="news-card__title"><a href="{% url 'tournaments:tournament_detail' tournament.slug %}">{{ tournament.name }}</a></h3>
-            <p class="news-card__excerpt">{{ tournament.start_date|date:"d.m.Y" }} - {{ tournament.end_date|date:"d.m.Y" }}{% if tournament.location %} · {{ tournament.location }}{% endif %}</p>
-            {% if tournament.source_url %}
-              <p class="entity-source"><a href="{{ tournament.source_url }}" target="_blank" rel="noopener">Источник</a></p>
-            {% endif %}
+            <p class="news-card__excerpt">{{ tournament.start_date|date:"d.m.Y" }} - {{ tournament.end_date|date:"d.m.Y" }}{% if tournament.city %} · {{ tournament.city }}{% endif %}{% if tournament.venue %} · {{ tournament.venue }}{% endif %}</p>
+            {% if tournament.description %}<p class="news-card__excerpt">{{ tournament.description }}</p>{% endif %}
           </div>
         </article>
       {% endfor %}

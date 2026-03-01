@@ -5,18 +5,26 @@ from .models import Match, MatchResult, Tournament
 
 @admin.register(Tournament)
 class TournamentAdmin(admin.ModelAdmin):
-    list_display = ("name", "kind", "discipline", "start_date", "end_date")
-    list_filter = ("kind", "discipline", "start_date")
-    search_fields = ("name", "location")
+    list_display = ("name", "kind", "discipline", "city", "status", "is_example", "start_date", "end_date")
+    list_filter = ("kind", "discipline", "status", "is_example", "start_date")
+    search_fields = ("name", "city", "venue")
     prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
-    list_display = ("tournament", "team_a", "team_b", "datetime", "status")
-    list_filter = ("status", "tournament")
-    search_fields = ("team_a__name", "team_b__name")
-    list_select_related = ("tournament", "team_a", "team_b")
+    list_display = (
+        "participants_display",
+        "tournament",
+        "kind",
+        "discipline",
+        "start_datetime",
+        "status",
+        "is_example",
+    )
+    list_filter = ("kind", "discipline", "status", "is_example", "tournament")
+    search_fields = ("title", "home_team__name", "away_team__name", "city", "venue")
+    list_select_related = ("tournament", "home_team", "away_team")
 
 
 @admin.register(MatchResult)

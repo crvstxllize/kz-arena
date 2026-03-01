@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="KZ Arena">
+  <defs>
+    <radialGradient id="orb" cx="35%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#1c9cff"/>
+      <stop offset="0.55" stop-color="#1565d8"/>
+      <stop offset="1" stop-color="#0b2f88"/>
+    </radialGradient>
+    <linearGradient id="glow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d7f0ff"/>
+    </linearGradient>
+    <linearGradient id="swoosh" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#bce6ff"/>
+      <stop offset="1" stop-color="#62d5ff"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#081a4d" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <circle cx="48" cy="48" r="40" fill="url(#orb)"/>
+    <circle cx="48" cy="48" r="39" fill="none" stroke="rgba(255,255,255,0.16)"/>
+
+    <path
+      d="M48 16 56 38l24-3-18 16 8 24-22-14-22 14 8-24-18-16 24 3Z"
+      fill="url(#glow)"
+      opacity="0.96"
+    />
+
+    <path
+      d="M20 50c8-11 23-17 40-16 11 1 20 4 27 8-9 2-20 6-31 11-13 6-23 14-34 23-8-6-8-17-2-26Z"
+      fill="#0a2f94"
+      opacity="0.96"
+    />
+    <path
+      d="M18 54c9-10 23-15 39-14 12 1 22 4 31 9-9 2-19 6-31 11-13 6-22 13-32 22-8-6-9-18-7-28Z"
+      fill="url(#swoosh)"
+    />
+    <path
+      d="M24 37c10-4 22-3 33 2-10-1-20 1-30 6-6 3-10 7-12 11-1-6 2-14 9-19Z"
+      fill="#ffffff"
+      opacity="0.68"
+    />
+
+    <circle cx="69" cy="26" r="4.4" fill="#ffd84d"/>
+  </g>
+</svg>

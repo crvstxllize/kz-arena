@@ -18,12 +18,14 @@ class Article(models.Model):
 
     DISCIPLINE_FOOTBALL = "football"
     DISCIPLINE_BASKETBALL = "basketball"
+    DISCIPLINE_ATHLETICS = "athletics"
     DISCIPLINE_CS2 = "cs2"
     DISCIPLINE_DOTA2 = "dota2"
     DISCIPLINE_PUBG = "pubg"
     DISCIPLINE_CHOICES = [
         (DISCIPLINE_FOOTBALL, "Футбол"),
         (DISCIPLINE_BASKETBALL, "Баскетбол"),
+        (DISCIPLINE_ATHLETICS, "Легкая атлетика"),
         (DISCIPLINE_CS2, "CS2"),
         (DISCIPLINE_DOTA2, "Dota 2"),
         (DISCIPLINE_PUBG, "PUBG"),

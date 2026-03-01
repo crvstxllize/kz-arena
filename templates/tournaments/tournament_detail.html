@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 <section class="section">
@@ -6,9 +6,13 @@
   <p class="news-card__meta">
     <span class="news-pill">{{ tournament.get_kind_display }}</span>
     {% if tournament.discipline %}<span class="news-pill">{{ tournament.get_discipline_display }}</span>{% endif %}
+    {% if tournament.is_example %}<span class="news-pill">Пример</span>{% endif %}
+    <span>{{ tournament.get_status_display }}</span>
     <span>{{ tournament.start_date|date:"d.m.Y" }} - {{ tournament.end_date|date:"d.m.Y" }}</span>
-    {% if tournament.location %}<span>{{ tournament.location }}</span>{% endif %}
+    {% if tournament.city %}<span>{{ tournament.city }}</span>{% endif %}
+    {% if tournament.venue %}<span>{{ tournament.venue }}</span>{% endif %}
   </p>
+  <p>{% if tournament.description %}{{ tournament.description }}{% else %}Описание пока отсутствует.{% endif %}</p>
 </section>
 
 <section class="section">
@@ -22,23 +26,17 @@
         <tbody>
           {% for match in matches %}
             <tr>
-              <td>{{ match.datetime|date:"d.m.Y H:i" }}</td>
-              <td><a href="{% url 'matches:match_detail' match.id %}">{{ match.team_a.name }} vs {{ match.team_b.name }}</a></td>
+              <td>{{ match.start_datetime|date:"d.m.Y H:i" }}</td>
+              <td><a href="{% url 'matches:match_detail' match.id %}">{{ match.participants_display }}</a></td>
               <td>{{ match.get_status_display }}</td>
-              <td>
-                {% if match.result %}
-                  {{ match.result.score_a }} : {{ match.result.score_b }}
-                {% else %}
-                  -
-                {% endif %}
-              </td>
+              <td>{{ match.score_display|default:"-" }}</td>
             </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
   {% else %}
-    <p class="muted">Данные отсутствуют.</p>
+    <p class="muted">Матчи пока не добавлены.</p>
   {% endif %}
 </section>
 

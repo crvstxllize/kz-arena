@@ -72,18 +72,38 @@ async function fetchJSON(url, options = {}) {
 function initMobileMenu() {
   const navToggle = document.getElementById("nav-toggle");
   const navMenu = document.getElementById("nav-menu");
-  if (!navToggle || !navMenu) {
+  const navOverlay = document.getElementById("nav-overlay");
+  if (!navToggle || !navMenu || !navOverlay) {
     return;
   }
 
   const closeMenu = () => {
     navMenu.classList.remove("is-open");
+    navOverlay.hidden = true;
+    document.body.classList.remove("has-open-nav");
     navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Открыть меню");
+  };
+
+  const openMenu = () => {
+    navMenu.classList.add("is-open");
+    navOverlay.hidden = false;
+    document.body.classList.add("has-open-nav");
+    navToggle.setAttribute("aria-expanded", "true");
+    navToggle.setAttribute("aria-label", "Закрыть меню");
   };
 
   navToggle.addEventListener("click", () => {
-    const isOpen = navMenu.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
+    const isOpen = navMenu.classList.contains("is-open");
+    if (isOpen) {
+      closeMenu();
+      return;
+    }
+    openMenu();
+  });
+
+  navOverlay.addEventListener("click", () => {
+    closeMenu();
   });
 
   navMenu.querySelectorAll("a, button").forEach((link) => {
@@ -106,6 +126,12 @@ function initMobileMenu() {
     if (event.key === "Escape" && navMenu.classList.contains("is-open")) {
       closeMenu();
       navToggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1024 && navMenu.classList.contains("is-open")) {
+      closeMenu();
     }
   });
 }
@@ -573,6 +599,45 @@ function initMatchesFilters() {
   }
 }
 
+function initFilterChipState() {
+  const syncGroup = (input) => {
+    const groupName = input.getAttribute("name");
+    if (!groupName || !input.form) {
+      return;
+    }
+
+    const selector = `input[type="radio"][name="${window.CSS && window.CSS.escape ? window.CSS.escape(groupName) : groupName}"]`;
+    input.form.querySelectorAll(selector).forEach((radio) => {
+      const chip = radio.closest(".filter-chip");
+      if (!chip) {
+        return;
+      }
+      const active = radio.checked;
+      chip.classList.toggle("is-active", active);
+      chip.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  };
+
+  document.querySelectorAll(".filter-chip").forEach((chip) => {
+    const input = chip.querySelector("input[type='radio']");
+    if (!input) {
+      return;
+    }
+
+    syncGroup(input);
+
+    chip.addEventListener("click", () => {
+      window.requestAnimationFrame(() => {
+        syncGroup(input);
+      });
+    });
+
+    input.addEventListener("change", () => {
+      syncGroup(input);
+    });
+  });
+}
+
 function initCommentsAjax() {
   const detail = document.querySelector(".news-detail[data-article-id]");
   const form = document.querySelector("[data-comments-form]");
@@ -703,6 +768,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCopyLinkButtons();
   initShareModal();
   initMatchesFilters();
+  initFilterChipState();
   initCommentsAjax();
   initNewsStripScroll();
   initPasswordToggles();
@@ -710,4 +776,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.showToast = showToast;
-

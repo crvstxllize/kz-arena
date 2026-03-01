@@ -1,25 +1,15 @@
-﻿from django.core.paginator import Paginator
-from django.db.models import Q
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
-from django.utils import timezone
 
 from articles.models import Article
-from lib.data_sync import refresh_sports_data
-from teams.models import Team
 
 from .models import Match, Tournament
 
 
 def tournament_list(request):
-    data_meta = refresh_sports_data()
-    queryset = (
-        Tournament.objects.prefetch_related("matches")
-        .exclude(source_url="")
-        .order_by("-start_date")
-    )
-
     kind = request.GET.get("kind", "").strip()
     discipline = request.GET.get("discipline", "").strip()
+    queryset = Tournament.objects.prefetch_related("matches").order_by("-start_date", "-created_at")
 
     if kind in {Tournament.KIND_SPORT, Tournament.KIND_ESPORT}:
         queryset = queryset.filter(kind=kind)
@@ -51,16 +41,14 @@ def tournament_list(request):
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Турниры", "url": None},
             ],
-            "data_meta": data_meta,
         },
     )
 
 
 def tournament_detail(request, slug):
-    data_meta = refresh_sports_data()
     tournament = get_object_or_404(Tournament, slug=slug)
 
-    matches = tournament.matches.select_related("team_a", "team_b", "result").order_by("datetime")
+    matches = tournament.matches.select_related("home_team", "away_team").order_by("start_datetime")
 
     related_articles = (
         Article.objects.filter(
@@ -88,91 +76,74 @@ def tournament_detail(request, slug):
                 {"label": "Турниры", "url": "tournaments:tournament_list"},
                 {"label": tournament.name, "url": None},
             ],
-            "data_meta": data_meta,
         },
     )
 
 
 def match_list(request):
-    data_meta = refresh_sports_data()
-    now = timezone.now()
-    queryset = (
-        Match.objects.filter(datetime__gte=now)
-        .exclude(source_url="")
-        .select_related("team_a", "team_b", "tournament", "result")
-        .order_by("datetime")
-    )
+    queryset = Match.objects.select_related("home_team", "away_team", "tournament")
 
-    kind = request.GET.get("kind", "").strip()
+    category = request.GET.get("category", request.GET.get("kind", "")).strip()
     discipline = request.GET.get("discipline", "").strip()
     status = request.GET.get("status", "").strip()
 
-    if kind in {Tournament.KIND_SPORT, Tournament.KIND_ESPORT}:
-        queryset = queryset.filter(tournament__kind=kind)
+    if category in {Tournament.KIND_SPORT, Tournament.KIND_ESPORT}:
+        queryset = queryset.filter(kind=category)
 
     valid_disciplines = {choice[0] for choice in Tournament.DISCIPLINE_CHOICES}
     if discipline in valid_disciplines:
-        queryset = queryset.filter(tournament__discipline=discipline)
+        queryset = queryset.filter(discipline=discipline)
 
     valid_statuses = {choice[0] for choice in Match.STATUS_CHOICES}
     if status in valid_statuses:
         queryset = queryset.filter(status=status)
 
-    paginator = Paginator(queryset, 12)
-    page_obj = paginator.get_page(request.GET.get("page"))
-
-    page_matches = list(page_obj.object_list)
-    live_matches = [match for match in page_matches if match.status == Match.STATUS_LIVE]
-    scheduled_matches = [match for match in page_matches if match.status == Match.STATUS_SCHEDULED]
-    finished_matches = [match for match in page_matches if match.status == Match.STATUS_FINISHED]
-
-    query_params = request.GET.copy()
-    query_params.pop("page", None)
+    live_matches = queryset.filter(status=Match.STATUS_LIVE).order_by("start_datetime")
+    upcoming_matches = queryset.filter(status=Match.STATUS_UPCOMING).order_by("start_datetime")
+    finished_matches = queryset.filter(status=Match.STATUS_FINISHED).order_by("-start_datetime")
+    all_matches = list(live_matches) + list(upcoming_matches) + list(finished_matches)
 
     return render(
         request,
         "tournaments/match_list.html",
         {
             "page_title": "Матчи",
-            "page_description": "Ближайшие матчи, результаты и статус в реальном времени.",
-            "page_obj": page_obj,
+            "page_description": "Матчи и результаты по спортивным и киберспортивным дисциплинам.",
+            "page_obj": {"object_list": all_matches},
             "live_matches": live_matches,
-            "scheduled_matches": scheduled_matches,
+            "upcoming_matches": upcoming_matches,
             "finished_matches": finished_matches,
-            "has_active_filters": any([kind, discipline, status]),
+            "has_active_filters": any([category, discipline, status]),
             "current_filters": {
-                "kind": kind,
+                "category": category,
                 "discipline": discipline,
                 "status": status,
             },
             "discipline_choices": Tournament.DISCIPLINE_CHOICES,
             "status_choices": Match.STATUS_CHOICES,
-            "pagination_query": query_params.urlencode(),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Матчи", "url": None},
             ],
-            "data_meta": data_meta,
         },
     )
 
 
 def match_detail(request, pk):
-    data_meta = refresh_sports_data()
     match = get_object_or_404(
-        Match.objects.select_related("team_a", "team_b", "tournament", "result"),
+        Match.objects.select_related("home_team", "away_team", "tournament"),
         pk=pk,
     )
 
     related_articles = (
         Article.objects.filter(
             status=Article.STATUS_PUBLISHED,
-            discipline=match.tournament.discipline,
+            discipline=match.discipline or (match.tournament.discipline if match.tournament_id else ""),
         )
         .select_related("author")
         .prefetch_related("categories", "tags")
         .order_by("-published_at")[:4]
-        if match.tournament.discipline
+        if match.discipline or (match.tournament_id and match.tournament.discipline)
         else Article.objects.none()
     )
 
@@ -182,13 +153,12 @@ def match_detail(request, pk):
         {
             "match": match,
             "related_articles": related_articles,
-            "page_title": f"{match.team_a.name} vs {match.team_b.name}",
+            "page_title": match.participants_display,
             "page_description": "Детальная информация о матче.",
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Матчи", "url": "matches:match_list"},
-                {"label": f"{match.team_a.name} vs {match.team_b.name}", "url": None},
+                {"label": match.participants_display, "url": None},
             ],
-            "data_meta": data_meta,
         },
     )

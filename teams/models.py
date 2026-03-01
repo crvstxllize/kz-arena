@@ -68,6 +68,8 @@ class Player(models.Model):
     photo = models.ImageField(upload_to="players/", blank=True, null=True)
     position = models.CharField(max_length=120, blank=True)
     bio = models.TextField(blank=True)
+    source_url = models.URLField(blank=True)
+    last_verified_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         ordering = ("name",)

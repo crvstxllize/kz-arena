@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section narrow">
+  <h1>Удаление матча</h1>
+  <p>Вы уверены, что хотите удалить матч <strong>{{ match_item.participants_display }}</strong>?</p>
+
+  <form method="post" class="auth-form">
+    {% csrf_token %}
+    <div class="form-actions">
+      <button type="submit" class="button button--danger">Удалить</button>
+      <a href="{% url 'dashboard:match_list' %}" class="button button--secondary">Отмена</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

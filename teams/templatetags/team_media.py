@@ -2,12 +2,19 @@ from django import template
 from django.templatetags.static import static
 
 from teams.assets import resolve_team_logo_asset
+from teams.models import Team
 
 register = template.Library()
 
 
 @register.filter(name="team_logo_url")
 def team_logo_url(team):
+    if getattr(team, "is_example", False):
+        discipline = getattr(team, "discipline", "") or ""
+        if discipline in dict(Team.DISCIPLINE_CHOICES):
+            return static(f"placeholders/news/{discipline}.svg")
+        return static("placeholders/news/default.svg")
+
     logo = getattr(team, "logo", None)
     if logo and getattr(logo, "name", ""):
         try:

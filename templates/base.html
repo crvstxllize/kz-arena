@@ -3,14 +3,13 @@
 <html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% if page_title %}{{ page_title }} | {% endif %}KZ Arena{% endblock %}</title>
   <meta name="description" content="{% if page_description %}{{ page_description }}{% else %}Портал новостей KZ Arena{% endif %}">
-  <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}?v=5">
-  <link rel="shortcut icon" href="{% static 'favicon.ico' %}?v=5">
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon.png' %}?v=5">
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}?v=5">
-  <link rel="icon" type="image/svg+xml" sizes="any" href="{% static 'img/favicon.svg' %}?v=5">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/kz-arena-favicon-32.png' %}?v=2">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="{% static 'img/kz-arena-favicon.svg' %}?v=2">
+  <link rel="shortcut icon" href="{% static 'img/kz-arena-favicon-32.png' %}?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/kz-arena-favicon-180.png' %}?v=2">
   <script>
     (function () {
       var root = document.documentElement;
@@ -29,9 +28,9 @@
       root.setAttribute("data-theme", theme);
     })();
   </script>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=13">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=16">
 </head>
-<body>
+<body class="page-{% if request.resolver_match.namespace %}{{ request.resolver_match.namespace }}{% else %}site{% endif %}-{{ request.resolver_match.url_name|default:'index' }}">
   <a class="skip-link" href="#main-content">Перейти к контенту</a>
   {% include "includes/navbar.html" %}
 
@@ -44,6 +43,6 @@
   <button id="back-to-top" class="back-to-top" type="button" aria-label="Прокрутить вверх">Наверх</button>
   {% include "includes/footer.html" %}
   {% include "includes/toasts.html" %}
-  <script src="{% static 'js/main.js' %}?v=7" defer></script>
+  <script src="{% static 'js/main.js' %}?v=9" defer></script>
 </body>
 </html>

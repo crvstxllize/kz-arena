@@ -23,9 +23,17 @@ from articles.models import Article
 from comments.models import Comment, CommentReport
 from interactions.models import ArticleRating, Favorite, Reaction, Subscription
 from teams.models import Team
+from tournaments.models import Match, Tournament
 
 from .decorators import editor_required, staff_required
-from .forms import DashboardArticleForm, MediaAssetForm, TeamDashboardForm, TeamMemberFormSet
+from .forms import (
+    DashboardArticleForm,
+    MediaAssetForm,
+    MatchDashboardForm,
+    TeamDashboardForm,
+    TeamMemberFormSet,
+    TournamentDashboardForm,
+)
 
 DELETED_USERNAME = "deleted_user"
 DELETED_DISPLAY_NAME = "Удалённый пользователь"
@@ -48,7 +56,15 @@ def _check_article_permissions(user, article):
 
 
 def _get_dashboard_teams_queryset():
-    return Team.objects.filter(is_manual=True).prefetch_related("players")
+    return Team.objects.prefetch_related("players")
+
+
+def _get_dashboard_tournaments_queryset():
+    return Tournament.objects.all()
+
+
+def _get_dashboard_matches_queryset():
+    return Match.objects.select_related("tournament", "home_team", "away_team")
 
 
 def _get_moderatable_users_queryset():
@@ -125,6 +141,8 @@ def _delete_user_safely(target_user):
 def dashboard_index(request):
     articles_qs = _get_dashboard_articles_queryset(request.user)
     teams_qs = _get_dashboard_teams_queryset()
+    tournaments_qs = _get_dashboard_tournaments_queryset()
+    matches_qs = _get_dashboard_matches_queryset()
     return render(
         request,
         "dashboard/index.html",
@@ -134,6 +152,8 @@ def dashboard_index(request):
             "published_articles": articles_qs.filter(status=Article.STATUS_PUBLISHED).count(),
             "draft_articles": articles_qs.filter(status=Article.STATUS_DRAFT).count(),
             "total_teams": teams_qs.count(),
+            "total_tournaments": tournaments_qs.count(),
+            "total_matches": matches_qs.count(),
             "can_manage_users": can_manage_users(request.user),
             "breadcrumbs": [
                 {"label": "Главная", "url": "core:home"},
@@ -542,6 +562,312 @@ def team_delete(request, pk):
                 {"label": "Главная", "url": "core:home"},
                 {"label": "Dashboard", "url": "dashboard:index"},
                 {"label": "Команды", "url": "dashboard:team_list"},
+                {"label": "Удаление", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def tournament_list(request):
+    queryset = _get_dashboard_tournaments_queryset().order_by("-start_date", "-created_at", "-id")
+    query = request.GET.get("q", "").strip()
+    kind = request.GET.get("kind", "").strip()
+    discipline = request.GET.get("discipline", "").strip()
+
+    if query:
+        queryset = queryset.filter(
+            Q(name__icontains=query)
+            | Q(slug__icontains=query)
+            | Q(city__icontains=query)
+            | Q(venue__icontains=query)
+            | Q(discipline__icontains=query)
+        )
+    if kind in {Tournament.KIND_SPORT, Tournament.KIND_ESPORT}:
+        queryset = queryset.filter(kind=kind)
+    if discipline in {value for value, _ in Tournament.DISCIPLINE_CHOICES}:
+        queryset = queryset.filter(discipline=discipline)
+
+    paginator = Paginator(queryset, 12)
+    page_obj = paginator.get_page(request.GET.get("page"))
+    query_params = request.GET.copy()
+    query_params.pop("page", None)
+
+    return render(
+        request,
+        "dashboard/tournaments_list.html",
+        {
+            "page_title": "Управление турнирами",
+            "page_obj": page_obj,
+            "query": query,
+            "current_filters": {
+                "kind": kind,
+                "discipline": discipline,
+            },
+            "kind_choices": Tournament.CONTENT_KIND_CHOICES,
+            "discipline_choices": Tournament.DISCIPLINE_CHOICES,
+            "pagination_query": query_params.urlencode(),
+            "reset_url": reverse("dashboard:tournament_list"),
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Турниры", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def tournament_create(request):
+    if request.method == "POST":
+        form = TournamentDashboardForm(request.POST)
+        if form.is_valid():
+            tournament = form.save()
+            messages.success(request, "Турнир создан.")
+            return redirect("dashboard:tournament_edit", pk=tournament.pk)
+        messages.error(request, "Исправьте ошибки в форме.")
+    else:
+        form = TournamentDashboardForm()
+
+    return render(
+        request,
+        "dashboard/tournament_form.html",
+        {
+            "page_title": "Создать турнир",
+            "tournament": None,
+            "form": form,
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Турниры", "url": "dashboard:tournament_list"},
+                {"label": "Создать", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def tournament_edit(request, pk):
+    tournament = get_object_or_404(_get_dashboard_tournaments_queryset(), pk=pk)
+
+    if request.method == "POST":
+        form = TournamentDashboardForm(request.POST, instance=tournament)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Изменения турнира сохранены.")
+            return redirect("dashboard:tournament_edit", pk=tournament.pk)
+        messages.error(request, "Исправьте ошибки в форме.")
+    else:
+        form = TournamentDashboardForm(instance=tournament)
+
+    return render(
+        request,
+        "dashboard/tournament_form.html",
+        {
+            "page_title": f"Турнир: {tournament.name}",
+            "tournament": tournament,
+            "form": form,
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Турниры", "url": "dashboard:tournament_list"},
+                {"label": "Редактирование", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def tournament_delete(request, pk):
+    tournament = get_object_or_404(_get_dashboard_tournaments_queryset(), pk=pk)
+    if request.method == "POST":
+        tournament.delete()
+        messages.success(request, "Турнир удален.")
+        return redirect("dashboard:tournament_list")
+
+    return render(
+        request,
+        "dashboard/tournament_confirm_delete.html",
+        {
+            "page_title": "Удаление турнира",
+            "tournament": tournament,
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Турниры", "url": "dashboard:tournament_list"},
+                {"label": "Удаление", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def match_list(request):
+    queryset = _get_dashboard_matches_queryset().order_by("-start_datetime", "-created_at", "-id")
+    query = request.GET.get("q", "").strip()
+    category = request.GET.get("category", "").strip()
+    discipline = request.GET.get("discipline", "").strip()
+    status = request.GET.get("status", "").strip()
+    example = request.GET.get("example", "").strip()
+    tournament_id = request.GET.get("tournament", "").strip()
+    date_from = request.GET.get("date_from", "").strip()
+    date_to = request.GET.get("date_to", "").strip()
+
+    if query:
+        queryset = queryset.filter(
+            Q(title__icontains=query)
+            | Q(home_team__name__icontains=query)
+            | Q(away_team__name__icontains=query)
+            | Q(city__icontains=query)
+            | Q(venue__icontains=query)
+            | Q(discipline__icontains=query)
+            | Q(tournament__name__icontains=query)
+        )
+    if category in {Tournament.KIND_SPORT, Tournament.KIND_ESPORT}:
+        queryset = queryset.filter(kind=category)
+    if discipline in {value for value, _ in Tournament.DISCIPLINE_CHOICES}:
+        queryset = queryset.filter(discipline=discipline)
+    if status in {value for value, _ in Match.STATUS_CHOICES}:
+        queryset = queryset.filter(status=status)
+    if example == "only":
+        queryset = queryset.filter(is_example=True)
+    elif example == "real":
+        queryset = queryset.filter(is_example=False)
+    if tournament_id.isdigit():
+        queryset = queryset.filter(tournament_id=int(tournament_id))
+    if date_from:
+        queryset = queryset.filter(start_datetime__date__gte=date_from)
+    if date_to:
+        queryset = queryset.filter(start_datetime__date__lte=date_to)
+
+    paginator = Paginator(queryset, 12)
+    page_obj = paginator.get_page(request.GET.get("page"))
+    query_params = request.GET.copy()
+    query_params.pop("page", None)
+
+    return render(
+        request,
+        "dashboard/matches_list.html",
+        {
+            "page_title": "Управление матчами",
+            "page_obj": page_obj,
+            "query": query,
+            "current_filters": {
+                "category": category,
+                "discipline": discipline,
+                "status": status,
+                "example": example,
+                "tournament": tournament_id,
+                "date_from": date_from,
+                "date_to": date_to,
+            },
+            "category_choices": Tournament.CONTENT_KIND_CHOICES,
+            "discipline_choices": Tournament.DISCIPLINE_CHOICES,
+            "status_choices": Match.STATUS_CHOICES,
+            "tournament_choices": Tournament.objects.order_by("-start_date", "name"),
+            "pagination_query": query_params.urlencode(),
+            "reset_url": reverse("dashboard:match_list"),
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Матчи", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def match_create(request):
+    if request.method == "POST":
+        form = MatchDashboardForm(request.POST)
+        if form.is_valid():
+            match = form.save()
+            messages.success(request, "Матч создан.")
+            return redirect("dashboard:match_edit", pk=match.pk)
+        messages.error(request, "Исправьте ошибки в форме.")
+    else:
+        form = MatchDashboardForm()
+
+    return render(
+        request,
+        "dashboard/match_form.html",
+        {
+            "page_title": "Создать матч",
+            "match_item": None,
+            "form": form,
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Матчи", "url": "dashboard:match_list"},
+                {"label": "Создать", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def match_edit(request, pk):
+    match = get_object_or_404(_get_dashboard_matches_queryset(), pk=pk)
+
+    if request.method == "POST":
+        form = MatchDashboardForm(request.POST, instance=match)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Изменения матча сохранены.")
+            return redirect("dashboard:match_edit", pk=match.pk)
+        messages.error(request, "Исправьте ошибки в форме.")
+    else:
+        form = MatchDashboardForm(instance=match)
+
+    return render(
+        request,
+        "dashboard/match_form.html",
+        {
+            "page_title": f"Матч: {match.participants_display}",
+            "match_item": match,
+            "form": form,
+            "can_manage_users": can_manage_users(request.user),
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Матчи", "url": "dashboard:match_list"},
+                {"label": "Редактирование", "url": None},
+            ],
+        },
+    )
+
+
+@login_required
+@editor_required
+def match_delete(request, pk):
+    match = get_object_or_404(_get_dashboard_matches_queryset(), pk=pk)
+    if request.method == "POST":
+        match.delete()
+        messages.success(request, "Матч удален.")
+        return redirect("dashboard:match_list")
+
+    return render(
+        request,
+        "dashboard/match_confirm_delete.html",
+        {
+            "page_title": "Удаление матча",
+            "match_item": match,
+            "breadcrumbs": [
+                {"label": "Главная", "url": "core:home"},
+                {"label": "Dashboard", "url": "dashboard:index"},
+                {"label": "Матчи", "url": "dashboard:match_list"},
                 {"label": "Удаление", "url": None},
             ],
         },

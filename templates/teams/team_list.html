@@ -5,12 +5,7 @@
 <section class="section section-filters" aria-label="Фильтры команд">
   <h1>Команды</h1>
   <p>Составы команд, текущая форма и ключевые показатели.</p>
-  {% if is_demo_mode %}
-    <div class="message message--warning" role="status">
-      Данные команд временно из демо-режима. Добавьте команды в Dashboard, чтобы использовать ручной режим.
-    </div>
-  {% endif %}
-  {% include "includes/data_freshness.html" %}
+  <p class="muted">Все торговые марки, названия команд и турниров принадлежат их законным владельцам.</p>
 
   <form method="get" class="news-filters">
     <div class="filter-group" role="radiogroup" aria-label="Тип команд">
@@ -44,21 +39,19 @@
     {% for team in page_obj.object_list %}
       <article class="entity-card">
         <a href="{% url 'teams:team_detail' team.slug %}" class="entity-card__media-link" aria-label="Открыть страницу команды {{ team.name }}">
-          <img src="{{ team|team_logo_url }}" alt="{{ team.name }}" class="entity-card__image" loading="lazy">
+          <img src="{{ team|team_logo_url }}" alt="{{ team.display_name|default:team.name }}" class="entity-card__image" loading="lazy">
         </a>
 
         <div class="entity-card__body">
           <div class="news-card__meta">
             <span class="news-pill">{{ team.get_kind_display }}</span>
             {% if team.discipline %}<span class="news-pill">{{ team.get_discipline_display }}</span>{% endif %}
+            {% if team.is_example %}<span class="news-pill">Пример</span>{% endif %}
             <span>Игроков: {{ team.players.all|length }}</span>
           </div>
 
-          <h3 class="news-card__title"><a href="{% url 'teams:team_detail' team.slug %}">{{ team.name }}</a></h3>
+          <h3 class="news-card__title"><a href="{% url 'teams:team_detail' team.slug %}">{{ team.display_name|default:team.name }}</a></h3>
           <p class="news-card__excerpt">{% if team.description %}{{ team.description }}{% else %}Описание пока отсутствует.{% endif %}</p>
-          {% if team.source_url %}
-            <p class="entity-source"><a href="{{ team.source_url }}" target="_blank" rel="noopener">Источник</a></p>
-          {% endif %}
         </div>
       </article>
     {% endfor %}

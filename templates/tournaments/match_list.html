@@ -1,32 +1,23 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-<section class="section matches-page">
-  <header class="matches-page__hero">
-    <p class="hero-kicker">KZ Arena</p>
-    <h1>Матч-центр</h1>
-    <p class="matches-page__lead">Оперативная лента матчей: текущие, ближайшие и завершенные встречи в одном месте.</p>
-    {% include "includes/data_freshness.html" %}
-  </header>
+<section class="section section-filters" aria-label="Фильтры матчей">
+  <h1>Матч-центр</h1>
+  <p>Ближайшие встречи, live-статусы и результаты матчей KZ Arena из базы данных проекта.</p>
+  <div class="message message--warning tournament-notice" role="status">
+    Раздел работает в тестовом режиме и скоро вступит в действие.
+  </div>
 
-  <details class="matches-filters" data-matches-filters data-has-active="{% if has_active_filters %}1{% else %}0{% endif %}" open>
-    <summary class="matches-filters__summary">Фильтры</summary>
+  <form method="get" class="news-filters tournament-filters match-center-filters" aria-label="Фильтры матчей">
+    <div class="filter-group matches-filters__chips" role="radiogroup" aria-label="Тип матчей">
+      <label class="filter-chip {% if not current_filters.category %}is-active{% endif %}"><input type="radio" name="category" value="" {% if not current_filters.category %}checked{% endif %}>Все</label>
+      <label class="filter-chip {% if current_filters.category == 'sport' %}is-active{% endif %}"><input type="radio" name="category" value="sport" {% if current_filters.category == 'sport' %}checked{% endif %}>Спорт</label>
+      <label class="filter-chip {% if current_filters.category == 'esport' %}is-active{% endif %}"><input type="radio" name="category" value="esport" {% if current_filters.category == 'esport' %}checked{% endif %}>Киберспорт</label>
+    </div>
 
-    <form method="get" class="matches-filters__form" aria-label="Фильтры матчей">
-      <div class="filter-group matches-filters__chips" role="radiogroup" aria-label="Тип матчей">
-        <label class="filter-chip {% if not current_filters.kind %}is-active{% endif %}">
-          <input type="radio" name="kind" value="" {% if not current_filters.kind %}checked{% endif %}>Все
-        </label>
-        <label class="filter-chip {% if current_filters.kind == 'sport' %}is-active{% endif %}">
-          <input type="radio" name="kind" value="sport" {% if current_filters.kind == 'sport' %}checked{% endif %}>Спорт
-        </label>
-        <label class="filter-chip {% if current_filters.kind == 'esport' %}is-active{% endif %}">
-          <input type="radio" name="kind" value="esport" {% if current_filters.kind == 'esport' %}checked{% endif %}>Киберспорт
-        </label>
-      </div>
-
-      <div class="matches-filters__controls">
+    <div class="filter-group filter-group--selects match-center-filters__grid">
+      <div class="filter-field">
         <label class="filter-label" for="discipline">Дисциплина</label>
         <select class="filter-select" id="discipline" name="discipline">
           <option value="">Все</option>
@@ -34,7 +25,9 @@
             <option value="{{ value }}" {% if current_filters.discipline == value %}selected{% endif %}>{{ label }}</option>
           {% endfor %}
         </select>
+      </div>
 
+      <div class="filter-field">
         <label class="filter-label" for="status">Статус</label>
         <select class="filter-select" id="status" name="status">
           <option value="">Все</option>
@@ -42,14 +35,14 @@
             <option value="{{ value }}" {% if current_filters.status == value %}selected{% endif %}>{{ label }}</option>
           {% endfor %}
         </select>
-
-        <div class="matches-filters__actions">
-          <button type="submit" class="button button--small">Применить</button>
-          <a href="{% url 'matches:match_list' %}" class="button button--secondary button--small">Сбросить</a>
-        </div>
       </div>
-    </form>
-  </details>
+
+      <div class="filter-actions matches-filters__actions">
+        <button type="submit" class="button button--small">Применить</button>
+        <a href="{% url 'matches:match_list' %}" class="button button--secondary button--small">Сбросить</a>
+      </div>
+    </div>
+  </form>
 </section>
 
 <section class="matches-groups">
@@ -65,11 +58,11 @@
     </article>
     {% endif %}
 
-    {% if scheduled_matches %}
+    {% if upcoming_matches %}
     <article class="section matches-group">
       <h2 class="matches-group__title">Ближайшие</h2>
       <div class="matches-list">
-        {% for match in scheduled_matches %}
+        {% for match in upcoming_matches %}
           {% include "tournaments/partials/match_card.html" with match=match %}
         {% endfor %}
       </div>
@@ -87,17 +80,6 @@
     </article>
     {% endif %}
 
-    {% if page_obj.paginator.num_pages > 1 %}
-    <nav class="pagination" aria-label="Пагинация матчей">
-      {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Назад</a>
-      {% endif %}
-      <span class="pagination-current">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
-      {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}{% if pagination_query %}&{{ pagination_query }}{% endif %}" class="pagination-link">Вперед</a>
-      {% endif %}
-    </nav>
-    {% endif %}
   {% else %}
     <section class="section">
       <p class="muted">Данные отсутствуют.</p>

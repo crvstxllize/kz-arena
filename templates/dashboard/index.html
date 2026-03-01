@@ -22,11 +22,21 @@
       <h2>Команд (ручной ввод)</h2>
       <p>{{ total_teams }}</p>
     </article>
+    <article class="metric-card">
+      <h2>Турниры</h2>
+      <p>{{ total_tournaments }}</p>
+    </article>
+    <article class="metric-card">
+      <h2>Матчи</h2>
+      <p>{{ total_matches }}</p>
+    </article>
   </div>
 
   <p>
     <a href="{% url 'dashboard:article_list' %}" class="button">Перейти к статьям</a>
     <a href="{% url 'dashboard:team_list' %}" class="button button--secondary">Команды</a>
+    <a href="{% url 'dashboard:tournament_list' %}" class="button button--secondary">Турниры</a>
+    <a href="{% url 'dashboard:match_list' %}" class="button button--secondary">Матчи</a>
     {% if can_manage_users %}
       <a href="{% url 'dashboard:user_list' %}" class="button button--secondary">Модерация пользователей</a>
     {% endif %}

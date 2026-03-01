@@ -1,27 +1,33 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 <section class="section">
-  <h1>{{ match.team_a.name }} vs {{ match.team_b.name }}</h1>
+  <h1>{{ match.participants_display }}</h1>
 
   <p class="news-card__meta">
-    <span class="news-pill">{{ match.tournament.get_kind_display }}</span>
-    {% if match.tournament.discipline %}<span class="news-pill">{{ match.tournament.get_discipline_display }}</span>{% endif %}
-    <span>{{ match.datetime|date:"d.m.Y H:i" }}</span>
+    <span class="news-pill">{{ match.get_kind_display }}</span>
+    {% if match.discipline %}<span class="news-pill">{{ match.get_discipline_display }}</span>{% endif %}
+    {% if match.is_example %}<span class="news-pill">Пример</span>{% endif %}
+    <span>{{ match.start_datetime|date:"d.m.Y H:i" }}</span>
     <span>{{ match.get_status_display }}</span>
   </p>
 
-  <p>
-    Турнир:
-    <a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}">{{ match.tournament.name }}</a>
-  </p>
+  {% if match.tournament %}
+    <p>
+      Турнир:
+      <a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}">{{ match.tournament.name }}</a>
+    </p>
+  {% endif %}
+
+  {% if match.location_display %}
+    <p>{{ match.location_display }}</p>
+  {% endif %}
 
   <div class="match-score-box">
-    {% if match.result %}
-      <p class="match-score">{{ match.team_a.name }} <strong>{{ match.result.score_a }} : {{ match.result.score_b }}</strong> {{ match.team_b.name }}</p>
-      {% if match.result.winner %}<p class="muted">Победитель: {{ match.result.winner.name }}</p>{% endif %}
+    {% if match.score_display %}
+      <p class="match-score">{{ match.home_team.name }} <strong>{{ match.score_display }}</strong> {{ match.away_team.name }}</p>
     {% else %}
-      <p class="muted">Матч ещё не завершён.</p>
+      <p class="muted">Счёт будет доступен после начала или завершения матча.</p>
     {% endif %}
   </div>
 </section>

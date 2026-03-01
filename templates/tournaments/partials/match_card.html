@@ -1,51 +1,58 @@
-﻿<article class="match-card match-card--{{ match.status }}">
+<article class="match-card match-card--{{ match.status }}">
   <div class="match-meta">
-    <time datetime="{{ match.datetime|date:'c' }}" class="match-meta__date">{{ match.datetime|date:"d.m.Y" }}</time>
-    <span class="match-meta__time">{{ match.datetime|date:"H:i" }}</span>
-    <a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}" class="match-meta__tournament">{{ match.tournament.name }}</a>
+    <time datetime="{{ match.start_datetime|date:'c' }}" class="match-meta__date">{{ match.start_datetime|date:"d.m.Y" }}</time>
+    <span class="match-meta__time">{{ match.start_datetime|date:"H:i" }}</span>
+    {% if match.tournament %}
+      <a href="{% url 'tournaments:tournament_detail' match.tournament.slug %}" class="match-meta__tournament">{{ match.tournament.name }}</a>
+    {% endif %}
   </div>
 
   <div class="match-teams">
     <a class="match-teams__link" href="{% url 'matches:match_detail' match.id %}">
       <span class="match-team">
-        {% if match.team_a.logo %}
-          <img src="{{ match.team_a.logo.url }}" alt="Логотип {{ match.team_a.name }}" class="match-team__logo">
+        {% if match.home_team.logo %}
+          <img src="{{ match.home_team.logo.url }}" alt="Логотип {{ match.home_team.name }}" class="match-team__logo">
         {% else %}
-          <span class="match-team__logo match-team__logo--placeholder" aria-hidden="true">{{ match.team_a.name|first|upper }}</span>
+          <span class="match-team__logo match-team__logo--placeholder" aria-hidden="true">{{ match.home_team.name|first|upper }}</span>
         {% endif %}
-        <span class="match-team__name">{{ match.team_a.name }}</span>
+        <span class="match-team__name">{{ match.home_team.name }}</span>
       </span>
 
       <span class="match-teams__vs">vs</span>
 
       <span class="match-team">
-        {% if match.team_b.logo %}
-          <img src="{{ match.team_b.logo.url }}" alt="Логотип {{ match.team_b.name }}" class="match-team__logo">
+        {% if match.away_team.logo %}
+          <img src="{{ match.away_team.logo.url }}" alt="Логотип {{ match.away_team.name }}" class="match-team__logo">
         {% else %}
-          <span class="match-team__logo match-team__logo--placeholder" aria-hidden="true">{{ match.team_b.name|first|upper }}</span>
+          <span class="match-team__logo match-team__logo--placeholder" aria-hidden="true">{{ match.away_team.name|first|upper }}</span>
         {% endif %}
-        <span class="match-team__name">{{ match.team_b.name }}</span>
+        <span class="match-team__name">{{ match.away_team.name }}</span>
       </span>
     </a>
   </div>
 
   <div class="match-side">
-    <span class="badge badge--{{ match.status }}">
-      {% if match.status == 'live' %}<span class="badge__dot" aria-hidden="true"></span>{% endif %}
-      {{ match.get_status_display }}
-    </span>
+    <div class="match-side__chips">
+      <span class="news-pill">{{ match.get_kind_display }}</span>
+      {% if match.discipline %}<span class="news-pill">{{ match.get_discipline_display }}</span>{% endif %}
+      {% if match.is_example %}<span class="news-pill">Пример</span>{% endif %}
+      <span class="badge badge--{{ match.status }}">
+        {% if match.status == 'live' %}<span class="badge__dot" aria-hidden="true"></span>{% endif %}
+        {{ match.get_status_display }}
+      </span>
+    </div>
 
     <p class="score{% if match.status == 'live' %} score--live{% endif %}">
-      {% if match.result %}
-        {{ match.result.score_a }} : {{ match.result.score_b }}
+      {% if match.score_display %}
+        {{ match.score_display }}
       {% else %}
-        &mdash;
+        {{ match.city|default:match.venue|default:"Без счёта" }}
       {% endif %}
       {% if match.status == 'live' %}<span class="score__live-label">LIVE</span>{% endif %}
     </p>
   </div>
-  {% if match.source_url %}
-    <p class="match-source"><a href="{{ match.source_url }}" target="_blank" rel="noopener">Источник</a></p>
+
+  {% if match.location_display %}
+    <p class="muted">{{ match.location_display }}</p>
   {% endif %}
 </article>
-

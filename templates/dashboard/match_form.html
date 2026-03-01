@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section auth-section dashboard-form">
+  <div class="section-head">
+    <h1>{% if match_item %}Редактирование матча{% else %}Создание матча{% endif %}</h1>
+    <a href="{% url 'dashboard:match_list' %}" class="button button--secondary">К списку</a>
+  </div>
+
+  <form method="post" class="auth-form dashboard-article-form" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="form-row">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}
+        {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+      </div>
+    {% endfor %}
+
+    {% for error in form.non_field_errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+
+    <div class="form-actions">
+      <button type="submit" class="button">Сохранить</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

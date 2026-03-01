@@ -5,6 +5,7 @@ from django.forms import inlineformset_factory
 
 from articles.models import Article, MediaAsset
 from teams.models import Player, Team
+from tournaments.models import Match, Tournament
 
 ALLOWED_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 MAX_UPLOAD_SIZE_BYTES = 5 * 1024 * 1024
@@ -125,13 +126,13 @@ class TeamDashboardForm(forms.ModelForm):
             "country": "Страна",
             "description": "Описание",
             "logo": "Логотип",
-            "source_url": "Источник",
+            "source_url": "Внутренняя ссылка источника",
             "is_active": "Показывать на сайте",
         }
         help_texts = {
             "slug": "Оставьте пустым для авто-генерации.",
             "logo": "JPG, JPEG, PNG, WEBP. Максимальный размер 5 MB.",
-            "source_url": "Ссылка на официальный или проверенный источник (опционально).",
+            "source_url": "Опционально. Поле доступно только в dashboard и не выводится на публичных страницах.",
         }
 
 
@@ -161,3 +162,96 @@ TeamMemberFormSet = inlineformset_factory(
     can_delete=True,
     fields=["name", "position", "bio", "photo"],
 )
+
+
+class TournamentDashboardForm(forms.ModelForm):
+    class Meta:
+        model = Tournament
+        fields = [
+            "name",
+            "slug",
+            "kind",
+            "discipline",
+            "city",
+            "venue",
+            "start_date",
+            "end_date",
+            "status",
+            "description",
+            "is_example",
+        ]
+        widgets = {
+            "start_date": forms.DateInput(attrs={"type": "date"}),
+            "end_date": forms.DateInput(attrs={"type": "date"}),
+            "description": forms.Textarea(attrs={"rows": 4}),
+        }
+        labels = {
+            "name": "Название турнира",
+            "slug": "Slug",
+            "kind": "Категория",
+            "discipline": "Дисциплина",
+            "city": "Город",
+            "venue": "Площадка",
+            "start_date": "Дата начала",
+            "end_date": "Дата окончания",
+            "status": "Статус",
+            "description": "Описание",
+            "is_example": "Пометить как пример",
+        }
+        help_texts = {
+            "slug": "Оставьте пустым для авто-генерации.",
+            "is_example": "На публичной странице будет показан бейдж «Пример».",
+        }
+
+
+class MatchDashboardForm(forms.ModelForm):
+    class Meta:
+        model = Match
+        fields = [
+            "title",
+            "tournament",
+            "kind",
+            "discipline",
+            "status",
+            "start_datetime",
+            "venue",
+            "city",
+            "home_team",
+            "away_team",
+            "score_home",
+            "score_away",
+            "is_example",
+        ]
+        widgets = {
+            "start_datetime": forms.DateTimeInput(
+                attrs={"type": "datetime-local"},
+                format="%Y-%m-%dT%H:%M",
+            ),
+        }
+        labels = {
+            "title": "Название матча",
+            "tournament": "Турнир",
+            "kind": "Категория",
+            "discipline": "Дисциплина",
+            "status": "Статус",
+            "start_datetime": "Дата и время",
+            "venue": "Площадка",
+            "city": "Город",
+            "home_team": "Домашняя команда",
+            "away_team": "Гостевая команда",
+            "score_home": "Счет хозяев",
+            "score_away": "Счет гостей",
+            "is_example": "Пометить как пример",
+        }
+        help_texts = {
+            "title": "Можно оставить пустым: название соберется автоматически из команд.",
+            "tournament": "Необязательно. Используйте, если матч относится к конкретному турниру.",
+            "is_example": "На публичной странице матч будет помечен как пример.",
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["start_datetime"].input_formats = ["%Y-%m-%dT%H:%M"]
+        self.fields["tournament"].queryset = Tournament.objects.order_by("-start_date", "name")
+        self.fields["home_team"].queryset = Team.objects.filter(is_active=True).order_by("name")
+        self.fields["away_team"].queryset = Team.objects.filter(is_active=True).order_by("name")
