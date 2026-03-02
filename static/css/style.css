@@ -4074,9 +4074,9 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
 }
 
 @media (min-width: 1025px) {
-  body.page-core-home .container,
-  body.page-articles-news_list .container,
-  body.page-core-about .container {
+  body.page-core-home main.container,
+  body.page-articles-news_list main.container,
+  body.page-core-about main.container {
     width: min(1320px, calc(100% - 3rem));
   }
 
@@ -4100,9 +4100,9 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
 }
 
 @media (min-width: 1281px) {
-  body.page-core-home .container,
-  body.page-articles-news_list .container,
-  body.page-core-about .container {
+  body.page-core-home main.container,
+  body.page-articles-news_list main.container,
+  body.page-core-about main.container {
     width: min(1380px, calc(100% - 4rem));
   }
 
