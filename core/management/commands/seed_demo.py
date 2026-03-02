@@ -465,25 +465,45 @@ class Command(BaseCommand):
             ),
         ]
 
+        results_by_code = {
+            "m1": (2, 1),
+            "m3": (2, 0),
+            "m7": (13, 8),
+        }
+        status_map = {
+            "scheduled": Match.STATUS_UPCOMING,
+            "live": Match.STATUS_LIVE,
+            "finished": Match.STATUS_FINISHED,
+        }
+
         result = {}
         for code, tournament_name, team_a_name, team_b_name, dt, stage, status in data:
             aware_dt = timezone.make_aware(dt) if timezone.is_naive(dt) else dt
+            normalized_status = status_map[status]
+            score_home, score_away = results_by_code.get(code, (None, None))
             match, _ = Match.objects.get_or_create(
                 tournament=tournaments[tournament_name],
-                datetime=aware_dt,
-                team_a=teams[team_a_name],
-                team_b=teams[team_b_name],
-                defaults={"stage": stage, "status": status},
+                start_datetime=aware_dt,
+                home_team=teams[team_a_name],
+                away_team=teams[team_b_name],
+                defaults={
+                    "status": normalized_status,
+                    "score_home": score_home,
+                    "score_away": score_away,
+                },
             )
             changed = False
-            if match.stage != stage:
-                match.stage = stage
+            if match.status != normalized_status:
+                match.status = normalized_status
                 changed = True
-            if match.status != status:
-                match.status = status
+            if match.score_home != score_home:
+                match.score_home = score_home
+                changed = True
+            if match.score_away != score_away:
+                match.score_away = score_away
                 changed = True
             if changed:
-                match.save(update_fields=["stage", "status"])
+                match.save(update_fields=["status", "score_home", "score_away"])
             result[code] = match
         return result
 
@@ -495,8 +515,22 @@ class Command(BaseCommand):
         ]
 
         for code, score_a, score_b, winner_name in data:
+            match = matches[code]
+            fields_to_update = []
+            if match.score_home != score_a:
+                match.score_home = score_a
+                fields_to_update.append("score_home")
+            if match.score_away != score_b:
+                match.score_away = score_b
+                fields_to_update.append("score_away")
+            if match.status != Match.STATUS_FINISHED:
+                match.status = Match.STATUS_FINISHED
+                fields_to_update.append("status")
+            if fields_to_update:
+                match.save(update_fields=fields_to_update)
+
             MatchResult.objects.update_or_create(
-                match=matches[code],
+                match=match,
                 defaults={
                     "score_a": score_a,
                     "score_b": score_b,
