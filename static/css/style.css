@@ -4117,33 +4117,38 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
   }
 }
 
-/* Final header stabilization: center primary nav and isolate action width changes */
+/* Final header stabilization: center primary nav independently from the right-side actions */
 @media (min-width: 1025px) {
   .header-inner {
-    display: grid;
-    grid-template-columns: minmax(150px, 180px) minmax(0, 1fr);
+    position: relative;
+    display: flex;
     align-items: center;
+    min-height: 72px;
     gap: 1rem;
   }
 
   .brand {
-    justify-self: start;
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
   }
 
   .site-nav {
+    flex: 1 1 auto;
     min-width: 0;
     margin-left: 0;
+    display: flex;
+    align-items: center;
   }
 
   #nav-menu.nav-menu {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    position: relative;
+    display: flex;
     align-items: center;
-    gap: 0.75rem;
     width: 100%;
+    min-height: 44px;
     margin: 0;
     padding: 0;
-    position: static;
     border: 0;
     background: transparent;
     box-shadow: none;
@@ -4155,12 +4160,17 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
   }
 
   #nav-menu.nav-menu .nav-menu__primary {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
     flex-wrap: nowrap;
-    min-width: 0;
+    min-width: max-content;
+    z-index: 1;
   }
 
   #nav-menu.nav-menu .nav-menu__primary > li {
@@ -4170,12 +4180,16 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
   }
 
   #nav-menu.nav-menu .nav-menu__actions {
+    margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.35rem;
     flex-wrap: nowrap;
     min-width: max-content;
+    padding-left: 1rem;
+    position: relative;
+    z-index: 2;
     border-top: 0;
   }
 
