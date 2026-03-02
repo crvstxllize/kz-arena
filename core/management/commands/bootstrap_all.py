@@ -16,6 +16,9 @@ class Command(BaseCommand):
         self.stdout.write("[bootstrap_all] Запуск bootstrap_roles...")
         call_command("bootstrap_roles")
 
+        self.stdout.write("[bootstrap_all] Запуск seed_taxonomy...")
+        call_command("seed_taxonomy")
+
         if options.get("seed"):
             self.stdout.write("[bootstrap_all] Запуск seed_demo...")
             call_command("seed_demo")
