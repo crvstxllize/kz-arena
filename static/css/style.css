@@ -4117,60 +4117,43 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
   }
 }
 
-/* Final header stabilization: center primary nav independently from the right-side actions */
+/* Final header stabilization: keep desktop nav in one fixed layout without drifting */
 @media (min-width: 1025px) {
   .header-inner {
-    position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
     align-items: center;
     min-height: 72px;
     gap: 1rem;
   }
 
   .brand {
-    position: relative;
-    z-index: 2;
-    flex: 0 0 auto;
+    justify-self: start;
   }
 
   .site-nav {
-    flex: 1 1 auto;
     min-width: 0;
     margin-left: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
+    gap: 1rem;
   }
 
   #nav-menu.nav-menu {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 44px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    max-height: none;
-    overflow: visible;
+    display: contents;
   }
 
   #nav-menu.nav-menu .nav-menu__primary {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
     gap: 0.35rem;
     flex-wrap: nowrap;
-    min-width: max-content;
-    z-index: 1;
+    min-width: 0;
+    overflow: hidden;
   }
 
   #nav-menu.nav-menu .nav-menu__primary > li {
@@ -4180,17 +4163,18 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
   }
 
   #nav-menu.nav-menu .nav-menu__actions {
-    margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.35rem;
     flex-wrap: nowrap;
     min-width: max-content;
-    padding-left: 1rem;
-    position: relative;
-    z-index: 2;
+    margin-left: auto;
     border-top: 0;
+  }
+
+  #nav-menu.nav-menu a {
+    white-space: nowrap;
   }
 
   #nav-menu.nav-menu .nav-logout-form,
