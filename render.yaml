@@ -25,7 +25,7 @@ services:
       - key: LOG_LEVEL
         value: INFO
       - key: PRIMARY_DOMAIN
-        sync: false
+        value: kzarena.com
       - key: SECRET_KEY
         generateValue: true
       - key: DB_ENGINE
