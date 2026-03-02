@@ -15,6 +15,11 @@ class Tournament(models.Model):
 
     DISCIPLINE_FOOTBALL = "football"
     DISCIPLINE_BASKETBALL = "basketball"
+    DISCIPLINE_VOLLEYBALL = "volleyball"
+    DISCIPLINE_BOXING = "boxing"
+    DISCIPLINE_WRESTLING = "wrestling"
+    DISCIPLINE_HOCKEY = "hockey"
+    DISCIPLINE_FUTSAL = "futsal"
     DISCIPLINE_TENNIS = "tennis"
     DISCIPLINE_CS2 = "cs2"
     DISCIPLINE_DOTA2 = "dota2"
@@ -22,7 +27,12 @@ class Tournament(models.Model):
     DISCIPLINE_CHOICES = [
         (DISCIPLINE_FOOTBALL, "Футбол"),
         (DISCIPLINE_BASKETBALL, "Баскетбол"),
-        (DISCIPLINE_TENNIS, "Tennis"),
+        (DISCIPLINE_VOLLEYBALL, "Волейбол"),
+        (DISCIPLINE_BOXING, "Бокс"),
+        (DISCIPLINE_WRESTLING, "Борьба"),
+        (DISCIPLINE_HOCKEY, "Хоккей"),
+        (DISCIPLINE_FUTSAL, "Футзал"),
+        (DISCIPLINE_TENNIS, "Теннис"),
         (DISCIPLINE_CS2, "CS2"),
         (DISCIPLINE_DOTA2, "Dota 2"),
         (DISCIPLINE_PUBG, "PUBG"),

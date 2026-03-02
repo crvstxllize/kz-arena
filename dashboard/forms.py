@@ -112,6 +112,7 @@ class TeamDashboardForm(forms.ModelForm):
             "description",
             "logo",
             "source_url",
+            "is_example",
             "is_active",
         ]
         widgets = {
@@ -127,12 +128,14 @@ class TeamDashboardForm(forms.ModelForm):
             "description": "Описание",
             "logo": "Логотип",
             "source_url": "Внутренняя ссылка источника",
+            "is_example": "Пометить как пример",
             "is_active": "Показывать на сайте",
         }
         help_texts = {
             "slug": "Оставьте пустым для авто-генерации.",
             "logo": "JPG, JPEG, PNG, WEBP. Максимальный размер 5 MB.",
             "source_url": "Опционально. Поле доступно только в dashboard и не выводится на публичных страницах.",
+            "is_example": "На публичной странице команда будет помечена бейджем «Пример».",
         }
 
 

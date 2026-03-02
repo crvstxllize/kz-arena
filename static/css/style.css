@@ -84,6 +84,16 @@ body {
   gap: 0.4rem;
 }
 
+.nav-menu__primary,
+.nav-menu__actions {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu__primary {
+  list-style: none;
+}
+
 .nav-menu.is-open {
   display: flex;
   position: absolute;
@@ -4105,4 +4115,99 @@ html[data-theme="dark"] .nav-toggle:focus-visible {
   body.page-core-about .section.narrow {
     max-width: 1040px;
   }
+}
+
+/* Final header stabilization: center primary nav and isolate action width changes */
+@media (min-width: 1025px) {
+  .header-inner {
+    display: grid;
+    grid-template-columns: minmax(150px, 180px) minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .brand {
+    justify-self: start;
+  }
+
+  .site-nav {
+    min-width: 0;
+    margin-left: 0;
+  }
+
+  #nav-menu.nav-menu {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: static;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  #nav-menu.nav-menu .nav-menu__primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  #nav-menu.nav-menu .nav-menu__primary > li {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  #nav-menu.nav-menu .nav-menu__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    min-width: max-content;
+    border-top: 0;
+  }
+
+  #nav-menu.nav-menu .nav-logout-form,
+  #nav-menu.nav-menu .theme-toggle-item {
+    margin: 0;
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  #nav-menu.nav-menu a,
+  #nav-menu.nav-menu .nav-logout-button,
+  #nav-menu.nav-menu .theme-toggle {
+    width: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-menu__primary,
+  .nav-menu__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .nav-menu__actions {
+    padding-top: 0.35rem;
+    border-top: 1px solid var(--line);
+  }
+}
+
+html[data-theme="dark"] .nav-menu__actions {
+  border-top-color: rgba(94, 116, 147, 0.34);
 }

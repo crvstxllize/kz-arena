@@ -119,6 +119,12 @@ class Command(BaseCommand):
             "КПЛ",
             "Сборная",
             "Баскетбол",
+            "Волейбол",
+            "Бокс",
+            "Борьба",
+            "Хоккей",
+            "Футзал",
+            "Теннис",
             "Кубок",
             "Таблица",
             "Аналитика",
@@ -277,6 +283,7 @@ class Command(BaseCommand):
                     "city": item.get("city", ""),
                     "source_url": item.get("source_url", ""),
                     "is_manual": True,
+                    "is_example": item["name"].startswith("Demo:"),
                     "is_active": True,
                 },
             )
@@ -288,9 +295,13 @@ class Command(BaseCommand):
                 "city",
                 "source_url",
                 "is_manual",
+                "is_example",
                 "is_active",
             ):
-                incoming_value = item.get(field, True if field in {"is_manual", "is_active"} else "")
+                default_value = True if field in {"is_manual", "is_active"} else ""
+                if field == "is_example":
+                    default_value = item["name"].startswith("Demo:")
+                incoming_value = item.get(field, default_value)
                 if getattr(team, field) != incoming_value:
                     setattr(team, field, incoming_value)
                     changed = True
@@ -303,6 +314,7 @@ class Command(BaseCommand):
                         "city",
                         "source_url",
                         "is_manual",
+                        "is_example",
                         "is_active",
                     ]
                 )

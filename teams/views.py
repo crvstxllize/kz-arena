@@ -14,9 +14,6 @@ FEATURED_TEAM_KEYS = (
     ("novaq",),
     ("golden-barys",),
 )
-EXAMPLE_TEAMS_LIMIT = 6
-
-
 def _normalize_team_key(value):
     return (value or "").strip().lower()
 
@@ -37,26 +34,25 @@ def _featured_team_rank(team):
     return len(FEATURED_TEAM_KEYS)
 
 
-def _decorate_team(team, is_example):
-    team.is_example = is_example
-    team.display_name = f"Пример: {team.name}" if is_example else team.name
+def _decorate_team(team):
+    team.display_name = f"Пример: {team.name}" if team.is_example else team.name
     return team
 
 
 def _build_public_team_collection(queryset):
     teams = [team for team in queryset if team.players.all()]
     featured = sorted(
-        [team for team in teams if _is_featured_team(team)],
+        [team for team in teams if _is_featured_team(team) and not team.is_example],
         key=lambda item: (_featured_team_rank(item), item.name.lower(), item.id),
     )
     featured_ids = {team.id for team in featured}
-    examples = sorted(
+    remaining = sorted(
         [team for team in teams if team.id not in featured_ids],
-        key=lambda item: (item.name.lower(), item.id),
-    )[:EXAMPLE_TEAMS_LIMIT]
+        key=lambda item: (item.is_example, item.name.lower(), item.id),
+    )
 
-    decorated = [_decorate_team(team, is_example=False) for team in featured]
-    decorated.extend(_decorate_team(team, is_example=True) for team in examples)
+    decorated = [_decorate_team(team) for team in featured]
+    decorated.extend(_decorate_team(team) for team in remaining)
     return decorated
 
 
@@ -102,7 +98,7 @@ def team_list(request):
 
 def team_detail(request, slug):
     team = get_object_or_404(Team.objects.prefetch_related("players"), slug=slug, is_active=True)
-    _decorate_team(team, is_example=not _is_featured_team(team))
+    _decorate_team(team)
     now = timezone.now()
     team_name = (team.name or "").strip()
 

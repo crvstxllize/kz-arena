@@ -6,14 +6,28 @@ from teams.models import Team
 
 register = template.Library()
 
+TEAM_PLACEHOLDER_BY_DISCIPLINE = {
+    "football": "placeholders/news/football.svg",
+    "basketball": "placeholders/news/basketball.svg",
+    "volleyball": "placeholders/news/default.svg",
+    "boxing": "placeholders/news/default.svg",
+    "wrestling": "placeholders/news/default.svg",
+    "hockey": "placeholders/news/default.svg",
+    "futsal": "placeholders/news/default.svg",
+    "tennis": "placeholders/news/default.svg",
+    "cs2": "placeholders/news/cs2.svg",
+    "dota2": "placeholders/news/dota2.svg",
+    "pubg": "placeholders/news/pubg.svg",
+}
+
 
 @register.filter(name="team_logo_url")
 def team_logo_url(team):
     if getattr(team, "is_example", False):
         discipline = getattr(team, "discipline", "") or ""
-        if discipline in dict(Team.DISCIPLINE_CHOICES):
-            return static(f"placeholders/news/{discipline}.svg")
-        return static("placeholders/news/default.svg")
+        return static(
+            TEAM_PLACEHOLDER_BY_DISCIPLINE.get(discipline, "placeholders/news/default.svg")
+        )
 
     logo = getattr(team, "logo", None)
     if logo and getattr(logo, "name", ""):

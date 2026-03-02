@@ -20,35 +20,36 @@
     </button>
 
     <nav class="site-nav" aria-label="Основная навигация">
-      <ul id="nav-menu" class="nav-menu">
-        <li><a href="{% url 'core:home' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'home' %}is-active{% endif %}">Главная</a></li>
-        <li><a href="{% url 'articles:news_list' %}" class="{% if request.resolver_match.namespace == 'articles' %}is-active{% endif %}">Новости</a></li>
-        <li><a href="{% url 'teams:team_list' %}" class="{% if request.resolver_match.namespace == 'teams' %}is-active{% endif %}">Команды</a></li>
-        <li><a href="{% url 'tournaments:tournament_list' %}" class="{% if request.resolver_match.namespace == 'tournaments' %}is-active{% endif %}">Турниры</a></li>
-        <li><a href="{% url 'matches:match_list' %}" class="{% if request.resolver_match.namespace == 'matches' %}is-active{% endif %}">Матчи</a></li>
-        <li><a href="{% url 'core:about' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %}is-active{% endif %}">О проекте</a></li>
+      <div id="nav-menu" class="nav-menu">
+        <ul class="nav-menu__primary">
+          <li><a href="{% url 'core:home' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'home' %}is-active{% endif %}">Главная</a></li>
+          <li><a href="{% url 'articles:news_list' %}" class="{% if request.resolver_match.namespace == 'articles' %}is-active{% endif %}">Новости</a></li>
+          <li><a href="{% url 'teams:team_list' %}" class="{% if request.resolver_match.namespace == 'teams' %}is-active{% endif %}">Команды</a></li>
+          <li><a href="{% url 'tournaments:tournament_list' %}" class="{% if request.resolver_match.namespace == 'tournaments' %}is-active{% endif %}">Турниры</a></li>
+          <li><a href="{% url 'matches:match_list' %}" class="{% if request.resolver_match.namespace == 'matches' %}is-active{% endif %}">Матчи</a></li>
+          <li><a href="{% url 'core:about' %}" class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %}is-active{% endif %}">О проекте</a></li>
+        </ul>
 
-        {% if user.is_authenticated %}
-          {% if user.is_staff or user|has_group:'Editors' %}
-          <li><a href="{% url 'dashboard:index' %}" class="{% if request.resolver_match.namespace == 'dashboard' %}is-active{% endif %}">Dashboard</a></li>
+        <div class="nav-menu__actions">
+          {% if user.is_authenticated %}
+            {% if user.is_staff or user|has_group:'Editors' %}
+              <a href="{% url 'dashboard:index' %}" class="{% if request.resolver_match.namespace == 'dashboard' %}is-active{% endif %}">Dashboard</a>
+            {% endif %}
           {% endif %}
-        {% endif %}
 
-        {% if user.is_authenticated %}
-          <li><a href="{% url 'accounts:profile' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'profile' %}is-active{% endif %}">Профиль</a></li>
-          <li>
+          {% if user.is_authenticated %}
+            <a href="{% url 'accounts:profile' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'profile' %}is-active{% endif %}">Профиль</a>
             <form method="post" action="{% url 'accounts:logout' %}" class="nav-logout-form">
               {% csrf_token %}
               <input type="hidden" name="next" value="{% url 'core:home' %}">
               <button type="submit" class="nav-logout-button">Выйти</button>
             </form>
-          </li>
-        {% else %}
-          <li><a href="{% url 'accounts:login' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'login' %}is-active{% endif %}">Войти</a></li>
-          <li><a href="{% url 'accounts:register' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'register' %}is-active{% endif %}">Регистрация</a></li>
-        {% endif %}
+          {% else %}
+            <a href="{% url 'accounts:login' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'login' %}is-active{% endif %}">Войти</a>
+            <a href="{% url 'accounts:register' %}" class="{% if request.resolver_match.namespace == 'accounts' and request.resolver_match.url_name == 'register' %}is-active{% endif %}">Регистрация</a>
+          {% endif %}
 
-        <li class="theme-toggle-item">
+          <div class="theme-toggle-item">
           <button
             type="button"
             id="theme-toggle"
@@ -72,8 +73,9 @@
               </svg>
             </span>
           </button>
-        </li>
-      </ul>
+          </div>
+        </div>
+      </div>
     </nav>
   </div>
   <div id="nav-overlay" class="nav-overlay" hidden></div>

@@ -13,12 +13,24 @@ class Team(models.Model):
 
     DISCIPLINE_FOOTBALL = "football"
     DISCIPLINE_BASKETBALL = "basketball"
+    DISCIPLINE_VOLLEYBALL = "volleyball"
+    DISCIPLINE_BOXING = "boxing"
+    DISCIPLINE_WRESTLING = "wrestling"
+    DISCIPLINE_HOCKEY = "hockey"
+    DISCIPLINE_FUTSAL = "futsal"
+    DISCIPLINE_TENNIS = "tennis"
     DISCIPLINE_CS2 = "cs2"
     DISCIPLINE_DOTA2 = "dota2"
     DISCIPLINE_PUBG = "pubg"
     DISCIPLINE_CHOICES = [
         (DISCIPLINE_FOOTBALL, "Футбол"),
         (DISCIPLINE_BASKETBALL, "Баскетбол"),
+        (DISCIPLINE_VOLLEYBALL, "Волейбол"),
+        (DISCIPLINE_BOXING, "Бокс"),
+        (DISCIPLINE_WRESTLING, "Борьба"),
+        (DISCIPLINE_HOCKEY, "Хоккей"),
+        (DISCIPLINE_FUTSAL, "Футзал"),
+        (DISCIPLINE_TENNIS, "Теннис"),
         (DISCIPLINE_CS2, "CS2"),
         (DISCIPLINE_DOTA2, "Dota 2"),
         (DISCIPLINE_PUBG, "PUBG"),
@@ -35,6 +47,7 @@ class Team(models.Model):
     source_url = models.URLField(blank=True)
     source_updated_at = models.DateTimeField(blank=True, null=True)
     is_manual = models.BooleanField(default=True)
+    is_example = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
