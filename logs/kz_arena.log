@@ -3713,3 +3713,298 @@ django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. Y
 2026-03-01 18:46:48,011 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
 2026-03-01 18:46:49,763 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7775
 2026-03-01 18:46:52,740 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-01 18:50:46,566 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-01 18:50:48,016 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-01 18:50:48,034 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-01 18:50:48,036 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-01 18:50:48,052 [INFO] django.server: "GET /media/covers/almaty-marathon-cover.jpg HTTP/1.1" 304 0
+2026-03-01 18:50:48,064 [INFO] django.server: "GET /media/covers/pgl-cs2-astana-cover.jpg HTTP/1.1" 304 0
+2026-03-01 18:50:48,066 [INFO] django.server: "GET /media/covers/astana-chelsea-football.jpg HTTP/1.1" 304 0
+2026-03-01 18:54:11,053 [INFO] django.server: "GET /news/ HTTP/1.1" 200 25823
+2026-03-01 18:54:11,060 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-01 18:54:11,061 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-01 18:54:17,956 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 16473
+2026-03-01 18:54:31,145 [INFO] django.server: "GET /about/ HTTP/1.1" 200 7301
+2026-03-01 18:54:40,375 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 16473
+2026-03-01 18:54:46,198 [INFO] django.server: "GET /tournaments/ HTTP/1.1" 200 14600
+2026-03-01 18:54:50,509 [INFO] django.server: "GET /matches/ HTTP/1.1" 200 15734
+2026-03-01 18:54:50,551 [WARNING] django.request: Not Found: /media/logos/aktobe-rush.jpg
+2026-03-01 18:54:50,551 [WARNING] django.server: "GET /media/logos/aktobe-rush.jpg HTTP/1.1" 404 4019
+2026-03-01 18:54:54,625 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-01 18:54:57,790 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7775
+2026-03-01 18:54:57,796 [INFO] django.server: "GET /media/covers/pgl-cs2-astana-cover.jpg HTTP/1.1" 304 0
+2026-03-01 18:54:57,796 [INFO] django.server: "GET /media/covers/almaty-marathon-cover.jpg HTTP/1.1" 304 0
+2026-03-01 18:54:57,797 [INFO] django.server: "GET /media/covers/astana-chelsea-football.jpg HTTP/1.1" 304 0
+2026-03-01 18:55:03,347 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-01 18:55:06,389 [INFO] django.server: "GET /news/pgl-cs2-astana-2025-%D0%B3%D1%80%D0%B0%D0%BD%D0%B4-%D1%84%D0%B8%D0%BD%D0%B0%D0%BB-%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D1%8F-%D0%B2-%D0%B1%D0%B0%D1%80%D1%8B%D1%81-%D0%B0%D1%80%D0%B5%D0%BD%D0%B5/ HTTP/1.1" 200 17469
+2026-03-01 18:55:06,452 [INFO] django.server: "GET /interactions/status/?article_id=31 HTTP/1.1" 200 196
+2026-03-01 18:55:10,029 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 116
+2026-03-01 18:55:10,732 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 124
+2026-03-01 18:55:11,428 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 121
+2026-03-01 18:55:12,078 [INFO] django.server: "POST /interactions/react/ HTTP/1.1" 200 118
+2026-03-01 18:55:13,805 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 115
+2026-03-01 18:55:14,330 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 123
+2026-03-01 18:55:14,927 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 115
+2026-03-01 18:55:15,703 [INFO] django.server: "POST /interactions/rate/ HTTP/1.1" 200 123
+2026-03-01 18:55:25,224 [INFO] django.server: "GET /news/ HTTP/1.1" 200 25823
+2026-03-01 18:55:25,235 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-02 09:20:07,624 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:20:18,272 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:21:52,836 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:22:19,368 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-02 09:22:19,373 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-02 09:22:19,699 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:22:19,699 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:22:24,210 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:23:49,274 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:25:30,423 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 09:25:32,050 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-02 09:25:32,054 [INFO] django.server: "GET /media/covers/almaty-marathon-cover.jpg HTTP/1.1" 304 0
+2026-03-02 09:25:32,055 [INFO] django.server: "GET /media/covers/astana-chelsea-football.jpg HTTP/1.1" 304 0
+2026-03-02 09:25:32,055 [INFO] django.server: "GET /media/covers/pgl-cs2-astana-cover.jpg HTTP/1.1" 304 0
+2026-03-02 09:25:32,070 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-02 09:25:32,070 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-02 09:25:32,101 [WARNING] django.request: Not Found: /apple-touch-icon-precomposed.png
+2026-03-02 09:25:32,101 [WARNING] django.server: "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 3824
+2026-03-02 09:25:32,104 [WARNING] django.request: Not Found: /apple-touch-icon.png
+2026-03-02 09:25:32,104 [WARNING] django.server: "GET /apple-touch-icon.png HTTP/1.1" 404 3788
+2026-03-02 09:25:38,567 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 09:25:51,633 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 14654
+2026-03-02 09:25:54,528 [INFO] django.server: "GET /dashboard/articles/29/edit/ HTTP/1.1" 200 17838
+2026-03-02 09:48:34,768 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 09:48:37,401 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 14654
+2026-03-02 09:48:38,428 [INFO] django.server: "GET /dashboard/articles/create/ HTTP/1.1" 200 12982
+2026-03-02 10:45:38,854 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-02 10:45:39,126 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 10:58:13,503 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 10:58:15,047 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-02 10:58:15,051 [INFO] django.server: "GET /media/covers/pgl-cs2-astana-cover.jpg HTTP/1.1" 304 0
+2026-03-02 10:58:15,051 [INFO] django.server: "GET /media/covers/almaty-marathon-cover.jpg HTTP/1.1" 304 0
+2026-03-02 10:58:15,051 [INFO] django.server: "GET /media/covers/astana-chelsea-football.jpg HTTP/1.1" 304 0
+2026-03-02 10:58:15,065 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-02 10:58:15,066 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-02 10:58:23,676 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 10:58:26,129 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 18887
+2026-03-02 10:58:28,443 [INFO] django.server: "GET /dashboard/teams/create/ HTTP/1.1" 200 9631
+2026-03-02 10:58:51,586 [INFO] django.server: "POST /dashboard/teams/create/ HTTP/1.1" 302 0
+2026-03-02 10:58:51,649 [INFO] django.server: "GET /dashboard/teams/67/edit/ HTTP/1.1" 200 20294
+2026-03-02 10:58:54,075 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 19163
+2026-03-02 10:58:56,122 [INFO] django.server: "GET /dashboard/teams/67/edit/ HTTP/1.1" 200 20005
+2026-03-02 10:59:00,872 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 11:10:57,501 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 11:10:57,574 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 200 22976
+2026-03-02 11:10:57,575 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 200 83733
+2026-03-02 13:41:36,250 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 13:41:38,491 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-02 13:41:38,497 [INFO] django.server: "GET /media/covers/pgl-cs2-astana-cover.jpg HTTP/1.1" 304 0
+2026-03-02 13:41:38,497 [INFO] django.server: "GET /media/covers/almaty-marathon-cover.jpg HTTP/1.1" 304 0
+2026-03-02 13:41:38,498 [INFO] django.server: "GET /media/covers/astana-chelsea-football.jpg HTTP/1.1" 304 0
+2026-03-02 13:41:38,601 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-02 13:41:38,601 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-02 13:41:53,801 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 13:41:55,531 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 14654
+2026-03-02 13:41:58,941 [INFO] django.server: "GET /dashboard/articles/29/edit/ HTTP/1.1" 200 17838
+2026-03-02 13:44:13,093 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-02 13:51:47,531 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/urls.py changed, reloading.
+2026-03-02 13:51:47,903 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:04:04,712 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:04:05,963 [INFO] django.server: "GET / HTTP/1.1" 200 17873
+2026-03-02 14:04:11,370 [INFO] django.server: "GET /news/ HTTP/1.1" 200 25823
+2026-03-02 14:04:11,991 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 16473
+2026-03-02 14:04:17,914 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7775
+2026-03-02 14:04:19,836 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 14:04:23,034 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 19163
+2026-03-02 14:04:28,743 [INFO] django.server: "GET /dashboard/teams/8/edit/ HTTP/1.1" 200 24924
+2026-03-02 14:04:28,759 [INFO] django.server: "GET /static/teams/logos/aktobe-rush.jpg HTTP/1.1" 200 82142
+2026-03-02 14:04:50,089 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 16473
+2026-03-02 14:05:09,566 [INFO] django.server: "GET /teams/?kind=&discipline=football HTTP/1.1" 200 10285
+2026-03-02 14:05:29,863 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 14:05:38,152 [INFO] django.server: "GET /dashboard/teams/ HTTP/1.1" 200 19163
+2026-03-02 14:05:46,777 [INFO] django.server: "GET /dashboard/teams/?page=2 HTTP/1.1" 200 9893
+2026-03-02 14:05:48,627 [INFO] django.server: "GET /teams/novaq/ HTTP/1.1" 200 13463
+2026-03-02 14:05:48,656 [INFO] django.server: "GET /static/placeholders/players/default.svg HTTP/1.1" 304 0
+2026-03-02 14:05:53,071 [INFO] django.server: "GET /dashboard/teams/39/edit/ HTTP/1.1" 200 31787
+2026-03-02 14:06:30,433 [INFO] django.server: "GET /teams/ HTTP/1.1" 200 16473
+2026-03-02 14:06:35,475 [INFO] django.server: "GET /teams/novaq/ HTTP/1.1" 200 13463
+2026-03-02 14:07:09,365 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7159
+2026-03-02 14:07:13,212 [INFO] django.server: "GET /dashboard/matches/ HTTP/1.1" 200 14853
+2026-03-02 14:07:17,217 [INFO] django.server: "GET /dashboard/matches/42/edit/ HTTP/1.1" 200 12189
+2026-03-02 14:07:35,045 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7775
+2026-03-02 14:46:48,636 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/models.py changed, reloading.
+2026-03-02 14:46:49,026 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:47:05,503 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/models.py changed, reloading.
+2026-03-02 14:47:05,771 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:47:24,206 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/tournaments/models.py changed, reloading.
+2026-03-02 14:47:24,397 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:47:45,898 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/dashboard/forms.py changed, reloading.
+2026-03-02 14:47:46,201 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:48:02,579 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/views.py changed, reloading.
+2026-03-02 14:48:02,872 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:48:19,272 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/templatetags/news_media.py changed, reloading.
+2026-03-02 14:48:19,464 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-02 14:48:33,820 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/teams/templatetags/team_media.py changed, reloading.
+2026-03-02 14:48:34,015 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 15:29:37,760 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 15:29:48,405 [INFO] django.server: "GET /accounts/profile/ HTTP/1.1" 200 7872
+2026-03-03 15:29:48,408 [INFO] django.server: "GET /media/covers/astana-chelsea-football.jpg HTTP/1.1" 304 0
+2026-03-03 15:29:48,408 [INFO] django.server: "GET /media/covers/almaty-marathon-cover.jpg HTTP/1.1" 304 0
+2026-03-03 15:29:48,408 [INFO] django.server: "GET /media/covers/pgl-cs2-astana-cover.jpg HTTP/1.1" 304 0
+2026-03-03 15:29:48,751 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-03 15:29:48,758 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 200 85664
+2026-03-03 15:29:52,454 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 15:32:48,551 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 14751
+2026-03-03 15:33:07,113 [INFO] django.server: "GET /about/ HTTP/1.1" 200 7398
+2026-03-03 15:33:31,649 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 15:33:32,887 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 14751
+2026-03-03 16:04:22,937 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 16:04:26,919 [INFO] django.server: "GET / HTTP/1.1" 200 30026
+2026-03-03 16:04:26,937 [INFO] django.server: "GET /static/placeholders/news/default.svg HTTP/1.1" 200 717
+2026-03-03 16:04:26,938 [INFO] django.server: "GET /static/placeholders/news/cs2.svg HTTP/1.1" 304 0
+2026-03-03 16:04:28,400 [INFO] django.server: "GET /news/ HTTP/1.1" 200 38003
+2026-03-03 16:04:28,992 [INFO] django.server: "GET /static/placeholders/news/football.svg HTTP/1.1" 304 0
+2026-03-03 16:38:11,906 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 16:38:13,276 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 16:38:28,814 [INFO] django.server: "GET /dashboard/articles/32/edit/ HTTP/1.1" 200 17634
+2026-03-03 16:38:42,423 [DEBUG] PIL.Image: Importing BlpImagePlugin
+2026-03-03 16:38:42,424 [DEBUG] PIL.Image: Importing BmpImagePlugin
+2026-03-03 16:38:42,424 [DEBUG] PIL.Image: Importing BufrStubImagePlugin
+2026-03-03 16:38:42,424 [DEBUG] PIL.Image: Importing CurImagePlugin
+2026-03-03 16:38:42,425 [DEBUG] PIL.Image: Importing DcxImagePlugin
+2026-03-03 16:38:42,425 [DEBUG] PIL.Image: Importing DdsImagePlugin
+2026-03-03 16:38:42,428 [DEBUG] PIL.Image: Importing EpsImagePlugin
+2026-03-03 16:38:42,428 [DEBUG] PIL.Image: Importing FitsImagePlugin
+2026-03-03 16:38:42,429 [DEBUG] PIL.Image: Importing FliImagePlugin
+2026-03-03 16:38:42,429 [DEBUG] PIL.Image: Importing FpxImagePlugin
+2026-03-03 16:38:42,429 [DEBUG] PIL.Image: Image: failed to import FpxImagePlugin: No module named 'olefile'
+2026-03-03 16:38:42,429 [DEBUG] PIL.Image: Importing FtexImagePlugin
+2026-03-03 16:38:42,430 [DEBUG] PIL.Image: Importing GbrImagePlugin
+2026-03-03 16:38:42,430 [DEBUG] PIL.Image: Importing GifImagePlugin
+2026-03-03 16:38:42,430 [DEBUG] PIL.Image: Importing GribStubImagePlugin
+2026-03-03 16:38:42,430 [DEBUG] PIL.Image: Importing Hdf5StubImagePlugin
+2026-03-03 16:38:42,430 [DEBUG] PIL.Image: Importing IcnsImagePlugin
+2026-03-03 16:38:42,432 [DEBUG] PIL.Image: Importing IcoImagePlugin
+2026-03-03 16:38:42,432 [DEBUG] PIL.Image: Importing ImImagePlugin
+2026-03-03 16:38:42,433 [DEBUG] PIL.Image: Importing ImtImagePlugin
+2026-03-03 16:38:42,433 [DEBUG] PIL.Image: Importing IptcImagePlugin
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Importing JpegImagePlugin
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Importing Jpeg2KImagePlugin
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Importing McIdasImagePlugin
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Importing MicImagePlugin
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Image: failed to import MicImagePlugin: No module named 'olefile'
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Importing MpegImagePlugin
+2026-03-03 16:38:42,434 [DEBUG] PIL.Image: Importing MpoImagePlugin
+2026-03-03 16:38:42,438 [DEBUG] PIL.Image: Importing MspImagePlugin
+2026-03-03 16:38:42,438 [DEBUG] PIL.Image: Importing PalmImagePlugin
+2026-03-03 16:38:42,441 [DEBUG] PIL.Image: Importing PcdImagePlugin
+2026-03-03 16:38:42,441 [DEBUG] PIL.Image: Importing PcxImagePlugin
+2026-03-03 16:38:42,441 [DEBUG] PIL.Image: Importing PdfImagePlugin
+2026-03-03 16:38:42,446 [DEBUG] PIL.Image: Importing PixarImagePlugin
+2026-03-03 16:38:42,447 [DEBUG] PIL.Image: Importing PngImagePlugin
+2026-03-03 16:38:42,447 [DEBUG] PIL.Image: Importing PpmImagePlugin
+2026-03-03 16:38:42,447 [DEBUG] PIL.Image: Importing PsdImagePlugin
+2026-03-03 16:38:42,447 [DEBUG] PIL.Image: Importing QoiImagePlugin
+2026-03-03 16:38:42,447 [DEBUG] PIL.Image: Importing SgiImagePlugin
+2026-03-03 16:38:42,448 [DEBUG] PIL.Image: Importing SpiderImagePlugin
+2026-03-03 16:38:42,448 [DEBUG] PIL.Image: Importing SunImagePlugin
+2026-03-03 16:38:42,448 [DEBUG] PIL.Image: Importing TgaImagePlugin
+2026-03-03 16:38:42,448 [DEBUG] PIL.Image: Importing TiffImagePlugin
+2026-03-03 16:38:42,449 [DEBUG] PIL.Image: Importing WebPImagePlugin
+2026-03-03 16:38:42,496 [DEBUG] PIL.Image: Importing WmfImagePlugin
+2026-03-03 16:38:42,497 [DEBUG] PIL.Image: Importing XbmImagePlugin
+2026-03-03 16:38:42,497 [DEBUG] PIL.Image: Importing XpmImagePlugin
+2026-03-03 16:38:42,498 [DEBUG] PIL.Image: Importing XVThumbImagePlugin
+2026-03-03 16:38:42,511 [INFO] django.server: "POST /dashboard/articles/32/edit/ HTTP/1.1" 302 0
+2026-03-03 16:38:42,566 [INFO] django.server: "GET /dashboard/articles/32/edit/ HTTP/1.1" 200 18430
+2026-03-03 16:38:42,581 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 200 7361
+2026-03-03 16:38:44,490 [INFO] django.server: "GET / HTTP/1.1" 200 30019
+2026-03-03 16:38:45,058 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 304 0
+2026-03-03 16:38:59,207 [INFO] django.server: "GET /news/ HTTP/1.1" 200 37996
+2026-03-03 16:38:59,872 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 304 0
+2026-03-03 16:58:35,949 [INFO] django.server: "GET /news/ HTTP/1.1" 200 37993
+2026-03-03 16:58:36,049 [INFO] django.server: "GET /media/covers/kz-molodoy-cover.jpg HTTP/1.1" 200 1164112
+2026-03-03 16:58:36,053 [INFO] django.server: "GET /media/covers/kz-boxing-cover.jpg HTTP/1.1" 200 2593428
+2026-03-03 16:58:36,761 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 304 0
+2026-03-03 16:58:38,633 [INFO] django.server: "GET /media/covers/kz-marathon-new-cover.jpg HTTP/1.1" 200 555982
+2026-03-03 17:00:30,785 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 17:00:32,518 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:01:59,571 [INFO] django.server: "GET /dashboard/articles/31/edit/ HTTP/1.1" 200 17925
+2026-03-03 17:05:17,376 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 17:05:19,963 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:05:26,376 [INFO] django.server: "GET /dashboard/articles/30/edit/ HTTP/1.1" 200 17770
+2026-03-03 17:05:26,389 [INFO] django.server: "GET /media/covers/kz-marathon-new-cover.jpg HTTP/1.1" 304 0
+2026-03-03 17:10:08,941 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 17:10:10,199 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:10:13,973 [INFO] django.server: "GET /news/%D0%B0%D0%BB%D0%BC%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%B0%D0%B9%D1%80%D0%B0%D1%82-%D1%83%D1%81%D1%82%D1%83%D0%BF%D0%B8%D0%BB-%D0%BC%D0%B0%D0%B4%D1%80%D0%B8%D0%B4%D1%81%D0%BA%D0%BE%D0%BC%D1%83-%D1%80%D0%B5%D0%B0%D0%BB%D1%83-%D0%B2-%D0%BC%D0%B0%D1%82%D1%87%D0%B5-%D0%BE%D0%B1%D1%89%D0%B5%D0%B3%D0%BE-%D1%8D%D1%82%D0%B0%D0%BF%D0%B0-%D0%BB%D0%B8%D0%B3%D0%B8-%D1%87%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2/ HTTP/1.1" 200 21585
+2026-03-03 17:10:13,993 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 304 0
+2026-03-03 17:10:14,028 [INFO] django.server: "GET /interactions/status/?article_id=32 HTTP/1.1" 200 196
+2026-03-03 17:10:25,658 [INFO] django.server: "GET /dashboard/articles/34/edit/ HTTP/1.1" 200 17984
+2026-03-03 17:10:25,665 [INFO] django.server: "GET /media/covers/kz-molodoy-cover.jpg HTTP/1.1" 304 0
+2026-03-03 17:10:28,529 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 17:10:29,930 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:10:32,380 [INFO] django.server: "GET /dashboard/articles/32/edit/ HTTP/1.1" 200 18207
+2026-03-03 17:10:32,391 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 304 0
+2026-03-03 17:17:42,128 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 17:17:45,802 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:17:51,104 [INFO] django.server: "GET /news/ HTTP/1.1" 200 37996
+2026-03-03 17:17:51,139 [INFO] django.server: "GET /media/covers/kz-molodoy-cover-v2.jpg HTTP/1.1" 200 1959199
+2026-03-03 17:17:51,141 [INFO] django.server: "GET /media/covers/kz-boxing-cover.jpg HTTP/1.1" 304 0
+2026-03-03 17:17:52,134 [INFO] django.server: "GET /media/covers/real_6V8w3uY.jpeg HTTP/1.1" 304 0
+2026-03-03 17:17:52,183 [INFO] django.server: "GET /media/covers/kz-marathon-new-cover.jpg HTTP/1.1" 304 0
+2026-03-03 17:18:01,968 [INFO] django.server: "GET /news/ HTTP/1.1" 200 37996
+2026-03-03 17:18:30,731 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 17:18:32,521 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:19:20,405 [INFO] django.server: "GET /dashboard/articles/34/edit/ HTTP/1.1" 200 17996
+2026-03-03 17:19:20,419 [INFO] django.server: "GET /media/covers/kz-molodoy-cover-v2.jpg HTTP/1.1" 304 0
+2026-03-03 17:23:53,075 [INFO] django.server: "GET /dashboard/articles/ HTTP/1.1" 200 21686
+2026-03-03 17:23:57,252 [INFO] django.server: "GET /dashboard/articles/33/edit/ HTTP/1.1" 200 17594
+2026-03-03 17:23:57,269 [INFO] django.server: "GET /media/covers/kz-boxing-cover.jpg HTTP/1.1" 304 0
+2026-03-03 17:24:08,509 [INFO] django.server: "GET /interactions/status/?article_id=32 HTTP/1.1" 200 196
+2026-03-03 19:14:12,301 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-03 19:14:12,710 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 19:14:33,131 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-03 19:14:33,453 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 19:40:17,190 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/models.py changed, reloading.
+2026-03-03 19:40:17,614 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 19:40:40,095 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/articles/models.py changed, reloading.
+2026-03-03 19:40:40,414 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 20:06:02,858 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-03 20:06:03,274 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 20:07:13,620 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-03 20:07:13,956 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 20:08:12,153 [INFO] django.utils.autoreload: /Users/nurserik/Desktop/kz-arena/kz_arena/settings.py changed, reloading.
+2026-03-03 20:08:12,458 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2026-03-03 20:33:11,970 [INFO] django.server: "GET /dashboard/ HTTP/1.1" 200 7256
+2026-03-03 20:33:11,996 [INFO] django.server: "GET /static/js/main.js?v=9 HTTP/1.1" 304 0
+2026-03-03 20:33:11,997 [INFO] django.server: "GET /static/css/style.css?v=16 HTTP/1.1" 304 0
+2026-03-03 20:33:12,603 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 15479
+2026-03-03 20:33:12,665 [INFO] django.server: "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+2026-03-03 20:33:12,665 [INFO] django.server: "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+2026-03-03 20:33:12,665 [INFO] django.server: "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+2026-03-03 20:33:12,666 [INFO] django.server: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+2026-03-03 20:33:12,666 [INFO] django.server: "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+2026-03-03 20:33:12,666 [INFO] django.server: "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+2026-03-03 20:33:12,666 [INFO] django.server: "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+2026-03-03 20:33:12,675 [INFO] django.server: "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2026-03-03 20:33:12,676 [INFO] django.server: "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2026-03-03 20:33:12,676 [INFO] django.server: "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2026-03-03 20:33:27,824 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 22170
+2026-03-03 20:33:27,829 [INFO] django.server: "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+2026-03-03 20:33:27,835 [INFO] django.server: "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+2026-03-03 20:33:27,835 [INFO] django.server: "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+2026-03-03 20:33:27,836 [INFO] django.server: "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+2026-03-03 20:33:27,836 [INFO] django.server: "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+2026-03-03 20:33:27,837 [INFO] django.server: "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+2026-03-03 20:33:27,837 [INFO] django.server: "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+2026-03-03 20:33:27,837 [INFO] django.server: "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+2026-03-03 20:33:27,839 [INFO] django.server: "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+2026-03-03 20:33:27,839 [INFO] django.server: "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+2026-03-03 20:33:27,840 [INFO] django.server: "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2026-03-03 20:33:27,841 [INFO] django.server: "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2026-03-03 20:33:27,842 [INFO] django.server: "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2026-03-03 20:33:27,864 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-03-03 20:33:27,880 [INFO] django.server: "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+2026-03-03 20:33:27,880 [INFO] django.server: "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2026-03-03 20:33:32,661 [INFO] django.server: "GET /admin/accounts/profile/ HTTP/1.1" 200 19149
+2026-03-03 20:33:32,712 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+2026-03-03 20:33:34,873 [INFO] django.server: "GET /admin/auth/user/ HTTP/1.1" 200 22170
+2026-03-03 20:33:34,920 [INFO] django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
